@@ -99,39 +99,39 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           Screenshot-এর একদম উপরের ছোট green bar
           ====================================================== */}
 
-      <div className="h-7 bg-brand-dark">
-        <div className="mx-auto flex h-full max-w-[1540px] items-center justify-end px-5 lg:px-8">
-          <div className="flex items-center gap-5 text-[12px] font-medium text-white/90">
-            <Link
-              href="/iqac"
-              className="transition-colors hover:text-white"
-            >
-              IQAC
-            </Link>
+     <div className="h-6 bg-brand-dark">
+  <div className="mx-auto flex h-full max-w-[1540px] items-center justify-end px-4 lg:px-6">
+    <div className="flex items-center gap-4 text-[11px] font-medium text-white/90">
+      <Link
+        href="/iqac"
+        className="transition-colors hover:text-white"
+      >
+        IQAC
+      </Link>
 
-            <Link
-              href="/contact"
-              className="transition-colors hover:text-white"
-            >
-              Contacts
-            </Link>
+      <Link
+        href="/contact"
+        className="transition-colors hover:text-white"
+      >
+        Contacts
+      </Link>
 
-            <Link
-              href="/transport"
-              className="transition-colors hover:text-white"
-            >
-              Transport
-            </Link>
+      <Link
+        href="/transport"
+        className="transition-colors hover:text-white"
+      >
+        Transport
+      </Link>
 
-            <Link
-              href="/career"
-              className="transition-colors hover:text-white"
-            >
-              Career
-            </Link>
-          </div>
-        </div>
-      </div>
+      <Link
+        href="/career"
+        className="transition-colors hover:text-white"
+      >
+        Career
+      </Link>
+    </div>
+  </div>
+</div>
 
       {/* ======================================================
           MAIN HEADER AREA
@@ -160,97 +160,87 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               -------------------------------------------------- */}
 
           <nav className="hidden items-center justify-center xl:flex">
-            <div className="flex items-center rounded-full bg-white px-3 py-2 shadow-lg ring-1 ring-black/5">
-              {NAV_ITEMS.map((item) => (
-                <div
-                  key={item.label}
-                  className="group relative"
-                >
-                  {/* Main navigation item */}
+  <div className="flex items-center rounded-full bg-white px-1.5 py-2.5 shadow-lg ring-1 ring-black/5">
+    {NAV_ITEMS.map((item) => (
+      <div
+        key={item.label}
+        className="group relative"
+      >
+        {/* Main navigation item */}
+
+        <Link
+          href={item.href}
+          className="flex items-center gap-0.5 rounded-full px-3 py-2 text-[14.5px] font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-brand-dark"
+        >
+          {item.label}
+
+          {item.children && (
+            <ChevronDown className="h-3 w-3 opacity-70 transition-transform duration-200 group-hover:rotate-180" />
+          )}
+        </Link>
+
+        {/* DROPDOWN / MEGA MENU */}
+
+        {item.children && (
+          <div
+            className={`invisible absolute top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
+              item.mega
+                ? "left-1/2 w-[680px] -translate-x-1/2"
+                : "left-0 w-52"
+            }`}
+          >
+            {item.mega ? (
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-2xl">
+                <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-3">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand">
+                      University Administration
+                    </p>
+
+                    <p className="mt-1 text-xs text-slate-500">
+                      Leadership, offices and university portals
+                    </p>
+                  </div>
 
                   <Link
-                    href={item.href}
-                    className="flex items-center gap-1 rounded-full px-4 py-2.5 text-[14px] font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-brand-dark"
+                    href="/administration"
+                    className="rounded-full bg-brand px-3 py-2 text-[20px] font-semibold text-white transition-colors hover:bg-brand-dark"
                   >
-                    {item.label}
-
-                    {item.children && (
-                      <ChevronDown className="h-3.5 w-3.5 opacity-70 transition-transform duration-200 group-hover:rotate-180" />
-                    )}
+                    View Administration
                   </Link>
-
-                  {/* ==================================================
-                      DROPDOWN / MEGA MENU
-                      ================================================== */}
-
-                  {item.children && (
-                    <div
-                      className={`invisible absolute top-full pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
-                        item.mega
-                          ? "left-1/2 w-[760px] -translate-x-1/2"
-                          : "left-0 w-60"
-                      }`}
-                    >
-                      {item.mega ? (
-                        /*
-                          Administration mega-menu
-                        */
-
-                        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-2xl">
-                          <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-4">
-                            <div>
-                              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">
-                                University Administration
-                              </p>
-
-                              <p className="mt-1 text-sm text-slate-500">
-                                Leadership, offices and university portals
-                              </p>
-                            </div>
-
-                            <Link
-                              href="/administration"
-                              className="rounded-full bg-brand px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-brand-dark"
-                            >
-                              View Administration
-                            </Link>
-                          </div>
-
-                          <div className="grid grid-cols-3 gap-2">
-                            {item.children.map((child) => (
-                              <Link
-                                key={child.href}
-                                href={child.href}
-                                className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
-                              >
-                                {child.label}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        /*
-                          Normal dropdown menu
-                        */
-
-                        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white py-2 shadow-xl">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              className="block px-4 py-2.5 text-sm text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )}
                 </div>
-              ))}
-            </div>
-          </nav>
+
+                <div className="grid grid-cols-3 gap-1.5">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="rounded-lg px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white py-1.5 shadow-xl">
+                {item.children.map((child) => (
+                  <Link
+                    key={child.href}
+                    href={child.href}
+                    className="block px-3 py-2 text-xs text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</nav>
 
           {/* --------------------------------------------------
               RIGHT SIDE

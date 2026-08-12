@@ -1,27 +1,38 @@
+"use client";
 import { SiteHeader } from "@/components/site-header"
 import { Hero } from "@/components/hero"
 import { StatsBar } from "@/components/stats-bar"
-import { Programs } from "@/components/programs"
 import { AdmissionsBanner } from "@/components/admissions-banner"
 import { NewsEvents } from "@/components/news-events"
 import { CampusLife } from "@/components/campus-life"
-import { WhyChoose } from "@/components/why-choose"
 import { SiteFooter } from "@/components/site-footer"
+import { NoticeTicker } from "@/components/notice-ticker";
+import { TrustStats } from "@/components/TrustStats";
+import { ProgramsSection } from "@/components/ProgramsSection";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <SiteHeader overlay />
       <main>
         <Hero />
         <StatsBar />
-        <Programs />
+        <NoticeTicker
+          onSelectNotice={(notice) => {
+          console.log("Selected notice:", notice);
+           }}
+           onOpenOnlineApply={() => {
+           console.log("Open online application");
+           }}
+           />
+           <TrustStats />
         <AdmissionsBanner />
         <NewsEvents />
-        <CampusLife />
-        <WhyChoose />
+       <ProgramsSection />
+      
       </main>
       <SiteFooter />
-    </div>
+      </>
+   
   )
 }
