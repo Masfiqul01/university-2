@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Khulna Khan Jahan Science and Technology University (KKJSTU)',
+    default: 'Khanjahan Ali College of Science & Technology(KACST)',
     template: '%s | KKJSTU',
   },
   description:

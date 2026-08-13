@@ -154,7 +154,7 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/60 md:flex-row lg:px-8">
-          <p>© 2026 Khulna Khan Jahan Science and Technology University. All Rights Reserved.</p>
+          <p>© 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.</p>
           <div className="flex gap-5">
             <a href="#" className="transition-colors hover:text-white">Privacy Policy</a>
             <a href="#" className="transition-colors hover:text-white">Terms &amp; Conditions</a>
