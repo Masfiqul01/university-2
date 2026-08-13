@@ -6,7 +6,7 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "University",
     links: [
-      { label: "About KKJSTU", href: "/about" },
+      { label: "About KACST", href: "/about" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Faculties", href: "/about/faculties" },
@@ -102,12 +102,16 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
           <div className="lg:col-span-2">
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-white/80 text-[9px] font-bold">
-                KKJSTU
-              </div>
+              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-white/80">
+  <img
+    src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
+    alt="KACST"
+    className="h-full w-full object-cover"
+  />
+</div>
               <div className="text-[11px] font-semibold leading-tight">
-                <p>KHULNA KHAN JAHAN SCIENCE</p>
-                <p>AND TECHNOLOGY UNIVERSITY</p>
+                <p>Khanjahan Ali College of </p>
+                <p>Science & Technology</p>
               </div>
             </div>
             <p className="mb-5 max-w-xs text-sm leading-relaxed text-white/70">
@@ -117,19 +121,19 @@ export function SiteFooter() {
             <ul className="mb-5 space-y-2.5 text-sm text-white/70">
               <li className="flex gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                Khulna, Bangladesh <span className="italic opacity-70">(editable)</span>
+                Khulna, Bangladesh <span className="italic opacity-70"></span>
               </li>
               <li className="flex gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                +880 000 000000 <span className="italic opacity-70">(editable)</span>
+                +880 000 000000 <span className="italic opacity-70"></span>
               </li>
               <li className="flex gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                info@kkjstu.edu.bd <span className="italic opacity-70">(editable)</span>
+                info@kacst.edu.bd <span className="italic opacity-70"></span>
               </li>
               <li className="flex gap-2.5">
                 <Globe className="mt-0.5 h-4 w-4 shrink-0" />
-                www.kkjstu.edu.bd <span className="italic opacity-70">(editable)</span>
+                www.kacst.edu.bd <span className="italic opacity-70"></span>
               </li>
             </ul>
             <div className="flex gap-3">

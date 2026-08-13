@@ -8,7 +8,7 @@ export function AdmissionsBanner() {
       <div className="relative isolate overflow-hidden rounded-3xl bg-brand-dark">
         <img
           src={imageUrl("/images/admissions-building.png")}
-          alt="KKJSTU academic building"
+          alt="KACST academic building"
           className="absolute inset-y-0 right-0 h-full w-full object-cover opacity-40 md:w-3/5 md:opacity-100"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/85 to-brand-dark/20" />
@@ -19,7 +19,7 @@ export function AdmissionsBanner() {
             Admissions Open
           </p>
           <h2 className="font-serif text-3xl font-bold text-white text-balance md:text-4xl">
-            Join KKJSTU, Shape Your Future
+            Join KACST, Shape Your Future
           </h2>
           <p className="max-w-md text-sm leading-relaxed text-white/85">
             Admission is now open for the upcoming session. Take the next step towards your bright

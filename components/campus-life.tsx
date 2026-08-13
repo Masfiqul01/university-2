@@ -17,7 +17,7 @@ export function CampusLife() {
           <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
             Campus Life
           </p>
-          <h2 className="mb-4 font-serif text-3xl font-bold text-balance md:text-4xl">Life at KKJSTU</h2>
+          <h2 className="mb-4 font-serif text-3xl font-bold text-balance md:text-4xl">Life at KACST</h2>
           <p className="mb-6 max-w-xs text-sm leading-relaxed text-white/80">
             A vibrant campus life that helps students learn, grow and lead.
           </p>

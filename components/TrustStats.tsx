@@ -63,9 +63,13 @@ export const TrustStats: React.FC = () => {
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
 
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#0D0357] text-xl font-black text-white shadow-sm">
-              KK
-            </div>
+           <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#0D0357] shadow-sm">
+  <img
+    src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
+    alt="KACST"
+    className="h-full w-full object-cover"
+  />
+</div>
 
             <div>
               <h3 className="text-sm font-extrabold text-slate-900 sm:text-base">

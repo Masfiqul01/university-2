@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react"
 
 export function CTASection({
   title = "Join KKJSTU, Shape Your Future",
-  description = "Take the next step towards a rewarding academic journey at Khanjahan Ali College of Science & Technology
+  description = "Take the next step towards a rewarding academic journey at Khanjahan Ali College of Science & Technology",
   primary = { label: "Apply Now", href: "/admissions/apply" },
   secondary,
 }: {
