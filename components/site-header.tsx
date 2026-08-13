@@ -160,7 +160,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               -------------------------------------------------- */}
 
           <nav className="hidden items-center justify-center md:flex">
-  <div className="flex items-center rounded-full bg-white px-1.5 py-2.5 shadow-lg ring-1 ring-black/5">
+  <div className="flex items-center rounded-full px-1.5 py-2.5">
     {NAV_ITEMS.map((item) => (
       <div
         key={item.label}

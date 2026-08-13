@@ -29,7 +29,7 @@ export function Hero() {
             Excellence in Science &amp; Technology
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85">
-            KKJSTU is committed to developing competent professionals and ethical leaders through
+            KACST is committed to developing competent professionals and ethical leaders through
             quality education, research and innovation in an inspiring environment.
           </p>
 
