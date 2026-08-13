@@ -69,7 +69,7 @@ export const TrustStats: React.FC = () => {
 
             <div>
               <h3 className="text-sm font-extrabold text-slate-900 sm:text-base">
-                Khulna Khan Jahan Science and Technology University
+                Khanjahan Ali College of Science & Technology
               </h3>
 
               <p className="mt-0.5 text-xs font-medium text-slate-600">
