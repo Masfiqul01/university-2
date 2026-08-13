@@ -17,6 +17,8 @@ node_modules
 # Local build / cache
 tsconfig.tsbuildinfo
 
+
+
 # Remove accidentally committed large assets at repo root
 /banner1.webp
 /logokacst.webp
