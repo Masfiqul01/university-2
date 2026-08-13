@@ -6,10 +6,10 @@
 // Direct online image ব্যবহার করতে চাইলে ওই value-তে https://... URL বসাও।
 // ============================================================
 
-export const LOGO_URL = ""
+export const LOGO_URL = "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
 
 export const IMAGE_URLS: Record<string, string> = {
-  "/images/hero-campus.png": "/images/hero-campus.png",
+  "/images/hero-campus.png": "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp",
   "/images/admissions-building.png": "/images/admissions-building.png",
   "/images/campus-library.png": "/images/campus-library.png",
   "/images/campus-green.png": "/images/campus-green.png",

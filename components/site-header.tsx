@@ -41,7 +41,7 @@ function Logo({ light = true }: { light?: boolean }) {
       {LOGO_URL ? (
         <img
           src={LOGO_URL}
-          alt="KKJSTU logo"
+          alt="KACST logo"
           className="h-12 w-12 object-contain"
         />
       ) : (
@@ -52,7 +52,7 @@ function Logo({ light = true }: { light?: boolean }) {
               : "border-brand bg-brand text-white"
           }`}
         >
-          KKJSTU
+          KACST
         </div>
       )}
 
@@ -61,13 +61,13 @@ function Logo({ light = true }: { light?: boolean }) {
           light ? "text-white" : "text-foreground"
         }`}
       >
-        <p className="text-[10px] font-semibold tracking-wide">
-          KHULNA KHAN JAHAN SCIENCE
-        </p>
+            <p className="text-[10px] font-semibold tracking-wide">
+              Khanjahan Ali College
+            </p>
 
-        <p className="text-[10px] font-semibold tracking-wide">
-          AND TECHNOLOGY UNIVERSITY
-        </p>
+            <p className="text-[10px] font-semibold tracking-wide">
+              of Science & Technology (KACST)
+            </p>
       </div>
     </Link>
   )
@@ -159,7 +159,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               NAV_ITEMS-এর existing data ব্যবহার করা হচ্ছে।
               -------------------------------------------------- */}
 
-          <nav className="hidden items-center justify-center xl:flex">
+          <nav className="hidden items-center justify-center md:flex">
   <div className="flex items-center rounded-full bg-white px-1.5 py-2.5 shadow-lg ring-1 ring-black/5">
     {NAV_ITEMS.map((item) => (
       <div
@@ -252,7 +252,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 
             <Link
               href="/login"
-              className="hidden rounded-full bg-brand-dark px-7 py-2.5 text-[13px] font-semibold text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:bg-brand-accent sm:inline-flex"
+              className="hidden rounded-full bg-brand-dark px-7 py-2.5 text-[13px] font-semibold text-white shadow-md transition-all duration-200 hover:scale-[1.02] hover:bg-brand-accent md:inline-flex"
             >
               Log in
             </Link>
@@ -262,7 +262,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
             <button
               type="button"
               aria-label="Applications menu"
-              className="hidden h-10 w-10 items-center justify-center rounded-full text-brand-dark transition-colors hover:bg-white/30 sm:flex"
+              className="hidden h-10 w-10 items-center justify-center rounded-full text-brand-dark transition-colors hover:bg-white/30 md:flex"
             >
               <span className="grid grid-cols-3 gap-[4px]">
                 {Array.from({ length: 9 }).map((_, index) => (
@@ -280,7 +280,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               type="button"
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white xl:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white md:hidden"
             >
               {open ? (
                 <X className="h-5 w-5" />
@@ -297,7 +297,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           ====================================================== */}
 
       {open && (
-        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden">
+        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl md:hidden">
           <nav className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <div
