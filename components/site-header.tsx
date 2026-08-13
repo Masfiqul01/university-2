@@ -170,7 +170,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 
         <Link
           href={item.href}
-          className="flex items-center gap-0.5 rounded-full px-3 py-2 text-[14.5px] font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-brand-dark"
+          className="flex items-center gap-0.5 rounded-full px-3 py-2 text-sm md:text-[14.5px] font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-brand-dark"
         >
           {item.label}
 

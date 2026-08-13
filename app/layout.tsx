@@ -26,19 +26,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: 'https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: 'https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp',
   },
 }
 

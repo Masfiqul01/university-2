@@ -167,9 +167,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: url("/images/kkjstu-background-pattern.png");
-    background-repeat: repeat;
-    background-size: 370px 552px;
-    background-position: top left;
+    /* Use a clean light background everywhere (pattern removed) */
+    background-image: none;
   }
 }
