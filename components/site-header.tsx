@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Menu, X, ArrowRight, ChevronDown, ExternalLink } from "lucide-react"
 import { NAV_ITEMS } from "@/lib/nav"
 import { LOGO_URL } from "@/lib/site-assets"
+import { usePathname } from "next/navigation";
 
 /*
   ============================================================
@@ -160,86 +161,102 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               NAV_ITEMS-এর existing data ব্যবহার করা হচ্ছে।
               -------------------------------------------------- */}
 
-          <nav className="hidden items-center justify-center md:flex">
+ <nav className="hidden items-center justify-center md:flex">
   <div className="flex items-center rounded-full px-1.5 py-2.5">
-    {NAV_ITEMS.map((item) => (
-      <div
-        key={item.label}
-        className="group relative"
-      >
-        {/* Main navigation item */}
+    {NAV_ITEMS.map((item) => {
+      const pathname = usePathname();
 
-        <Link
-          href={item.href}
-          className="flex -translate-y-0.5 items-center gap-0.5 rounded-full px-3 py-2 text-sm font-bold text-white transition-all duration-200 hover:text-white md:text-[14.5px]"
+      const isActive =
+        pathname === item.href ||
+        (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+
+      return (
+        <div
+          key={item.label}
+          className="group relative"
         >
-          {item.label}
+          {/* Main navigation item */}
 
-          {item.children && (
-            <ChevronDown className="h-3 w-3 text-white opacity-70 transition-transform duration-200 group-hover:rotate-180" />
-          )}
-        </Link>
-
-        {/* DROPDOWN / MEGA MENU */}
-
-        {item.children && (
-          <div
-            className={`invisible absolute top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
-              item.mega
-                ? "left-1/2 w-[680px] -translate-x-1/2"
-                : "left-0 w-52"
+          <Link
+            href={item.href}
+            className={`flex -translate-y-0.5 items-center gap-0.5 rounded-full px-4 py-2 text-sm font-bold transition-all duration-200 md:text-[14.5px] ${
+              isActive
+                ? "bg-brand-dark text-white shadow-md"
+                : "text-white hover:bg-brand-dark hover:text-white hover:shadow-md"
             }`}
           >
-            {item.mega ? (
-              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-2xl">
-                <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-3">
-                  <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand">
-                      University Administration
-                    </p>
+            {item.label}
 
-                    <p className="mt-1 text-xs text-slate-500">
-                      Leadership, offices and university portals
-                    </p>
+            {item.children && (
+              <ChevronDown
+                className={`h-3 w-3 opacity-70 transition-transform duration-200 group-hover:rotate-180 ${
+                  isActive ? "text-white" : "text-white"
+                }`}
+              />
+            )}
+          </Link>
+
+          {/* DROPDOWN / MEGA MENU */}
+
+          {item.children && (
+            <div
+              className={`invisible absolute top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
+                item.mega
+                  ? "left-1/2 w-[680px] -translate-x-1/2"
+                  : "left-0 w-52"
+              }`}
+            >
+              {item.mega ? (
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-2xl">
+                  <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-3">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand">
+                        University Administration
+                      </p>
+
+                      <p className="mt-1 text-xs text-slate-500">
+                        Leadership, offices and university portals
+                      </p>
+                    </div>
+
+                    <Link
+                      href="/administration"
+                      className="rounded-full bg-brand px-3 py-2 text-[20px] font-semibold text-white transition-colors hover:bg-brand-dark"
+                    >
+                      View Administration
+                    </Link>
                   </div>
 
-                  <Link
-                    href="/administration"
-                    className="rounded-full bg-brand px-3 py-2 text-[20px] font-semibold text-white transition-colors hover:bg-brand-dark"
-                  >
-                    View Administration
-                  </Link>
+                  <div className="grid grid-cols-3 gap-1.5">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="rounded-lg px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-
-                <div className="grid grid-cols-3 gap-1.5">
+              ) : (
+                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white py-1.5 shadow-xl">
                   {item.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="rounded-lg px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
+                      className="block px-3 py-2 text-xs text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
                     >
                       {child.label}
                     </Link>
                   ))}
                 </div>
-              </div>
-            ) : (
-              <div className="overflow-hidden rounded-lg border border-slate-200 bg-white py-1.5 shadow-xl">
-                {item.children.map((child) => (
-                  <Link
-                    key={child.href}
-                    href={child.href}
-                    className="block px-3 py-2 text-xs text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
-                  >
-                    {child.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-    ))}
+              )}
+            </div>
+          )}
+        </div>
+      );
+    })}
   </div>
 </nav>
 
