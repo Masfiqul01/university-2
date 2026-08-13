@@ -90,9 +90,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
     অন্য page-এ sticky header থাকবে।
   */
 
-  const wrapperClass = overlay
-    ? "absolute inset-x-0 top-0 z-50"
-    : "sticky top-0 z-50"
+ const wrapperClass = "sticky top-0 z-50";
 
   return (
     <header className={wrapperClass}>
@@ -101,62 +99,142 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           Screenshot-এর একদম উপরের ছোট green bar
           ====================================================== */}
 
-  <div className="h-6 bg-brand-dark">
-  <div className="mx-auto flex h-full max-w-[1540px] items-center justify-between px-4 lg:px-6">
-    
+
+<div className="min-h-6 bg-brand-dark">
+  <div className="mx-auto flex min-h-6 w-full max-w-[1540px] flex-col items-stretch justify-between gap-2 px-3 py-1.5 sm:px-4 md:flex-row md:items-center md:gap-3 md:py-1 lg:px-6">
+
     {/* বাম পাশের অংশ: হেল্পলাইন এবং কোডগুলো */}
-    <div className="flex items-center gap-4 text-[11px] font-medium text-white/90">
-      
+    <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-medium text-white/90 sm:text-[11px] md:flex-nowrap md:gap-4">
+
       {/* হেল্পলাইন */}
-      <div className="flex items-center gap-1.5">
-        <svg className="h-3.5 w-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      <div className="flex shrink-0 items-center gap-1.5 whitespace-nowrap">
+        <svg
+          className="h-3.5 w-3.5 shrink-0 text-amber-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+          />
         </svg>
-        <span>Helpline: <strong className="text-white">+880 1711-042194</strong></span>
+
+        <span>
+          Helpline:{" "}
+          <strong className="text-white">+880 1711-042194</strong>
+        </span>
       </div>
 
-      <span className="text-white/20">|</span>
+      <span className="hidden text-white/20 sm:inline">|</span>
 
       {/* EIIN, NU, BTEB ব্যাজ */}
-      <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px]">
-        <svg className="h-3 w-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      <div className="flex min-w-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[9px] sm:text-[10px]">
+        <svg
+          className="h-3 w-3 shrink-0 text-amber-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+          />
         </svg>
-        <span>EIIN: 134211 • NU: 0309 • BTEB: 54095</span>
+
+        <span className="whitespace-nowrap">
+          EIIN: 134211 • NU: 0309 • BTEB: 54095
+        </span>
       </div>
     </div>
 
     {/* ডান পাশের অংশ: ট্র্যাক স্ট্যাটাস, রেজাল্ট পোর্টাল, পে ফিজ এবং লগইন লিংক */}
-    <div className="flex items-center gap-4 text-[11px] font-medium text-white/90">
-      
+    <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-medium text-white/90 sm:text-[11px] md:justify-end md:gap-4">
+
       {/* Track Status */}
-      <Link href="/track-status" className="flex items-center gap-1.5 transition-colors hover:text-white">
-        <svg className="h-3.5 w-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      <Link
+        href="/track-status"
+        className="flex shrink-0 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-white"
+      >
+        <svg
+          className="h-3.5 w-3.5 shrink-0 text-amber-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
         </svg>
         <span>Track Status</span>
       </Link>
 
       {/* Result Portal */}
-      <Link href="/result" className="flex items-center gap-1.5 transition-colors hover:text-white">
-        <svg className="h-3.5 w-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      <Link
+        href="/result"
+        className="flex shrink-0 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-white"
+      >
+        <svg
+          className="h-3.5 w-3.5 shrink-0 text-amber-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+          />
         </svg>
         <span>Result Portal</span>
       </Link>
 
       {/* Pay Fees */}
-      <Link href="/pay-fees" className="flex items-center gap-1.5 transition-colors hover:text-white">
-        <svg className="h-3.5 w-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+      <Link
+        href="/pay-fees"
+        className="flex shrink-0 items-center gap-1.5 whitespace-nowrap transition-colors hover:text-white"
+      >
+        <svg
+          className="h-3.5 w-3.5 shrink-0 text-amber-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+          />
         </svg>
         <span>Pay Fees</span>
       </Link>
 
       {/* HOD Login */}
-      <Link href="/hod-login" className="flex items-center gap-1.5 font-semibold text-amber-400 transition-colors hover:text-amber-300">
-        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      <Link
+        href="/hod-login"
+        className="flex shrink-0 items-center gap-1.5 whitespace-nowrap font-semibold text-amber-400 transition-colors hover:text-amber-300"
+      >
+        <svg
+          className="h-3.5 w-3.5 shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+          />
         </svg>
         <span>HOD Login</span>
       </Link>
@@ -164,6 +242,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
     </div>
   </div>
 </div>
+
+
 
       {/* ======================================================
           MAIN HEADER AREA
@@ -191,8 +271,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               NAV_ITEMS-এর existing data ব্যবহার করা হচ্ছে।
               -------------------------------------------------- */}
 
- <nav className="hidden items-center justify-center md:flex">
-  <div className="flex items-center rounded-full px-1.5 py-2.5">
+<nav className="hidden min-w-0 flex-1 items-center justify-center md:flex">
+  <div className="flex min-w-0 items-center rounded-full px-0.5 py-1">
     {NAV_ITEMS.map((item) => {
       const pathname = usePathname();
 
@@ -201,15 +281,11 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         (item.href !== "/" && pathname.startsWith(`${item.href}/`));
 
       return (
-        <div
-          key={item.label}
-          className="group relative"
-        >
+        <div key={item.label} className="group relative">
           {/* Main navigation item */}
-
           <Link
             href={item.href}
-            className={`flex -translate-y-0.5 items-center gap-0.5 rounded-full px-4 py-2 text-sm font-bold transition-all duration-200 md:text-[14.5px] ${
+            className={`flex -translate-y-0.5 items-center gap-0.5 rounded-full px-2 py-1.5 font-bold transition-all duration-200 whitespace-nowrap text-[11px] lg:px-2.5 lg:py-1.5 lg:text-xs xl:px-3 xl:text-[13px] 2xl:px-3.5 2xl:text-[14px] ${
               isActive
                 ? "bg-brand-dark text-white shadow-md"
                 : "text-white hover:bg-brand-dark hover:text-white hover:shadow-md"
@@ -219,7 +295,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 
             {item.children && (
               <ChevronDown
-                className={`h-3 w-3 opacity-70 transition-transform duration-200 group-hover:rotate-180 ${
+                className={`h-2.5 w-2.5 opacity-70 transition-transform duration-200 group-hover:rotate-180 lg:h-3 lg:w-3 ${
                   isActive ? "text-white" : "text-white"
                 }`}
               />
@@ -227,42 +303,41 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           </Link>
 
           {/* DROPDOWN / MEGA MENU */}
-
           {item.children && (
             <div
-              className={`invisible absolute top-full pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
+              className={`invisible absolute top-full pt-1.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
                 item.mega
-                  ? "left-1/2 w-[680px] -translate-x-1/2"
-                  : "left-0 w-52"
+                  ? "left-1/2 w-[600px] -translate-x-1/2 xl:w-[640px]"
+                  : "left-0 w-48 xl:w-52"
               }`}
             >
               {item.mega ? (
-                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-4 shadow-2xl">
-                  <div className="mb-3 flex items-center justify-between border-b border-slate-200 pb-3">
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-2xl xl:p-4">
+                  <div className="mb-2.5 flex items-center justify-between border-b border-slate-200 pb-2.5 xl:mb-3 xl:pb-3">
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-brand">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-brand xl:text-[10px]">
                         University Administration
                       </p>
 
-                      <p className="mt-1 text-xs text-slate-500">
+                      <p className="mt-0.5 text-[10px] text-slate-500 xl:mt-1 xl:text-xs">
                         Leadership, offices and university portals
                       </p>
                     </div>
 
                     <Link
                       href="/administration"
-                      className="rounded-full bg-brand px-3 py-2 text-[20px] font-semibold text-white transition-colors hover:bg-brand-dark"
+                      className="rounded-full bg-brand px-2.5 py-1.5 text-[10px] font-semibold text-white transition-colors hover:bg-brand-dark xl:px-3 xl:py-2 xl:text-xs"
                     >
                       View Administration
                     </Link>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-1.5">
+                  <div className="grid grid-cols-3 gap-1">
                     {item.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="rounded-lg px-3 py-2 text-xs font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
+                        className="rounded-lg px-2 py-1.5 text-[10px] font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand xl:px-3 xl:py-2 xl:text-xs"
                       >
                         {child.label}
                       </Link>
@@ -270,12 +345,12 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
                   </div>
                 </div>
               ) : (
-                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white py-1.5 shadow-xl">
+                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-xl">
                   {item.children.map((child) => (
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block px-3 py-2 text-xs text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand"
+                      className="block px-2.5 py-1.5 text-[10px] text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand xl:px-3 xl:py-2 xl:text-xs"
                     >
                       {child.label}
                     </Link>
@@ -289,6 +364,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
     })}
   </div>
 </nav>
+
 
           {/* --------------------------------------------------
               RIGHT SIDE
