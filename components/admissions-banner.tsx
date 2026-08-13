@@ -1,45 +1,297 @@
 import Link from "next/link"
-import { imageUrl } from "@/lib/site-assets"
-import { ArrowRight, GraduationCap } from "lucide-react"
+import { ArrowRight, Check, GraduationCap } from "lucide-react"
 
 export function AdmissionsBanner() {
   return (
-    <section className="mx-auto max-w-7xl px-4 pb-4 lg:px-8">
-      <div className="relative isolate overflow-hidden rounded-3xl bg-brand-dark">
+    <section className="mx-auto w-full max-w-[1400px] px-3 pb-6 sm:px-5 lg:px-6 lg:pb-8">
+      <div className="relative isolate min-h-[560px] overflow-hidden rounded-[28px] bg-[#0D0357] shadow-[0_24px_80px_rgba(13,3,87,0.18)] sm:min-h-[590px] sm:rounded-[32px] md:min-h-[520px] lg:min-h-[540px]">
+
+        {/* =========================================================
+            BACKGROUND IMAGE
+        ========================================================= */}
         <img
-          src={imageUrl("/images/admissions-building.png")}
-          alt="KACST academic building"
-          className="absolute inset-y-0 right-0 h-full w-full object-cover opacity-40 md:w-3/5 md:opacity-100"
+          src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
+          alt="Khanjahan Ali College of Science and Technology campus"
+          className="absolute inset-0 h-full w-full object-cover object-center sm:object-[center_45%] md:left-auto md:w-[68%] md:object-[center_50%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/85 to-brand-dark/20" />
 
-        <div className="relative flex flex-col gap-6 px-8 py-12 md:max-w-xl md:px-12 md:py-16">
-          <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
-            <span className="h-px w-8 bg-white/50" />
-            Admissions Open
-          </p>
-          <h2 className="font-serif text-3xl font-bold text-white text-balance md:text-4xl">
-            Join KACST, Shape Your Future
-          </h2>
-          <p className="max-w-md text-sm leading-relaxed text-white/85">
-            Admission is now open for the upcoming session. Take the next step towards your bright
-            future at Khulna Khan Jahan Science and Technology University.
-          </p>
-          <Link
-            href="/admissions/apply"
-            className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-white/90"
-          >
-            Apply Now
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+        {/* Desktop image protection */}
+        <div className="absolute inset-y-0 right-0 hidden w-[72%] bg-gradient-to-r from-[#0D0357] via-[#0D0357]/35 to-transparent md:block" />
+
+        {/* Main mobile overlay */}
+        <div className="absolute inset-0 bg-[#0D0357]/72 md:hidden" />
+
+        {/* Desktop left-side overlay */}
+        <div className="absolute inset-y-0 left-0 hidden w-[66%] bg-gradient-to-r from-[#0D0357] via-[#0D0357]/95 to-transparent md:block" />
+
+        {/* Bottom image readability */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0D0357]/55 to-transparent md:hidden" />
+
+        {/* =========================================================
+            SUBTLE DECORATIVE LIGHT
+        ========================================================= */}
+        <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-orange-400/[0.06] blur-3xl" />
+
+        <div className="pointer-events-none absolute -bottom-32 right-1/3 h-72 w-72 rounded-full bg-cyan-300/[0.045] blur-3xl" />
+
+        {/* =========================================================
+            CUSTOM SVG ARCHITECTURAL DECORATION
+        ========================================================= */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 520 520"
+          fill="none"
+          className="pointer-events-none absolute -right-44 -top-44 hidden h-[540px] w-[540px] opacity-[0.08] lg:block"
+        >
+          <circle
+            cx="260"
+            cy="260"
+            r="210"
+            stroke="white"
+            strokeWidth="1"
+          />
+
+          <circle
+            cx="260"
+            cy="260"
+            r="174"
+            stroke="white"
+            strokeWidth="1"
+            strokeDasharray="2 10"
+          />
+
+          <circle
+            cx="260"
+            cy="260"
+            r="135"
+            stroke="#FDBA74"
+            strokeWidth="1"
+            strokeDasharray="1 8"
+          />
+
+          <circle
+            cx="260"
+            cy="260"
+            r="92"
+            stroke="white"
+            strokeWidth="1"
+            strokeDasharray="4 12"
+          />
+
+          <path
+            d="M260 20V500M20 260H500"
+            stroke="white"
+            strokeWidth="1"
+            strokeOpacity=".35"
+          />
+
+          <path
+            d="M90 90L430 430M430 90L90 430"
+            stroke="white"
+            strokeWidth="1"
+            strokeOpacity=".18"
+          />
+
+          <path
+            d="M260 50L300 220L470 260L300 300L260 470L220 300L50 260L220 220Z"
+            stroke="#FDBA74"
+            strokeWidth="1"
+            strokeOpacity=".25"
+          />
+        </svg>
+
+        {/* =========================================================
+            CONTENT
+        ========================================================= */}
+        <div className="relative z-10 flex min-h-[560px] items-center px-6 py-12 sm:px-9 sm:py-14 md:min-h-[520px] md:max-w-[680px] md:px-12 lg:min-h-[540px] lg:px-16">
+
+          <div className="w-full">
+
+            {/* -----------------------------------------------------
+                STATUS
+            ----------------------------------------------------- */}
+            <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.08] px-3.5 py-2 shadow-sm backdrop-blur-md sm:mb-7">
+              <span className="relative flex h-5 w-5 items-center justify-center rounded-full bg-orange-400/15">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  className="h-3.5 w-3.5 text-orange-300"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 3.5l1.7 5.1L19 10.3l-4.5 3.1 1.5 5.3-4-3.1-4 3.1 1.5-5.3L5 10.3l5.3-1.7L12 3.5Z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80 sm:text-[10px]">
+                Admissions Now Open
+              </span>
+
+              <span className="relative ml-0.5 flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+              </span>
+            </div>
+
+            {/* -----------------------------------------------------
+                HEADING
+            ----------------------------------------------------- */}
+            <h2 className="max-w-[620px] font-serif text-[2.25rem] font-bold leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl md:text-[3.25rem] lg:text-[3.65rem]">
+              Your journey to
+              <span className="mt-1 block text-white/70">
+                a brighter future begins here.
+              </span>
+            </h2>
+
+            {/* -----------------------------------------------------
+                DESCRIPTION
+            ----------------------------------------------------- */}
+            <p className="mt-5 max-w-[540px] text-sm leading-6 text-white/68 sm:mt-6 sm:text-[15px] sm:leading-7">
+              Applications are now open for the upcoming academic session.
+              Discover a learning environment where knowledge, innovation,
+              research, and opportunity come together.
+            </p>
+
+            {/* -----------------------------------------------------
+                CTA BUTTONS
+            ----------------------------------------------------- */}
+            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
+
+              {/* Primary CTA */}
+              <Link
+                href="/admissions/apply"
+                className="group relative inline-flex w-full overflow-hidden rounded-full p-[1.5px] sm:w-auto"
+              >
+                {/* Running orange border */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-[-180%] animate-[spin_3s_linear_infinite]"
+                  style={{
+                    background:
+                      "conic-gradient(from 0deg, transparent 0deg, transparent 248deg, #f97316 285deg, #fdba74 315deg, #f97316 340deg, transparent 360deg)",
+                  }}
+                />
+
+                <span className="relative flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0D0357] shadow-lg transition-all duration-300 group-hover:bg-orange-50 group-hover:shadow-xl sm:w-auto">
+                  Apply Now
+
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </Link>
+
+              {/* Secondary CTA */}
+              <Link
+                href="/admissions"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-6 py-3.5 text-sm font-semibold text-white/90 backdrop-blur-md transition-all duration-300 hover:border-white/35 hover:bg-white/[0.12] sm:w-auto"
+              >
+                Explore Admissions
+
+                <span className="text-white/50 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">
+                  →
+                </span>
+              </Link>
+            </div>
+
+            {/* -----------------------------------------------------
+                TRUST POINTS
+            ----------------------------------------------------- */}
+            <div className="mt-8 border-t border-white/10 pt-6 sm:mt-9">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-0">
+
+                <div className="flex items-center gap-2.5 sm:border-r sm:border-white/10 sm:pr-4">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/[0.08]">
+                    <Check className="h-3.5 w-3.5 text-emerald-300" />
+                  </span>
+
+                  <span className="text-[10px] font-semibold leading-4 text-white/55 sm:text-[11px]">
+                    Quality Education
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2.5 sm:border-r sm:border-white/10 sm:px-4">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/[0.08]">
+                    <Check className="h-3.5 w-3.5 text-emerald-300" />
+                  </span>
+
+                  <span className="text-[10px] font-semibold leading-4 text-white/55 sm:text-[11px]">
+                    Research Opportunities
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-2.5 sm:pl-4">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/[0.08]">
+                    <Check className="h-3.5 w-3.5 text-emerald-300" />
+                  </span>
+
+                  <span className="text-[10px] font-semibold leading-4 text-white/55 sm:text-[11px]">
+                    Vibrant Campus Life
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div className="absolute right-8 top-1/2 hidden h-28 w-28 -translate-y-1/2 flex-col items-center justify-center rounded-full border-2 border-dashed border-white/70 text-center text-white md:flex">
-          <GraduationCap className="mb-1 h-5 w-5" />
-          <span className="text-[9px] font-medium">Admission</span>
-          <span className="text-[11px] font-bold leading-tight">OPEN</span>
-          <span className="text-[9px] font-medium">Now</span>
-        </div>
+       {/* =========================================================
+    ADMISSION SEAL
+========================================================= */}
+<div className="absolute right-7 top-7 z-20 hidden lg:block">
+  <div className="relative flex h-[122px] w-[122px] items-center justify-center rounded-full border border-white/30 bg-white/[0.08] p-2 shadow-[0_12px_40px_rgba(0,0,0,0.12)] backdrop-blur-[6px]">
+
+    {/* Rotating text */}
+    <svg
+      viewBox="0 0 100 100"
+      className="absolute inset-0 h-full w-full animate-[spin_28s_linear_infinite]"
+      aria-hidden="true"
+    >
+      <defs>
+        <path
+          id="admissionCircle"
+          d="M50,50 m-39,0 a39,39 0 1,1 78,0 a39,39 0 1,1 -78,0"
+        />
+      </defs>
+
+      <text
+        fill="rgba(255,255,255,.78)"
+        fontSize="6.3"
+        fontWeight="700"
+        letterSpacing="2.4"
+      >
+        <textPath href="#admissionCircle">
+          • ADMISSIONS OPEN • APPLY NOW •
+        </textPath>
+      </text>
+    </svg>
+
+    {/* Inner seal */}
+    <div className="relative flex h-[78px] w-[78px] flex-col items-center justify-center rounded-full border border-orange-200/70 bg-white/[0.12] text-center shadow-[0_4px_20px_rgba(0,0,0,0.08)]">
+      
+      <GraduationCap className="mb-1 h-5 w-5 text-orange-200" />
+
+      <span className="text-[7px] font-bold uppercase tracking-[0.18em] text-white/70">
+        Admissions
+      </span>
+
+      <span className="mt-0.5 text-sm font-extrabold leading-none text-white">
+        OPEN
+      </span>
+    </div>
+  </div>
+</div>
+
+        {/* =========================================================
+            BOTTOM ACCENT
+        ========================================================= */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-orange-300/50 to-transparent"
+        />
       </div>
     </section>
   )
