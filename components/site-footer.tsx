@@ -1,4 +1,5 @@
 
+
 import Link from "next/link"
 import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react"
 import type { SVGProps } from "react"
@@ -7,6 +8,8 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "University",
     links: [
+      { label: "About KKJSTU", href: "/about" },
+      { label: "History", href: "/about/history" },
       { label: "About KKJSTU", href: "/about" },
       { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
@@ -163,7 +166,7 @@ export function SiteFooter() {
                 />
               </div>
 
-              <div className="min-w-0 text-[15px] font-semibold leading-tight">
+              <div className="min-w-0 text-[11px] font-semibold leading-tight">
                 <p>Khanjahan Ali College of </p>
                 <p>Science & Technology</p>
               </div>
@@ -181,14 +184,18 @@ export function SiteFooter() {
 
               <li className="flex min-w-0 gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">+880 181 4634028</span>
+                <span className="break-words">+880 000 000000</span>
               </li>
 
               <li className="flex min-w-0 gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" />
                 <span className="break-all">info@kacst.edu.bd</span>
               </li>
-            
+
+              <li className="flex min-w-0 gap-2.5">
+                <Globe className="mt-0.5 h-4 w-4 shrink-0" />
+                <span className="break-all">www.kacst.edu.bd</span>
+              </li>
             </ul>
 
             <div className="flex flex-wrap gap-3">
@@ -233,7 +240,7 @@ export function SiteFooter() {
           "
         >
           <p className="leading-relaxed">
-            © 2026 Khanjahan Ali College of Science & Technology. All Rights Reserved.
+            © 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.
           </p>
 
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:justify-end">
