@@ -6,10 +6,14 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "University",
     links: [
-      { label: "About KACST", href: "/about" },
+      { label: "About KKJSTU", href: "/about" },
+      { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Faculties", href: "/about/faculties" },
+      { label: "Administration", href: "/administration" },
+      { label: "IQAC", href: "/iqac" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -19,6 +23,10 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Departments", href: "/academics/faculties" },
       { label: "Academic Calendar", href: "/academics/calendar" },
       { label: "Library", href: "/library" },
+      { label: "Faculty Directory", href: "/faculty" },
+      { label: "Research", href: "/research" },
+      { label: "Research Centers", href: "/research/centers" },
+      { label: "Publications", href: "/research/publications" },
     ],
   },
   {
@@ -28,16 +36,42 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Postgraduate", href: "/admissions/postgraduate" },
       { label: "Requirements", href: "/admissions/requirements" },
       { label: "Apply Now", href: "/admissions/apply" },
+      { label: "Track Status", href: "/track-status" },
+      { label: "Career", href: "/career" },
     ],
   },
   {
-    title: "Resources",
+    title: "Campus & News",
+    links: [
+      { label: "Campus Life", href: "/campus-life" },
+      { label: "Facilities", href: "/campus-life/facilities" },
+      { label: "Student Life", href: "/campus-life/student-life" },
+      { label: "Clubs & Organizations", href: "/campus-life/clubs" },
+      { label: "News", href: "/news" },
+      { label: "Events", href: "/events" },
+      { label: "Notice Board", href: "/notice-board" },
+      { label: "Transport", href: "/transport" },
+    ],
+  },
+  {
+    title: "Student Services",
     links: [
       { label: "Student Portal", href: "/student-portal" },
       { label: "Teacher Portal", href: "/teacher-portal" },
-      { label: "Notice Board", href: "/notice-board" },
-      { label: "Career", href: "/career" },
-      { label: "Contact", href: "/contact" },
+      { label: "Student Dashboard", href: "/dashboard" },
+      { label: "University Login", href: "/login" },
+      { label: "Result Portal", href: "/result" },
+      { label: "Pay Fees", href: "/pay-fees" },
+      { label: "HOD Login", href: "/hod-login" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+      { label: "Accessibility", href: "/accessibility" },
+      { label: "Sitemap", href: "/sitemap" },
     ],
   },
 ]
@@ -160,9 +194,10 @@ export function SiteFooter() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/60 md:flex-row lg:px-8">
           <p>© 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.</p>
           <div className="flex gap-5">
-            <a href="#" className="transition-colors hover:text-white">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-white">Terms &amp; Conditions</a>
-            <a href="#" className="transition-colors hover:text-white">Sitemap</a>
+            <Link href="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>
+            <Link href="/terms" className="transition-colors hover:text-white">Terms &amp; Conditions</Link>
+            <Link href="/accessibility" className="transition-colors hover:text-white">Accessibility</Link>
+            <Link href="/sitemap" className="transition-colors hover:text-white">Sitemap</Link>
           </div>
         </div>
       </div>
