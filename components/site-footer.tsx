@@ -1,4 +1,5 @@
 
+
 import Link from "next/link"
 import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react"
 import type { SVGProps } from "react"
@@ -7,6 +8,8 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "University",
     links: [
+      { label: "About KKJSTU", href: "/about" },
+      { label: "History", href: "/about/history" },
       { label: "About KKJSTU", href: "/about" },
       { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
@@ -155,15 +158,14 @@ export function SiteFooter() {
         >
           <div className="col-span-2 min-w-0 lg:col-span-2">
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/80">
-                <img
-                  src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
-                  alt="KACST"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-
-              <div className="min-w-0 text-[15px] font-semibold leading-tight">
+              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-white/80">
+  <img
+    src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
+    alt="KACST"
+    className="h-full w-full object-cover"
+  />
+</div>
+              <div className="text-[11px] font-semibold leading-tight">
                 <p>Khanjahan Ali College of </p>
                 <p>Science & Technology</p>
               </div>
@@ -181,14 +183,17 @@ export function SiteFooter() {
 
               <li className="flex min-w-0 gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">+880 181 4634028</span>
+                +880 000 000000 <span className="italic opacity-70"></span>
               </li>
 
               <li className="flex min-w-0 gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" />
                 <span className="break-all">info@kacst.edu.bd</span>
               </li>
-            
+              <li className="flex gap-2.5">
+                <Globe className="mt-0.5 h-4 w-4 shrink-0" />
+                www.kacst.edu.bd <span className="italic opacity-70"></span>
+              </li>
             </ul>
 
             <div className="flex flex-wrap gap-3">
@@ -216,54 +221,12 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div
-          className="
-            mx-auto flex max-w-7xl
-            flex-col items-center
-            justify-between
-            gap-3
-            px-4 py-5
-            text-center
-            text-xs text-white/60
-            sm:px-6
-            md:px-8
-            lg:flex-row
-            lg:text-left
-            xl:px-8
-          "
-        >
-          <p className="leading-relaxed">
-            © 2026 Khanjahan Ali College of Science & Technology. All Rights Reserved.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:justify-end">
-            <Link
-              href="/privacy"
-              className="whitespace-nowrap transition-colors hover:text-white"
-            >
-              Privacy Policy
-            </Link>
-
-            <Link
-              href="/terms"
-              className="whitespace-nowrap transition-colors hover:text-white"
-            >
-              Terms &amp; Conditions
-            </Link>
-
-            <Link
-              href="/accessibility"
-              className="whitespace-nowrap transition-colors hover:text-white"
-            >
-              Accessibility
-            </Link>
-
-            <Link
-              href="/sitemap"
-              className="whitespace-nowrap transition-colors hover:text-white"
-            >
-              Sitemap
-            </Link>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/60 md:flex-row lg:px-8">
+          <p>© 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.</p>
+          <div className="flex gap-5">
+            <a href="#" className="transition-colors hover:text-white">Privacy Policy</a>
+            <a href="#" className="transition-colors hover:text-white">Terms &amp; Conditions</a>
+            <a href="#" className="transition-colors hover:text-white">Sitemap</a>
           </div>
         </div>
       </div>

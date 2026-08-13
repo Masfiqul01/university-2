@@ -251,17 +251,16 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           ====================================================== */}
 
       <div
-        className={
-          overlay
-            ? "bg-white/20 backdrop-blur-[10px]"
-            : "bg-brand-dark/90 backdrop-blur-md"
-        }
-      >
-        <div className="mx-auto flex h-[72px] max-w-[1540px] items-center justify-between px-5 lg:px-8">
-          {/* --------------------------------------------------
-              LEFT: LOGO
-              -------------------------------------------------- */}
-
+  className={
+    overlay
+      ? "bg-[#0D0357]/75 backdrop-blur-md border-b border-white/10"
+      : "bg-brand-dark/90 backdrop-blur-md"
+  }
+>
+  <div className="mx-auto flex h-[72px] max-w-[1540px] items-center justify-between px-5 lg:px-8">
+    {/* --------------------------------------------------
+        LEFT: LOGO
+        -------------------------------------------------- */}
           <Logo light />
 
           {/* --------------------------------------------------
@@ -287,8 +286,8 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
             href={item.href}
             className={`flex -translate-y-0.5 items-center gap-0.5 rounded-full px-2 py-1.5 font-bold transition-all duration-200 whitespace-nowrap text-[11px] lg:px-2.5 lg:py-1.5 lg:text-xs xl:px-3 xl:text-[13px] 2xl:px-3.5 2xl:text-[14px] ${
               isActive
-                ? "bg-brand-dark text-white shadow-md"
-                : "text-white hover:bg-brand-dark hover:text-white hover:shadow-md"
+  ? "bg-amber-400 text-[#0D0357] shadow-md"
+  : "text-white hover:bg-amber-400 hover:text-[#0D0357] hover:shadow-md"
             }`}
           >
             {item.label}
@@ -303,62 +302,188 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           </Link>
 
           {/* DROPDOWN / MEGA MENU */}
-          {item.children && (
-            <div
-              className={`invisible absolute top-full pt-1.5 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
-                item.mega
-                  ? "left-1/2 w-[600px] -translate-x-1/2 xl:w-[640px]"
-                  : "left-0 w-48 xl:w-52"
-              }`}
-            >
-              {item.mega ? (
-                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white p-3 shadow-2xl xl:p-4">
-                  <div className="mb-2.5 flex items-center justify-between border-b border-slate-200 pb-2.5 xl:mb-3 xl:pb-3">
-                    <div>
-                      <p className="text-[9px] font-semibold uppercase tracking-[0.15em] text-brand xl:text-[10px]">
-                        University Administration
-                      </p>
+         {item.children && (
+  <div
+    className={`invisible absolute top-full pt-3 opacity-0 translate-y-1.5 transition-all duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 ${
+      item.mega
+        ? "left-1/2 w-[660px] -translate-x-1/2 xl:w-[720px]"
+        : "left-0 w-56 xl:w-60"
+    }`}
+  >
+    {item.mega ? (
+      /* =========================================================
+         PREMIUM MEGA MENU
+      ========================================================= */
+      <div
+        role="region"
+        aria-label="University administration navigation"
+        className="relative overflow-hidden rounded-[20px] border border-slate-200/90 bg-white shadow-[0_24px_70px_rgba(13,3,87,0.15)]"
+      >
+        {/* Brand accent */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#0D0357] via-amber-400 to-[#0D0357]"
+        />
 
-                      <p className="mt-0.5 text-[10px] text-slate-500 xl:mt-1 xl:text-xs">
-                        Leadership, offices and university portals
-                      </p>
-                    </div>
+        {/* Ambient decoration */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-400/[0.055] blur-3xl"
+        />
 
-                    <Link
-                      href="/administration"
-                      className="rounded-full bg-brand px-2.5 py-1.5 text-[10px] font-semibold text-white transition-colors hover:bg-brand-dark xl:px-3 xl:py-2 xl:text-xs"
-                    >
-                      View Administration
-                    </Link>
-                  </div>
+        <div className="relative p-5 xl:p-6">
 
-                  <div className="grid grid-cols-3 gap-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="rounded-lg px-2 py-1.5 text-[10px] font-medium text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand xl:px-3 xl:py-2 xl:text-xs"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-xl">
-                  {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block px-2.5 py-1.5 text-[10px] text-slate-700 transition-colors hover:bg-brand/10 hover:text-brand xl:px-3 xl:py-2 xl:text-xs"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
+          {/* =====================================================
+              HEADER
+          ===================================================== */}
+          <div className="flex items-start justify-between gap-8 border-b border-slate-100/90 pb-5">
+
+            <div className="min-w-0">
+              <div className="mb-2 flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
+                />
+
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#0D0357]/60 xl:text-[10px]">
+                  University Administration
+                </span>
+              </div>
+
+              <h3 className="text-[14px] font-extrabold tracking-[-0.01em] text-[#0D0357] xl:text-[15px]">
+                Leadership & University Offices
+              </h3>
+
+              <p className="mt-1.5 max-w-md text-[10px] font-medium leading-5 text-slate-500 xl:text-[11px]">
+                Explore leadership, offices and university services
+                supporting academic and institutional excellence.
+              </p>
             </div>
-          )}
+
+            <Link
+              href="/administration"
+              className="group/admin hidden shrink-0 items-center gap-2 rounded-full bg-[#0D0357] px-4 py-2.5 text-[10px] font-bold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-400 hover:text-[#0D0357] hover:shadow-md sm:inline-flex xl:px-5 xl:text-[11px]"
+            >
+              <span>View Administration</span>
+
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover/admin:translate-x-0.5"
+              >
+                →
+              </span>
+            </Link>
+          </div>
+
+          {/* =====================================================
+              MEGA MENU ITEMS
+          ===================================================== */}
+          <ul className="mt-4 grid list-none grid-cols-3 gap-x-8 gap-y-0 p-0">
+            {item.children.map((child, index) => (
+              <li key={child.href}>
+                <Link
+                  href={child.href}
+                  className="group/item relative flex min-w-0 items-center gap-3 border-b border-slate-100/80 py-3 transition-colors duration-200"
+                >
+                  {/* Number */}
+                  <span
+                    aria-hidden="true"
+                    className="w-5 shrink-0 text-[9px] font-bold tabular-nums text-slate-300 transition-colors duration-200 group-hover/item:text-amber-500"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Label */}
+                  <span className="min-w-0 flex-1 truncate text-[10px] font-semibold text-slate-600 transition-colors duration-200 group-hover/item:text-[#0D0357] xl:text-[11px]">
+                    {child.label}
+                  </span>
+
+                  {/* Arrow */}
+                  <span
+                    aria-hidden="true"
+                    className="translate-x-[-4px] text-[11px] font-medium text-amber-500 opacity-0 transition-all duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100"
+                  >
+                    ↗
+                  </span>
+
+                  {/* Hover line */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover/item:w-full"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* =====================================================
+              FOOTER
+          ===================================================== */}
+          <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+            <span className="max-w-[70%] truncate text-[8px] font-semibold uppercase tracking-[0.14em] text-slate-400 xl:text-[9px]">
+              Khanjahan Ali College of Science & Technology
+            </span>
+
+            <span className="flex shrink-0 items-center gap-1.5 text-[8px] font-bold uppercase tracking-[0.12em] text-emerald-600 xl:text-[9px]">
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Official Portal
+            </span>
+          </div>
+        </div>
+      </div>
+    ) : (
+      /* =========================================================
+         STANDARD DROPDOWN
+      ========================================================= */
+      <div
+        role="region"
+        aria-label="Submenu navigation"
+        className="relative overflow-hidden rounded-[16px] border border-slate-200/90 bg-white p-1.5 shadow-[0_20px_55px_rgba(13,3,87,0.14)]"
+      >
+        {/* Brand accent */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-5 top-0 h-[2px] rounded-full bg-gradient-to-r from-transparent via-amber-400 to-transparent"
+        />
+
+        <ul className="list-none p-0 pt-1">
+          {item.children.map((child, index) => (
+            <li key={child.href}>
+              <Link
+                href={child.href}
+                className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-slate-50 xl:py-3"
+              >
+                {/* Number */}
+                <span
+                  aria-hidden="true"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-[9px] font-bold text-slate-400 transition-all duration-200 group-hover/item:bg-amber-400 group-hover/item:text-[#0D0357]"
+                >
+                  {index + 1}
+                </span>
+
+                {/* Label */}
+                <span className="min-w-0 flex-1 text-[10px] font-semibold text-slate-600 transition-colors duration-200 group-hover/item:text-[#0D0357] xl:text-[11px]">
+                  {child.label}
+                </span>
+
+                {/* Arrow */}
+                <span
+                  aria-hidden="true"
+                  className="translate-x-[-3px] text-[11px] text-amber-500 opacity-0 transition-all duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100"
+                >
+                  →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+)}
         </div>
       );
     })}
@@ -383,20 +508,20 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 
             {/* 9-dot applications menu */}
 
-            <button
-              type="button"
-              aria-label="Applications menu"
-              className="hidden h-10 w-10 items-center justify-center rounded-full text-brand-dark transition-colors hover:bg-white/30 md:flex"
-            >
-              <span className="grid grid-cols-3 gap-[4px]">
-                {Array.from({ length: 9 }).map((_, index) => (
-                  <span
-                    key={index}
-                    className="h-[5px] w-[5px] rounded-full bg-brand-dark"
-                  />
-                ))}
-              </span>
-            </button>
+           <button
+  type="button"
+  aria-label="Applications menu"
+  className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 md:flex"
+>
+  <span className="grid grid-cols-3 gap-[4px]">
+    {Array.from({ length: 9 }).map((_, index) => (
+      <span
+        key={index}
+        className="h-[5px] w-[5px] rounded-full bg-white"
+      />
+    ))}
+  </span>
+</button>
 
             {/* Mobile menu button */}
 
