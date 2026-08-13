@@ -1,3 +1,4 @@
+
 import Link from "next/link"
 import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react"
 import type { SVGProps } from "react"
@@ -6,10 +7,14 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "University",
     links: [
-      { label: "About KACST", href: "/about" },
+      { label: "About KKJSTU", href: "/about" },
+      { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Faculties", href: "/about/faculties" },
+      { label: "Administration", href: "/administration" },
+      { label: "IQAC", href: "/iqac" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -19,6 +24,10 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Departments", href: "/academics/faculties" },
       { label: "Academic Calendar", href: "/academics/calendar" },
       { label: "Library", href: "/library" },
+      { label: "Faculty Directory", href: "/faculty" },
+      { label: "Research", href: "/research" },
+      { label: "Research Centers", href: "/research/centers" },
+      { label: "Publications", href: "/research/publications" },
     ],
   },
   {
@@ -28,16 +37,21 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "Postgraduate", href: "/admissions/postgraduate" },
       { label: "Requirements", href: "/admissions/requirements" },
       { label: "Apply Now", href: "/admissions/apply" },
+      { label: "Track Status", href: "/track-status" },
+      { label: "Career", href: "/career" },
     ],
   },
   {
-    title: "Resources",
+    title: "Campus & News",
     links: [
-      { label: "Student Portal", href: "/student-portal" },
-      { label: "Teacher Portal", href: "/teacher-portal" },
+      { label: "Campus Life", href: "/campus-life" },
+      { label: "Facilities", href: "/campus-life/facilities" },
+      { label: "Student Life", href: "/campus-life/student-life" },
+      { label: "Clubs & Organizations", href: "/campus-life/clubs" },
+      { label: "News", href: "/news" },
+      { label: "Events", href: "/events" },
       { label: "Notice Board", href: "/notice-board" },
-      { label: "Career", href: "/career" },
-      { label: "Contact", href: "/contact" },
+      { label: "Transport", href: "/transport" },
     ],
   },
 ]
@@ -52,10 +66,25 @@ function FacebookIcon(props: SVGProps<SVGSVGElement>) {
 
 function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="4" />
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      <circle
+        cx="17.5"
+        cy="6.5"
+        r="1"
+        fill="currentColor"
+        stroke="none"
+      />
     </svg>
   )
 }
@@ -78,14 +107,26 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
 
 const SOCIALS = [FacebookIcon, InstagramIcon, YoutubeIcon, LinkedinIcon]
 
-function Column({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+function Column({
+  title,
+  links,
+}: {
+  title: string
+  links: { label: string; href: string }[]
+}) {
   return (
-    <div>
-      <h4 className="mb-4 text-sm font-bold text-white">{title}</h4>
+    <div className="min-w-0">
+      <h4 className="mb-4 text-sm font-bold text-white">
+        {title}
+      </h4>
+
       <ul className="space-y-2.5">
         {links.map((link) => (
-          <li key={link.label}>
-            <Link href={link.href} className="text-sm text-white/70 transition-colors hover:text-white">
+          <li key={link.label} className="min-w-0">
+            <Link
+              href={link.href}
+              className="block break-words text-sm text-white/70 transition-colors hover:text-white"
+            >
               {link.label}
             </Link>
           </li>
@@ -97,51 +138,65 @@ function Column({ title, links }: { title: string; links: { label: string; href:
 
 export function SiteFooter() {
   return (
-    <footer className="bg-brand-dark text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-6">
-          <div className="lg:col-span-2">
+    <footer className="w-full overflow-hidden bg-brand-dark text-white">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-8 lg:px-8">
+        <div
+          className="
+            grid
+            grid-cols-2
+            gap-x-4
+            gap-y-10
+            sm:gap-x-6
+            md:grid-cols-2
+            lg:grid-cols-4
+            lg:gap-x-8
+            xl:grid-cols-6
+          "
+        >
+          <div className="col-span-2 min-w-0 lg:col-span-2">
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border-2 border-white/80">
-  <img
-    src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
-    alt="KACST"
-    className="h-full w-full object-cover"
-  />
-</div>
-              <div className="text-[11px] font-semibold leading-tight">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/80">
+                <img
+                  src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
+                  alt="KACST"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="min-w-0 text-[15px] font-semibold leading-tight">
                 <p>Khanjahan Ali College of </p>
                 <p>Science & Technology</p>
               </div>
             </div>
+
             <p className="mb-5 max-w-xs text-sm leading-relaxed text-white/70">
-              Committed to excellence in science, technology, education, research and innovation for a
-              better tomorrow.
+              Where knowledge inspires innovation, research drives progress, and visionary minds shape the future.
             </p>
+
             <ul className="mb-5 space-y-2.5 text-sm text-white/70">
-              <li className="flex gap-2.5">
+              <li className="flex min-w-0 gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                Khulna, Bangladesh <span className="italic opacity-70"></span>
+                <span className="break-words">Khulna, Bangladesh</span>
               </li>
-              <li className="flex gap-2.5">
+
+              <li className="flex min-w-0 gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                +880 000 000000 <span className="italic opacity-70"></span>
+                <span className="break-words">+880 181 4634028</span>
               </li>
-              <li className="flex gap-2.5">
+
+              <li className="flex min-w-0 gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                info@kacst.edu.bd <span className="italic opacity-70"></span>
+                <span className="break-all">info@kacst.edu.bd</span>
               </li>
-              <li className="flex gap-2.5">
-                <Globe className="mt-0.5 h-4 w-4 shrink-0" />
-                www.kacst.edu.bd <span className="italic opacity-70"></span>
-              </li>
+            
             </ul>
-            <div className="flex gap-3">
+
+            <div className="flex flex-wrap gap-3">
               {SOCIALS.map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-brand-accent"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-brand-accent"
                   aria-label="Social link"
                 >
                   <Icon className="h-4 w-4" />
@@ -151,18 +206,64 @@ export function SiteFooter() {
           </div>
 
           {COLUMNS.map((col) => (
-            <Column key={col.title} title={col.title} links={col.links} />
+            <Column
+              key={col.title}
+              title={col.title}
+              links={col.links}
+            />
           ))}
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/60 md:flex-row lg:px-8">
-          <p>© 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.</p>
-          <div className="flex gap-5">
-            <a href="#" className="transition-colors hover:text-white">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-white">Terms &amp; Conditions</a>
-            <a href="#" className="transition-colors hover:text-white">Sitemap</a>
+        <div
+          className="
+            mx-auto flex max-w-7xl
+            flex-col items-center
+            justify-between
+            gap-3
+            px-4 py-5
+            text-center
+            text-xs text-white/60
+            sm:px-6
+            md:px-8
+            lg:flex-row
+            lg:text-left
+            xl:px-8
+          "
+        >
+          <p className="leading-relaxed">
+            © 2026 Khanjahan Ali College of Science & Technology. All Rights Reserved.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:justify-end">
+            <Link
+              href="/privacy"
+              className="whitespace-nowrap transition-colors hover:text-white"
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              href="/terms"
+              className="whitespace-nowrap transition-colors hover:text-white"
+            >
+              Terms &amp; Conditions
+            </Link>
+
+            <Link
+              href="/accessibility"
+              className="whitespace-nowrap transition-colors hover:text-white"
+            >
+              Accessibility
+            </Link>
+
+            <Link
+              href="/sitemap"
+              className="whitespace-nowrap transition-colors hover:text-white"
+            >
+              Sitemap
+            </Link>
           </div>
         </div>
       </div>
