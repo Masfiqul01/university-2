@@ -163,15 +163,14 @@ export function SiteFooter() {
                 />
               </div>
 
-              <div className="min-w-0 text-[11px] font-semibold leading-tight">
+              <div className="min-w-0 text-[15px] font-semibold leading-tight">
                 <p>Khanjahan Ali College of </p>
                 <p>Science & Technology</p>
               </div>
             </div>
 
             <p className="mb-5 max-w-xs text-sm leading-relaxed text-white/70">
-              Committed to excellence in science, technology, education, research and innovation for a
-              better tomorrow.
+              Where knowledge inspires innovation, research drives progress, and visionary minds shape the future.
             </p>
 
             <ul className="mb-5 space-y-2.5 text-sm text-white/70">
@@ -182,18 +181,14 @@ export function SiteFooter() {
 
               <li className="flex min-w-0 gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">+880 000 000000</span>
+                <span className="break-words">+880 181 4634028</span>
               </li>
 
               <li className="flex min-w-0 gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" />
                 <span className="break-all">info@kacst.edu.bd</span>
               </li>
-
-              <li className="flex min-w-0 gap-2.5">
-                <Globe className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-all">www.kacst.edu.bd</span>
-              </li>
+            
             </ul>
 
             <div className="flex flex-wrap gap-3">
@@ -238,7 +233,7 @@ export function SiteFooter() {
           "
         >
           <p className="leading-relaxed">
-            © 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.
+            © 2026 Khanjahan Ali College of Science & Technology. All Rights Reserved.
           </p>
 
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:justify-end">
