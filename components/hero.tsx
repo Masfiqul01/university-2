@@ -45,7 +45,7 @@ export function Hero() {
               href="/about"
               className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-brand-dark transition-colors hover:bg-white/90"
             >
-              Learn More About KKJSTU
+              Learn More About KACST
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

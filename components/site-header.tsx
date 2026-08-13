@@ -170,12 +170,12 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 
         <Link
           href={item.href}
-          className="flex items-center gap-0.5 rounded-full px-3 py-2 text-sm md:text-[14.5px] font-medium text-slate-700 transition-all duration-200 hover:bg-slate-100 hover:text-brand-dark"
+          className="flex -translate-y-0.5 items-center gap-0.5 rounded-full px-3 py-2 text-sm font-bold text-white transition-all duration-200 hover:text-white md:text-[14.5px]"
         >
           {item.label}
 
           {item.children && (
-            <ChevronDown className="h-3 w-3 opacity-70 transition-transform duration-200 group-hover:rotate-180" />
+            <ChevronDown className="h-3 w-3 text-white opacity-70 transition-transform duration-200 group-hover:rotate-180" />
           )}
         </Link>
 
