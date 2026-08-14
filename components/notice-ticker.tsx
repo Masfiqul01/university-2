@@ -43,7 +43,7 @@ export const NoticeTicker: React.FC<NoticeTickerProps> = ({
       // GSAP infinite marquee
       timelineRef.current = gsap.to(track, {
         x: -groupWidth,
-        duration: 30,
+        duration: window.matchMedia("(max-width: 1023px)").matches ? 55 : 40,
         ease: "none",
         repeat: -1,
         force3D: true,
@@ -58,10 +58,12 @@ export const NoticeTicker: React.FC<NoticeTickerProps> = ({
     });
 
     resizeObserver.observe(group);
+    window.addEventListener("resize", setupMarquee);
 
     return () => {
       timelineRef.current?.kill();
       resizeObserver.disconnect();
+      window.removeEventListener("resize", setupMarquee);
     };
   }, []);
 
@@ -75,7 +77,7 @@ export const NoticeTicker: React.FC<NoticeTickerProps> = ({
           key={`${groupIndex}-${notice.title}-${index}`}
           type="button"
           onClick={() => onSelectNotice(notice)}
-          className="inline-flex shrink-0 items-center gap-2 text-slate-950 transition-colors duration-200 hover:text-[#0D0357] hover:underline focus:outline-none"
+          className="inline-flex shrink-0 items-center gap-1.5 text-xs text-slate-950 transition-colors duration-200 hover:text-[#0D0357] hover:underline focus:outline-none sm:gap-2 sm:text-sm lg:text-base"
         >
           {/* Bullet */}
           <span
@@ -115,7 +117,7 @@ export const NoticeTicker: React.FC<NoticeTickerProps> = ({
       <div className="mx-auto flex max-w-7xl items-center gap-3">
 
         {/* Latest Notice Badge */}
-        <div className="flex shrink-0 items-center gap-1.5 rounded-md bg-[#0D0357] px-3 py-1 text-[0.9rem] font-black uppercase tracking-wider text-white shadow-sm">
+        <div className="flex shrink-0 items-center rounded-md bg-[#0D0357] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-white shadow-sm sm:px-2.5 sm:text-[11px] lg:px-2.5 lg:text-sm lg:tracking-wider">
           <span>Latest Notice</span>
         </div>
 
@@ -140,7 +142,7 @@ export const NoticeTicker: React.FC<NoticeTickerProps> = ({
         <button
           type="button"
           onClick={onOpenOnlineApply}
-          className="hidden shrink-0 items-center gap-1 rounded-md bg-[#0D0357] px-3 py-1 text-[0.99rem] font-black text-amber-300 shadow-sm transition-all duration-200 hover:bg-[#070138] hover:text-white focus:outline-none md:flex"
+          className="hidden shrink-0 items-center gap-1 rounded-md bg-[#0D0357] px-2.5 py-1 text-xs font-black text-amber-300 shadow-sm transition-all duration-200 hover:bg-[#070138] hover:text-white focus:outline-none md:flex lg:px-3 lg:text-[0.99rem]"
         >
           <span>Apply Online</span>
 

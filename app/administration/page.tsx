@@ -3,6 +3,7 @@ import { PageShell } from "@/components/page-shell"
 import { PageHero } from "@/components/page-hero"
 import { Section } from "@/components/blocks"
 import { SectionHeading } from "@/components/section-heading"
+import { AdministrationLeadership } from "@/components/administration-leadership"
 import { ArrowRight, Building2, GraduationCap, Landmark, ShieldCheck, Users, Briefcase } from "lucide-react"
 
 const OFFICES = [
@@ -24,6 +25,8 @@ export default function AdministrationPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Administration" }]}
         image="/images/hero-campus.png"
       />
+
+      <AdministrationLeadership />
 
       <Section>
         <SectionHeading
