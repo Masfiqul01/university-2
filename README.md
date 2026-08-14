@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Khan Jahan Ali Science and Technology College Website
 
 Complete Next.js frontend for **Khan Jahan Ali Science and Technology College**.
@@ -63,3 +64,6 @@ Do not publish placeholder information as official college information.
 ```bash
 pnpm install
 pnpm dev
+=======
+# university-2
+>>>>>>> e1b9a10889f3970ca186a8e13db7af085121259d
