@@ -1,5 +1,3 @@
-
-
 import Link from "next/link"
 import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react"
 import type { SVGProps } from "react"
@@ -123,7 +121,14 @@ function Column({
 
       <ul className="space-y-2.5">
         {links.map((link) => (
+<<<<<<< HEAD
+          <li
+            key={`${link.href}-${link.label}`}
+            className="min-w-0"
+          >
+=======
           <li key={link.href} className="min-w-0">
+>>>>>>> origin/main
             <Link
               href={link.href}
               className="block break-words text-sm text-white/70 transition-colors hover:text-white"
