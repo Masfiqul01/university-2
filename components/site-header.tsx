@@ -2,120 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react"
+import { Menu, X, ArrowRight, ChevronDown, ExternalLink } from "lucide-react"
 import { NAV_ITEMS } from "@/lib/nav"
 import { LOGO_URL } from "@/lib/site-assets"
 import { usePathname } from "next/navigation";
-
-const ADMINISTRATION_PROFILES = [
-  {
-    role: "Chancellor",
-    name: "Official name to be updated",
-    designation: "Chancellor, KKJSTU",
-    href: "/administration",
-    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707383/principal.webp",
-  },
-  {
-    role: "Vice-Chancellor",
-    name: "Official name to be updated",
-    designation: "Vice-Chancellor, KKJSTU",
-    href: "/administration/vice-chancellor",
-    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707390/fac_1785751849.jpg",
-  },
-  {
-    role: "Pro Vice-Chancellor",
-    name: "Official name to be updated",
-    designation: "Pro Vice-Chancellor, KKJSTU",
-    href: "/administration/pro-vice-chancellor",
-    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707395/faculty_1786563553_747.jpg",
-  },
-  {
-    role: "Treasurer",
-    name: "Official name to be updated",
-    designation: "Treasurer, KKJSTU",
-    href: "/administration/treasurer",
-    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707399/faculty_1786173440_602.jpg",
-  },
-]
-
-function AdministrationMegaMenu({
-  links,
-  onNavigate,
-}: {
-  links: { label: string; href: string }[]
-  onNavigate: () => void
-}) {
-  const [chancellor, ...leadership] = ADMINISTRATION_PROFILES
-
-  return (
-    <div
-      role="region"
-      aria-label="University administration leadership"
-      className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_24px_70px_rgba(13,3,87,0.18)]"
-    >
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand via-emerald-500 to-brand" />
-
-      <div className="max-h-[min(680px,calc(100vh-9rem))] overflow-y-auto overscroll-contain scroll-smooth [scrollbar-color:rgb(203_213_225)_transparent] [scrollbar-width:thin] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:w-1.5">
-        <div className="border-b border-slate-100 bg-white px-5 pb-5 pt-6 sm:px-7 sm:pb-6 sm:pt-8">
-          <Link
-            href={chancellor.href}
-            onClick={onNavigate}
-            className="group/profile flex flex-col items-center rounded-2xl px-4 py-2 text-center transition-colors hover:bg-emerald-50/70"
-          >
-            <div className="h-24 w-24 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm sm:h-28 sm:w-28">
-              <img src={chancellor.image} alt={chancellor.role} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/profile:scale-105" />
-            </div>
-            <p className="mt-3 text-sm font-bold text-emerald-700 sm:text-base">{chancellor.role}</p>
-            <h3 className="mt-1 font-serif text-xl font-bold text-slate-800 sm:text-2xl">{chancellor.name}</h3>
-            <p className="mt-1 text-sm text-slate-500">{chancellor.designation}</p>
-          </Link>
-
-          <div className="my-5 h-px bg-slate-200 sm:my-6" />
-
-          <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-            {leadership.map((profile) => (
-              <Link
-                key={profile.role}
-                href={profile.href}
-                onClick={onNavigate}
-                className="group/profile flex min-w-0 flex-col items-center rounded-2xl p-3 text-center transition-all duration-300 hover:-translate-y-1 hover:bg-emerald-50 hover:shadow-sm"
-              >
-                <div className="h-20 w-20 overflow-hidden rounded-lg bg-slate-100 shadow-sm sm:h-24 sm:w-24">
-                  <img src={profile.image} alt={profile.role} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/profile:scale-105" />
-                </div>
-                <p className="mt-3 text-sm font-bold text-emerald-700">{profile.role}</p>
-                <h3 className="mt-1 text-sm font-bold leading-5 text-slate-800 sm:text-base">{profile.name}</h3>
-                <p className="mt-1 text-xs leading-5 text-slate-500">{profile.designation}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="p-5 sm:p-7">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand">University Administration</p>
-          <h3 className="mt-2 font-serif text-xl font-bold text-slate-800">Leadership &amp; University Offices</h3>
-          <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-500">
-            Explore leadership, offices and university services supporting academic and institutional excellence.
-          </p>
-
-          <div className="mt-5 grid gap-2 sm:grid-cols-2">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={onNavigate}
-                className="group/link flex min-w-0 items-center justify-between gap-3 rounded-xl border border-slate-200 px-3.5 py-3 text-sm font-semibold text-slate-700 transition-all hover:border-emerald-200 hover:bg-emerald-50 hover:text-brand"
-              >
-                <span className="min-w-0">{link.label}</span>
-                <ArrowRight className="h-4 w-4 shrink-0 text-emerald-600 transition-transform group-hover/link:translate-x-0.5" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 /*
   ============================================================
@@ -188,8 +78,6 @@ function Logo({ light = true }: { light?: boolean }) {
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
-  const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null)
-  const pathname = usePathname()
 
   /*
     ------------------------------------------------------------
@@ -382,30 +270,20 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               NAV_ITEMS-এর existing data ব্যবহার করা হচ্ছে।
               -------------------------------------------------- */}
 
-<nav className="hidden min-w-0 flex-1 items-center justify-center xl:flex">
+<nav className="hidden min-w-0 flex-1 items-center justify-center md:flex">
   <div className="flex min-w-0 items-center gap-0.5 rounded-full px-0.5 py-1 lg:gap-1.5 xl:gap-2">
     {NAV_ITEMS.map((item) => {
+      const pathname = usePathname();
+
       const isActive =
         pathname === item.href ||
         (item.href !== "/" && pathname.startsWith(`${item.href}/`));
 
       return (
-        <div
-          key={item.label}
-          className="group relative"
-          onMouseEnter={() => item.mega && setOpenMegaMenu(item.label)}
-          onMouseLeave={() => item.mega && setOpenMegaMenu(null)}
-        >
+        <div key={item.label} className="group relative">
           {/* Main navigation item */}
           <Link
             href={item.href}
-            onClick={(event) => {
-              if (item.mega) {
-                event.preventDefault()
-                setOpenMegaMenu(item.label)
-              }
-            }}
-            aria-expanded={item.mega ? openMegaMenu === item.label : undefined}
             className={`flex -translate-y-0.5 items-center gap-0.5 rounded-full px-2 py-1.5 font-bold transition-all duration-200 whitespace-nowrap text-[11px] lg:px-2.5 lg:py-1.5 lg:text-xs xl:px-3 xl:text-[13px] 2xl:px-3.5 2xl:text-[14px] ${
               isActive
   ? "bg-amber-400 text-[#0D0357] shadow-md"
@@ -416,9 +294,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
 
             {item.children && (
               <ChevronDown
-                className={`h-2.5 w-2.5 opacity-70 transition-transform duration-200 lg:h-3 lg:w-3 ${
-                  item.mega && openMegaMenu === item.label ? "rotate-180" : "group-hover:rotate-180"
-                } ${
+                className={`h-2.5 w-2.5 opacity-70 transition-transform duration-200 group-hover:rotate-180 lg:h-3 lg:w-3 ${
                   isActive ? "text-white" : "text-white"
                 }`}
               />
@@ -428,16 +304,136 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           {/* DROPDOWN / MEGA MENU */}
          {item.children && (
   <div
-    className={`absolute top-full pt-3 transition-all duration-200 ease-out ${
+    className={`invisible absolute top-full pt-3 opacity-0 translate-y-1.5 transition-all duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 ${
       item.mega
-        ? `left-1/2 w-[min(940px,calc(100vw-2rem))] -translate-x-1/2 ${
-            openMegaMenu === item.label ? "visible translate-y-0 opacity-100" : "invisible translate-y-1.5 opacity-0"
-          }`
-        : "invisible left-0 w-56 translate-y-1.5 opacity-0 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 xl:w-60"
+        ? "left-1/2 w-[660px] -translate-x-1/2 xl:w-[720px]"
+        : "left-0 w-56 xl:w-60"
     }`}
   >
     {item.mega ? (
-      <AdministrationMegaMenu links={item.children ?? []} onNavigate={() => setOpenMegaMenu(null)} />
+      /* =========================================================
+         PREMIUM MEGA MENU
+      ========================================================= */
+      <div
+        role="region"
+        aria-label="University administration navigation"
+        className="relative overflow-hidden rounded-[20px] border border-slate-200/90 bg-white shadow-[0_24px_70px_rgba(13,3,87,0.15)]"
+      >
+        {/* Brand accent */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-[#0D0357] via-amber-400 to-[#0D0357]"
+        />
+
+        {/* Ambient decoration */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-400/[0.055] blur-3xl"
+        />
+
+        <div className="relative p-5 xl:p-6">
+
+          {/* =====================================================
+              HEADER
+          ===================================================== */}
+          <div className="flex items-start justify-between gap-8 border-b border-slate-100/90 pb-5">
+
+            <div className="min-w-0">
+              <div className="mb-2 flex items-center gap-2">
+                <span
+                  aria-hidden="true"
+                  className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
+                />
+
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#0D0357]/60 xl:text-[10px]">
+                  University Administration
+                </span>
+              </div>
+
+              <h3 className="text-[14px] font-extrabold tracking-[-0.01em] text-[#0D0357] xl:text-[15px]">
+                Leadership & University Offices
+              </h3>
+
+              <p className="mt-1.5 max-w-md text-[10px] font-medium leading-5 text-slate-500 xl:text-[11px]">
+                Explore leadership, offices and university services
+                supporting academic and institutional excellence.
+              </p>
+            </div>
+
+            <Link
+              href="/administration"
+              className="group/admin hidden shrink-0 items-center gap-2 rounded-full bg-[#0D0357] px-4 py-2.5 text-[10px] font-bold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-400 hover:text-[#0D0357] hover:shadow-md sm:inline-flex xl:px-5 xl:text-[11px]"
+            >
+              <span>View Administration</span>
+
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover/admin:translate-x-0.5"
+              >
+                →
+              </span>
+            </Link>
+          </div>
+
+          {/* =====================================================
+              MEGA MENU ITEMS
+          ===================================================== */}
+          <ul className="mt-4 grid list-none grid-cols-3 gap-x-8 gap-y-0 p-0">
+            {item.children.map((child, index) => (
+              <li key={child.href}>
+                <Link
+                  href={child.href}
+                  className="group/item relative flex min-w-0 items-center gap-3 border-b border-slate-100/80 py-3 transition-colors duration-200"
+                >
+                  {/* Number */}
+                  <span
+                    aria-hidden="true"
+                    className="w-5 shrink-0 text-[9px] font-bold tabular-nums text-slate-300 transition-colors duration-200 group-hover/item:text-amber-500"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Label */}
+                  <span className="min-w-0 flex-1 truncate text-[10px] font-semibold text-slate-600 transition-colors duration-200 group-hover/item:text-[#0D0357] xl:text-[11px]">
+                    {child.label}
+                  </span>
+
+                  {/* Arrow */}
+                  <span
+                    aria-hidden="true"
+                    className="translate-x-[-4px] text-[11px] font-medium text-amber-500 opacity-0 transition-all duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100"
+                  >
+                    ↗
+                  </span>
+
+                  {/* Hover line */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute bottom-0 left-0 h-px w-0 bg-amber-400 transition-all duration-300 group-hover/item:w-full"
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* =====================================================
+              FOOTER
+          ===================================================== */}
+          <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
+            <span className="max-w-[70%] truncate text-[8px] font-semibold uppercase tracking-[0.14em] text-slate-400 xl:text-[9px]">
+              Khanjahan Ali College of Science & Technology
+            </span>
+
+            <span className="flex shrink-0 items-center gap-1.5 text-[8px] font-bold uppercase tracking-[0.12em] text-emerald-600 xl:text-[9px]">
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              />
+              Official Portal
+            </span>
+          </div>
+        </div>
+      </div>
     ) : (
       /* =========================================================
          STANDARD DROPDOWN
@@ -515,7 +511,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
            <button
   type="button"
   aria-label="Applications menu"
-  className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 xl:flex"
+  className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 md:flex"
 >
   <span className="grid grid-cols-3 gap-[4px]">
     {Array.from({ length: 9 }).map((_, index) => (
@@ -533,7 +529,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               type="button"
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white xl:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white md:hidden"
             >
               {open ? (
                 <X className="h-5 w-5" />
@@ -550,7 +546,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           ====================================================== */}
 
       {open && (
-        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden">
+        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl md:hidden">
           <nav className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <div
@@ -591,50 +587,18 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
                     {/* Submenu */}
 
                     {expanded === item.label && (
-                      item.mega ? (
-                        <div className="space-y-2 px-3 pb-3">
-                          {ADMINISTRATION_PROFILES.map((profile) => (
-                            <Link
-                              key={profile.role}
-                              href={profile.href}
-                              onClick={() => setOpen(false)}
-                              className="flex items-center gap-3 rounded-xl bg-white/10 p-2.5 transition-colors hover:bg-white/15"
-                            >
-                              <img src={profile.image} alt={profile.role} className="h-12 w-12 shrink-0 rounded-lg object-cover object-top" />
-                              <span className="min-w-0">
-                                <span className="block text-sm font-semibold text-emerald-300">{profile.role}</span>
-                                <span className="block break-words text-xs text-white/75">{profile.name}</span>
-                              </span>
-                            </Link>
-                          ))}
-                          <div className="border-t border-white/10 pt-2">
-                            <p className="px-1 pb-1 text-[11px] font-semibold uppercase tracking-wide text-white/50">Administration information</p>
-                            {item.children.map((child) => (
-                              <Link
-                                key={child.href}
-                                href={child.href}
-                                onClick={() => setOpen(false)}
-                                className="block rounded-lg px-3 py-2 text-sm text-white/75 transition-colors hover:bg-white/10 hover:text-white"
-                              >
-                                {child.label}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col pb-2">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              href={child.href}
-                              onClick={() => setOpen(false)}
-                              className="px-6 py-2.5 text-sm text-white/70 transition-colors hover:text-white"
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )
+                      <div className="flex flex-col pb-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="px-6 py-2.5 text-sm text-white/70 transition-colors hover:text-white"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
                     )}
                   </>
                 ) : (
