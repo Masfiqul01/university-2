@@ -271,7 +271,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               -------------------------------------------------- */}
 
 <nav className="hidden min-w-0 flex-1 items-center justify-center md:flex">
-  <div className="flex min-w-0 items-center rounded-full px-0.5 py-1">
+  <div className="flex min-w-0 items-center gap-0.5 rounded-full px-0.5 py-1 lg:gap-1.5 xl:gap-2">
     {NAV_ITEMS.map((item) => {
       const pathname = usePathname();
 
