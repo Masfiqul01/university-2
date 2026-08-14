@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 jobs:
@@ -13,42 +12,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Get latest code
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
-      # 2. Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: pnpm
-
-      # 3. Enable pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
           run_install: false
 
-      # 4. Install dependencies
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 5. Build Next.js static website
       - name: Build website
         run: pnpm build
 
-      # 6. Show generated files
       - name: Check build output
         run: |
-          echo "Build completed."
-          echo "Contents of out/:"
-          find out -maxdepth 2 -type f | head -100
+          echo "Build completed successfully."
+          echo "Checking out directory..."
+          test -d out
+          ls -la out
 
-      # 7. Deploy out/ to InfinityFree
       - name: Deploy to InfinityFree
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -57,14 +50,3 @@ jobs:
           port: 21
           local-dir: ./out/
           server-dir: /htdocs/
-          log-level: minimalimport type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",
-
-  images: {
-    unoptimized: true,
-  },
-};
-
-export default nextConfig;
