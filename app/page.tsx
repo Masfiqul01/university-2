@@ -4,7 +4,6 @@ import { Hero } from "@/components/hero"
 import { StatsBar } from "@/components/stats-bar"
 import { AdmissionsBanner } from "@/components/admissions-banner"
 import { NewsEvents } from "@/components/news-events"
-import { CampusLife } from "@/components/campus-life"
 import { SiteFooter } from "@/components/site-footer"
 import { NoticeTicker } from "@/components/notice-ticker";
 import { TrustStats } from "@/components/TrustStats";
