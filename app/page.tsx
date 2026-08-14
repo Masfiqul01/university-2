@@ -8,6 +8,7 @@ import { NewsEvents } from "@/components/news-events";
 import { SiteFooter } from "@/components/site-footer";
 import { NoticeTicker } from "@/components/notice-ticker";
 import { TrustStats } from "@/components/TrustStats";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { ProgramsSection } from "@/components/ProgramsSection";
 import { BeginYourJourney } from "@/components/BeginYourJourney";
 
@@ -38,13 +39,14 @@ export default function HomePage() {
 
 
 
-         {/* Admissions */}
+        {/* Admissions */}
         <AdmissionsBanner />
-        
+
         {/* Featured academic programs */}
         <ProgramsSection />
 
-       
+        {/* Why choose us */}
+        <WhyChooseUs />
 
         {/* News & events */}
         <NewsEvents />
