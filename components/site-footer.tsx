@@ -1,6 +1,13 @@
+"use client";
+
 import Link from "next/link"
 import { MapPin, Phone, Mail, Globe } from "lucide-react"
 import type { SVGProps } from "react"
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const COLUMNS: {
   title: string
@@ -147,10 +154,42 @@ function Column({
 }
 
 export function SiteFooter() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Respect prefers-reduced-motion
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      // Subtle fade in for footer sections
+      gsap.fromTo(
+        "[data-footer-section]",
+        { autoAlpha: 0, y: 12 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  });
   return (
-    <footer className="w-full overflow-hidden bg-brand-dark text-white">
+    <footer
+      ref={sectionRef}
+      className="w-full overflow-hidden bg-brand-dark text-white"
+    >
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 md:px-8 lg:px-8">
         <div
+          data-footer-section
           className="
             grid
             grid-cols-2
@@ -240,6 +279,7 @@ export function SiteFooter() {
 
       <div className="border-t border-white/10">
         <div
+          data-footer-section
           className="
             mx-auto flex max-w-7xl
             flex-col items-center

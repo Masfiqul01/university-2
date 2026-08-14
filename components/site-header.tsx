@@ -331,7 +331,89 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-400/[0.055] blur-3xl"
         />
 
-        <div className="relative p-5 xl:p-6">
+        <div className="relative max-h-[605px] overflow-y-auto">
+          <div className="relative p-5 xl:p-6">
+
+            {/* =====================================================
+                LEADERSHIP PROFILES SECTION
+            ===================================================== */}
+            <div className="mb-6">
+              {/* Chancellor Card - Featured/Top */}
+              <Link
+                href="/administration/vice-chancellor"
+                className="group mb-4 flex flex-col items-center rounded-2xl border border-slate-100/80 bg-gradient-to-b from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-amber-300 hover:shadow-lg xl:p-5"
+              >
+                <div className="h-32 w-32 overflow-hidden rounded-xl xl:h-40 xl:w-40">
+                  <img
+                    src="https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707383/principal.webp"
+                    alt="Chancellor"
+                    className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <span className="mt-3 inline-block rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-emerald-600 xl:mt-4 xl:text-xs">
+                  Chancellor
+                </span>
+                <h4 className="mt-2 font-serif text-[13px] font-bold text-[#0D0357] xl:text-sm">
+                  His Excellency Hafiz Uddin Ahmad
+                </h4>
+                <p className="mt-1 text-[10px] text-slate-500 xl:text-[10px]">
+                  The Honourable President (Acting) of the People's Republic of Bangladesh
+                </p>
+              </Link>
+
+              {/* Three Profiles in Row */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  {
+                    href: "/administration/vice-chancellor",
+                    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707390/fac_1785751849.jpg",
+                    role: "Vice-Chancellor",
+                    name: "Prof. Dr. Mohammad Ali Azadi",
+                    description: "Vice-Chancellor, Khanjahan Ali College of Science & Technology",
+                  },
+                  {
+                    href: "/administration/pro-vice-chancellor",
+                    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707395/faculty_1786563553_747.jpg",
+                    role: "Pro Vice-Chancellor",
+                    name: "Prof. Dr. Mohammad Hasmid Ali",
+                    description: "Pro Vice-Chancellor, Khanjahan Ali College of Science & Technology",
+                  },
+                  {
+                    href: "/administration/treasurer",
+                    image: "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707399/faculty_1786173440_602.jpg",
+                    role: "Treasurer",
+                    name: "Prof. Dr. Muhammad Mahbubur Rahman",
+                    description: "Treasurer, Khanjahan Ali College of Science & Technology",
+                  },
+                ].map((profile) => (
+                  <Link
+                    key={profile.role}
+                    href={profile.href}
+                    className="group flex flex-col items-center rounded-xl border border-slate-100/60 bg-white p-2.5 transition-all duration-200 hover:border-amber-300 hover:shadow-md xl:p-3"
+                  >
+                    <div className="h-20 w-20 overflow-hidden rounded-lg xl:h-24 xl:w-24">
+                      <img
+                        src={profile.image}
+                        alt={profile.role}
+                        className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <span className="mt-2 text-[9px] font-bold uppercase tracking-wide text-emerald-600">
+                      {profile.role}
+                    </span>
+                    <h4 className="mt-1 text-center font-serif text-[9px] font-bold text-[#0D0357] leading-tight xl:text-[10px]">
+                      {profile.name}
+                    </h4>
+                    <p className="mt-1 text-center text-[8px] text-slate-500 leading-tight">
+                      {profile.description}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="mb-5 border-t border-slate-100/90" />
 
           {/* =====================================================
               HEADER
@@ -431,6 +513,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
               />
               Official Portal
             </span>
+          </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useCallback, useRef } from "react";
+import { useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface BeginYourJourneyProps {
     className?: string;
@@ -54,7 +62,6 @@ function ChevronRightIcon() {
     );
 }
 
-/* Premium sparkle / star mark */
 function SparkleIcon() {
     return (
         <svg
@@ -77,7 +84,6 @@ function SparkleIcon() {
     );
 }
 
-/* Professional decorative education-style SVG */
 function JourneyMark() {
     return (
         <svg
@@ -126,9 +132,123 @@ function JourneyMark() {
     );
 }
 
+/* =========================================================
+   BEGIN YOUR JOURNEY
+========================================================= */
+
 export function BeginYourJourney({
     className = "",
 }: BeginYourJourneyProps) {
+    /* =========================================================
+       BORDER GLOW — ONLY FOR PRIMARY BUTTON
+    ========================================================= */
+
+    const buttonGlowRef = useRef<HTMLDivElement>(null);
+
+    const getButtonCenter = useCallback((el: HTMLElement) => {
+        const { width, height } = el.getBoundingClientRect();
+
+        return [width / 2, height / 2];
+    }, []);
+
+    const getEdgeProximity = useCallback(
+        (el: HTMLElement, x: number, y: number) => {
+            const [cx, cy] = getButtonCenter(el);
+
+            const dx = x - cx;
+            const dy = y - cy;
+
+            let kx = Infinity;
+            let ky = Infinity;
+
+            if (dx !== 0) {
+                kx = cx / Math.abs(dx);
+            }
+
+            if (dy !== 0) {
+                ky = cy / Math.abs(dy);
+            }
+
+            return Math.min(
+                Math.max(1 / Math.min(kx, ky), 0),
+                1
+            );
+        },
+        [getButtonCenter]
+    );
+
+    const getCursorAngle = useCallback(
+        (el: HTMLElement, x: number, y: number) => {
+            const [cx, cy] = getButtonCenter(el);
+
+            const dx = x - cx;
+            const dy = y - cy;
+
+            if (dx === 0 && dy === 0) {
+                return 0;
+            }
+
+            const radians = Math.atan2(dy, dx);
+
+            let degrees =
+                radians * (180 / Math.PI) + 90;
+
+            if (degrees < 0) {
+                degrees += 360;
+            }
+
+            return degrees;
+        },
+        [getButtonCenter]
+    );
+
+    const handleButtonPointerMove = useCallback(
+        (e: React.PointerEvent<HTMLDivElement>) => {
+            const button = buttonGlowRef.current;
+
+            if (!button) return;
+
+            const rect = button.getBoundingClientRect();
+
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const edge = getEdgeProximity(
+                button,
+                x,
+                y
+            );
+
+            const angle = getCursorAngle(
+                button,
+                x,
+                y
+            );
+
+            button.style.setProperty(
+                "--edge-proximity",
+                `${(edge * 100).toFixed(3)}`
+            );
+
+            button.style.setProperty(
+                "--cursor-angle",
+                `${angle.toFixed(3)}deg`
+            );
+        },
+        [getEdgeProximity, getCursorAngle]
+    );
+
+    const handleButtonPointerLeave = useCallback(() => {
+        const button = buttonGlowRef.current;
+
+        if (!button) return;
+
+        button.style.setProperty(
+            "--edge-proximity",
+            "0"
+        );
+    }, []);
+
     return (
         <section
             className={`relative isolate w-full overflow-hidden bg-white ${className}`}
@@ -185,7 +305,6 @@ export function BeginYourJourney({
                     "
                 />
 
-                {/* Professional SVG grid instead of CSS grid */}
                 <svg
                     className="absolute inset-0 h-full w-full opacity-[0.025]"
                     xmlns="http://www.w3.org/2000/svg"
@@ -301,7 +420,6 @@ export function BeginYourJourney({
                             "
                         />
 
-                        {/* Professional SVG panel grid */}
                         <svg
                             className="absolute inset-0 h-full w-full opacity-[0.035]"
                             xmlns="http://www.w3.org/2000/svg"
@@ -319,6 +437,7 @@ export function BeginYourJourney({
                                         stroke="white"
                                         strokeWidth="0.7"
                                     />
+
                                     <circle
                                         cx="0"
                                         cy="0"
@@ -335,7 +454,6 @@ export function BeginYourJourney({
                             />
                         </svg>
 
-                        {/* Premium top highlight SVG */}
                         <svg
                             className="absolute left-[8%] right-[8%] top-0 h-8 w-[84%]"
                             viewBox="0 0 1000 32"
@@ -355,11 +473,13 @@ export function BeginYourJourney({
                                         stopColor="white"
                                         stopOpacity="0"
                                     />
+
                                     <stop
                                         offset="0.5"
                                         stopColor="white"
                                         stopOpacity="0.16"
                                     />
+
                                     <stop
                                         offset="1"
                                         stopColor="white"
@@ -404,7 +524,6 @@ export function BeginYourJourney({
                     >
                         <JourneyMark />
 
-                        {/* Tiny accent dot */}
                         <span
                             className="
                                 absolute
@@ -454,7 +573,6 @@ export function BeginYourJourney({
                             LEFT — HEADING
                         ================================================= */}
                         <div className="relative min-w-0 flex-1">
-                            {/* Small professional eyebrow */}
                             <div
                                 className="
                                     mb-3
@@ -474,7 +592,9 @@ export function BeginYourJourney({
                                     <SparkleIcon />
                                 </span>
 
-                                <span>Start something meaningful</span>
+                                <span>
+                                    Start something meaningful
+                                </span>
                             </div>
 
                             <h2
@@ -541,135 +661,198 @@ export function BeginYourJourney({
                             "
                         >
                             {/* =================================================
-                                PRIMARY BUTTON
+                                PRIMARY BUTTON + BORDER GLOW
                             ================================================= */}
-                            <Link
-                                href="/admissions/apply"
-                                aria-label="Start your application"
+                            <div
+                                ref={buttonGlowRef}
+                                onPointerMove={
+                                    handleButtonPointerMove
+                                }
+                                onPointerLeave={
+                                    handleButtonPointerLeave
+                                }
                                 className="
-                                    group/button
                                     relative
-                                    inline-flex
-                                    h-[48px]
                                     w-full
-                                    items-center
-                                    justify-center
-                                    overflow-hidden
-                                    rounded-full
-                                    p-[1.5px]
-                                    shadow-[0_8px_25px_rgba(0,0,0,0.14)]
-                                    transition-all
-                                    duration-300
-                                    hover:-translate-y-0.5
-                                    hover:shadow-[0_12px_30px_rgba(0,0,0,0.2)]
-                                    focus:outline-none
-                                    focus-visible:ring-2
-                                    focus-visible:ring-amber-300
-                                    focus-visible:ring-offset-2
-                                    focus-visible:ring-offset-[#0D0357]
-                                    sm:h-[50px]
                                     sm:w-auto
+                                    rounded-full
+                                    isolate
                                 "
+                                style={
+                                    {
+                                        "--edge-proximity": "0",
+                                        "--cursor-angle": "45deg",
+                                    } as React.CSSProperties
+                                }
                             >
-                                {/* Animated SVG border */}
-                                <svg
+                                {/* =================================================
+                                    BORDER GLOW LAYERS
+                                ================================================= */}
+
+                                <span
+                                    aria-hidden="true"
                                     className="
                                         pointer-events-none
                                         absolute
-                                        inset-[-180%]
-                                        h-[460%]
-                                        w-[460%]
-                                        animate-[spin_3.5s_linear_infinite]
-                                        motion-reduce:animate-none
+                                        -inset-[28px]
+                                        rounded-full
+                                        opacity-0
+                                        transition-opacity
+                                        duration-500
+                                        group-hover:opacity-100
+                                        z-0
+                                        [mask-image:conic-gradient(from_var(--cursor-angle)_at_center,black_2.5%,transparent_10%,transparent_90%,black_97.5%)]
+                                        mix-blend-plus-lighter
                                     "
-                                    viewBox="0 0 100 100"
-                                    preserveAspectRatio="none"
-                                    aria-hidden="true"
                                 >
-                                    <defs>
-                                        <linearGradient
-                                            id="button-border"
-                                            x1="0"
-                                            y1="0"
-                                            x2="1"
-                                            y2="1"
-                                        >
-                                            <stop
-                                                offset="0"
-                                                stopColor="#f59e0b"
-                                                stopOpacity="0"
-                                            />
-                                            <stop
-                                                offset="0.5"
-                                                stopColor="#fde68a"
-                                                stopOpacity="0"
-                                            />
-                                            <stop
-                                                offset="0.72"
-                                                stopColor="#fde68a"
-                                                stopOpacity="1"
-                                            />
-                                            <stop
-                                                offset="0.86"
-                                                stopColor="#f59e0b"
-                                                stopOpacity="1"
-                                            />
-                                            <stop
-                                                offset="1"
-                                                stopColor="#f59e0b"
-                                                stopOpacity="0"
-                                            />
-                                        </linearGradient>
-                                    </defs>
-
-                                    <rect
-                                        x="2"
-                                        y="2"
-                                        width="96"
-                                        height="96"
-                                        rx="48"
-                                        fill="none"
-                                        stroke="url(#button-border)"
-                                        strokeWidth="3"
+                                    <span
+                                        className="
+                                            absolute
+                                            inset-[28px]
+                                            rounded-full
+                                            shadow-[inset_0_0_0_1px_rgba(253,230,138,1),inset_0_0_3px_rgba(245,158,11,.8),inset_0_0_10px_rgba(245,158,11,.55),inset_0_0_25px_rgba(245,158,11,.3),0_0_3px_rgba(245,158,11,.8),0_0_10px_rgba(245,158,11,.55),0_0_25px_rgba(245,158,11,.3)]
+                                        "
                                     />
-                                </svg>
+                                </span>
 
-                                <span
+                                {/* =================================================
+                                    ORIGINAL BUTTON — UNCHANGED
+                                ================================================= */}
+                                <Link
+                                    href="/admissions/apply"
+                                    aria-label="Start your application"
                                     className="
+                                        group/button
                                         relative
+                                        z-10
                                         inline-flex
-                                        h-full
+                                        h-[48px]
                                         w-full
                                         items-center
                                         justify-center
-                                        gap-2
+                                        overflow-hidden
                                         rounded-full
-                                        bg-white
-                                        px-6
-                                        text-[13px]
-                                        font-bold
-                                        text-[#0D0357]
-                                        transition-colors
+                                        p-[1.5px]
+                                        shadow-[0_8px_25px_rgba(0,0,0,0.14)]
+                                        transition-all
                                         duration-300
-                                        group-hover/button:bg-amber-50
+                                        hover:-translate-y-0.5
+                                        hover:shadow-[0_12px_30px_rgba(0,0,0,0.2)]
+                                        focus:outline-none
+                                        focus-visible:ring-2
+                                        focus-visible:ring-amber-300
+                                        focus-visible:ring-offset-2
+                                        focus-visible:ring-offset-[#0D0357]
+                                        sm:h-[50px]
                                         sm:w-auto
-                                        sm:px-7
-                                        sm:text-sm
                                     "
                                 >
-                                    <span>Start Your Application</span>
+                                    {/* Original animated SVG border */}
+                                    <svg
+                                        className="
+                                            pointer-events-none
+                                            absolute
+                                            inset-[-180%]
+                                            h-[460%]
+                                            w-[460%]
+                                            animate-[spin_3.5s_linear_infinite]
+                                            motion-reduce:animate-none
+                                        "
+                                        viewBox="0 0 100 100"
+                                        preserveAspectRatio="none"
+                                        aria-hidden="true"
+                                    >
+                                        <defs>
+                                            <linearGradient
+                                                id="button-border"
+                                                x1="0"
+                                                y1="0"
+                                                x2="1"
+                                                y2="1"
+                                            >
+                                                <stop
+                                                    offset="0"
+                                                    stopColor="#f59e0b"
+                                                    stopOpacity="0"
+                                                />
+
+                                                <stop
+                                                    offset="0.5"
+                                                    stopColor="#fde68a"
+                                                    stopOpacity="0"
+                                                />
+
+                                                <stop
+                                                    offset="0.72"
+                                                    stopColor="#fde68a"
+                                                    stopOpacity="1"
+                                                />
+
+                                                <stop
+                                                    offset="0.86"
+                                                    stopColor="#f59e0b"
+                                                    stopOpacity="1"
+                                                />
+
+                                                <stop
+                                                    offset="1"
+                                                    stopColor="#f59e0b"
+                                                    stopOpacity="0"
+                                                />
+                                            </linearGradient>
+                                        </defs>
+
+                                        <rect
+                                            x="2"
+                                            y="2"
+                                            width="96"
+                                            height="96"
+                                            rx="48"
+                                            fill="none"
+                                            stroke="url(#button-border)"
+                                            strokeWidth="3"
+                                        />
+                                    </svg>
 
                                     <span
                                         className="
-                                            transition-transform
+                                            relative
+                                            inline-flex
+                                            h-full
+                                            w-full
+                                            items-center
+                                            justify-center
+                                            gap-2
+                                            rounded-full
+                                            bg-white
+                                            px-6
+                                            text-[13px]
+                                            font-bold
+                                            text-[#0D0357]
+                                            transition-colors
                                             duration-300
-                                            group-hover/button:translate-x-1
+                                            group-hover/button:bg-amber-50
+                                            sm:w-auto
+                                            sm:px-7
+                                            sm:text-sm
                                         "
                                     >
-                                        <ArrowRightIcon />
+                                        <span>
+                                            Start Your Application
+                                        </span>
+
+                                        <span
+                                            className="
+                                                transition-transform
+                                                duration-300
+                                                group-hover/button:translate-x-1
+                                            "
+                                        >
+                                            <ArrowRightIcon />
+                                        </span>
                                     </span>
-                                </span>
-                            </Link>
+                                </Link>
+                            </div>
 
                             {/* =================================================
                                 SECONDARY BUTTON
@@ -709,7 +892,9 @@ export function BeginYourJourney({
                                     sm:text-sm
                                 "
                             >
-                                <span>Explore Programs</span>
+                                <span>
+                                    Explore Programs
+                                </span>
 
                                 <span
                                     className="
@@ -753,11 +938,13 @@ export function BeginYourJourney({
                                     stopColor="#FCD34D"
                                     stopOpacity="0"
                                 />
+
                                 <stop
                                     offset="0.5"
                                     stopColor="#FCD34D"
                                     stopOpacity="0.65"
                                 />
+
                                 <stop
                                     offset="1"
                                     stopColor="#FCD34D"
