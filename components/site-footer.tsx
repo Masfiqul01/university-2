@@ -1,10 +1,11 @@
-
-
 import Link from "next/link"
-import { MapPin, Phone, Mail, Globe, ArrowRight } from "lucide-react"
+import { MapPin, Phone, Mail, Globe } from "lucide-react"
 import type { SVGProps } from "react"
 
-const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
+const COLUMNS: {
+  title: string
+  links: { label: string; href: string }[]
+}[] = [
   {
     title: "University",
     links: [
@@ -106,7 +107,12 @@ function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-const SOCIALS = [FacebookIcon, InstagramIcon, YoutubeIcon, LinkedinIcon]
+const SOCIALS = [
+  FacebookIcon,
+  InstagramIcon,
+  YoutubeIcon,
+  LinkedinIcon,
+]
 
 function Column({
   title,
@@ -123,7 +129,10 @@ function Column({
 
       <ul className="space-y-2.5">
         {links.map((link) => (
-          <li key={link.href} className="min-w-0">
+          <li
+            key={`${link.href}-${link.label}`}
+            className="min-w-0"
+          >
             <Link
               href={link.href}
               className="block break-words text-sm text-white/70 transition-colors hover:text-white"
@@ -165,41 +174,50 @@ export function SiteFooter() {
               </div>
 
               <div className="min-w-0 text-[11px] font-semibold leading-tight">
-                <p>Khanjahan Ali College of </p>
+                <p>Khanjahan Ali College of</p>
                 <p>Science & Technology</p>
               </div>
             </div>
 
             <p className="mb-5 max-w-xs text-sm leading-relaxed text-white/70">
-              Where knowledge inspires innovation, research drives progress, and visionary minds shape the future.
+              Where knowledge inspires innovation, research drives progress,
+              and visionary minds shape the future.
             </p>
 
             <ul className="mb-5 space-y-2.5 text-sm text-white/70">
               <li className="flex min-w-0 gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">Khulna, Bangladesh</span>
+                <span className="break-words">
+                  Khulna, Bangladesh
+                </span>
               </li>
 
               <li className="flex min-w-0 gap-2.5">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">+880 000 000000</span>
+                <span className="break-words">
+                  +880 000 000000
+                </span>
               </li>
 
               <li className="flex min-w-0 gap-2.5">
                 <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-all">info@kacst.edu.bd</span>
+                <span className="break-all">
+                  info@kacst.edu.bd
+                </span>
               </li>
 
               <li className="flex min-w-0 gap-2.5">
                 <Globe className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-all">www.kacst.edu.bd</span>
+                <span className="break-all">
+                  www.kacst.edu.bd
+                </span>
               </li>
             </ul>
 
             <div className="flex flex-wrap gap-3">
-              {SOCIALS.map((Icon, i) => (
+              {SOCIALS.map((Icon, index) => (
                 <a
-                  key={i}
+                  key={`social-${index}`}
                   href="#"
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-brand-accent"
                   aria-label="Social link"
@@ -238,7 +256,8 @@ export function SiteFooter() {
           "
         >
           <p className="leading-relaxed">
-            © 2026Khanjahan Ali College of Science & Technology. All Rights Reserved.
+            © 2026 Khanjahan Ali College of Science & Technology.
+            All Rights Reserved.
           </p>
 
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 lg:justify-end">
