@@ -10,8 +10,6 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "About KKJSTU", href: "/about" },
       { label: "History", href: "/about/history" },
-      { label: "About KKJSTU", href: "/about" },
-      { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
       { label: "Leadership", href: "/about/leadership" },
       { label: "Faculties", href: "/about/faculties" },
@@ -125,7 +123,7 @@ function Column({
 
       <ul className="space-y-2.5">
         {links.map((link) => (
-          <li key={link.label} className="min-w-0">
+          <li key={link.href} className="min-w-0">
             <Link
               href={link.href}
               className="block break-words text-sm text-white/70 transition-colors hover:text-white"
