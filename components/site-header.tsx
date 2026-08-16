@@ -271,7 +271,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
               NAV_ITEMS-এর existing data ব্যবহার করা হচ্ছে।
               -------------------------------------------------- */}
 
-<nav className="hidden min-w-0 flex-1 items-center justify-center md:flex">
+<nav className="hidden min-w-0 flex-1 items-center justify-center xl:flex">
   <div className="flex min-w-0 items-center gap-0.5 rounded-full px-0.5 py-1 lg:gap-1.5 xl:gap-2">
     {NAV_ITEMS.map((item) => {
       const pathname = usePathname();
@@ -595,7 +595,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
            <button
   type="button"
   aria-label="Applications menu"
-  className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 md:flex"
+  className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 xl:flex"
 >
   <span className="grid grid-cols-3 gap-[4px]">
     {Array.from({ length: 9 }).map((_, index) => (
@@ -613,7 +613,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
               type="button"
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 text-white xl:hidden"
             >
               {open ? (
                 <X className="h-5 w-5" />
@@ -630,7 +630,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
           ====================================================== */}
 
       {open && (
-        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl md:hidden">
+        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden">
           <nav className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <div

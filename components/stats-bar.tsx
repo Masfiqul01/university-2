@@ -12,7 +12,7 @@ const STATS = [
 
 export function StatsBar() {
   return (
-   <div className="relative z-10 mx-auto -mt-16 max-w-6xl px-4 lg:px-8">
+   <div className="relative z-10 mx-auto -mt-6 max-w-6xl px-4 sm:-mt-10 lg:-mt-16 lg:px-8">
   <div className="grid grid-cols-2 gap-y-8 rounded-2xl bg-white px-6 py-8 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.25)] sm:grid-cols-3 lg:grid-cols-6 lg:gap-y-0">
     {STATS.map(({ icon: Icon, value, label }) => (
       <div

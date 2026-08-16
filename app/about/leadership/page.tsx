@@ -2,6 +2,7 @@
 
 import { SiteHeader } from "@/components/site-header";
 import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
 import {
   ArrowRight,
   ChevronRight,
@@ -55,7 +56,7 @@ export default function LeadershipPage() {
       {/* =========================================================
           HERO SECTION
       ========================================================= */}
-      <section className="relative isolate overflow-hidden bg-[#0D0357]">
+      <section className="relative isolate overflow-hidden bg-[#0D0357] w-full">
         {/* Background image */}
         <div className="absolute inset-0">
           <img
@@ -371,8 +372,11 @@ export default function LeadershipPage() {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </div>
+
         </div>
+
       </section>
+            <SiteFooter />
     </main>
   );
 }
