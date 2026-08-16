@@ -6,22 +6,14 @@ import { SectionHeading } from "@/components/section-heading"
 import { LeadershipCard } from "@/components/cards"
 import { StatsBar } from "@/components/stats-bar"
 import { CTASection } from "@/components/cta-section"
-import { Target, Eye, Heart, Lightbulb, Users, ShieldCheck } from "lucide-react"
+import { ICON_MAP } from "@/lib/icon-map"
+import { VALUES } from "@/lib/data/about"
 
 export const metadata: Metadata = {
   title: "About KKJSTU",
   description:
     "Learn about Khulna Khan Jahan Science and Technology University (KKJSTU) — our identity, values, and commitment to education, research and innovation.",
 }
-
-const VALUES = [
-  { icon: Lightbulb, title: "Innovation", description: "Encouraging creativity and forward-thinking across every discipline." },
-  { icon: ShieldCheck, title: "Integrity", description: "Upholding honesty, ethics, and accountability in all we do." },
-  { icon: Users, title: "Inclusiveness", description: "Building a diverse, welcoming and supportive community." },
-  { icon: Target, title: "Excellence", description: "Pursuing the highest standards in teaching and research." },
-  { icon: Heart, title: "Service", description: "Contributing meaningfully to society and community." },
-  { icon: Eye, title: "Vision", description: "Preparing students to lead in a changing world." },
-]
 
 export default function AboutPage() {
   return (
@@ -65,7 +57,7 @@ export default function AboutPage() {
           description="These values shape our culture and define how we teach, research, and serve."
           center
         />
-        <FeatureGrid items={VALUES} />
+        <FeatureGrid items={VALUES.map((v) => ({ ...v, icon: ICON_MAP[v.icon] ?? ICON_MAP.Target }))} />
       </Section>
 
       <Section>

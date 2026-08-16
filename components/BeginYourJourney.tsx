@@ -300,7 +300,7 @@ export function BeginYourJourney({
                         w-[600px]
                         -translate-x-1/2
                         rounded-full
-                        bg-indigo-200/[0.06]
+                        bg-brand/[0.06]
                         blur-[110px]
                     "
                 />
@@ -415,7 +415,7 @@ export function BeginYourJourney({
                                 h-[340px]
                                 w-[460px]
                                 rounded-full
-                                bg-indigo-400/[0.055]
+                                bg-brand/[0.055]
                                 blur-[100px]
                             "
                         />

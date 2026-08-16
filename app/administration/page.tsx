@@ -4,16 +4,9 @@ import { PageHero } from "@/components/page-hero"
 import { Section } from "@/components/blocks"
 import { SectionHeading } from "@/components/section-heading"
 import { AdministrationLeadership } from "@/components/administration-leadership"
-import { ArrowRight, Building2, GraduationCap, Landmark, ShieldCheck, Users, Briefcase } from "lucide-react"
-
-const OFFICES = [
-  ["Vice-Chancellor", "/administration/vice-chancellor", Users],
-  ["Pro Vice-Chancellor", "/administration/pro-vice-chancellor", GraduationCap],
-  ["Registrar", "/administration/registrar", Landmark],
-  ["Treasurer", "/administration/treasurer", ShieldCheck],
-  ["Controller of Examinations", "/administration/controller-of-examinations", Briefcase],
-  ["Deans & Heads", "/administration/deans-heads", Building2],
-] as const
+import { ArrowRight } from "lucide-react"
+import { ICON_MAP } from "@/lib/icon-map"
+import { OFFICES } from "@/lib/data/administration"
 
 export default function AdministrationPage() {
   return (
@@ -35,16 +28,19 @@ export default function AdministrationPage() {
           description="The Administration menu in the main navigation opens directly to this full page. Individual offices can be edited with official names, profiles and contact details."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {OFFICES.map(([title, href, Icon]) => (
-            <Link key={href} href={href} className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
-                <Icon className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 font-serif text-xl font-bold">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">View the office overview, responsibilities and editable contact information.</p>
-              <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand">View details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
-            </Link>
-          ))}
+          {OFFICES.map(({ title, href, icon }) => {
+            const Icon = ICON_MAP[icon] ?? ICON_MAP.Users
+            return (
+              <Link key={href} href={href} className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <h3 className="mt-5 font-serif text-xl font-bold">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">View the office overview, responsibilities and editable contact information.</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-brand">View details <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+              </Link>
+            )
+          })}
         </div>
       </Section>
 

@@ -2,356 +2,33 @@
 
 import { useMemo, useState } from "react"
 import Link from "next/link"
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 import {
   ArrowRight,
-  BookOpen,
-  Building2,
-  Calculator,
   CalendarDays,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  Code2,
-  Dna,
   Filter,
-  FlaskConical,
   GraduationCap,
-  Leaf,
   RotateCcw,
   Search,
-  TrendingUp,
-  Zap,
 } from "lucide-react"
+import { ICON_MAP } from "@/lib/icon-map"
+import {
+  PROGRAMS,
+  PROGRAM_LEVELS as LEVELS,
+  PROGRAM_FACULTIES as FACULTIES,
+  PROGRAM_DISCIPLINES as DISCIPLINES,
+  type Program,
+} from "@/lib/data/programs"
 
 const HERO_IMAGE =
   "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
 
-type Program = {
-  title: string
-  level: "Undergraduate" | "Postgraduate" | "PhD / Doctoral" | "Diploma"
-  faculty: string
-  discipline: string
-  duration: string
-  description: string
-  icon: any
-  iconBg: string
-  iconColor: string
-}
-
-const PROGRAMS: Program[] = [
-  {
-    title: "BSc in Computer Science & Engineering",
-    level: "Undergraduate",
-    faculty: "Faculty of Engineering",
-    discipline: "Computer Science",
-    duration: "4 Years",
-    description:
-      "Build a strong foundation in computing principles, programming and system design.",
-    icon: Code2,
-    iconBg: "bg-purple-100/70",
-    iconColor: "text-purple-600",
-  },
-  {
-    title: "BSc in Electrical & Electronic Engineering",
-    level: "Undergraduate",
-    faculty: "Faculty of Engineering",
-    discipline: "Electrical Engineering",
-    duration: "4 Years",
-    description:
-      "Learn to innovate in electronics, telecommunications and power systems.",
-    icon: Zap,
-    iconBg: "bg-sky-100/70",
-    iconColor: "text-sky-600",
-  },
-  {
-    title: "BSc in Civil Engineering",
-    level: "Undergraduate",
-    faculty: "Faculty of Engineering",
-    discipline: "Civil Engineering",
-    duration: "4 Years",
-    description:
-      "Design and build the future with knowledge in infrastructure and construction.",
-    icon: Building2,
-    iconBg: "bg-emerald-100/70",
-    iconColor: "text-emerald-600",
-  },
-  {
-    title: "BSc in Business Administration",
-    level: "Undergraduate",
-    faculty: "Faculty of Business",
-    discipline: "Business",
-    duration: "4 Years",
-    description:
-      "Develop leadership, management and entrepreneurial skills for the global business world.",
-    icon: TrendingUp,
-    iconBg: "bg-amber-100/70",
-    iconColor: "text-amber-600",
-  },
-  {
-    title: "BSc in Chemistry",
-    level: "Undergraduate",
-    faculty: "Faculty of Science",
-    discipline: "Chemistry",
-    duration: "4 Years",
-    description:
-      "Explore the world of molecules, reactions and materials that shape our lives.",
-    icon: FlaskConical,
-    iconBg: "bg-rose-100/70",
-    iconColor: "text-rose-500",
-  },
-  {
-    title: "BSc in Biotechnology & Genetic Engineering",
-    level: "Undergraduate",
-    faculty: "Faculty of Science",
-    discipline: "Biotechnology",
-    duration: "4 Years",
-    description:
-      "Apply biology and technology to solve real-world challenges in health and agriculture.",
-    icon: Dna,
-    iconBg: "bg-[#f2e7fe]",
-    iconColor: "text-purple-600",
-  },
-  {
-    title: "BSc in Mathematics",
-    level: "Undergraduate",
-    faculty: "Faculty of Science",
-    discipline: "Mathematics",
-    duration: "4 Years",
-    description:
-      "Master mathematical theories and apply them to solve complex real-world problems.",
-    icon: Calculator,
-    iconBg: "bg-blue-100/70",
-    iconColor: "text-blue-600",
-  },
-  {
-    title: "BSc in Environmental Science",
-    level: "Undergraduate",
-    faculty: "Faculty of Science",
-    discipline: "Environmental Science",
-    duration: "4 Years",
-    description:
-      "Study environmental systems and work towards a sustainable future.",
-    icon: Leaf,
-    iconBg: "bg-cyan-100/70",
-    iconColor: "text-cyan-600",
-  },
-  {
-    title: "BA in English",
-    level: "Undergraduate",
-    faculty: "Faculty of Humanities",
-    discipline: "English",
-    duration: "4 Years",
-    description:
-      "Enhance language skills, literature knowledge and critical thinking.",
-    icon: BookOpen,
-    iconBg: "bg-amber-100/70",
-    iconColor: "text-amber-600",
-  },
-  {
-    title: "BSc in Physics",
-    level: "Undergraduate",
-    faculty: "Faculty of Science",
-    discipline: "Physics",
-    duration: "4 Years",
-    description:
-      "Explore fundamental principles governing matter, energy and the universe.",
-    icon: Code2,
-    iconBg: "bg-indigo-100/70",
-    iconColor: "text-indigo-600",
-  },
-  {
-    title: "BSc in Statistics",
-    level: "Undergraduate",
-    faculty: "Faculty of Science",
-    discipline: "Statistics",
-    duration: "4 Years",
-    description:
-      "Turn data into meaningful insights using modern statistical methods.",
-    icon: Calculator,
-    iconBg: "bg-teal-100/70",
-    iconColor: "text-teal-600",
-  },
-  {
-    title: "BSc in Information & Communication Technology",
-    level: "Undergraduate",
-    faculty: "Faculty of Technology",
-    discipline: "ICT",
-    duration: "4 Years",
-    description:
-      "Connect people and technology through modern information systems.",
-    icon: Code2,
-    iconBg: "bg-violet-100/70",
-    iconColor: "text-violet-600",
-  },
-  {
-    title: "MSc in Environmental Science",
-    level: "Postgraduate",
-    faculty: "Faculty of Science",
-    discipline: "Environmental Science",
-    duration: "2 Years",
-    description:
-      "Advanced study of environmental systems and sustainable development.",
-    icon: Leaf,
-    iconBg: "bg-green-100/70",
-    iconColor: "text-green-600",
-  },
-  {
-    title: "MBA in Business Administration",
-    level: "Postgraduate",
-    faculty: "Faculty of Business",
-    discipline: "Business",
-    duration: "2 Years",
-    description:
-      "Advance your business leadership, strategy and management capabilities.",
-    icon: TrendingUp,
-    iconBg: "bg-amber-100/70",
-    iconColor: "text-amber-600",
-  },
-  {
-    title: "MSc in Computer Science",
-    level: "Postgraduate",
-    faculty: "Faculty of Engineering",
-    discipline: "Computer Science",
-    duration: "2 Years",
-    description:
-      "Explore advanced computing, software engineering and research.",
-    icon: Code2,
-    iconBg: "bg-blue-100/70",
-    iconColor: "text-blue-600",
-  },
-  {
-    title: "MSc in Chemistry",
-    level: "Postgraduate",
-    faculty: "Faculty of Science",
-    discipline: "Chemistry",
-    duration: "2 Years",
-    description:
-      "Advanced research and study in modern chemistry and material science.",
-    icon: FlaskConical,
-    iconBg: "bg-rose-100/70",
-    iconColor: "text-rose-500",
-  },
-  {
-    title: "MA in English",
-    level: "Postgraduate",
-    faculty: "Faculty of Humanities",
-    discipline: "English",
-    duration: "2 Years",
-    description:
-      "Advanced literary studies, linguistics and communication.",
-    icon: BookOpen,
-    iconBg: "bg-amber-100/70",
-    iconColor: "text-amber-600",
-  },
-  {
-    title: "MSc in Mathematics",
-    level: "Postgraduate",
-    faculty: "Faculty of Science",
-    discipline: "Mathematics",
-    duration: "2 Years",
-    description:
-      "Advanced mathematical theory, modelling and applied mathematics.",
-    icon: Calculator,
-    iconBg: "bg-blue-100/70",
-    iconColor: "text-blue-600",
-  },
-  {
-    title: "MSc in Physics",
-    level: "Postgraduate",
-    faculty: "Faculty of Science",
-    discipline: "Physics",
-    duration: "2 Years",
-    description:
-      "Advanced study and research in theoretical and applied physics.",
-    icon: Code2,
-    iconBg: "bg-indigo-100/70",
-    iconColor: "text-indigo-600",
-  },
-  {
-    title: "PhD in Computer Science",
-    level: "PhD / Doctoral",
-    faculty: "Faculty of Engineering",
-    discipline: "Computer Science",
-    duration: "3–5 Years",
-    description:
-      "Conduct advanced original research in computer science and emerging technologies.",
-    icon: Code2,
-    iconBg: "bg-blue-100/70",
-    iconColor: "text-blue-600",
-  },
-  {
-    title: "PhD in Engineering",
-    level: "PhD / Doctoral",
-    faculty: "Faculty of Engineering",
-    discipline: "Engineering",
-    duration: "3–5 Years",
-    description:
-      "Pursue high-impact engineering research under expert supervision.",
-    icon: Zap,
-    iconBg: "bg-sky-100/70",
-    iconColor: "text-sky-600",
-  },
-  {
-    title: "Diploma in ICT",
-    level: "Diploma",
-    faculty: "Faculty of Technology",
-    discipline: "ICT",
-    duration: "2 Years",
-    description:
-      "Practical technology education for modern digital careers.",
-    icon: Code2,
-    iconBg: "bg-violet-100/70",
-    iconColor: "text-violet-600",
-  },
-  {
-    title: "Diploma in Business Studies",
-    level: "Diploma",
-    faculty: "Faculty of Business",
-    discipline: "Business",
-    duration: "2 Years",
-    description:
-      "Build practical business knowledge for professional success.",
-    icon: TrendingUp,
-    iconBg: "bg-amber-100/70",
-    iconColor: "text-amber-600",
-  },
-]
-
-const LEVELS = [
-  "Undergraduate",
-  "Postgraduate",
-  "PhD / Doctoral",
-  "Diploma",
-]
-
-const FACULTIES = [
-  "All Faculties",
-  "Faculty of Engineering",
-  "Faculty of Science",
-  "Faculty of Business",
-  "Faculty of Humanities",
-  "Faculty of Technology",
-]
-
-const DISCIPLINES = [
-  "All Disciplines",
-  "Computer Science",
-  "Electrical Engineering",
-  "Civil Engineering",
-  "Business",
-  "Chemistry",
-  "Biotechnology",
-  "Mathematics",
-  "Environmental Science",
-  "English",
-  "Physics",
-  "Statistics",
-  "ICT",
-  "Engineering",
-]
-
 function ProgramCard({ program }: { program: Program }) {
-  const IconComponent = program.icon
+  const IconComponent = ICON_MAP[program.icon] ?? ICON_MAP.Code2
 
   return (
     <article className="group flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-200 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
@@ -479,7 +156,9 @@ export default function AcademicPrograms() {
   )
 
   return (
-    <main className="min-h-screen bg-[#fafafb] text-slate-800">
+    <>
+      <SiteHeader />
+      <main className="min-h-screen bg-[#fafafb] text-slate-800">
       {/* HERO SECTION */}
       <section className="relative min-h-[420px] overflow-hidden">
         <div
@@ -878,6 +557,8 @@ export default function AcademicPrograms() {
           </div>
         </div>
       </section>
-    </main>
+      </main>
+      <SiteFooter />
+    </>
   )
 }

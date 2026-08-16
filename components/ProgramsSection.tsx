@@ -185,7 +185,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
     const faculty = program.faculty.toLowerCase();
 
     if (title.includes("computer") || title.includes("software")) {
-      return <Laptop className="h-6 w-6 text-amber-500" />;
+      return <Laptop className="h-6 w-6 text-brand-accent" />;
     }
 
     if (
@@ -193,7 +193,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("electronic") ||
       title.includes("engineering")
     ) {
-      return <Cpu className="h-6 w-6 text-indigo-500" />;
+      return <Cpu className="h-6 w-6 text-brand" />;
     }
 
     if (
@@ -201,7 +201,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("business administration") ||
       title.includes("mba")
     ) {
-      return <Briefcase className="h-6 w-6 text-emerald-500" />;
+      return <Briefcase className="h-6 w-6 text-brand-accent" />;
     }
 
     if (
@@ -210,15 +210,15 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("mathematics") ||
       faculty.includes("science")
     ) {
-      return <Zap className="h-6 w-6 text-yellow-500" />;
+      return <Zap className="h-6 w-6 text-brand" />;
     }
 
     if (title.includes("civil") || title.includes("mechanical")) {
-      return <Building2 className="h-6 w-6 text-blue-500" />;
+      return <Building2 className="h-6 w-6 text-brand-accent" />;
     }
 
     if (title.includes("economics") || faculty.includes("social")) {
-      return <Compass className="h-6 w-6 text-purple-500" />;
+      return <Compass className="h-6 w-6 text-brand" />;
     }
 
     if (
@@ -226,10 +226,10 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("microbiology") ||
       title.includes("biochemistry")
     ) {
-      return <Terminal className="h-6 w-6 text-cyan-500" />;
+      return <Terminal className="h-6 w-6 text-brand-accent" />;
     }
 
-    return <GraduationCap className="h-6 w-6 text-amber-500" />;
+    return <GraduationCap className="h-6 w-6 text-brand-accent" />;
   };
 
   /* ============================================================
@@ -263,7 +263,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       ====================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 top-20 z-0 h-80 w-80 rounded-full bg-indigo-100/30 blur-3xl"
+        className="pointer-events-none absolute -left-40 top-20 z-0 h-80 w-80 rounded-full bg-brand/10 blur-3xl"
       />
 
       <div
@@ -282,7 +282,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
           data-programs-header
           className="programs-header mx-auto mb-12 max-w-3xl space-y-3 text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100/80 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0D0357]">
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0D0357]">
             <GraduationCap className="h-4 w-4 text-amber-600" />
 
             <span>Academic Offerings</span>
@@ -381,7 +381,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
               <div className="space-y-4 p-6">
                 {/* Header */}
                 <div className="flex items-start justify-between gap-3">
-                  <div className="rounded-xl bg-slate-100 p-3 transition-colors group-hover:bg-indigo-50">
+                  <div className="rounded-xl bg-slate-100 p-3 transition-colors group-hover:bg-brand/10">
                     {getIcon(program)}
                   </div>
 
@@ -460,7 +460,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                     onOpenOnlineApplyWithProgram?.(program.title);
                     setApplicationProgram(program.title);
                   }}
-                  className="flex items-center gap-1 rounded-lg bg-[#0D0357] px-3.5 py-2 text-xs font-bold text-amber-300 shadow-sm transition-all hover:bg-indigo-950 hover:shadow-md"
+                  className="flex items-center gap-1 rounded-lg bg-[#0D0357] px-3.5 py-2 text-xs font-bold text-amber-300 shadow-sm transition-all hover:bg-brand-dark hover:shadow-md"
                 >
                   <span>Apply Now</span>
 
@@ -667,7 +667,7 @@ function ApplicationModal({
             <button
               type="button"
               onClick={onClose}
-              className="mt-7 rounded-xl bg-[#0D0357] px-6 py-3 text-sm font-bold text-amber-300 transition hover:bg-indigo-950"
+              className="mt-7 rounded-xl bg-[#0D0357] px-6 py-3 text-sm font-bold text-amber-300 transition hover:bg-brand-dark"
             >
               Close
             </button>
@@ -832,7 +832,7 @@ function ApplicationModal({
                   </div>
 
                   {/* SSC */}
-                  <div className="rounded-2xl border border-indigo-100 bg-indigo-50/60 p-4">
+                  <div className="rounded-2xl border border-brand/20 bg-brand/5 p-4">
                     <p className="text-sm font-extrabold text-[#0D0357]">
                       Secondary School Certificate (SSC/O-Level)
                     </p>
@@ -1044,7 +1044,7 @@ function ApplicationModal({
                     setError("");
                     setStep((current) => current - 1);
                   }}
-                  className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold text-[#0D0357] transition hover:bg-indigo-50"
+                  className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold text-[#0D0357] transition hover:bg-brand/10"
                 >
                   <ChevronLeft className="h-4 w-4" />
                   Back
@@ -1058,7 +1058,7 @@ function ApplicationModal({
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#0D0357] px-5 py-2.5 text-sm font-bold text-amber-300 shadow-sm transition hover:bg-indigo-950"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#0D0357] px-5 py-2.5 text-sm font-bold text-amber-300 shadow-sm transition hover:bg-brand-dark"
                 >
                   Next step
                   <ChevronRight className="h-4 w-4" />
@@ -1066,7 +1066,7 @@ function ApplicationModal({
               ) : (
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#0D0357] px-5 py-2.5 text-sm font-bold text-amber-300 shadow-sm transition hover:bg-indigo-950"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#0D0357] px-5 py-2.5 text-sm font-bold text-amber-300 shadow-sm transition hover:bg-brand-dark"
                 >
                   Submit application
                   <Check className="h-4 w-4" />
