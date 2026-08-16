@@ -89,6 +89,47 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* Latest News (news listing page) — white content area between the navy
+   hero and navy footer, distinct from the site-wide --background/--card
+   tokens above. */
+.news-content-section {
+  --news-section-bg: #FFFFFF;
+  --news-card-bg: #FFFFFF;
+  --news-panel-bg: #FFFFFF;
+  --news-border: oklch(90% 0.05 260);
+  --news-btn-bg: oklch(95% 0.02 260);
+  --news-btn-active-bg: oklch(36.9089% 0.350961 260.2);
+  --news-heading: oklch(25% 0.20 260);
+  --news-text-secondary: oklch(45% 0.08 260);
+  --news-text-meta: oklch(55% 0.08 260);
+}
+
+/* Events page (/events) — same white-content pattern as .news-content-section. */
+.events-content-section {
+  --events-section-bg: #FFFFFF;
+  --events-card-bg: #FFFFFF;
+  --events-panel-bg: #FFFFFF;
+  --events-border: oklch(90% 0.05 260);
+  --events-btn-bg: oklch(95% 0.02 260);
+  --events-btn-active-bg: oklch(36.9089% 0.350961 -85.6872);
+  --events-heading: oklch(25% 0.20 260);
+  --events-text-secondary: oklch(45% 0.08 260);
+  --events-text-meta: oklch(55% 0.08 260);
+}
+
+/* Notice Board page (/notice-board) — same white-content pattern. */
+.notice-content-section {
+  --notice-section-bg: #FFFFFF;
+  --notice-card-bg: #FFFFFF;
+  --notice-panel-bg: #FFFFFF;
+  --notice-border: oklch(90% 0.05 260);
+  --notice-btn-bg: oklch(95% 0.02 260);
+  --notice-btn-active-bg: oklch(36.9089% 0.350961 260.2);
+  --notice-heading: oklch(25% 0.20 260);
+  --notice-text-secondary: oklch(45% 0.08 260);
+  --notice-text-meta: oklch(55% 0.08 260);
+}
+
 .dark {
   color-scheme: dark;
   --background: #0B0754;

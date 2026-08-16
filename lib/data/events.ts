@@ -1,0 +1,100 @@
+// Events page (/events) data — edit or add items here.
+// Each item needs a text image URL: local "/images/..." path or a full
+// https:// link both work. date must be an ISO string ("YYYY-MM-DD") so the
+// calendar and date badges can parse it correctly.
+export type EventCategory = "Seminar" | "Workshop" | "Competition" | "Cultural" | "Others"
+
+export const EVENT_CATEGORIES: EventCategory[] = ["Seminar", "Workshop", "Competition", "Cultural", "Others"]
+
+export const EVENTS_LIST = [
+  {
+    slug: "seminar-ai-future-career",
+    image: "/images/news-3.png",
+    category: "Seminar" as EventCategory,
+    date: "2025-05-20",
+    time: "10:00 AM – 01:00 PM",
+    venue: "Central Seminar Hall",
+    title: "Seminar on Artificial Intelligence and Future Career",
+    description: "The Department of CSE is organizing a seminar on AI and future career opportunities for students.",
+  },
+  {
+    slug: "robotics-workshop-engineering",
+    image: "/images/campus-activities.png",
+    category: "Workshop" as EventCategory,
+    date: "2025-05-24",
+    time: "09:30 AM – 04:00 PM",
+    venue: "Engineering Building, Lab 305",
+    title: "Robotics Workshop for Engineering Students",
+    description: "Hands-on robotics workshop for engineering students to learn modern automation technologies.",
+  },
+  {
+    slug: "tree-plantation-program",
+    image: "/images/campus-green.png",
+    category: "Others" as EventCategory,
+    date: "2025-05-24",
+    time: "09:00 AM – 12:00 PM",
+    venue: "College Campus",
+    title: "Tree Plantation Program Organized by NSS",
+    description: "NSS Unit of our college is organizing a tree plantation program to build a green and healthy environment.",
+  },
+  {
+    slug: "programming-contest-2025",
+    image: "/images/news-1.png",
+    category: "Competition" as EventCategory,
+    date: "2025-06-02",
+    time: "10:00 AM – 04:00 PM",
+    venue: "Computer Lab, 3rd Floor",
+    title: "Inter-Department Programming Contest 2025",
+    description: "An inter-department programming contest to encourage problem solving and coding skills among students.",
+  },
+  {
+    slug: "seminar-research-methodology",
+    image: "/images/campus-library.png",
+    category: "Seminar" as EventCategory,
+    date: "2025-06-05",
+    time: "11:00 AM – 01:00 PM",
+    venue: "Library Auditorium",
+    title: "Seminar on Research Methodology",
+    description: "A seminar for students on understanding research methodology and academic excellence.",
+  },
+  {
+    slug: "cultural-program-2025",
+    image: "/images/news-4.png",
+    category: "Cultural" as EventCategory,
+    date: "2025-06-10",
+    time: "04:00 PM – 08:00 PM",
+    venue: "College Auditorium",
+    title: "Cultural Program 2025",
+    description: "A grand cultural program showcasing the talent and creativity of our students.",
+  },
+  {
+    slug: "career-counseling-workshop",
+    image: "/images/campus-sports.png",
+    category: "Workshop" as EventCategory,
+    date: "2025-06-15",
+    time: "10:00 AM – 01:00 PM",
+    venue: "Seminar Hall",
+    title: "Career Counseling Workshop",
+    description: "Guidance session helping students plan higher studies and career paths after graduation.",
+  },
+  {
+    slug: "annual-sports-meet",
+    image: "/images/hero-campus.png",
+    category: "Others" as EventCategory,
+    date: "2025-06-20",
+    time: "08:00 AM – 05:00 PM",
+    venue: "Sports Ground",
+    title: "Annual Sports Meet",
+    description: "A day of athletics, team sports and friendly competition across all departments.",
+  },
+  {
+    slug: "debate-competition",
+    image: "/images/news-2.png",
+    category: "Competition" as EventCategory,
+    date: "2025-06-25",
+    time: "02:00 PM – 05:00 PM",
+    venue: "College Auditorium",
+    title: "Inter-College Debate Competition",
+    description: "Students showcase critical thinking and public speaking skills in this inter-college debate.",
+  },
+]
