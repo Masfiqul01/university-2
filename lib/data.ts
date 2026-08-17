@@ -131,15 +131,15 @@ export const NOTICES = [
 ]
 
 export const FACULTY_MEMBERS = [
-  { name: "Dr. A. Rahman", designation: "Professor & Dean", department: "Faculty of Engineering", email: "a.rahman@kkjstu.edu.bd" },
-  { name: "Dr. S. Akter", designation: "Professor", department: "Faculty of Science", email: "s.akter@kkjstu.edu.bd" },
-  { name: "Dr. M. Hasan", designation: "Associate Professor", department: "Faculty of Business Studies", email: "m.hasan@kkjstu.edu.bd" },
-  { name: "Dr. N. Chowdhury", designation: "Associate Professor", department: "Faculty of Social Sciences", email: "n.chowdhury@kkjstu.edu.bd" },
-  { name: "Dr. T. Islam", designation: "Assistant Professor", department: "Faculty of Life Sciences", email: "t.islam@kkjstu.edu.bd" },
-  { name: "Dr. R. Karim", designation: "Assistant Professor", department: "Faculty of Engineering", email: "r.karim@kkjstu.edu.bd" },
-  { name: "Dr. F. Sultana", designation: "Professor", department: "Faculty of Science", email: "f.sultana@kkjstu.edu.bd" },
-  { name: "Dr. K. Ahmed", designation: "Lecturer", department: "Faculty of Business Studies", email: "k.ahmed@kkjstu.edu.bd" },
-  { name: "Dr. J. Begum", designation: "Associate Professor", department: "Faculty of Life Sciences", email: "j.begum@kkjstu.edu.bd" },
+  { name: "Dr. A. Rahman", designation: "Professor & Dean", department: "Faculty of Engineering", email: "a.rahman@kacst.edu.bd" },
+  { name: "Dr. S. Akter", designation: "Professor", department: "Faculty of Science", email: "s.akter@kacst.edu.bd" },
+  { name: "Dr. M. Hasan", designation: "Associate Professor", department: "Faculty of Business Studies", email: "m.hasan@kacst.edu.bd" },
+  { name: "Dr. N. Chowdhury", designation: "Associate Professor", department: "Faculty of Social Sciences", email: "n.chowdhury@kacst.edu.bd" },
+  { name: "Dr. T. Islam", designation: "Assistant Professor", department: "Faculty of Life Sciences", email: "t.islam@kacst.edu.bd" },
+  { name: "Dr. R. Karim", designation: "Assistant Professor", department: "Faculty of Engineering", email: "r.karim@kacst.edu.bd" },
+  { name: "Dr. F. Sultana", designation: "Professor", department: "Faculty of Science", email: "f.sultana@kacst.edu.bd" },
+  { name: "Dr. K. Ahmed", designation: "Lecturer", department: "Faculty of Business Studies", email: "k.ahmed@kacst.edu.bd" },
+  { name: "Dr. J. Begum", designation: "Associate Professor", department: "Faculty of Life Sciences", email: "j.begum@kacst.edu.bd" },
 ]
 
 export const RESEARCH_AREAS = [
