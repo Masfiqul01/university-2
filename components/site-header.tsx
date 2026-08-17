@@ -4,12 +4,13 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, ArrowRight, ChevronDown, ExternalLink } from "lucide-react"
 import { NAV_ITEMS } from "@/lib/nav"
+import { ICON_MAP } from "@/lib/icon-map"
 import { LOGO_URL } from "@/lib/site-assets"
 import { usePathname } from "next/navigation";
 
 /*
   ============================================================
-  KKJSTU WEBSITE HEADER
+  KACST WEBSITE HEADER
   ============================================================
 
   এই file-এর কাজ:
@@ -462,18 +463,20 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
               MEGA MENU ITEMS
           ===================================================== */}
           <ul className="mt-4 grid list-none grid-cols-3 gap-x-8 gap-y-0 p-0">
-            {item.children.map((child, index) => (
+            {item.children.map((child) => {
+              const ChildIcon = ICON_MAP[child.icon] ?? ICON_MAP.Info
+              return (
               <li key={child.href}>
                 <Link
                   href={child.href}
                   className="group/item relative flex min-w-0 items-center gap-3 border-b border-slate-100/80 py-3 transition-colors duration-200"
                 >
-                  {/* Number */}
+                  {/* Icon */}
                   <span
                     aria-hidden="true"
-                    className="w-5 shrink-0 text-[9px] font-bold tabular-nums text-slate-300 transition-colors duration-200 group-hover/item:text-amber-500"
+                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-slate-400 transition-all duration-200 group-hover/item:bg-amber-400 group-hover/item:text-[#0D0357]"
                   >
-                    {String(index + 1).padStart(2, "0")}
+                    <ChildIcon className="h-3.5 w-3.5" />
                   </span>
 
                   {/* Label */}
@@ -496,7 +499,8 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
                   />
                 </Link>
               </li>
-            ))}
+              )
+            })}
           </ul>
 
           {/* =====================================================
@@ -534,18 +538,20 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
         />
 
         <ul className="list-none p-0 pt-1">
-          {item.children.map((child, index) => (
+          {item.children.map((child) => {
+            const ChildIcon = ICON_MAP[child.icon] ?? ICON_MAP.Info
+            return (
             <li key={child.href}>
               <Link
                 href={child.href}
                 className="group/item flex items-center gap-3 rounded-xl px-3 py-2.5 transition-all duration-200 hover:bg-slate-50 xl:py-3"
               >
-                {/* Number */}
+                {/* Icon */}
                 <span
                   aria-hidden="true"
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-[9px] font-bold text-slate-400 transition-all duration-200 group-hover/item:bg-amber-400 group-hover/item:text-[#0D0357]"
+                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-slate-50 text-slate-400 transition-all duration-200 group-hover/item:bg-amber-400 group-hover/item:text-[#0D0357]"
                 >
-                  {index + 1}
+                  <ChildIcon className="h-3.5 w-3.5" />
                 </span>
 
                 {/* Label */}
@@ -562,7 +568,8 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
                 </span>
               </Link>
             </li>
-          ))}
+            )
+          })}
         </ul>
       </div>
     )}
@@ -672,16 +679,20 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
 
                     {expanded === item.label && (
                       <div className="flex flex-col pb-2">
-                        {item.children.map((child) => (
+                        {item.children.map((child) => {
+                          const ChildIcon = ICON_MAP[child.icon] ?? ICON_MAP.Info
+                          return (
                           <Link
                             key={child.href}
                             href={child.href}
                             onClick={() => setOpen(false)}
-                            className="px-6 py-2.5 text-sm text-white/70 transition-colors hover:text-white"
+                            className="flex items-center gap-2.5 px-6 py-2.5 text-sm text-white/70 transition-colors hover:text-white"
                           >
+                            <ChildIcon className="h-4 w-4 shrink-0 text-amber-400" />
                             {child.label}
                           </Link>
-                        ))}
+                          )
+                        })}
                       </div>
                     )}
                   </>

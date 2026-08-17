@@ -6,22 +6,14 @@ import { SectionHeading } from "@/components/section-heading"
 import { LeadershipCard } from "@/components/cards"
 import { StatsBar } from "@/components/stats-bar"
 import { CTASection } from "@/components/cta-section"
-import { Target, Eye, Heart, Lightbulb, Users, ShieldCheck } from "lucide-react"
+import { ICON_MAP } from "@/lib/icon-map"
+import { VALUES } from "@/lib/data/about"
 
 export const metadata: Metadata = {
-  title: "About KKJSTU",
+  title: "About KACST",
   description:
-    "Learn about Khulna Khan Jahan Science and Technology University (KKJSTU) — our identity, values, and commitment to education, research and innovation.",
+    "Learn about Khulna Khan Jahan Science and Technology University (KACST) — our identity, values, and commitment to education, research and innovation.",
 }
-
-const VALUES = [
-  { icon: Lightbulb, title: "Innovation", description: "Encouraging creativity and forward-thinking across every discipline." },
-  { icon: ShieldCheck, title: "Integrity", description: "Upholding honesty, ethics, and accountability in all we do." },
-  { icon: Users, title: "Inclusiveness", description: "Building a diverse, welcoming and supportive community." },
-  { icon: Target, title: "Excellence", description: "Pursuing the highest standards in teaching and research." },
-  { icon: Heart, title: "Service", description: "Contributing meaningfully to society and community." },
-  { icon: Eye, title: "Vision", description: "Preparing students to lead in a changing world." },
-]
 
 export default function AboutPage() {
   return (
@@ -41,12 +33,12 @@ export default function AboutPage() {
       <Section>
         <ImageSplit
           image="/images/admissions-building.png"
-          alt="KKJSTU academic building"
+          alt="KACST academic building"
           eyebrow="Who We Are"
           title="A Community Built on Knowledge and Purpose"
         >
           <p>
-            Khulna Khan Jahan Science and Technology University (KKJSTU) is committed to nurturing
+            Khulna Khan Jahan Science and Technology University (KACST) is committed to nurturing
             competent professionals and ethical leaders. Through quality education, research, and
             innovation, we aim to create an inspiring environment where students thrive.
           </p>
@@ -65,7 +57,7 @@ export default function AboutPage() {
           description="These values shape our culture and define how we teach, research, and serve."
           center
         />
-        <FeatureGrid items={VALUES} />
+        <FeatureGrid items={VALUES.map((v) => ({ ...v, icon: ICON_MAP[v.icon] ?? ICON_MAP.Target }))} />
       </Section>
 
       <Section>
@@ -73,7 +65,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl">
           <LeadershipCard
             name="Vice Chancellor"
-            role="Office of the Vice Chancellor — KKJSTU (editable placeholder)"
+            role="Office of the Vice Chancellor — KACST (editable placeholder)"
             bio="Welcome to Khulna Khan Jahan Science and Technology University. Our mission is to empower students with the knowledge, skills, and values needed to excel and lead. We invite you to be part of a community devoted to learning, discovery, and service. (This message is editable placeholder content.)"
           />
         </div>
@@ -82,13 +74,13 @@ export default function AboutPage() {
       <Section muted>
         <ImageSplit
           image="/images/campus-green.png"
-          alt="KKJSTU green campus"
-          eyebrow="Why KKJSTU"
+          alt="KACST green campus"
+          eyebrow="Why KACST"
           title="An Inspiring Place to Learn and Grow"
           reverse
         >
           <p>
-            From modern laboratories and a well-resourced library to a vibrant, green campus, KKJSTU
+            From modern laboratories and a well-resourced library to a vibrant, green campus, KACST
             offers an environment designed to support both academic and personal development.
           </p>
           <p>

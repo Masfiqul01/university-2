@@ -1,6 +1,6 @@
 import { Building2, Users, GraduationCap, BookOpen, FlaskConical, Trees } from "lucide-react"
 
-// Editable placeholder figures — replace with official KKJSTU data.
+// Editable placeholder figures — replace with official KACST data.
 const STATS = [
   { icon: Building2, value: "5+", label: "Faculties" },
   { icon: BookOpen, value: "20+", label: "Programs" },

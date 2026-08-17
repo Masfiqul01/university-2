@@ -66,7 +66,7 @@ export function Hero() {
     <section ref={heroRef} className="relative isolate overflow-hidden">
       <img
         src={imageUrl("/images/hero-campus.png")}
-        alt="Aerial view of the KKJSTU campus"
+        alt="Aerial view of the KACST campus"
         data-hero-image
         className="absolute inset-0 h-full w-full object-cover"
       />

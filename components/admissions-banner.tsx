@@ -377,7 +377,7 @@ export function AdmissionsBanner() {
 
         <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-orange-400/[0.06] blur-3xl" />
 
-        <div className="pointer-events-none absolute -bottom-32 right-1/3 h-72 w-72 rounded-full bg-cyan-300/[0.045] blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-32 right-1/3 h-72 w-72 rounded-full bg-brand/[0.045] blur-3xl" />
 
         {/* =========================================================
             CUSTOM SVG ARCHITECTURAL DECORATION

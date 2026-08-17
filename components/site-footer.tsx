@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link"
-import { MapPin, Phone, Mail, Globe } from "lucide-react"
+import { MapPin, Phone, Mail, Globe, BadgeCheck, UserCog, UserLock } from "lucide-react"
 import type { SVGProps } from "react"
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
+<<<<<<< HEAD
 const COLUMNS: {
   title: string
   links: { label: string; href: string }[]
@@ -63,6 +64,40 @@ const COLUMNS: {
       { label: "Transport", href: "/transport" },
     ],
   },
+=======
+type FooterLink = {
+  label: string
+  href: string
+  icon?: typeof MapPin
+  variant?: "highlight" | "muted"
+}
+
+const QUICK_LINKS: FooterLink[] = [
+  { label: "Home", href: "/" },
+  { label: "About KACST", href: "/about" },
+  { label: "KACST Wikipedia Page", href: "#", icon: Globe, variant: "highlight" },
+  { label: "Academic Programs", href: "/academics/programs" },
+  { label: "Online Admission 2026", href: "/admissions/apply" },
+  { label: "Track Application Status", href: "/track-status" },
+  { label: "Tuition Fees & Waiver", href: "/pay-fees" },
+  { label: "College Notice Board", href: "/notice-board" },
+]
+
+const STUDENT_SERVICES: FooterLink[] = [
+  { label: "Student Result Portal", href: "/result" },
+  { label: "Download Centre", href: "#" },
+  { label: "Admission FAQ", href: "#" },
+  { label: "Campus Facilities", href: "/campus-life/facilities" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Admission", href: "/terms" },
+  { label: "HOD Portal Login", href: "/hod-login", icon: UserCog, variant: "highlight" },
+  { label: "Admin", href: "#", icon: UserLock, variant: "muted" },
+]
+
+const CODES = [
+  { label: "NU Professional Code:", value: "0309" },
+  { label: "BTEB Polytechnic Code:", value: "54095" },
+>>>>>>> b309bceb7e520773937772e13a2f9cd8a6f7389f
 ]
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {
@@ -73,83 +108,50 @@ function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-function InstagramIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      {...props}
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle
-        cx="17.5"
-        cy="6.5"
-        r="1"
-        fill="currentColor"
-        stroke="none"
-      />
-    </svg>
-  )
-}
-
-function YoutubeIcon(props: SVGProps<SVGSVGElement>) {
+function WhatsappIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
-      <path d="M23 12s0-3.5-.45-5.18a2.6 2.6 0 0 0-1.83-1.84C19.04 4.5 12 4.5 12 4.5s-7.04 0-8.72.48a2.6 2.6 0 0 0-1.83 1.84C1 8.5 1 12 1 12s0 3.5.45 5.18a2.6 2.6 0 0 0 1.83 1.84C4.96 19.5 12 19.5 12 19.5s7.04 0 8.72-.48a2.6 2.6 0 0 0 1.83-1.84C23 15.5 23 12 23 12ZM9.75 15.02V8.98L15.5 12l-5.75 3.02Z" />
-    </svg>
-  )
-}
-
-function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
-      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z" />
+      <path d="M17.47 14.38c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.29-.76.94-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.61-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43 0 1.43 1.05 2.82 1.19 3.01.15.2 2.06 3.14 4.99 4.4.7.3 1.24.48 1.66.61.7.22 1.34.19 1.84.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34Z" />
+      <path d="M12.03 2C6.5 2 2 6.5 2 12.03c0 1.9.53 3.68 1.44 5.2L2 22l4.9-1.4a9.98 9.98 0 0 0 5.13 1.41h.01c5.53 0 10.02-4.5 10.02-10.02C22.06 6.5 17.57 2 12.03 2Zm0 18.2h-.01a8.14 8.14 0 0 1-4.15-1.14l-.3-.18-2.91.83.83-2.83-.19-.3a8.13 8.13 0 0 1-1.25-4.35c0-4.5 3.66-8.15 8.17-8.15a8.1 8.1 0 0 1 5.78 2.4 8.08 8.08 0 0 1 2.39 5.75c0 4.5-3.66 8.15-8.16 8.15Z" />
     </svg>
   )
 }
 
 const SOCIALS = [
-  FacebookIcon,
-  InstagramIcon,
-  YoutubeIcon,
-  LinkedinIcon,
+  { icon: FacebookIcon, href: "#", label: "Facebook" },
+  { icon: WhatsappIcon, href: "#", label: "WhatsApp" },
+  { icon: Globe, href: "#", label: "Wikipedia" },
+  { icon: Mail, href: "mailto:info@khanjahanalicst.edu.bd", label: "Email" },
 ]
 
-function Column({
-  title,
-  links,
-}: {
-  title: string
-  links: { label: string; href: string }[]
-}) {
-  return (
-    <div className="min-w-0">
-      <h4 className="mb-4 text-sm font-bold text-white">
-        {title}
-      </h4>
+function Underline() {
+  return <span aria-hidden="true" className="mt-2 block h-0.5 w-8 rounded-full bg-brand-accent" />
+}
 
-      <ul className="space-y-2.5">
-        {links.map((link) => (
-          <li
-            key={`${link.href}-${link.label}`}
-            className="min-w-0"
-          >
+function LinkList({ links }: { links: FooterLink[] }) {
+  return (
+    <ul className="space-y-2.5">
+      {links.map((link) => {
+        const Icon = link.icon
+        return (
+          <li key={`${link.href}-${link.label}`} className="min-w-0">
             <Link
               href={link.href}
-              className="block break-words text-sm text-white/70 transition-colors hover:text-white"
+              className={`flex items-center gap-2 break-words text-sm transition-colors ${
+                link.variant === "highlight"
+                  ? "font-semibold text-brand-accent hover:text-white"
+                  : link.variant === "muted"
+                  ? "text-white/40 hover:text-white/60"
+                  : "text-white/70 hover:text-white"
+              }`}
             >
+              {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
               {link.label}
             </Link>
           </li>
-        ))}
-      </ul>
-    </div>
+        )
+      })}
+    </ul>
   )
 }
 
@@ -196,13 +198,12 @@ export function SiteFooter() {
             gap-x-4
             gap-y-10
             sm:gap-x-6
-            md:grid-cols-2
-            lg:grid-cols-4
+            lg:grid-cols-5
             lg:gap-x-8
-            xl:grid-cols-6
           "
         >
-          <div className="col-span-2 min-w-0 lg:col-span-2">
+          {/* BRAND */}
+          <div className="col-span-2 min-w-0">
             <div className="mb-4 flex items-center gap-3">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-white/80">
                 <img
@@ -212,68 +213,99 @@ export function SiteFooter() {
                 />
               </div>
 
-              <div className="min-w-0 text-[11px] font-semibold leading-tight">
-                <p>Khanjahan Ali College of</p>
-                <p>Science & Technology</p>
+              <div className="min-w-0">
+                <p className="text-base font-bold text-white">KACST Khulna</p>
+                <Underline />
               </div>
             </div>
 
             <p className="mb-5 max-w-xs text-sm leading-relaxed text-white/70">
-              Where knowledge inspires innovation, research drives progress,
-              and visionary minds shape the future.
+              Khanjahan Ali College of Science &amp; Technology (KACST) is
+              Khulna&apos;s premier engineering college in Khulna (Estd. 2003)
+              operating under Government EIIN: <strong className="text-white">134211</strong>.
             </p>
 
-            <ul className="mb-5 space-y-2.5 text-sm text-white/70">
-              <li className="flex min-w-0 gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">
-                  Khulna, Bangladesh
-                </span>
-              </li>
-
-              <li className="flex min-w-0 gap-2.5">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-words">
-                  +880 000 000000
-                </span>
-              </li>
-
-              <li className="flex min-w-0 gap-2.5">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-all">
-                  info@kacst.edu.bd
-                </span>
-              </li>
-
-              <li className="flex min-w-0 gap-2.5">
-                <Globe className="mt-0.5 h-4 w-4 shrink-0" />
-                <span className="break-all">
-                  www.kacst.edu.bd
-                </span>
-              </li>
+            <ul className="mb-5 space-y-2 text-sm">
+              {CODES.map((code) => (
+                <li key={code.label} className="flex items-center gap-2 text-brand-accent">
+                  <BadgeCheck className="h-4 w-4 shrink-0" />
+                  <span>
+                    {code.label} <strong>{code.value}</strong>
+                  </span>
+                </li>
+              ))}
             </ul>
 
             <div className="flex flex-wrap gap-3">
-              {SOCIALS.map((Icon, index) => (
+              {SOCIALS.map((social) => (
                 <a
-                  key={`social-${index}`}
-                  href="#"
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-brand-accent"
-                  aria-label="Social link"
+                  key={social.label}
+                  href={social.href}
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${
+                    social.label === "Email"
+                      ? "bg-brand-accent text-white hover:bg-brand-accent/80"
+                      : "bg-white/10 text-brand-accent hover:bg-brand-accent hover:text-white"
+                  }`}
+                  aria-label={social.label}
                 >
-                  <Icon className="h-4 w-4" />
+                  <social.icon className="h-4 w-4" />
                 </a>
               ))}
             </div>
           </div>
 
-          {COLUMNS.map((col) => (
-            <Column
-              key={col.title}
-              title={col.title}
-              links={col.links}
-            />
-          ))}
+          {/* QUICK LINKS */}
+          <div className="min-w-0">
+            <h4 className="mb-1 text-sm font-bold text-white">Quick Links</h4>
+            <Underline />
+            <div className="mt-4">
+              <LinkList links={QUICK_LINKS} />
+            </div>
+          </div>
+
+          {/* STUDENT SERVICES */}
+          <div className="min-w-0">
+            <h4 className="mb-1 text-sm font-bold text-white">Student Services</h4>
+            <Underline />
+            <div className="mt-4">
+              <LinkList links={STUDENT_SERVICES} />
+            </div>
+          </div>
+
+          {/* CONTACT US */}
+          <div className="min-w-0">
+            <h4 className="mb-1 text-sm font-bold text-white">Contact Us</h4>
+            <Underline />
+            <ul className="mt-4 space-y-3 text-sm text-white/70">
+              <li className="flex min-w-0 gap-2.5">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                <span className="break-words">
+                  Mujgunni R/A, Boyra Main Road, Khulna-9000, Bangladesh
+                </span>
+              </li>
+
+              <li className="flex min-w-0 gap-2.5">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                <a href="tel:+8801711042194" className="break-words transition-colors hover:text-white">
+                  Helpline: +880 1711-042194
+                </a>
+              </li>
+
+              <li className="flex min-w-0 gap-2.5">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                <a href="tel:+8801717803684" className="break-words transition-colors hover:text-white">
+                  Phone 2: +880 1717-803684
+                </a>
+              </li>
+
+              <li className="flex min-w-0 gap-2.5">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" />
+                <a href="mailto:info@khanjahanalicst.edu.bd" className="break-all transition-colors hover:text-white">
+                  info@khanjahanalicst.edu.bd
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 

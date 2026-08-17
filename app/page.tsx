@@ -42,7 +42,7 @@ export default function HomePage() {
 
           <div className="absolute -right-40 top-[1400px] h-[450px] w-[450px] rounded-full bg-amber-300/[0.035] blur-3xl" />
 
-          <div className="absolute -left-40 top-[2800px] h-[420px] w-[420px] rounded-full bg-indigo-300/[0.025] blur-3xl" />
+          <div className="absolute -left-40 top-[2800px] h-[420px] w-[420px] rounded-full bg-[#0D0357]/[0.025] blur-3xl" />
         </div>
 
         {/* =====================================================

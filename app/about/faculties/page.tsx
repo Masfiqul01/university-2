@@ -6,131 +6,21 @@ import { useMemo, useState } from "react";
 import {
   ArrowRight,
   Atom,
-  BookOpen,
-  BriefcaseBusiness,
   Building2,
   Check,
   ChevronRight,
-  Computer,
-  FlaskConical,
-  Leaf,
   Search,
-  Settings,
   Users,
-  Zap,
 } from "lucide-react";
+import { ICON_MAP } from "@/lib/icon-map";
+import {
+  FACULTIES_LIST as faculties,
+  DEPARTMENTS_LIST as departments,
+  DEPARTMENT_FILTERS as filters,
+} from "@/lib/data/faculties";
 
 const HERO_BG =
   "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp";
-
-const faculties = [
-  {
-    title: "Faculty of Science & Engineering",
-    description:
-      "Advancing scientific knowledge and engineering excellence through quality education, innovation and research.",
-    departments: 7,
-    icon: Atom,
-    accent: "border-blue-500",
-  },
-  {
-    title: "Faculty of Computer Science & IT",
-    description:
-      "Empowering the next generation of technology leaders, developers and digital innovators.",
-    departments: 5,
-    icon: Computer,
-    accent: "border-indigo-500",
-  },
-  {
-    title: "Faculty of Business Studies",
-    description:
-      "Shaping future business leaders with modern knowledge, strategic thinking and ethical values.",
-    departments: 4,
-    icon: BriefcaseBusiness,
-    accent: "border-emerald-500",
-  },
-  {
-    title: "Faculty of Arts & Humanities",
-    description:
-      "Promoting human values, culture, languages and creative excellence for a better society.",
-    departments: 3,
-    icon: BookOpen,
-    accent: "border-purple-500",
-  },
-  {
-    title: "Faculty of Agricultural Science",
-    description:
-      "Advancing sustainable agriculture through research, innovation, education and practical knowledge.",
-    departments: 3,
-    icon: Leaf,
-    accent: "border-green-600",
-  },
-];
-
-const departments = [
-  {
-    name: "Department of Civil Engineering",
-    faculty: "Science & Engineering",
-    description: "Building the foundations for a better tomorrow.",
-    icon: Building2,
-  },
-  {
-    name: "Department of Electrical & Electronic Engineering",
-    faculty: "Science & Engineering",
-    description: "Powering innovation and sustainable solutions.",
-    icon: Zap,
-  },
-  {
-    name: "Department of Computer Science & Engineering",
-    faculty: "Computer Science & IT",
-    description: "Where code meets creativity and innovation.",
-    icon: Computer,
-  },
-  {
-    name: "Department of Mechanical Engineering",
-    faculty: "Science & Engineering",
-    description: "Designing, innovating and building the future.",
-    icon: Settings,
-  },
-  {
-    name: "Department of Business Administration",
-    faculty: "Business Studies",
-    description: "Developing leaders for the global economy.",
-    icon: BriefcaseBusiness,
-  },
-  {
-    name: "Department of English",
-    faculty: "Arts & Humanities",
-    description: "Inspiring minds through language, literature and communication.",
-    icon: BookOpen,
-  },
-  {
-    name: "Department of Environmental Science",
-    faculty: "Science & Engineering",
-    description: "Creating solutions for a sustainable future.",
-    icon: FlaskConical,
-  },
-  {
-    name: "Department of Information Technology",
-    faculty: "Computer Science & IT",
-    description: "Building secure and intelligent digital experiences.",
-    icon: Computer,
-  },
-  {
-    name: "Department of Accounting",
-    faculty: "Business Studies",
-    description: "Developing financial expertise for modern organizations.",
-    icon: BriefcaseBusiness,
-  },
-];
-
-const filters = [
-  "All Departments",
-  "Science & Engineering",
-  "Computer Science & IT",
-  "Business Studies",
-  "Arts & Humanities",
-  "Agricultural Science",
-];
 
 export default function FacultiesDepartmentsPage() {
   const [activeFilter, setActiveFilter] = useState("All Departments");
@@ -209,7 +99,7 @@ export default function FacultiesDepartmentsPage() {
               <p className="mt-6 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
                 Explore our diverse academic faculties and departments
                 driving excellence, innovation, research and meaningful
-                impact at KKJSTU.
+                impact at KACST.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -293,7 +183,7 @@ export default function FacultiesDepartmentsPage() {
         {/* Faculty cards */}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
           {faculties.map((faculty) => {
-            const Icon = faculty.icon;
+            const Icon = ICON_MAP[faculty.icon] ?? ICON_MAP.Atom;
 
             return (
               <article
@@ -448,7 +338,7 @@ export default function FacultiesDepartmentsPage() {
               {filteredDepartments.length > 0 ? (
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                   {filteredDepartments.map((department) => {
-                    const Icon = department.icon;
+                    const Icon = ICON_MAP[department.icon] ?? ICON_MAP.Building2;
 
                     return (
                       <article
@@ -552,7 +442,7 @@ export default function FacultiesDepartmentsPage() {
         <p className="mt-4 max-w-2xl text-sm leading-7 text-white/60 sm:text-base">
           Explore our faculties, discover your department and take
           the next step toward building a successful future at
-          KKJSTU.
+          KACST.
         </p>
       </div>
 

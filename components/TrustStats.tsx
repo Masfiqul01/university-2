@@ -22,9 +22,9 @@ export const TrustStats: React.FC = () => {
       value: FACULTIES.length,
       subtext: "Across multiple disciplines",
       icon: Building2,
-      iconStyle: "bg-indigo-50 text-indigo-600",
-      hoverStyle: "group-hover:border-indigo-200",
-      numberHover: "group-hover:text-indigo-600",
+      iconStyle: "bg-brand/10 text-brand",
+      hoverStyle: "group-hover:border-brand/30",
+      numberHover: "group-hover:text-brand",
     },
     {
       id: "programs",
@@ -42,9 +42,9 @@ export const TrustStats: React.FC = () => {
       value: "37+",
       subtext: "Academics & researchers",
       icon: Users,
-      iconStyle: "bg-emerald-50 text-emerald-600",
-      hoverStyle: "group-hover:border-emerald-200",
-      numberHover: "group-hover:text-emerald-600",
+      iconStyle: "bg-brand/10 text-brand",
+      hoverStyle: "group-hover:border-brand/30",
+      numberHover: "group-hover:text-brand",
     },
     {
       id: "research",
@@ -52,9 +52,9 @@ export const TrustStats: React.FC = () => {
       value: RESEARCH_AREAS.length,
       subtext: "Innovation & research focus",
       icon: FlaskConical,
-      iconStyle: "bg-cyan-50 text-cyan-600",
-      hoverStyle: "group-hover:border-cyan-200",
-      numberHover: "group-hover:text-cyan-600",
+      iconStyle: "bg-brand-accent/10 text-brand-accent",
+      hoverStyle: "group-hover:border-brand-accent/30",
+      numberHover: "group-hover:text-brand-accent",
     },
   ];
 
@@ -72,7 +72,7 @@ export const TrustStats: React.FC = () => {
   {/* Background decoration */}
   <div
     aria-hidden="true"
-    className="pointer-events-none absolute -left-40 top-16 z-0 h-80 w-80 rounded-full bg-indigo-100/30 blur-3xl"
+    className="pointer-events-none absolute -left-40 top-16 z-0 h-80 w-80 rounded-full bg-brand/10 blur-3xl"
   />
 
   <div
