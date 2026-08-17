@@ -9,6 +9,34 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
+type FooterLink = {
+  label: string
+  href: string
+  icon?: any
+  variant?: "default" | "highlight" | "muted"
+}
+
+const CODES = [
+  { label: "Government EIIN", value: "134211" },
+  { label: "Institution Code", value: "KACST-001" },
+]
+
+const QUICK_LINKS: FooterLink[] = [
+  { label: "About KACST", href: "/about" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Academics", href: "/academics" },
+  { label: "Student Portal", href: "/student-portal" },
+  { label: "News & Events", href: "/news" },
+]
+
+const STUDENT_SERVICES: FooterLink[] = [
+  { label: "Student Dashboard", href: "/student-portal" },
+  { label: "Results Portal", href: "/result" },
+  { label: "Fee Payment", href: "/pay-fees" },
+  { label: "Library Access", href: "/library" },
+  { label: "Support Services", href: "/contact" },
+]
+
 const COLUMNS: {
   title: string
   links: { label: string; href: string }[]
