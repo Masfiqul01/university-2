@@ -12,35 +12,85 @@ gsap.registerPlugin(ScrollTrigger)
 type FooterLink = {
   label: string
   href: string
-  icon?: typeof MapPin
-  variant?: "highlight" | "muted"
+  icon?: any
+  variant?: "default" | "highlight" | "muted"
 }
 
+const CODES = [
+  { label: "Government EIIN", value: "134211" },
+  { label: "Institution Code", value: "KACST-001" },
+]
+
 const QUICK_LINKS: FooterLink[] = [
-  { label: "Home", href: "/" },
   { label: "About KACST", href: "/about" },
-  { label: "KACST Wikipedia Page", href: "#", icon: Globe, variant: "highlight" },
-  { label: "Academic Programs", href: "/academics/programs" },
-  { label: "Online Admission 2026", href: "/admissions/apply" },
-  { label: "Track Application Status", href: "/track-status" },
-  { label: "Tuition Fees & Waiver", href: "/pay-fees" },
-  { label: "College Notice Board", href: "/notice-board" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "Academics", href: "/academics" },
+  { label: "Student Portal", href: "/student-portal" },
+  { label: "News & Events", href: "/news" },
 ]
 
 const STUDENT_SERVICES: FooterLink[] = [
-  { label: "Student Result Portal", href: "/result" },
-  { label: "Download Centre", href: "#" },
-  { label: "Admission FAQ", href: "#" },
-  { label: "Campus Facilities", href: "/campus-life/facilities" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Admission", href: "/terms" },
-  { label: "HOD Portal Login", href: "/hod-login", icon: UserCog, variant: "highlight" },
-  { label: "Admin", href: "#", icon: UserLock, variant: "muted" },
+  { label: "Student Dashboard", href: "/student-portal" },
+  { label: "Results Portal", href: "/result" },
+  { label: "Fee Payment", href: "/pay-fees" },
+  { label: "Library Access", href: "/library" },
+  { label: "Support Services", href: "/contact" },
 ]
 
-const CODES = [
-  { label: "NU Professional Code:", value: "0309" },
-  { label: "BTEB Polytechnic Code:", value: "54095" },
+const COLUMNS: {
+  title: string
+  links: { label: string; href: string }[]
+}[] = [
+  {
+    title: "University",
+    links: [
+      { label: "About KACST", href: "/about" },
+      { label: "History", href: "/about/history" },
+      { label: "Mission & Vision", href: "/about/mission-vision" },
+      { label: "Leadership", href: "/about/leadership" },
+      { label: "Faculties", href: "/about/faculties" },
+      { label: "Administration", href: "/administration" },
+      { label: "IQAC", href: "/iqac" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "Academics",
+    links: [
+      { label: "Programs", href: "/academics/programs" },
+      { label: "Departments", href: "/academics/faculties" },
+      { label: "Academic Calendar", href: "/academics/calendar" },
+      { label: "Library", href: "/library" },
+      { label: "Faculty Directory", href: "/faculty" },
+      { label: "Research", href: "/research" },
+      { label: "Research Centers", href: "/research/centers" },
+      { label: "Publications", href: "/research/publications" },
+    ],
+  },
+  {
+    title: "Admissions",
+    links: [
+      { label: "Undergraduate", href: "/admissions/undergraduate" },
+      { label: "Postgraduate", href: "/admissions/postgraduate" },
+      { label: "Requirements", href: "/admissions/requirements" },
+      { label: "Apply Now", href: "/admissions/apply" },
+      { label: "Track Status", href: "/track-status" },
+      { label: "Career", href: "/career" },
+    ],
+  },
+  {
+    title: "Campus & News",
+    links: [
+      { label: "Campus Life", href: "/campus-life" },
+      { label: "Facilities", href: "/campus-life/facilities" },
+      { label: "Student Life", href: "/campus-life/student-life" },
+      { label: "Clubs & Organizations", href: "/campus-life/clubs" },
+      { label: "News", href: "/news" },
+      { label: "Events", href: "/events" },
+      { label: "Notice Board", href: "/notice-board" },
+      { label: "Transport", href: "/transport" },
+    ],
+  },
 ]
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {
