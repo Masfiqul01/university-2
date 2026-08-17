@@ -16,7 +16,7 @@ const COLUMNS: {
   {
     title: "University",
     links: [
-      { label: "About KKJSTU", href: "/about" },
+      { label: "About KACST", href: "/about" },
       { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
       { label: "Leadership", href: "/about/leadership" },
