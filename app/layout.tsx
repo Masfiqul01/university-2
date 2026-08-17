@@ -1,7 +1,14 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
+import Script from 'next/script'
+import { PageMotion } from '@/components/page-motion'
 import './globals.css'
+
+// Runs before the body is parsed so entry animations never flash their final
+// state. The timeout is a failsafe: if PageMotion never mounts, the guard drops
+// on its own and the page renders normally.
+const MOTION_GUARD = `(function(){try{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;var e=document.documentElement;e.classList.add('motion-armed');setTimeout(function(){e.classList.remove('motion-armed')},2500)}catch(_){}})();`
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -49,6 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`bg-background ${playfair.variable} ${inter.variable}`}>
       <body suppressHydrationWarning className="antialiased font-sans">
+        <Script id="motion-guard" strategy="beforeInteractive">
+          {MOTION_GUARD}
+        </Script>
+        <PageMotion />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import {
   ArrowRight,
+  BookOpen,
   CalendarDays,
   ChevronDown,
   ChevronLeft,
@@ -14,6 +15,7 @@ import {
   GraduationCap,
   RotateCcw,
   Search,
+  X,
 } from "lucide-react"
 import { ICON_MAP } from "@/lib/icon-map"
 import {
@@ -219,8 +221,12 @@ export default function AcademicPrograms() {
       </section>
 
       {/* MAIN CONTENT SECTION */}
-      <section id="programs" className="relative px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section id="programs" className="relative overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 bg-[url('https://www.iiuc.ac.bd/assets/backpattern-SdO-ezZO.png')] bg-[length:920px_auto] bg-center bg-repeat opacity-[0.135]"
+        />
+        <div className="relative z-10 mx-auto max-w-7xl">
           {/* Mobile Filter Toggle Button */}
           <div className="mb-6 flex items-center justify-between lg:hidden">
             <button
@@ -242,129 +248,135 @@ export default function AcademicPrograms() {
                 isMobileFilterOpen ? "block" : "hidden"
               } lg:block`}
             >
-              <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
-                
+              <div className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_8px_30px_-12px_rgba(15,23,42,0.08)]">
+
                 {/* Header */}
-                <div className="mb-5 flex items-center justify-between">
-                  <h2 className="font-serif text-lg font-bold text-[#1a1464]">
-                    Filter Programs
-                  </h2>
+                <div className="flex items-center justify-between bg-gradient-to-br from-[#f7f8fe] to-white px-6 py-5">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                      <Filter className="h-4 w-4" />
+                    </span>
+                    <h2 className="font-serif text-lg font-bold text-[#1a1464]">
+                      Filter Programs
+                    </h2>
+                  </div>
                   <button
                     onClick={resetFilters}
-                    className="flex items-center gap-1.5 text-xs font-semibold text-slate-400 transition hover:text-[#1a1464]"
+                    className="flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-[11px] font-semibold text-slate-400 transition hover:bg-white hover:text-brand hover:shadow-sm"
                   >
                     <RotateCcw className="h-3.5 w-3.5" />
                     RESET
                   </button>
                 </div>
 
-                {/* Level of Study */}
-                <div className="border-t border-slate-100 pt-5 pb-4">
-                  <p className="mb-4 text-xs font-bold text-[#1a1464]">
-                    Level of Study
-                  </p>
-                  <div className="space-y-3.5">
-                    {LEVELS.map((level) => {
-                      const isChecked = selectedLevels.includes(level)
-                      return (
-                        <label
-                          key={level}
-                          onClick={() => toggleLevel(level)}
-                          className="flex cursor-pointer items-center gap-3 text-xs font-medium text-slate-600 hover:text-slate-900"
-                        >
-                          {/* Custom Checkbox Matching the Image */}
-                          <div
-                            className={`flex h-4 w-4 shrink-0 items-center justify-center rounded transition-colors ${
+                <div className="px-6 pb-6">
+
+                  {/* Level of Study */}
+                  <div className="border-t border-slate-100 pt-5 pb-5">
+                    <p className="mb-3.5 text-xs font-bold text-[#1a1464]">
+                      Level of Study
+                    </p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {LEVELS.map((level) => {
+                        const isChecked = selectedLevels.includes(level)
+                        return (
+                          <button
+                            key={level}
+                            type="button"
+                            onClick={() => toggleLevel(level)}
+                            aria-pressed={isChecked}
+                            className={`rounded-xl border px-2.5 py-2.5 text-center text-[11px] font-semibold leading-tight transition-all ${
                               isChecked
-                                ? "bg-[#3b82f6] text-white"
-                                : "bg-[#334155]"
+                                ? "border-brand bg-brand text-white shadow-sm shadow-brand/25"
+                                : "border-slate-200 bg-white text-slate-500 hover:border-brand/40 hover:text-brand"
                             }`}
                           >
-                            {isChecked && (
-                              <svg
-                                className="h-3 w-3 fill-current stroke-current stroke-2"
-                                viewBox="0 0 24 24"
-                              >
-                                <path
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M5 13l4 4L19 7"
-                                />
-                              </svg>
-                            )}
-                          </div>
-                          <span className="text-slate-600">{level}</span>
-                        </label>
-                      )
-                    })}
+                            {level}
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
-                </div>
 
-                {/* Faculty Dropdown */}
-                <div className="border-t border-slate-100 pt-5 pb-4">
-                  <p className="mb-2.5 text-xs font-bold text-[#1a1464]">
-                    Faculty
-                  </p>
-                  <div className="relative">
-                    <select
-                      value={faculty}
-                      onChange={(e) => {
-                        setFaculty(e.target.value)
-                        setPage(1)
-                      }}
-                      className="h-11 w-full appearance-none rounded-2xl border border-slate-200 bg-white px-4 pr-10 text-xs font-medium text-slate-600 outline-none transition focus:border-indigo-500"
-                    >
-                      {FACULTIES.map((item) => (
-                        <option key={item}>{item}</option>
-                      ))}
-                    </select>
-                    <ChevronDown className="pointer-events-none absolute right-3.5 top-3.5 h-4 w-4 text-slate-400" />
+                  {/* Faculty Dropdown */}
+                  <div className="border-t border-slate-100 pt-5 pb-5">
+                    <p className="mb-2.5 text-xs font-bold text-[#1a1464]">
+                      Faculty
+                    </p>
+                    <div className="relative flex items-center">
+                      <GraduationCap className="pointer-events-none absolute left-3.5 h-4 w-4 text-slate-400" />
+                      <select
+                        value={faculty}
+                        onChange={(e) => {
+                          setFaculty(e.target.value)
+                          setPage(1)
+                        }}
+                        className="h-11 w-full appearance-none rounded-2xl border border-slate-200 bg-white pl-10 pr-10 text-xs font-medium text-slate-600 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/10"
+                      >
+                        {FACULTIES.map((item) => (
+                          <option key={item}>{item}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3.5 h-4 w-4 text-slate-400" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Discipline Dropdown */}
-                <div className="border-t border-slate-100 pt-5 pb-4">
-                  <p className="mb-2.5 text-xs font-bold text-[#1a1464]">
-                    Discipline
-                  </p>
-                  <div className="relative">
-                    <select
-                      value={discipline}
-                      onChange={(e) => {
-                        setDiscipline(e.target.value)
-                        setPage(1)
-                      }}
-                      className="h-11 w-full appearance-none rounded-2xl border border-slate-200 bg-white px-4 pr-10 text-xs font-medium text-slate-600 outline-none transition focus:border-indigo-500"
-                    >
-                      {DISCIPLINES.map((item) => (
-                        <option key={item}>{item}</option>
-                      ))}
-                    </select>
-                    <ChevronDown className="pointer-events-none absolute right-3.5 top-3.5 h-4 w-4 text-slate-400" />
+                  {/* Discipline Dropdown */}
+                  <div className="border-t border-slate-100 pt-5 pb-5">
+                    <p className="mb-2.5 text-xs font-bold text-[#1a1464]">
+                      Discipline
+                    </p>
+                    <div className="relative flex items-center">
+                      <BookOpen className="pointer-events-none absolute left-3.5 h-4 w-4 text-slate-400" />
+                      <select
+                        value={discipline}
+                        onChange={(e) => {
+                          setDiscipline(e.target.value)
+                          setPage(1)
+                        }}
+                        className="h-11 w-full appearance-none rounded-2xl border border-slate-200 bg-white pl-10 pr-10 text-xs font-medium text-slate-600 outline-none transition focus:border-brand focus:ring-4 focus:ring-brand/10"
+                      >
+                        {DISCIPLINES.map((item) => (
+                          <option key={item}>{item}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3.5 h-4 w-4 text-slate-400" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Search Input */}
-                <div className="border-t border-slate-100 pt-5">
-                  <p className="mb-2.5 text-xs font-bold text-[#1a1464]">
-                    Search Program
-                  </p>
-                  <div className="relative">
-                    <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-slate-400" />
-                    <input
-                      value={search}
-                      onChange={(e) => {
-                        setSearch(e.target.value)
-                        setPage(1)
-                      }}
-                      placeholder="Search programs..."
-                      className="h-11 w-full rounded-2xl border border-slate-200 bg-white pl-10 pr-4 text-xs font-medium outline-none placeholder:text-slate-400 transition focus:border-indigo-500"
-                    />
+                  {/* Search Input */}
+                  <div className="border-t border-slate-100 pt-5">
+                    <p className="mb-2.5 text-xs font-bold text-[#1a1464]">
+                      Search Program
+                    </p>
+                    <div className="relative flex items-center">
+                      <Search className="pointer-events-none absolute left-3.5 h-4 w-4 text-slate-400" />
+                      <input
+                        value={search}
+                        onChange={(e) => {
+                          setSearch(e.target.value)
+                          setPage(1)
+                        }}
+                        placeholder="Search programs..."
+                        className="h-11 w-full rounded-2xl border border-slate-200 bg-white pl-10 pr-9 text-xs font-medium outline-none placeholder:text-slate-400 transition focus:border-brand focus:ring-4 focus:ring-brand/10"
+                      />
+                      {search && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSearch("")
+                            setPage(1)
+                          }}
+                          aria-label="Clear search"
+                          className="absolute right-3 flex h-5 w-5 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+                        >
+                          <X className="h-3.5 w-3.5" />
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
 
+                </div>
               </div>
 
               {/* ADVISOR BANNER CARD */}
@@ -557,6 +569,7 @@ export default function AcademicPrograms() {
           </div>
         </div>
       </section>
+      <div/>
       </main>
       <SiteFooter />
     </>

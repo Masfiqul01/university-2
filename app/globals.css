@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@import 'lenis/dist/lenis.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -211,4 +212,24 @@
     /* Use a clean light background everywhere (pattern removed) */
     background-image: none;
   }
+}
+
+/*
+ * Entry-animation guard. An inline script adds `motion-armed` to <html> before
+ * the body is parsed, so animated elements never flash in at their final state
+ * during the gap between first paint and hydration. PageMotion takes over with
+ * inline GSAP styles and then removes the class; a timer in the same script
+ * removes it too, so content is never left hidden if the script never runs.
+ */
+/* Lenis owns the scroll position, so native smooth scrolling must stay out. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+html.motion-armed main img {
+  clip-path: inset(0% 100% 0% 0%);
+}
+
+html.motion-armed main > *:first-child :is(h1, h2, nav, p) {
+  opacity: 0;
 }

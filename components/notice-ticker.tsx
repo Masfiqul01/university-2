@@ -111,6 +111,7 @@ export const NoticeTicker: React.FC<NoticeTickerProps> = ({
 
   return (
     <section
+      data-motion-ignore
       className="relative z-20 my-3 w-full overflow-hidden border-b border-amber-600/30 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 px-4 py-5 text-slate-950 shadow-sm"
       aria-label="Latest university notices"
     >

@@ -13,7 +13,6 @@ export const NAV_ITEMS: NavItem[] = [
       { label: "History", href: "/about/history", icon: "History" },
       { label: "Mission & Vision", href: "/about/mission-vision", icon: "Target" },
       { label: "Leadership", href: "/about/leadership", icon: "Users" },
-      { label: "Faculties & Departments", href: "/about/faculties", icon: "Building2" },
     ],
   },
   {
