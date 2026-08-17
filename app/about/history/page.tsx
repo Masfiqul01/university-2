@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Link from "next/link";
 import { ArrowRight, BookOpen, Compass, Landmark, Target } from "lucide-react";
 
@@ -75,14 +74,3 @@ export default function HistoryPage() {
     </main>
   );
 }
-=======
-import React from 'react'
-
-function page() {
-  return (
-    <div>page</div>
-  )
-}
-
-export default page
->>>>>>> b309bceb7e520773937772e13a2f9cd8a6f7389f

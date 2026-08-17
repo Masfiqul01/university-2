@@ -26,11 +26,7 @@ const pageMap: Record<string, PageConfig> = {
   admissions: {title:"Admissions", eyebrow:"Join KACST", subtitle:"Discover your path to a future shaped by knowledge, innovation and opportunity.", image:"/images/admissions-building.png", crumbs:[{label:"Home",href:"/"},{label:"Admissions"}]},
   research: {title:"Research & Innovation", eyebrow:"Research", subtitle:"Building knowledge through curiosity, collaboration and meaningful discovery.", image:"/images/campus-library.png", crumbs:[{label:"Home",href:"/"},{label:"Research"}]},
   "campus-life": {title:"Campus Life", eyebrow:"Life at KACST", subtitle:"A welcoming campus where learning, friendship, creativity and leadership grow together.", image:"/images/campus-green.png", crumbs:[{label:"Home",href:"/"},{label:"Campus Life"}]},
-<<<<<<< HEAD
-  news: {title:"University News", eyebrow:"News & Updates", subtitle:"Stay connected with the latest stories, achievements and announcements from KKJSTU.", image:"/images/news-1.png", crumbs:[{label:"Home",href:"/"},{label:"News"}]},
-=======
   news: {title:"University News", eyebrow:"News & Updates", subtitle:"Stay connected with the latest stories, achievements and announcements from KACST.", image:"/images/news-1.png", crumbs:[{label:"Home",href:"/"},{label:"News"}]},
->>>>>>> b309bceb7e520773937772e13a2f9cd8a6f7389f
   events: {title:"Events", eyebrow:"What's Happening", subtitle:"Explore academic, cultural, research and student events across the university.", image:"/images/news-2.png", crumbs:[{label:"Home",href:"/"},{label:"Events"}]},
   "notice-board": {title:"Notice Board", eyebrow:"Official Notices", subtitle:"Important academic, administrative, admission and campus notices in one place.", image:"/images/news-3.png", crumbs:[{label:"Home",href:"/"},{label:"Notice Board"}]},
   career: {title:"Career Opportunities", eyebrow:"Work With Us", subtitle:"Explore opportunities to contribute to teaching, research, administration and university life.", image:"/images/news-4.png", crumbs:[{label:"Home",href:"/"},{label:"Career"}]},
