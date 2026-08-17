@@ -9,7 +9,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-<<<<<<< HEAD
 const COLUMNS: {
   title: string
   links: { label: string; href: string }[]
@@ -64,40 +63,6 @@ const COLUMNS: {
       { label: "Transport", href: "/transport" },
     ],
   },
-=======
-type FooterLink = {
-  label: string
-  href: string
-  icon?: typeof MapPin
-  variant?: "highlight" | "muted"
-}
-
-const QUICK_LINKS: FooterLink[] = [
-  { label: "Home", href: "/" },
-  { label: "About KACST", href: "/about" },
-  { label: "KACST Wikipedia Page", href: "#", icon: Globe, variant: "highlight" },
-  { label: "Academic Programs", href: "/academics/programs" },
-  { label: "Online Admission 2026", href: "/admissions/apply" },
-  { label: "Track Application Status", href: "/track-status" },
-  { label: "Tuition Fees & Waiver", href: "/pay-fees" },
-  { label: "College Notice Board", href: "/notice-board" },
-]
-
-const STUDENT_SERVICES: FooterLink[] = [
-  { label: "Student Result Portal", href: "/result" },
-  { label: "Download Centre", href: "#" },
-  { label: "Admission FAQ", href: "#" },
-  { label: "Campus Facilities", href: "/campus-life/facilities" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Admission", href: "/terms" },
-  { label: "HOD Portal Login", href: "/hod-login", icon: UserCog, variant: "highlight" },
-  { label: "Admin", href: "#", icon: UserLock, variant: "muted" },
-]
-
-const CODES = [
-  { label: "NU Professional Code:", value: "0309" },
-  { label: "BTEB Polytechnic Code:", value: "54095" },
->>>>>>> b309bceb7e520773937772e13a2f9cd8a6f7389f
 ]
 
 function FacebookIcon(props: SVGProps<SVGSVGElement>) {

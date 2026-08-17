@@ -21,11 +21,7 @@ export const metadata: Metadata = {
     template: '%s | KACST',
   },
   description:
-<<<<<<< HEAD
-    'Khanjahan Ali College of Science & Technology (KACST) is committed to developing competent professionals and ethical leaders through quality education, research and innovation.',
-=======
     'Khulna Khan Jahan Science and Technology University (KACST) is committed to developing competent professionals and ethical leaders through quality education, research and innovation.',
->>>>>>> b309bceb7e520773937772e13a2f9cd8a6f7389f
   generator: 'v0.app',
   icons: {
     icon: [
