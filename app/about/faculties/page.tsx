@@ -99,7 +99,7 @@ export default function FacultiesDepartmentsPage() {
               <p className="mt-6 max-w-xl text-base leading-8 text-white/70 sm:text-lg">
                 Explore our diverse academic faculties and departments
                 driving excellence, innovation, research and meaningful
-                impact at KKJSTU.
+                impact at KACST.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -442,7 +442,7 @@ export default function FacultiesDepartmentsPage() {
         <p className="mt-4 max-w-2xl text-sm leading-7 text-white/60 sm:text-base">
           Explore our faculties, discover your department and take
           the next step toward building a successful future at
-          KKJSTU.
+          KACST.
         </p>
       </div>
 

@@ -18,10 +18,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: 'Khanjahan Ali College of Science & Technology(KACST)',
-    template: '%s | KKJSTU',
+    template: '%s | KACST',
   },
   description:
-    'Khulna Khan Jahan Science and Technology University (KKJSTU) is committed to developing competent professionals and ethical leaders through quality education, research and innovation.',
+    'Khulna Khan Jahan Science and Technology University (KACST) is committed to developing competent professionals and ethical leaders through quality education, research and innovation.',
   generator: 'v0.app',
   icons: {
     icon: [

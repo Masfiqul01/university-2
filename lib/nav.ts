@@ -9,7 +9,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "About",
     href: "/about",
     children: [
-      { label: "About KKJSTU", href: "/about", icon: "Info" },
+      { label: "About KACST", href: "/about", icon: "Info" },
       { label: "History", href: "/about/history", icon: "History" },
       { label: "Mission & Vision", href: "/about/mission-vision", icon: "Target" },
       { label: "Leadership", href: "/about/leadership", icon: "Users" },

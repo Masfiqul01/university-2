@@ -406,7 +406,7 @@ export default function AcademicPrograms() {
                       Our Academic Programs
                     </h2>
                     <p className="mt-2 max-w-2xl text-xs leading-relaxed text-slate-500 sm:text-sm">
-                      KKJSTU offers a diverse range of programs across various
+                      KACST offers a diverse range of programs across various
                       disciplines. Choose a program to view details and admission
                       requirements.
                     </p>
@@ -539,7 +539,7 @@ export default function AcademicPrograms() {
               <div className="text-center md:text-left">
                 <h2 className="font-serif text-xl font-bold text-white sm:text-2xl lg:text-3xl">
                   Ready to start your academic
-                  <br className="hidden sm:block" /> journey at KKJSTU?
+                  <br className="hidden sm:block" /> journey at KACST?
                 </h2>
                 <p className="mt-1 text-xs text-white/70 sm:text-sm">
                   Join a community of innovative thinkers and future leaders.

@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 /*
   ============================================================
-  KKJSTU WEBSITE HEADER
+  KACST WEBSITE HEADER
   ============================================================
 
   এই file-এর কাজ:

@@ -1,5 +1,5 @@
 // All content below is editable placeholder data for Khulna Khan Jahan Science
-// and Technology University (KKJSTU). Replace with official information.
+// and Technology University (KACST). Replace with official information.
 
 export const FACULTIES = [
   {
@@ -65,7 +65,7 @@ export const NEWS = [
     image: "/images/news-1.png",
     category: "Research",
     date: "May 12, 2025",
-    title: "KKJSTU Hosts International Research Conference",
+    title: "KACST Hosts International Research Conference",
     excerpt: "Scholars and researchers gathered to share advances across science and technology.",
   },
   {
@@ -74,7 +74,7 @@ export const NEWS = [
     category: "Campus",
     date: "May 08, 2025",
     title: "Orientation Program Welcomes New Students",
-    excerpt: "A warm welcome to the newest members of the KKJSTU community.",
+    excerpt: "A warm welcome to the newest members of the KACST community.",
   },
   {
     slug: "career-fair",
@@ -106,7 +106,7 @@ export const NEWS = [
     category: "Campus",
     date: "Apr 05, 2025",
     title: "Green Campus Initiative Launched",
-    excerpt: "A sustainability drive to make KKJSTU a model green campus.",
+    excerpt: "A sustainability drive to make KACST a model green campus.",
   },
 ]
 

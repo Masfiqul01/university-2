@@ -10,7 +10,7 @@ export const NEWS_ARTICLES = [
     category: "Achievement",
     date: "May 19, 2025",
     title: "Our Students Won 1st Place in National Programming Contest 2025",
-    excerpt: "Team \"KKJSTU Coders\" secured first place in the National Collegiate Programming Contest, outperforming teams from across the country.",
+    excerpt: "Team \"KACST Coders\" secured first place in the National Collegiate Programming Contest, outperforming teams from across the country.",
   },
   {
     slug: "admission-open-fall-2025",

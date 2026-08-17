@@ -31,7 +31,7 @@ export default function TeacherPortalPage() {
           <aside className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-0 left-0 z-50 mt-0 w-72 border-r border-border bg-brand-dark p-5 text-white transition-transform lg:sticky lg:top-0 lg:h-[calc(100vh-0px)] lg:translate-x-0`}>
             <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-accent">KKJSTU</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-accent">KACST</p>
                 <h2 className="mt-1 font-serif text-xl font-bold">Teacher Portal</h2>
               </div>
               <button onClick={() => setMobileOpen(false)} className="rounded-lg p-2 text-white/70 hover:bg-white/10 lg:hidden"><X className="h-5 w-5" /></button>

@@ -638,7 +638,7 @@ function ApplicationModal({
             id="application-modal-title"
             className="mt-1 text-2xl font-extrabold text-[#0D0357] sm:text-3xl"
           >
-            Apply to KKJSTU
+            Apply to KACST
           </h2>
 
           <p className="mt-1 text-sm text-slate-500">
