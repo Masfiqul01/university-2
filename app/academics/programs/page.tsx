@@ -23,11 +23,10 @@ import {
   PROGRAM_LEVELS as LEVELS,
   PROGRAM_FACULTIES as FACULTIES,
   PROGRAM_DISCIPLINES as DISCIPLINES,
+  HERO_IMAGE,
+  BACKGROUND_PATTERN_IMAGE,
   type Program,
 } from "@/lib/data/programs"
-
-const HERO_IMAGE =
-  "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
 
 function ProgramCard({ program }: { program: Program }) {
   const IconComponent = ICON_MAP[program.icon] ?? ICON_MAP.Code2
@@ -62,7 +61,7 @@ function ProgramCard({ program }: { program: Program }) {
         </div>
 
         <Link
-          href="#"
+          href={`/academics/programs/${program.slug}`}
           className="flex items-center gap-1 font-semibold text-[#17135f] transition-colors hover:text-indigo-600"
         >
           View Details
@@ -224,7 +223,8 @@ export default function AcademicPrograms() {
       <section id="programs" className="relative overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 bg-[url('https://www.iiuc.ac.bd/assets/backpattern-SdO-ezZO.png')] bg-[length:920px_auto] bg-center bg-repeat opacity-[0.135]"
+          className="pointer-events-none absolute inset-0 z-0 bg-center bg-repeat opacity-[0.135]"
+          style={{ backgroundImage: `url("${BACKGROUND_PATTERN_IMAGE}")`, backgroundSize: "920px auto" }}
         />
         <div className="relative z-10 mx-auto max-w-7xl">
           {/* Mobile Filter Toggle Button */}
@@ -560,7 +560,7 @@ export default function AcademicPrograms() {
             </div>
 
             <Link
-              href="/admission"
+              href="/admissions/apply"
               className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-white px-5 py-3 text-xs font-bold text-[#17135f] transition hover:bg-slate-100 sm:text-sm"
             >
               Apply for Admission

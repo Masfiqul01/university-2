@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import Link from "next/link";
 import {
   CalendarDays,
   Clock3,
@@ -8,7 +9,6 @@ import {
   BookOpen,
   FileText,
   Bell,
-  Download,
   ChevronDown,
   ArrowRight,
   ClipboardCheck,
@@ -21,106 +21,24 @@ import {
 } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";
+import { Hero } from "@/components/hero";
 import { SiteFooter } from "@/components/site-footer";
+import { ICON_MAP } from "@/lib/icon-map";
+import { CALENDAR_EVENTS, CALENDAR_SUMMARY, CALENDAR_MONTHS } from "@/lib/data/calendar";
+import { CONTACT_INFO } from "@/lib/data/slug-pages";
 
-const calendarEvents = [
-  {
-    event: "Spring Semester Registration",
-    start: "05 January 2026",
-    end: "15 January 2026",
-    audience: "All Students",
-    type: "registration",
-  },
-  {
-    event: "Spring Semester Classes Begin",
-    start: "18 January 2026",
-    end: "18 January 2026",
-    audience: "Students & Faculty",
-    type: "class",
-  },
-  {
-    event: "Mid-Term Examination",
-    start: "15 March 2026",
-    end: "21 March 2026",
-    audience: "Students",
-    type: "exam",
-  },
-  {
-    event: "Final Examination",
-    start: "10 May 2026",
-    end: "23 May 2026",
-    audience: "Students",
-    type: "exam",
-  },
-  {
-    event: "Result Publication",
-    start: "15 June 2026",
-    end: "15 June 2026",
-    audience: "Students",
-    type: "result",
-  },
-  {
-    event: "Summer Vacation",
-    start: "20 June 2026",
-    end: "15 July 2026",
-    audience: "Students & Faculty",
-    type: "vacation",
-  },
-];
+// tel: hrefs can't carry the " (editable)" human-readable hint that lives on
+// the shared placeholder value, so strip it down to a dialable number here.
+const ASSISTANCE_PHONE = CONTACT_INFO.phone
+  .replace(/\s*\(editable\)\s*$/i, "")
+  .replace(/\s+/g, "");
 
-const summaryCards = [
-  {
-    title: "Registration Opens",
-    date: "05 January",
-    description: "Spring Semester 2026",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "Classes Begin",
-    date: "18 January",
-    description: "Spring Semester 2026",
-    icon: BookOpen,
-  },
-  {
-    title: "Mid-Term",
-    date: "15 March",
-    description: "Examination Week",
-    icon: Clock3,
-  },
-  {
-    title: "Final Examination",
-    date: "10 May",
-    description: "End Semester Examination",
-    icon: GraduationCap,
-  },
-  {
-    title: "Result Publication",
-    date: "15 June",
-    description: "Semester Results",
-    icon: Trophy,
-  },
-  {
-    title: "Vacation",
-    date: "20 June",
-    description: "Summer Vacation",
-    icon: Plane,
-  },
-];
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+const calendarEvents = CALENDAR_EVENTS;
+const summaryCards = CALENDAR_SUMMARY.map((card) => ({
+  ...card,
+  icon: ICON_MAP[card.icon] ?? ClipboardCheck,
+}));
+const months = CALENDAR_MONTHS;
 
 function getEventIcon(type: string) {
   switch (type) {
@@ -154,36 +72,16 @@ export default function AcademicCalendarPage() {
 
   return (
     <div className="min-h-screen bg-[#f4f8fc] text-[#102c4c]">
-      <SiteHeader />
+      <SiteHeader overlay />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-[#082746]">
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full border-[60px] border-[#d9a82e]" />
-          <div className="absolute -bottom-32 left-20 h-96 w-96 rounded-full border border-white" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                Academic Calendar
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              Plan Your Academic Journey With Confidence
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              Stay informed about semester schedules, registration,
-              examinations, results, vacations and important academic
-              deadlines at KKJSTU.
-            </p>
-          </div>
-        </div>
-      </section>
+      <main>
+      <Hero
+        eyebrow="Academic Calendar"
+        title="Plan Your Academic Journey With Confidence"
+        description="Stay informed about semester schedules, registration, examinations, results, vacations and important academic deadlines at KKJSTU."
+        showActions={false}
+        showSideLinks={false}
+      />
 
       {/* SELECTOR */}
       <section className="relative z-10 -mt-8 px-6">
@@ -358,59 +256,114 @@ export default function AcademicCalendarPage() {
                       Audience
                     </th>
                     <th className="px-6 py-4 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Notice
+                      Details
                     </th>
                   </tr>
                 </thead>
 
                 <tbody>
                   {filteredEvents.map((item, index) => (
-                    <tr
-                      key={item.event}
-                      className="border-b border-slate-100 last:border-0 hover:bg-[#f9fbfd]"
-                    >
-                      <td className="px-6 py-5">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`flex h-9 w-9 items-center justify-center ${
-                              item.type === "exam"
-                                ? "bg-[#f6edf6] text-[#8a4b87]"
-                                : item.type === "registration"
-                                  ? "bg-[#fff7df] text-[#b28315]"
-                                  : "bg-[#edf5fb] text-[#175783]"
-                            }`}
-                          >
-                            {getEventIcon(item.type)}
+                    <Fragment key={item.event}>
+                      <tr className="border-b border-slate-100 last:border-0 hover:bg-[#f9fbfd]">
+                        <td className="px-6 py-5">
+                          <div className="flex items-center gap-3">
+                            <div
+                              className={`flex h-9 w-9 items-center justify-center ${
+                                item.type === "exam"
+                                  ? "bg-[#f6edf6] text-[#8a4b87]"
+                                  : item.type === "registration"
+                                    ? "bg-[#fff7df] text-[#b28315]"
+                                    : "bg-[#edf5fb] text-[#175783]"
+                              }`}
+                            >
+                              {getEventIcon(item.type)}
+                            </div>
+
+                            <span className="font-semibold text-[#173752]">
+                              {item.event}
+                            </span>
                           </div>
+                        </td>
 
-                          <span className="font-semibold text-[#173752]">
-                            {item.event}
-                          </span>
-                        </div>
-                      </td>
+                        <td className="px-6 py-5 text-sm text-slate-600">
+                          {item.start}
+                        </td>
 
-                      <td className="px-6 py-5 text-sm text-slate-600">
-                        {item.start}
-                      </td>
+                        <td className="px-6 py-5 text-sm text-slate-600">
+                          {item.end}
+                        </td>
 
-                      <td className="px-6 py-5 text-sm text-slate-600">
-                        {item.end}
-                      </td>
+                        <td className="px-6 py-5 text-sm text-slate-600">
+                          {item.audience}
+                        </td>
 
-                      <td className="px-6 py-5 text-sm text-slate-600">
-                        {item.audience}
-                      </td>
+                        <td className="px-6 py-5 text-right">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setOpenEvent(openEvent === index ? null : index)
+                            }
+                            aria-expanded={openEvent === index}
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-[#175783] transition hover:text-[#b28718]"
+                          >
+                            <ChevronDown
+                              className={`h-4 w-4 transition-transform ${
+                                openEvent === index ? "rotate-180" : ""
+                              }`}
+                            />
+                            {openEvent === index ? "Hide Details" : "View Details"}
+                          </button>
+                        </td>
+                      </tr>
 
-                      <td className="px-6 py-5 text-right">
-                        <button
-                          type="button"
-                          className="inline-flex items-center gap-2 text-sm font-semibold text-[#175783] transition hover:text-[#b28718]"
-                        >
-                          <Download className="h-4 w-4" />
-                          Download
-                        </button>
-                      </td>
-                    </tr>
+                      {openEvent === index && (
+                        <tr className="border-b border-slate-100 bg-[#f9fbfd] last:border-0">
+                          <td colSpan={5} className="px-6 py-5">
+                            <div className="grid gap-4 sm:grid-cols-3">
+                              <div>
+                                <p className="text-xs uppercase tracking-wide text-slate-400">
+                                  Start Date
+                                </p>
+                                <p className="mt-1 font-medium text-[#173752]">
+                                  {item.start}
+                                </p>
+                              </div>
+
+                              <div>
+                                <p className="text-xs uppercase tracking-wide text-slate-400">
+                                  End Date
+                                </p>
+                                <p className="mt-1 font-medium text-[#173752]">
+                                  {item.end}
+                                </p>
+                              </div>
+
+                              <div>
+                                <p className="text-xs uppercase tracking-wide text-slate-400">
+                                  Audience
+                                </p>
+                                <p className="mt-1 font-medium text-[#173752]">
+                                  {item.audience}
+                                </p>
+                              </div>
+                            </div>
+
+                            <p className="mt-4 text-sm leading-6 text-slate-600">
+                              Full notice details for this event are published on
+                              the university notice board closer to the date.
+                            </p>
+
+                            <Link
+                              href="/notice-board"
+                              className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#175783] hover:text-[#b28718]"
+                            >
+                              <ArrowRight className="h-4 w-4" />
+                              View on Notice Board
+                            </Link>
+                          </td>
+                        </tr>
+                      )}
+                    </Fragment>
                   ))}
                 </tbody>
               </table>
@@ -485,13 +438,13 @@ export default function AcademicCalendarPage() {
                       </div>
                     </div>
 
-                    <button
-                      type="button"
+                    <Link
+                      href="/notice-board"
                       className="mt-5 inline-flex w-full items-center justify-center gap-2 border border-[#175783] px-4 py-3 text-sm font-semibold text-[#175783]"
                     >
-                      <Download className="h-4 w-4" />
-                      Download Notice
-                    </button>
+                      <ArrowRight className="h-4 w-4" />
+                      View on Notice Board
+                    </Link>
                   </div>
                 )}
               </div>
@@ -507,26 +460,27 @@ export default function AcademicCalendarPage() {
             <div className="flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <div className="mb-3 flex h-11 w-11 items-center justify-center bg-white text-[#175783]">
-                  <Download className="h-5 w-5" />
+                  <CalendarDays className="h-5 w-5" />
                 </div>
 
                 <h3 className="font-serif text-2xl font-semibold text-[#092c4d]">
-                  Download Academic Calendar
+                  Academic Calendar &amp; Notices
                 </h3>
 
                 <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">
-                  Download the complete academic calendar for the current
-                  academic year and keep a copy for your reference.
+                  The complete academic calendar and related schedule notices
+                  for the current academic year are published on the
+                  university notice board.
                 </p>
               </div>
 
-              <button
-                type="button"
+              <Link
+                href="/notice-board"
                 className="inline-flex shrink-0 items-center justify-center gap-2 bg-[#092c4d] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#12476d]"
               >
-                <Download className="h-4 w-4" />
-                Download PDF
-              </button>
+                <ArrowRight className="h-4 w-4" />
+                View on Notice Board
+              </Link>
             </div>
           </div>
 
@@ -544,25 +498,25 @@ export default function AcademicCalendarPage() {
               and important academic announcements.
             </p>
 
-            <button
-              type="button"
+            <Link
+              href="/notice-board"
               className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
             >
               View Notices
               <ArrowRight className="h-4 w-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* HELP CTA */}
-      <section className="bg-[#092c4d]">
+      <section className="bg-brand-dark">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <div className="mb-4 flex items-center gap-3">
-                <span className="h-px w-8 bg-[#d9a82e]" />
-                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#e0b637]">
+                <span className="h-px w-8 bg-brand-accent" />
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-brand-accent">
                   Academic Support
                 </span>
               </div>
@@ -571,7 +525,7 @@ export default function AcademicCalendarPage() {
                 Need Help With the Academic Schedule?
               </h2>
 
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/75">
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-white/75">
                 Our Academic Office is available to help students, faculty and
                 guardians with questions about registration, examinations,
                 results and important academic deadlines.
@@ -579,25 +533,26 @@ export default function AcademicCalendarPage() {
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#092c4d] transition hover:bg-[#edc85b]"
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 bg-brand-accent px-6 py-3.5 text-sm font-bold text-brand-dark transition hover:bg-brand-accent/90"
               >
                 <Mail className="h-4 w-4" />
                 Contact Academic Office
-              </button>
+              </Link>
 
-              <button
-                type="button"
+              <a
+                href={`tel:${ASSISTANCE_PHONE}`}
                 className="inline-flex items-center justify-center gap-2 border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white"
               >
                 <Phone className="h-4 w-4" />
                 Get Assistance
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </section>
+      </main>
 
       <SiteFooter />
     </div>

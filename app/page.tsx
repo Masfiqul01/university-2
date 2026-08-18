@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
 import { StatsBar } from "@/components/stats-bar";
@@ -13,6 +14,8 @@ import { ProgramsSection } from "@/components/ProgramsSection";
 import { BeginYourJourney } from "@/components/BeginYourJourney";
 
 export default function HomePage() {
+  const router = useRouter();
+
   return (
     <>
       <div className="relative isolate min-h-screen overflow-hidden bg-[#f6f7fb]">
@@ -62,12 +65,8 @@ export default function HomePage() {
 
             {/* Important notices / announcements */}
             <NoticeTicker
-              onSelectNotice={(notice) => {
-                console.log("Selected notice:", notice);
-              }}
-              onOpenOnlineApply={() => {
-                console.log("Open online application");
-              }}
+              onSelectNotice={() => router.push("/notice-board")}
+              onOpenOnlineApply={() => router.push("/admissions/apply")}
             />
 
             {/* University at a glance */}

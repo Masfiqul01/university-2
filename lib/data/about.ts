@@ -8,3 +8,9 @@ export const VALUES = [
   { icon: "Heart", title: "Service", description: "Contributing meaningfully to society and community." },
   { icon: "Eye", title: "Vision", description: "Preparing students to lead in a changing world." },
 ]
+
+export const VC_WELCOME = {
+  name: "Vice Chancellor",
+  role: "Office of the Vice Chancellor — KACST (editable placeholder)",
+  bio: "Welcome to Khulna Khan Jahan Science and Technology University. Our mission is to empower students with the knowledge, skills, and values needed to excel and lead. We invite you to be part of a community devoted to learning, discovery, and service. (This message is editable placeholder content.)",
+}

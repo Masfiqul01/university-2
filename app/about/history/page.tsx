@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, Compass, Landmark, Target } from "lucide-react";
+import { ArrowRight, Landmark } from "lucide-react";
+import { ICON_MAP } from "@/lib/icon-map";
+import { VISION_POINTS, HISTORY_PILLARS } from "@/lib/data/history";
 
 export default function HistoryPage() {
   return (
@@ -42,33 +44,32 @@ export default function HistoryPage() {
           </div>
 
           <div className="grid gap-5">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <Target className="h-8 w-8 text-[#fd9900]" />
-              <h3 className="mt-4 text-xl font-bold text-[#0b0754]">Academic Vision</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">To create a dynamic learning environment where knowledge, research, and practical skills support national development.</p>
-            </div>
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <Compass className="h-8 w-8 text-[#fd9900]" />
-              <h3 className="mt-4 text-xl font-bold text-[#0b0754]">Community Vision</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">To serve students, families, and the wider region with quality higher education and a culture of responsibility.</p>
-            </div>
+            {VISION_POINTS.map(({ icon, title, text }) => {
+              const Icon = ICON_MAP[icon] ?? ICON_MAP.Target;
+              return (
+                <div key={title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <Icon className="h-8 w-8 text-[#fd9900]" />
+                  <h3 className="mt-4 text-xl font-bold text-[#0b0754]">{title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <section className="bg-white py-16">
         <div className="mx-auto grid max-w-6xl gap-6 px-6 sm:px-8 lg:grid-cols-3 lg:px-10">
-          {[
-            { icon: BookOpen, title: "Teaching Excellence", text: "Learning experiences focused on analytical thinking, practical skills, and academic integrity." },
-            { icon: Landmark, title: "Institutional Growth", text: "Steady development that strengthens campus life, research, and student support services." },
-            { icon: Target, title: "Future Readiness", text: "Preparing graduates for leadership, innovation, and meaningful contribution to society." },
-          ].map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-2xl border border-slate-200 bg-[#f8fafc] p-6 shadow-sm">
-              <Icon className="h-8 w-8 text-[#120a80]" />
-              <h3 className="mt-4 text-xl font-bold text-[#0b0754]">{title}</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
-            </div>
-          ))}
+          {HISTORY_PILLARS.map(({ icon, title, text }) => {
+            const Icon = ICON_MAP[icon] ?? ICON_MAP.Target;
+            return (
+              <div key={title} className="rounded-2xl border border-slate-200 bg-[#f8fafc] p-6 shadow-sm">
+                <Icon className="h-8 w-8 text-[#120a80]" />
+                <h3 className="mt-4 text-xl font-bold text-[#0b0754]">{title}</h3>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </main>

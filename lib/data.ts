@@ -45,18 +45,18 @@ export const FACULTIES = [
 ]
 
 export const PROGRAMS = [
-  { title: "BSc in Computer Science & Engineering", faculty: "Faculty of Engineering", level: "Undergraduate", duration: "4 years" },
-  { title: "BSc in Electrical & Electronic Engineering", faculty: "Faculty of Engineering", level: "Undergraduate", duration: "4 years" },
-  { title: "BSc in Civil Engineering", faculty: "Faculty of Engineering", level: "Undergraduate", duration: "4 years" },
-  { title: "BSc in Physics", faculty: "Faculty of Science", level: "Undergraduate", duration: "4 years" },
-  { title: "BSc in Mathematics", faculty: "Faculty of Science", level: "Undergraduate", duration: "4 years" },
-  { title: "Bachelor of Business Administration (BBA)", faculty: "Faculty of Business Studies", level: "Undergraduate", duration: "4 years" },
-  { title: "BSc in Environmental Science", faculty: "Faculty of Life Sciences", level: "Undergraduate", duration: "4 years" },
-  { title: "BA in Economics", faculty: "Faculty of Social Sciences", level: "Undergraduate", duration: "4 years" },
-  { title: "MSc in Computer Science & Engineering", faculty: "Faculty of Engineering", level: "Postgraduate", duration: "1.5 years" },
-  { title: "Master of Business Administration (MBA)", faculty: "Faculty of Business Studies", level: "Postgraduate", duration: "2 years" },
-  { title: "MSc in Physics", faculty: "Faculty of Science", level: "Postgraduate", duration: "1.5 years" },
-  { title: "MSc in Environmental Science", faculty: "Faculty of Life Sciences", level: "Postgraduate", duration: "1.5 years" },
+  { slug: "bsc-computer-science-engineering", title: "BSc in Computer Science & Engineering", faculty: "Faculty of Engineering", level: "Undergraduate", duration: "4 years" },
+  { slug: "bsc-electrical-electronic-engineering", title: "BSc in Electrical & Electronic Engineering", faculty: "Faculty of Engineering", level: "Undergraduate", duration: "4 years" },
+  { slug: "bsc-civil-engineering", title: "BSc in Civil Engineering", faculty: "Faculty of Engineering", level: "Undergraduate", duration: "4 years" },
+  { slug: "bsc-physics", title: "BSc in Physics", faculty: "Faculty of Science", level: "Undergraduate", duration: "4 years" },
+  { slug: "bsc-mathematics", title: "BSc in Mathematics", faculty: "Faculty of Science", level: "Undergraduate", duration: "4 years" },
+  { slug: "bachelor-business-administration-bba", title: "Bachelor of Business Administration (BBA)", faculty: "Faculty of Business Studies", level: "Undergraduate", duration: "4 years" },
+  { slug: "bsc-environmental-science", title: "BSc in Environmental Science", faculty: "Faculty of Life Sciences", level: "Undergraduate", duration: "4 years" },
+  { slug: "ba-economics", title: "BA in Economics", faculty: "Faculty of Social Sciences", level: "Undergraduate", duration: "4 years" },
+  { slug: "msc-computer-science-engineering", title: "MSc in Computer Science & Engineering", faculty: "Faculty of Engineering", level: "Postgraduate", duration: "1.5 years" },
+  { slug: "master-business-administration-mba", title: "Master of Business Administration (MBA)", faculty: "Faculty of Business Studies", level: "Postgraduate", duration: "2 years" },
+  { slug: "msc-physics", title: "MSc in Physics", faculty: "Faculty of Science", level: "Postgraduate", duration: "1.5 years" },
+  { slug: "msc-environmental-science", title: "MSc in Environmental Science", faculty: "Faculty of Life Sciences", level: "Postgraduate", duration: "1.5 years" },
 ]
 
 export const NEWS = [

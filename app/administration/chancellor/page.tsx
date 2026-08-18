@@ -1,70 +1,62 @@
 import type { Metadata } from "next"
 import { PageShell } from "@/components/page-shell"
 import { PageHero } from "@/components/page-hero"
-import { Section, ImageSplit, CheckList, FeatureGrid } from "@/components/blocks"
+import { Section, ImageSplit, CheckList } from "@/components/blocks"
 import { SectionHeading } from "@/components/section-heading"
 import { CTASection } from "@/components/cta-section"
 import { Phone, Mail, MapPin, Clock3 } from "lucide-react"
-import { ICON_MAP } from "@/lib/icon-map"
-import { LEADERS } from "@/lib/data/leadership"
-import { VICE_CHANCELLOR_PROFILE } from "@/lib/data/administration"
+import { CHANCELLOR, CHANCELLOR_IMAGE } from "@/lib/data/leadership"
+import { CHANCELLOR_PROFILE } from "@/lib/data/administration"
 
 export const metadata: Metadata = {
-  title: "Vice-Chancellor",
-  description: "The Vice-Chancellor of KACST — chief academic and executive officer, responsibilities, and contact information.",
+  title: "Chancellor",
+  description: "The Chancellor of KACST — ceremonial head of the university, responsibilities, and contact information.",
 }
 
-export default function ViceChancellorPage() {
-  const leader = LEADERS.find((l) => l.role === "Vice-Chancellor")!
-  const { contact } = VICE_CHANCELLOR_PROFILE
+export default function ChancellorPage() {
+  const { contact } = CHANCELLOR_PROFILE
 
   return (
     <PageShell>
       <PageHero
         eyebrow="Administration"
-        title="Office of the Vice-Chancellor"
-        subtitle="Leadership, academic direction and institutional governance at KACST."
+        title="Office of the Chancellor"
+        subtitle="The ceremonial head of the university and custodian of its charter and academic integrity."
         crumbs={[
           { label: "Home", href: "/" },
           { label: "Administration", href: "/administration" },
-          { label: "Vice-Chancellor" },
+          { label: "Chancellor" },
         ]}
         image="/images/hero-campus.png"
       />
 
       <Section>
-        <ImageSplit image={leader.image} alt={leader.name} eyebrow={leader.role} title={leader.name}>
-          <p>{leader.description}</p>
-          <p>{VICE_CHANCELLOR_PROFILE.message}</p>
+        <ImageSplit image={CHANCELLOR_IMAGE} alt={CHANCELLOR.name} eyebrow={CHANCELLOR.role} title={CHANCELLOR.name}>
+          <p className="font-semibold text-foreground">{CHANCELLOR.title}</p>
+          <p>{CHANCELLOR.description}</p>
+          <p>{CHANCELLOR_PROFILE.message}</p>
         </ImageSplit>
       </Section>
 
       <Section muted>
         <SectionHeading
           eyebrow="Mandate"
-          title="Responsibilities of the Vice-Chancellor"
-          description="As the university's chief executive officer, the Vice-Chancellor holds the following core responsibilities."
+          title="Responsibilities of the Chancellor"
+          description="As set out in the university's founding charter and statutes, the Chancellor's office carries the following core responsibilities."
         />
         <div className="max-w-2xl">
-          <CheckList items={VICE_CHANCELLOR_PROFILE.responsibilities} />
+          <CheckList items={CHANCELLOR_PROFILE.responsibilities} />
         </div>
       </Section>
 
       <Section>
-        <SectionHeading eyebrow="Focus Areas" title="Strategic Priorities" center />
-        <FeatureGrid
-          items={VICE_CHANCELLOR_PROFILE.priorities.map((p) => ({ ...p, icon: ICON_MAP[p.icon] ?? ICON_MAP.Target }))}
-        />
-      </Section>
-
-      <Section muted>
-        <SectionHeading eyebrow="Get in Touch" title="Contact the Vice-Chancellor's Office" />
+        <SectionHeading eyebrow="Get in Touch" title="Contact the Chancellor's Secretariat" />
         <ContactGrid contact={contact} />
       </Section>
 
       <CTASection
-        title="Connect with University Leadership"
-        description="Reach out to the Vice-Chancellor's Office, or explore other university leaders and administrative offices."
+        title="Explore University Leadership"
+        description="Meet the Vice-Chancellor, Pro Vice-Chancellor and Treasurer, or browse the full administration directory."
         primary={{ label: "Back to Administration", href: "/administration" }}
         secondary={{ label: "Contact the University", href: "/contact" }}
       />

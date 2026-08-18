@@ -8,7 +8,8 @@ import {
   ChevronRight,
   GraduationCap,
 } from "lucide-react";
-import { COLLEGE_IMAGE, CHANCELLOR_IMAGE, LEADERS } from "@/lib/data/leadership";
+import { COLLEGE_IMAGE, CHANCELLOR_IMAGE, CHANCELLOR, LEADERS } from "@/lib/data/leadership";
+import { LOGO_URL } from "@/lib/site-assets";
 
 export default function LeadershipPage() {
   return (
@@ -189,7 +190,7 @@ export default function LeadershipPage() {
               >
                 <div className="flex h-full w-full items-center justify-center rounded-full border ">
                   <span className="font-serif text-base font-bold w-[70%] rounded-full">
-                    <img src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp" alt="" />
+                    <img src={LOGO_URL} alt="" />
                   </span>
                 </div>
               </div>
@@ -197,18 +198,17 @@ export default function LeadershipPage() {
               <div className="relative z-10 max-w-2xl">
                 {/* Role */}
                 <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-emerald-600 sm:text-[10px]">
-                  Chancellor
+                  {CHANCELLOR.role}
                 </span>
 
                 {/* Name */}
                 <h2 className="mt-4 max-w-2xl font-serif text-2xl font-bold leading-[1.1] tracking-[-0.02em] text-[#0D0357] sm:text-3xl lg:text-4xl">
-                  His Excellency Hafiz Uddin Ahmad
+                  {CHANCELLOR.name}
                 </h2>
 
                 {/* Position */}
                 <p className="mt-3 max-w-xl text-xs font-medium leading-6 text-slate-600 sm:text-sm">
-                  The Honourable President (Acting) of the
-                  People&apos;s Republic of Bangladesh
+                  {CHANCELLOR.title}
                 </p>
 
                 {/* Accent */}
@@ -216,16 +216,12 @@ export default function LeadershipPage() {
 
                 {/* Description */}
                 <p className="mt-5 max-w-xl text-xs leading-6 text-slate-600 sm:text-sm">
-                  As the Chancellor of Khanjahan Ali College of
-                  Science & Technology, he provides visionary
-                  guidance and leadership to foster academic
-                  excellence, institutional development and
-                  innovation.
+                  {CHANCELLOR.description}
                 </p>
 
                 {/* Button */}
                 <Link
-                  href="/administration/chancellor"
+                  href={CHANCELLOR.href}
                   className="group mt-6 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#0D0357] px-5 py-3 text-xs font-bold text-white shadow-md shadow-[#0D0357]/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-amber-400 hover:text-[#0D0357]"
                 >
                   <span>View Profile</span>

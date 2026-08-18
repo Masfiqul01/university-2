@@ -1,29 +1,31 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
 import {
-  Atom,
   Award,
   Building2,
-  Calculator,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
-  CircuitBoard,
-  Code2,
-  Cpu,
-  GraduationCap,
   Mail,
-  Microscope,
   Phone,
   Search,
-  Settings,
-  Users,
   X,
 } from "lucide-react";
+import { ICON_MAP } from "@/lib/icon-map";
+import {
+  FACULTIES as FACULTY_DATA,
+  DEPARTMENTS as DEPARTMENT_DATA,
+  ACADEMICS_STATS,
+  HERO_STATS,
+  SPOTLIGHT_POINTS,
+  HERO_IMAGE,
+  SPOTLIGHT_IMAGE,
+} from "@/lib/data/academics";
 
 type Faculty = {
   name: string;
@@ -50,159 +52,23 @@ type Department = {
   iconColor: string;
 };
 
-const faculties: Faculty[] = [
-  {
-    name: "Faculty of Engineering",
-    dean: "Dean's Office",
-    phone: "+88 041 7698461-101",
-    email: "eng.dean@kkjstu.ac.bd",
-    departments: 8,
-    disciplines:
-      "Civil, Mechanical, EEE, CSE, Industrial, Architecture, Marine, Textile",
-    icon: Settings,
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-  },
-  {
-    name: "Faculty of Science",
-    dean: "Dean's Office",
-    phone: "+88 041 7698461-201",
-    email: "science.dean@kkjstu.ac.bd",
-    departments: 6,
-    disciplines:
-      "Physics, Chemistry, Mathematics, Statistics, Biotechnology, Environmental Science",
-    icon: Atom,
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-  },
-  {
-    name: "Faculty of Business Studies",
-    dean: "Dean's Office",
-    phone: "+88 041 7698461-301",
-    email: "business.dean@kkjstu.ac.bd",
-    departments: 4,
-    disciplines:
-      "Accounting, Finance, Marketing, Management, Economics",
-    icon: Calculator,
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
-  },
-  {
-    name: "Faculty of Humanities & Social Science",
-    dean: "Dean's Office",
-    phone: "+88 041 7698461-401",
-    email: "dean.hss@kkjstu.ac.bd",
-    departments: 5,
-    disciplines:
-      "English, Economics, Sociology, History, Philosophy",
-    icon: Building2,
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-  },
-  {
-    name: "Faculty of Technology",
-    dean: "Dean's Office",
-    phone: "+88 041 7698461-501",
-    email: "dean.tech@kkjstu.ac.bd",
-    departments: 7,
-    disciplines:
-      "Computer Science, IT, Software Engineering, Data Science, Telecommunication, Electronics",
-    icon: Cpu,
-    iconBg: "bg-cyan-50",
-    iconColor: "text-cyan-600",
-  },
-];
+const resolveIcon = (icon: React.ElementType | string) =>
+  typeof icon === "string" ? ICON_MAP[icon] ?? Building2 : icon
 
-const departments: Department[] = [
-  {
-    name: "Department of Computer Science & Engineering",
-    faculty: "Faculty of Engineering",
-    discipline: "Computer Science & Engineering",
-    degrees: "BSc, MSc, PhD",
-    programs: "6 Programs",
-    phone: "+88 041 7698461-105",
-    email: "cse@kkjstu.ac.bd",
-    icon: Code2,
-    iconBg: "bg-blue-50",
-    iconColor: "text-blue-600",
-  },
-  {
-    name: "Department of Physics",
-    faculty: "Faculty of Science",
-    discipline: "Physical Sciences",
-    degrees: "BSc, MSc, PhD",
-    programs: "4 Programs",
-    phone: "+88 041 7698461-205",
-    email: "physics@kkjstu.ac.bd",
-    icon: Atom,
-    iconBg: "bg-emerald-50",
-    iconColor: "text-emerald-600",
-  },
-  {
-    name: "Department of Business Administration",
-    faculty: "Faculty of Business Studies",
-    discipline: "Business & Management",
-    degrees: "BBA, MBA, PhD",
-    programs: "5 Programs",
-    phone: "+88 041 7698461-305",
-    email: "ba@kkjstu.ac.bd",
-    icon: Calculator,
-    iconBg: "bg-amber-50",
-    iconColor: "text-amber-600",
-  },
-  {
-    name: "Department of English",
-    faculty: "Faculty of Humanities & Social Science",
-    discipline: "Language & Literature",
-    degrees: "BA, MA",
-    programs: "3 Programs",
-    phone: "+88 041 7698461-405",
-    email: "english@kkjstu.ac.bd",
-    icon: Building2,
-    iconBg: "bg-violet-50",
-    iconColor: "text-violet-600",
-  },
-  {
-    name: "Department of Information Technology",
-    faculty: "Faculty of Technology",
-    discipline: "Information Technology",
-    degrees: "BSc, MSc",
-    programs: "4 Programs",
-    phone: "+88 041 7698461-505",
-    email: "it@kkjstu.ac.bd",
-    icon: CircuitBoard,
-    iconBg: "bg-cyan-50",
-    iconColor: "text-cyan-600",
-  },
-];
+const faculties: Faculty[] = FACULTY_DATA.map((faculty) => ({
+  ...faculty,
+  icon: resolveIcon(faculty.icon),
+}))
 
-const stats = [
-  {
-    value: "5",
-    label: "Faculties",
-    icon: GraduationCap,
-  },
-  {
-    value: "30+",
-    label: "Departments",
-    icon: Settings,
-  },
-  {
-    value: "100+",
-    label: "Academic Programs",
-    icon: Calculator,
-  },
-  {
-    value: "650+",
-    label: "Faculty Members",
-    icon: Building2,
-  },
-  {
-    value: "8,000+",
-    label: "Students",
-    icon: Users,
-  },
-];
+const departments: Department[] = DEPARTMENT_DATA.map((department) => ({
+  ...department,
+  icon: resolveIcon(department.icon),
+}))
+
+const stats = ACADEMICS_STATS.map((stat) => ({
+  ...stat,
+  icon: resolveIcon(stat.icon),
+}))
 
 export default function FacultiesDepartmentsPage() {
   const [facultyFilter, setFacultyFilter] =
@@ -218,6 +84,8 @@ export default function FacultiesDepartmentsPage() {
 
   const [mobileFilters, setMobileFilters] =
     useState(false);
+
+  const [page, setPage] = useState(1);
 
   const filteredDepartments = useMemo(() => {
     return departments.filter((department) => {
@@ -272,6 +140,20 @@ export default function FacultiesDepartmentsPage() {
     degreeFilter,
   ]);
 
+  const perPage = 3;
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredDepartments.length / perPage)
+  );
+
+  const currentPage = Math.min(page, totalPages);
+
+  const visibleDepartments = filteredDepartments.slice(
+    (currentPage - 1) * perPage,
+    currentPage * perPage
+  );
+
   const clearFilters = () => {
     setSearch("");
     setFacultyFilter("All Faculties");
@@ -292,7 +174,7 @@ export default function FacultiesDepartmentsPage() {
         ====================================================== */}
         <section className="relative min-h-[390px] overflow-hidden bg-[#061a46]">
           <img
-            src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
+            src={HERO_IMAGE}
             alt="KACST campus"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -323,23 +205,14 @@ export default function FacultiesDepartmentsPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-7 sm:gap-9">
-                <HeroStat
-                  icon={GraduationCap}
-                  value="5"
-                  label="Faculties"
-                />
-
-                <HeroStat
-                  icon={Settings}
-                  value="30+"
-                  label="Departments"
-                />
-
-                <HeroStat
-                  icon={Building2}
-                  value="100+"
-                  label="Programs"
-                />
+                {HERO_STATS.map((stat) => (
+                  <HeroStat
+                    key={stat.label}
+                    icon={ICON_MAP[stat.icon] ?? Building2}
+                    value={stat.value}
+                    label={stat.label}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -420,7 +293,7 @@ export default function FacultiesDepartmentsPage() {
 
             {/* Desktop filter */}
             <div className="mt-9 hidden rounded-xl border border-[#dce7f1] bg-white p-4 shadow-[0_5px_24px_rgba(15,45,90,0.05)] lg:block">
-              <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr_auto_auto] gap-3">
+              <div className="grid grid-cols-[1.4fr_1fr_1fr_1fr_auto] gap-3">
                 <SearchInput
                   value={search}
                   onChange={setSearch}
@@ -460,15 +333,6 @@ export default function FacultiesDepartmentsPage() {
                     "PhD",
                   ]}
                 />
-
-                <button
-                  type="button"
-                  onClick={() => {}}
-                  className="flex h-11 items-center justify-center gap-2 rounded-lg bg-[#071b49] px-5 text-[12px] font-semibold text-white transition hover:bg-[#102b68]"
-                >
-                  <Search size={15} />
-                  Search
-                </button>
 
                 <button
                   type="button"
@@ -592,7 +456,7 @@ export default function FacultiesDepartmentsPage() {
               </div>
 
               {filteredDepartments.length > 0 ? (
-                filteredDepartments.map(
+                visibleDepartments.map(
                   (department) => (
                     <DepartmentRow
                       key={department.name}
@@ -622,36 +486,47 @@ export default function FacultiesDepartmentsPage() {
             {/* Pagination */}
             <div className="flex flex-col gap-4 pt-5 text-[11px] text-[#69788e] sm:flex-row sm:items-center sm:justify-between">
               <span>
-                Showing {filteredDepartments.length} of
-                30+ departments
+                Showing{" "}
+                {filteredDepartments.length === 0
+                  ? 0
+                  : (currentPage - 1) * perPage + 1}
+                –
+                {Math.min(
+                  currentPage * perPage,
+                  filteredDepartments.length
+                )}{" "}
+                of {filteredDepartments.length} departments
               </span>
 
               <div className="flex items-center gap-1">
-                <PaginationButton>
+                <PaginationButton
+                  disabled={currentPage === 1}
+                  onClick={() =>
+                    setPage((p) => Math.max(1, p - 1))
+                  }
+                >
                   <ChevronLeft size={14} />
                 </PaginationButton>
 
-                <PaginationButton active>
-                  1
-                </PaginationButton>
+                {Array.from(
+                  { length: totalPages },
+                  (_, index) => index + 1
+                ).map((number) => (
+                  <PaginationButton
+                    key={number}
+                    active={currentPage === number}
+                    onClick={() => setPage(number)}
+                  >
+                    {number}
+                  </PaginationButton>
+                ))}
 
-                <PaginationButton>
-                  2
-                </PaginationButton>
-
-                <PaginationButton>
-                  3
-                </PaginationButton>
-
-                <PaginationButton>
-                  ...
-                </PaginationButton>
-
-                <PaginationButton>
-                  6
-                </PaginationButton>
-
-                <PaginationButton>
+                <PaginationButton
+                  disabled={currentPage === totalPages}
+                  onClick={() =>
+                    setPage((p) => Math.min(totalPages, p + 1))
+                  }
+                >
                   <ChevronRight size={14} />
                 </PaginationButton>
               </div>
@@ -686,37 +561,28 @@ export default function FacultiesDepartmentsPage() {
                 </p>
 
                 <div className="mt-7 grid gap-5 sm:grid-cols-3">
-                  <SpotlightPoint
-                    icon={GraduationCap}
-                    title="Experienced Faculty"
-                    text="Highly qualified and industry connected."
-                  />
-
-                  <SpotlightPoint
-                    icon={Microscope}
-                    title="Research & Innovation"
-                    text="Driving discoveries that create real impact."
-                  />
-
-                  <SpotlightPoint
-                    icon={Award}
-                    title="Global Perspective"
-                    text="Preparing graduates for a global future."
-                  />
+                  {SPOTLIGHT_POINTS.map((point) => (
+                    <SpotlightPoint
+                      key={point.title}
+                      icon={ICON_MAP[point.icon] ?? Award}
+                      title={point.title}
+                      text={point.text}
+                    />
+                  ))}
                 </div>
 
-                <button
-                  type="button"
+                <Link
+                  href="/academics/faculties"
                   className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#071b49] px-6 py-3 text-[12px] font-semibold text-white shadow-sm transition hover:bg-[#102b68]"
                 >
                   Meet Our Faculty
                   <ChevronRight size={15} />
-                </button>
+                </Link>
               </div>
 
               <div className="overflow-hidden rounded-xl border border-white shadow-[0_15px_45px_rgba(15,45,90,0.10)]">
                 <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
+                  src={SPOTLIGHT_IMAGE}
                   alt="KACST faculty member teaching students"
                   className="h-[330px] w-full object-cover sm:h-[410px]"
                 />
@@ -749,29 +615,29 @@ export default function FacultiesDepartmentsPage() {
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <button
-                type="button"
+              <Link
+                href="/academics/programs"
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#f6b900] px-6 py-3.5 text-[12px] font-bold text-[#071b49] shadow-lg transition hover:bg-[#ffc928]"
               >
                 Explore Academic Programs
                 <ChevronRight size={15} />
-              </button>
+              </Link>
 
-              <button
-                type="button"
+              <Link
+                href="/academics/faculties"
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/70 px-6 py-3.5 text-[12px] font-semibold text-white transition hover:bg-white/10"
               >
                 Meet Our Faculty
                 <ChevronRight size={15} />
-              </button>
+              </Link>
 
-              <button
-                type="button"
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/70 px-6 py-3.5 text-[12px] font-semibold text-white transition hover:bg-white/10"
               >
                 Contact Department
                 <ChevronRight size={15} />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -927,8 +793,8 @@ function FacultyCard({
       </div>
 
       <div className="mt-auto border-t border-[#edf1f5] pt-4">
-        <button
-          type="button"
+        <Link
+          href="/academics/faculties"
           className="group/btn flex items-center gap-1 text-[10px] font-bold text-[#071b49]"
         >
           View Faculty
@@ -937,7 +803,7 @@ function FacultyCard({
             size={13}
             className="transition-transform group-hover/btn:translate-x-1"
           />
-        </button>
+        </Link>
       </div>
     </article>
   );
@@ -1149,18 +1015,24 @@ function InfoItem({
 function PaginationButton({
   children,
   active = false,
+  disabled = false,
+  onClick,
 }: {
   children: React.ReactNode;
   active?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <button
       type="button"
+      onClick={onClick}
+      disabled={disabled}
       className={`flex h-8 min-w-8 items-center justify-center rounded-md border px-2 text-[10px] font-semibold transition ${
         active
           ? "border-[#071b49] bg-[#071b49] text-white"
           : "border-[#dce4ec] bg-white text-[#64748b] hover:border-[#102b68] hover:text-[#071b49]"
-      }`}
+      } ${disabled ? "cursor-not-allowed opacity-40" : ""}`}
     >
       {children}
     </button>

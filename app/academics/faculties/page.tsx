@@ -21,134 +21,21 @@ import { ReactLenis } from "lenis/react";
 import { SiteHeader } from "../../../components/site-header";
 import { SiteFooter } from "../../../components/site-footer";
 
+import {
+  HERO_IMAGES,
+  ACADEMIC_FEATURES,
+  PROGRAM_HIGHLIGHTS,
+  FACILITIES,
+  CAMPUS_ACTIVITIES,
+  HERO_STATS,
+  SMART_CLASSROOM_HIGHLIGHTS,
+  LAB_NAMES,
+  LIBRARY_HIGHLIGHTS,
+  LIBRARY_PHOTO,
+  SAFETY_HIGHLIGHTS,
+} from "@/lib/data/academics-faculties";
+
 gsap.registerPlugin(ScrollTrigger, useGSAP);
-
-/* =========================================================
-   DATA
-========================================================= */
-
-const heroImages = {
-  main:
-    "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp",
-  classroom:
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-  library:
-    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
-};
-
-const academicFeatures = [
-  {
-    number: "01",
-    title: "Experienced Faculty",
-    text: "Qualified educators who combine subject expertise with mentorship and meaningful student support.",
-  },
-  {
-    number: "02",
-    title: "Modern Teaching",
-    text: "Engaging learning methods designed around today's students, technology and real-world application.",
-  },
-  {
-    number: "03",
-    title: "Student-Centered",
-    text: "A supportive academic culture where students are encouraged to participate, question and explore.",
-  },
-  {
-    number: "04",
-    title: "Continuous Assessment",
-    text: "Regular academic monitoring helps identify progress, strengths and opportunities for improvement.",
-  },
-  {
-    number: "05",
-    title: "Digital Learning",
-    text: "Technology-enabled resources that extend learning beyond traditional classroom boundaries.",
-  },
-  {
-    number: "06",
-    title: "Practical Education",
-    text: "Hands-on experiences that help students transform academic knowledge into practical understanding.",
-  },
-];
-
-const programs = [
-  {
-    number: "01",
-    level: "FOUNDATION",
-    title: "Early Years",
-    text: "A nurturing beginning that develops curiosity, confidence, communication and foundational learning habits.",
-  },
-  {
-    number: "02",
-    level: "FOUNDATION",
-    title: "Primary Education",
-    text: "Strong academic foundations delivered through structured, engaging and supportive learning experiences.",
-  },
-  {
-    number: "03",
-    level: "ADVANCED",
-    title: "Secondary Education",
-    text: "Developing independent thinking, subject knowledge, discipline and preparation for higher studies.",
-  },
-  {
-    number: "04",
-    level: "ADVANCED",
-    title: "Higher Secondary",
-    text: "Focused academic preparation designed to support students on their journey toward higher education.",
-  },
-];
-
-const facilities = [
-  {
-    icon: "01",
-    title: "Modern Campus",
-    text: "Thoughtfully designed spaces that create a welcoming environment for learning and student development.",
-  },
-  {
-    icon: "02",
-    title: "Computer & ICT",
-    text: "Technology-supported environments that encourage digital literacy and modern learning practices.",
-  },
-  {
-    icon: "03",
-    title: "Science Laboratories",
-    text: "Practical learning spaces for experimentation, discovery and deeper understanding of scientific concepts.",
-  },
-  {
-    icon: "04",
-    title: "Library",
-    text: "A resource-rich environment that supports reading, research, independent learning and discovery.",
-  },
-  {
-    icon: "05",
-    title: "Sports & Playground",
-    text: "Spaces that encourage health, teamwork, discipline, resilience and healthy competition.",
-  },
-  {
-    icon: "06",
-    title: "Health & First Aid",
-    text: "Basic health and first-aid support that contributes to a caring and responsible student environment.",
-  },
-  {
-    icon: "07",
-    title: "Transportation",
-    text: "Convenient transportation support designed to make daily student journeys easier and more reliable.",
-  },
-  {
-    icon: "08",
-    title: "Safe Campus",
-    text: "A secure, respectful environment where students can focus on learning with confidence and peace of mind.",
-  },
-];
-
-const activities = [
-  "Sports & Athletics",
-  "Debate & Public Speaking",
-  "Cultural Activities",
-  "Art & Creativity",
-  "Student Clubs",
-  "Leadership Development",
-  "Academic Competitions",
-  "Community Activities",
-];
 
 /* =========================================================
    SMALL COMPONENTS
@@ -528,7 +415,7 @@ export default function AcademicFacilitiesPage() {
             className="absolute inset-0"
           >
             <img
-              src={heroImages.main}
+              src={HERO_IMAGES.main}
               alt="Academic campus"
               className="h-full w-full object-cover"
             />
@@ -595,12 +482,7 @@ export default function AcademicFacilitiesPage() {
               </div>
 
               <div className="hero-meta mt-16 grid max-w-5xl border-t border-white/15 sm:grid-cols-4">
-                {[
-                  ["5+", "Academic Faculties"],
-                  ["20+", "Programs"],
-                  ["37+", "Faculty Members"],
-                  ["Modern", "Research Labs"],
-                ].map(([number, label]) => (
+                {HERO_STATS.map(([number, label]) => (
                   <div
                     key={label}
                     className="border-b border-white/10 px-0 py-6 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 sm:last:border-r-0"
@@ -688,7 +570,7 @@ export default function AcademicFacilitiesPage() {
               </div>
 
               <div className="grid gap-0 border-t border-slate-300">
-                {academicFeatures.map((feature) => (
+                {ACADEMIC_FEATURES.map((feature) => (
                   <motion.div
                     key={feature.number}
                     whileHover={{ x: 8 }}
@@ -740,7 +622,7 @@ export default function AcademicFacilitiesPage() {
             </div>
 
             <div className="mt-14 grid border-t border-slate-300 md:grid-cols-2">
-              {programs.map((program) => (
+              {PROGRAM_HIGHLIGHTS.map((program) => (
                 <motion.article
                   key={program.number}
                   whileHover={{ y: -6 }}
@@ -800,7 +682,7 @@ export default function AcademicFacilitiesPage() {
               <div className="image-reveal overflow-hidden rounded-2xl">
                 <div className="relative h-[430px] sm:h-[570px]">
                   <img
-                    src={heroImages.classroom}
+                    src={HERO_IMAGES.classroom}
                     alt="Modern smart classroom"
                     className="parallax-image h-full w-full scale-[1.08] object-cover"
                   />
@@ -841,13 +723,7 @@ export default function AcademicFacilitiesPage() {
                 </p>
 
                 <div className="mt-9 space-y-4">
-                  {[
-                    "Interactive learning environment",
-                    "Multimedia and presentation support",
-                    "Comfortable and organized classrooms",
-                    "Digital educational resources",
-                    "Technology-supported teaching",
-                  ].map((item, index) => (
+                  {SMART_CLASSROOM_HIGHLIGHTS.map((item, index) => (
                     <motion.div
                       key={item}
                       initial={{
@@ -914,12 +790,7 @@ export default function AcademicFacilitiesPage() {
               </div>
 
               <div className="grid grid-cols-2 border-l border-t border-slate-300">
-                {[
-                  ["01", "Physics Lab"],
-                  ["02", "Chemistry Lab"],
-                  ["03", "Biology Lab"],
-                  ["04", "Computer Lab"],
-                ].map(([number, title]) => (
+                {LAB_NAMES.map(([number, title]) => (
                   <motion.div
                     key={title}
                     whileHover={{
@@ -978,14 +849,7 @@ export default function AcademicFacilitiesPage() {
                 </p>
 
                 <div className="mt-9 grid gap-x-8 gap-y-4 sm:grid-cols-2">
-                  {[
-                    "Well-stocked library",
-                    "Digital resources",
-                    "Reference materials",
-                    "Quiet study environment",
-                    "Age-appropriate books",
-                    "Independent learning support",
-                  ].map((item) => (
+                  {LIBRARY_HIGHLIGHTS.map((item) => (
                     <div
                       key={item}
                       className="flex items-center gap-3 border-b border-slate-200 pb-4 text-sm font-medium text-slate-700"
@@ -1003,7 +867,7 @@ export default function AcademicFacilitiesPage() {
              <div className="image-reveal overflow-hidden rounded-2xl">
   <div className="relative h-[480px] sm:h-[560px]">
     <img
-      src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786968335/Library-1024_vx5vaq.webp"
+      src={LIBRARY_PHOTO}
       alt="University library"
       className="parallax-image h-full w-full scale-[1.08] object-cover"
     />
@@ -1041,7 +905,7 @@ export default function AcademicFacilitiesPage() {
             </div>
 
             <div className="mt-14 grid border-l border-t border-slate-300 sm:grid-cols-2 lg:grid-cols-4">
-              {facilities.map((facility) => (
+              {FACILITIES.map((facility) => (
                 <motion.div
                   key={facility.title}
                   whileHover={{
@@ -1111,7 +975,7 @@ export default function AcademicFacilitiesPage() {
               </div>
 
               <div className="grid border-l border-t border-slate-300 sm:grid-cols-2">
-                {activities.map((activity, index) => (
+                {CAMPUS_ACTIVITIES.map((activity, index) => (
                   <motion.div
                     key={activity}
                     whileHover={{
@@ -1161,14 +1025,7 @@ export default function AcademicFacilitiesPage() {
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Safe Campus",
-                    "Student Supervision",
-                    "First-Aid Support",
-                    "Clean Environment",
-                    "Positive Student Culture",
-                    "Student Support",
-                  ].map((item, index) => (
+                  {SAFETY_HIGHLIGHTS.map((item, index) => (
                     <motion.div
                       key={item}
                       initial={{
@@ -1341,7 +1198,7 @@ export default function AcademicFacilitiesPage() {
 
         {/* TERTIARY CTA */}
         <Link
-          href="/campus/facilities"
+          href="/campus-life/facilities"
           className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] px-7 text-sm font-semibold text-indigo-100/65 transition-all duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.035] hover:text-white active:translate-y-0"
         >
           <span>Book a Visit</span>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import {
   GraduationCap,
   Laptop,
@@ -443,15 +444,14 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
               ================================================== */}
               <div className="flex items-center justify-between gap-2 border-t border-slate-100 bg-slate-50 p-4">
                 {/* Details */}
-                <button
-                  type="button"
-                  onClick={() => onSelectProgram?.(program)}
+                <Link
+                  href={`/academics/programs/${program.slug}`}
                   className="flex items-center gap-1 text-xs font-bold text-[#0D0357] transition-colors hover:text-amber-600"
                 >
                   <span>View Details</span>
 
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
-                </button>
+                </Link>
 
                 {/* Apply */}
                 <button
@@ -616,7 +616,7 @@ function ApplicationModal({
         }
       }}
     >
-      <div className="max-h-[94dvh] w-full overflow-y-auto rounded-t-3xl bg-slate-50 shadow-2xl sm:max-w-3xl sm:rounded-3xl">
+      <div data-lenis-prevent className="max-h-[94dvh] w-full overflow-y-auto rounded-t-3xl bg-slate-50 shadow-2xl sm:max-w-3xl sm:rounded-3xl">
         {/* =====================================================
             MODAL HEADER
         ====================================================== */}

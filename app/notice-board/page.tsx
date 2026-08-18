@@ -3,12 +3,21 @@
 import { useMemo, useState } from "react"
 import Link from "next/link"
 import {
-  Search, Download, Calendar, ChevronLeft, ChevronRight, ChevronDown,
+  Calendar, ChevronLeft, ChevronRight, ChevronDown,
   LayoutGrid, GraduationCap, Megaphone, FileText, ClipboardList, Flag,
 } from "lucide-react"
 import { PageShell } from "@/components/page-shell"
 import { PageHero } from "@/components/page-hero"
 import { NOTICES_LIST, NOTICE_CATEGORIES, IMPORTANT_LINKS, NOTICE_ARCHIVE, type NoticeCategory } from "@/lib/data/notices"
+
+// NOTICE_ARCHIVE labels look like "May 2025"; NOTICES_LIST dates look like
+// "May 19, 2025". Matching on the first 3 letters of the month plus the
+// year works for both full ("February") and abbreviated ("May") labels.
+function noticeMatchesArchive(date: string, periodLabel: string) {
+  const [month, year] = periodLabel.split(" ")
+  if (!month || !year) return true
+  return date.startsWith(month.slice(0, 3)) && date.endsWith(year)
+}
 
 const TABS: { key: "All" | NoticeCategory; label: string; icon: typeof LayoutGrid }[] = [
   { key: "All", label: "All Notices", icon: LayoutGrid },
@@ -41,6 +50,8 @@ export default function NoticeBoardPage() {
   const [activeTab, setActiveTab] = useState<"All" | NoticeCategory>("All")
   const [query, setQuery] = useState("")
   const [page, setPage] = useState(1)
+  const [archivePeriod, setArchivePeriod] = useState("All")
+  const [expandedSlug, setExpandedSlug] = useState<string | null>(null)
 
   const counts = useMemo(() => {
     const map: Record<string, number> = { All: NOTICES_LIST.length }
@@ -54,9 +65,10 @@ export default function NoticeBoardPage() {
     return NOTICES_LIST.filter((n) => {
       const matchesTab = activeTab === "All" || n.category === activeTab
       const matchesQuery = (n.title + " " + n.description).toLowerCase().includes(query.toLowerCase())
-      return matchesTab && matchesQuery
+      const matchesArchive = archivePeriod === "All" || noticeMatchesArchive(n.date, archivePeriod)
+      return matchesTab && matchesQuery && matchesArchive
     })
-  }, [activeTab, query])
+  }, [activeTab, query, archivePeriod])
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE))
   const currentPage = Math.min(page, totalPages)
@@ -124,6 +136,22 @@ export default function NoticeBoardPage() {
                           {notice.title}
                         </h3>
                         <p className="text-sm leading-relaxed text-(--notice-text-secondary)">{notice.description}</p>
+
+                        {expandedSlug === notice.slug && (
+                          <div className="mt-3 rounded-lg border border-(--notice-border) bg-(--notice-btn-bg) p-3.5">
+                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-(--notice-text-meta)">
+                              <span>
+                                Category: <span className="font-semibold text-(--notice-heading)">{notice.category}</span>
+                              </span>
+                              <span>
+                                Published: <span className="font-semibold text-(--notice-heading)">{notice.date}</span>
+                              </span>
+                              <span>
+                                Reference: <span className="font-mono font-semibold text-(--notice-heading)">{notice.slug}</span>
+                              </span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                       <div className="flex shrink-0 items-center gap-3 sm:flex-col sm:items-end sm:gap-2">
                         <p className="flex items-center gap-1.5 text-xs text-(--notice-text-meta)">
@@ -132,10 +160,12 @@ export default function NoticeBoardPage() {
                         </p>
                         <button
                           type="button"
-                          title="Download notice"
+                          onClick={() => setExpandedSlug(expandedSlug === notice.slug ? null : notice.slug)}
+                          aria-expanded={expandedSlug === notice.slug}
+                          title={expandedSlug === notice.slug ? "Hide notice details" : "View notice details"}
                           className="flex h-9 w-9 items-center justify-center rounded-lg border border-(--notice-border) text-(--notice-text-meta) transition-colors hover:border-brand-accent hover:text-brand-accent"
                         >
-                          <Download className="h-4 w-4" />
+                          <ChevronDown className={`h-4 w-4 transition-transform ${expandedSlug === notice.slug ? "rotate-180" : ""}`} />
                         </button>
                       </div>
                     </article>
@@ -187,24 +217,15 @@ export default function NoticeBoardPage() {
           <aside className="space-y-6">
             <div className="rounded-2xl border border-(--notice-border) bg-(--notice-panel-bg) p-5 shadow-sm">
               <h3 className="mb-3 font-serif text-base font-bold text-(--notice-heading)">Search Notice</h3>
-              <div className="flex gap-2">
-                <input
-                  value={query}
-                  onChange={(e) => {
-                    setQuery(e.target.value)
-                    setPage(1)
-                  }}
-                  placeholder="Search notices..."
-                  className="w-full rounded-lg border border-(--notice-border) bg-(--notice-btn-bg) px-4 py-2.5 text-sm text-(--notice-heading) outline-none transition-colors placeholder:text-(--notice-text-meta) focus:border-brand-accent"
-                />
-                <button
-                  type="button"
-                  aria-label="Search"
-                  className="flex h-10 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-dark text-white transition-colors hover:bg-brand"
-                >
-                  <Search className="h-4 w-4" />
-                </button>
-              </div>
+              <input
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value)
+                  setPage(1)
+                }}
+                placeholder="Search notices..."
+                className="w-full rounded-lg border border-(--notice-border) bg-(--notice-btn-bg) px-4 py-2.5 text-sm text-(--notice-heading) outline-none transition-colors placeholder:text-(--notice-text-meta) focus:border-brand-accent"
+              />
             </div>
 
             <div className="rounded-2xl border border-(--notice-border) bg-(--notice-panel-bg) p-5 shadow-sm">
@@ -268,9 +289,14 @@ export default function NoticeBoardPage() {
               <h3 className="mb-3 font-serif text-base font-bold text-(--notice-heading)">Notice Archive</h3>
               <div className="relative">
                 <select
-                  defaultValue={NOTICE_ARCHIVE[0]?.label}
+                  value={archivePeriod}
+                  onChange={(e) => {
+                    setArchivePeriod(e.target.value)
+                    setPage(1)
+                  }}
                   className="w-full appearance-none rounded-lg border border-(--notice-border) bg-(--notice-btn-bg) py-2.5 pl-10 pr-9 text-sm text-(--notice-heading) outline-none transition-colors focus:border-brand-accent"
                 >
+                  <option value="All">All Notices</option>
                   {NOTICE_ARCHIVE.map((a) => (
                     <option key={a.label} value={a.label}>
                       {a.label} ({a.count})

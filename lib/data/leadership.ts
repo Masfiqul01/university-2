@@ -5,6 +5,15 @@ export const COLLEGE_IMAGE =
 export const CHANCELLOR_IMAGE =
   "https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707383/principal.webp"
 
+export const CHANCELLOR = {
+  role: "Chancellor",
+  name: "His Excellency Hafiz Uddin Ahmad",
+  title: "The Honourable President (Acting) of the People's Republic of Bangladesh",
+  description:
+    "As the Chancellor of Khanjahan Ali College of Science & Technology, he provides visionary guidance and leadership to foster academic excellence, institutional development and innovation.",
+  href: "/administration/chancellor",
+}
+
 export const LEADERS = [
   {
     role: "Vice-Chancellor",

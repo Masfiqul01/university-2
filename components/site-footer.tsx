@@ -48,7 +48,7 @@ const COLUMNS: {
       { label: "History", href: "/about/history" },
       { label: "Mission & Vision", href: "/about/mission-vision" },
       { label: "Leadership", href: "/about/leadership" },
-      { label: "Faculties", href: "/about/faculties" },
+      { label: "Faculties", href: "/academics/faculties" },
       { label: "Administration", href: "/administration" },
       { label: "IQAC", href: "/iqac" },
       { label: "Contact", href: "/contact" },
@@ -230,20 +230,37 @@ export function SiteFooter() {
             </ul>
 
             <div className="flex flex-wrap gap-3">
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${
-                    social.label === "Email"
-                      ? "bg-brand-accent text-white hover:bg-brand-accent/80"
-                      : "bg-white/10 text-brand-accent hover:bg-brand-accent hover:text-white"
-                  }`}
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-4 w-4" />
-                </a>
-              ))}
+              {SOCIALS.map((social) => {
+                const hasLink = social.href !== "#"
+
+                if (!hasLink) {
+                  return (
+                    <span
+                      key={social.label}
+                      className="flex h-9 w-9 shrink-0 cursor-not-allowed items-center justify-center rounded-full bg-white/5 text-brand-accent/40"
+                      aria-label={`${social.label} (not yet available)`}
+                      aria-disabled="true"
+                    >
+                      <social.icon className="h-4 w-4" />
+                    </span>
+                  )
+                }
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors ${
+                      social.label === "Email"
+                        ? "bg-brand-accent text-white hover:bg-brand-accent/80"
+                        : "bg-white/10 text-brand-accent hover:bg-brand-accent hover:text-white"
+                    }`}
+                    aria-label={social.label}
+                  >
+                    <social.icon className="h-4 w-4" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 

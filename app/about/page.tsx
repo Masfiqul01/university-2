@@ -7,7 +7,7 @@ import { LeadershipCard } from "@/components/cards"
 import { StatsBar } from "@/components/stats-bar"
 import { CTASection } from "@/components/cta-section"
 import { ICON_MAP } from "@/lib/icon-map"
-import { VALUES } from "@/lib/data/about"
+import { VALUES, VC_WELCOME } from "@/lib/data/about"
 
 export const metadata: Metadata = {
   title: "About KACST",
@@ -64,9 +64,9 @@ export default function AboutPage() {
         <SectionHeading eyebrow="Leadership" title="Message from the Vice Chancellor" center />
         <div className="mx-auto max-w-3xl">
           <LeadershipCard
-            name="Vice Chancellor"
-            role="Office of the Vice Chancellor — KACST (editable placeholder)"
-            bio="Welcome to Khulna Khan Jahan Science and Technology University. Our mission is to empower students with the knowledge, skills, and values needed to excel and lead. We invite you to be part of a community devoted to learning, discovery, and service. (This message is editable placeholder content.)"
+            name={VC_WELCOME.name}
+            role={VC_WELCOME.role}
+            bio={VC_WELCOME.bio}
           />
         </div>
       </Section>

@@ -15,7 +15,7 @@ export const EVENTS_LIST = [
     time: "10:00 AM – 01:00 PM",
     venue: "Central Seminar Hall",
     title: "Seminar on Artificial Intelligence and Future Career",
-    description: "The Department of CSE is organizing a seminar on AI and future career opportunities for students.",
+    description: "The Department of CSE is organizing a seminar on AI and future career opportunities for students. Industry speakers will discuss real-world applications of machine learning and the skills students need to break into AI-related careers. The session will close with an open Q&A, giving attendees a chance to ask about internships and further study options.",
   },
   {
     slug: "robotics-workshop-engineering",
@@ -25,7 +25,7 @@ export const EVENTS_LIST = [
     time: "09:30 AM – 04:00 PM",
     venue: "Engineering Building, Lab 305",
     title: "Robotics Workshop for Engineering Students",
-    description: "Hands-on robotics workshop for engineering students to learn modern automation technologies.",
+    description: "Hands-on robotics workshop for engineering students to learn modern automation technologies. Participants will work in small teams to assemble and program a basic robotic unit, guided by faculty and senior students from the robotics club. No prior robotics experience is required, though a basic understanding of circuits or programming is helpful.",
   },
   {
     slug: "tree-plantation-program",
@@ -35,7 +35,7 @@ export const EVENTS_LIST = [
     time: "09:00 AM – 12:00 PM",
     venue: "College Campus",
     title: "Tree Plantation Program Organized by NSS",
-    description: "NSS Unit of our college is organizing a tree plantation program to build a green and healthy environment.",
+    description: "NSS Unit of our college is organizing a tree plantation program to build a green and healthy environment. Volunteers will plant native trees and flowering plants across open areas of the campus, with light refreshments provided afterward. The program is part of a broader sustainability initiative to expand green cover across the university grounds.",
   },
   {
     slug: "programming-contest-2025",
@@ -45,7 +45,7 @@ export const EVENTS_LIST = [
     time: "10:00 AM – 04:00 PM",
     venue: "Computer Lab, 3rd Floor",
     title: "Inter-Department Programming Contest 2025",
-    description: "An inter-department programming contest to encourage problem solving and coding skills among students.",
+    description: "An inter-department programming contest to encourage problem solving and coding skills among students. Teams of up to three students will compete to solve a series of algorithmic challenges within a fixed time limit, with prizes awarded to the top three finishers. The contest is open to students from all departments with an interest in programming.",
   },
   {
     slug: "seminar-research-methodology",
@@ -55,7 +55,7 @@ export const EVENTS_LIST = [
     time: "11:00 AM – 01:00 PM",
     venue: "Library Auditorium",
     title: "Seminar on Research Methodology",
-    description: "A seminar for students on understanding research methodology and academic excellence.",
+    description: "A seminar for students on understanding research methodology and academic excellence. The session will cover how to formulate a research question, structure a literature review and apply appropriate methods for data collection and analysis. It is particularly recommended for students preparing thesis or capstone projects.",
   },
   {
     slug: "cultural-program-2025",
@@ -65,7 +65,7 @@ export const EVENTS_LIST = [
     time: "04:00 PM – 08:00 PM",
     venue: "College Auditorium",
     title: "Cultural Program 2025",
-    description: "A grand cultural program showcasing the talent and creativity of our students.",
+    description: "A grand cultural program showcasing the talent and creativity of our students. The evening will feature music, dance and drama performances from student clubs across departments, followed by an open floor segment for spontaneous performances. Light refreshments will be served, and the event is open to the entire campus community.",
   },
   {
     slug: "career-counseling-workshop",
@@ -75,7 +75,7 @@ export const EVENTS_LIST = [
     time: "10:00 AM – 01:00 PM",
     venue: "Seminar Hall",
     title: "Career Counseling Workshop",
-    description: "Guidance session helping students plan higher studies and career paths after graduation.",
+    description: "Guidance session helping students plan higher studies and career paths after graduation. Career advisors will walk students through options for graduate study, professional certifications and entry into the job market, along with tips for building a strong resume and portfolio. One-on-one consultation slots will be available after the main session.",
   },
   {
     slug: "annual-sports-meet",
@@ -85,7 +85,7 @@ export const EVENTS_LIST = [
     time: "08:00 AM – 05:00 PM",
     venue: "Sports Ground",
     title: "Annual Sports Meet",
-    description: "A day of athletics, team sports and friendly competition across all departments.",
+    description: "A day of athletics, team sports and friendly competition across all departments. Events will include track and field, football, cricket and volleyball, with each department fielding its own team. Trophies will be awarded to the top-performing departments at a closing ceremony.",
   },
   {
     slug: "debate-competition",
@@ -95,6 +95,6 @@ export const EVENTS_LIST = [
     time: "02:00 PM – 05:00 PM",
     venue: "College Auditorium",
     title: "Inter-College Debate Competition",
-    description: "Students showcase critical thinking and public speaking skills in this inter-college debate.",
+    description: "Students showcase critical thinking and public speaking skills in this inter-college debate. Teams will argue both sides of current and thought-provoking motions in front of a panel of judges from the faculty. The final round will be open to the public, with the winning team receiving a trophy and certificates.",
   },
 ]

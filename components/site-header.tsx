@@ -77,9 +77,19 @@ function Logo({ light = true }: { light?: boolean }) {
   )
 }
 
+const QUICK_APPS = [
+  { label: "Student Portal", href: "/student-portal", icon: "Users" },
+  { label: "Teacher Portal", href: "/teacher-portal", icon: "GraduationCap" },
+  { label: "Notice Board", href: "/notice-board", icon: "Bell" },
+  { label: "Academic Calendar", href: "/academics/calendar", icon: "CalendarDays" },
+  { label: "Library", href: "/library", icon: "Library" },
+  { label: "Contact Us", href: "/contact", icon: "Phone" },
+]
+
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
+  const [appsOpen, setAppsOpen] = useState(false)
 
   /*
     ------------------------------------------------------------
@@ -333,7 +343,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
           className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-400/[0.055] blur-3xl"
         />
 
-        <div className="relative max-h-[605px] overflow-y-auto">
+        <div data-lenis-prevent className="relative max-h-[min(70vh,605px)] overflow-y-auto">
           <div className="relative p-5 xl:p-6">
 
             {/* =====================================================
@@ -345,7 +355,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
                 href="/administration/vice-chancellor"
                 className="group mb-4 flex flex-col items-center rounded-2xl border border-slate-100/80 bg-gradient-to-b from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-amber-300 hover:shadow-lg xl:p-5"
               >
-                <div className="h-32 w-32 overflow-hidden rounded-xl xl:h-40 xl:w-40">
+                <div className="h-20 w-20 overflow-hidden rounded-xl xl:h-24 xl:w-24">
                   <img
                     src="https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707383/principal.webp"
                     alt="Chancellor"
@@ -393,7 +403,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
                     href={profile.href}
                     className="group flex flex-col items-center rounded-xl border border-slate-100/60 bg-white p-2.5 transition-all duration-200 hover:border-amber-300 hover:shadow-md xl:p-3"
                   >
-                    <div className="h-20 w-20 overflow-hidden rounded-lg xl:h-24 xl:w-24">
+                    <div className="h-14 w-14 overflow-hidden rounded-lg xl:h-16 xl:w-16">
                       <img
                         src={profile.image}
                         alt={profile.role}
@@ -599,20 +609,54 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
 
             {/* 9-dot applications menu */}
 
-           <button
-  type="button"
-  aria-label="Applications menu"
-  className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 xl:flex"
->
-  <span className="grid grid-cols-3 gap-[4px]">
-    {Array.from({ length: 9 }).map((_, index) => (
-      <span
-        key={index}
-        className="h-[5px] w-[5px] rounded-full bg-white"
-      />
-    ))}
-  </span>
-</button>
+            <div className="relative hidden xl:block">
+              <button
+                type="button"
+                aria-label="Applications menu"
+                aria-expanded={appsOpen}
+                onClick={() => setAppsOpen((v) => !v)}
+                className={`flex h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 ${appsOpen ? "bg-white/20" : ""}`}
+              >
+                <span className="grid grid-cols-3 gap-[4px]">
+                  {Array.from({ length: 9 }).map((_, index) => (
+                    <span
+                      key={index}
+                      className="h-[5px] w-[5px] rounded-full bg-white"
+                    />
+                  ))}
+                </span>
+              </button>
+
+              {appsOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setAppsOpen(false)}
+                    aria-hidden="true"
+                  />
+                  <div className="absolute right-0 top-full z-50 mt-3 w-72 overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-2 shadow-[0_24px_70px_rgba(13,3,87,0.15)]">
+                    <div className="grid grid-cols-2 gap-1.5 p-1">
+                      {QUICK_APPS.map(({ label, href, icon }) => {
+                        const Icon = ICON_MAP[icon] ?? ICON_MAP.Info
+                        return (
+                          <Link
+                            key={href}
+                            href={href}
+                            onClick={() => setAppsOpen(false)}
+                            className="flex flex-col items-center gap-2 rounded-xl px-3 py-4 text-center transition-colors hover:bg-[#0D0357]/5"
+                          >
+                            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0D0357]/10 text-[#0D0357]">
+                              <Icon className="h-5 w-5" />
+                            </span>
+                            <span className="text-[11px] font-semibold leading-tight text-[#0D0357]">{label}</span>
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
 
             {/* Mobile menu button */}
 
@@ -637,7 +681,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
           ====================================================== */}
 
       {open && (
-        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden">
+        <div data-lenis-prevent className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden">
           <nav className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <div

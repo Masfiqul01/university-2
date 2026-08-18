@@ -1,8 +1,15 @@
 // Academic Programs page (/academics/programs) data — edit or add items here.
 // `icon` is a key into lib/icon-map.tsx's ICON_MAP.
+export const HERO_IMAGE =
+  "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
+
+export const BACKGROUND_PATTERN_IMAGE =
+  "https://www.iiuc.ac.bd/assets/backpattern-SdO-ezZO.png"
+
 export type ProgramLevel = "Undergraduate" | "Postgraduate" | "PhD / Doctoral" | "Diploma"
 
 export type Program = {
+  slug: string
   title: string
   level: ProgramLevel
   faculty: string
@@ -16,6 +23,7 @@ export type Program = {
 
 export const PROGRAMS: Program[] = [
   {
+    slug: "bsc-computer-science-engineering",
     title: "BSc in Computer Science & Engineering",
     level: "Undergraduate",
     faculty: "Faculty of Engineering",
@@ -27,6 +35,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-purple-600",
   },
   {
+    slug: "bsc-electrical-electronic-engineering",
     title: "BSc in Electrical & Electronic Engineering",
     level: "Undergraduate",
     faculty: "Faculty of Engineering",
@@ -38,6 +47,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-sky-600",
   },
   {
+    slug: "bsc-civil-engineering",
     title: "BSc in Civil Engineering",
     level: "Undergraduate",
     faculty: "Faculty of Engineering",
@@ -49,6 +59,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-emerald-600",
   },
   {
+    slug: "bsc-business-administration",
     title: "BSc in Business Administration",
     level: "Undergraduate",
     faculty: "Faculty of Business",
@@ -60,6 +71,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-amber-600",
   },
   {
+    slug: "bsc-chemistry",
     title: "BSc in Chemistry",
     level: "Undergraduate",
     faculty: "Faculty of Science",
@@ -71,6 +83,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-rose-500",
   },
   {
+    slug: "bsc-biotechnology-genetic-engineering",
     title: "BSc in Biotechnology & Genetic Engineering",
     level: "Undergraduate",
     faculty: "Faculty of Science",
@@ -82,6 +95,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-purple-600",
   },
   {
+    slug: "bsc-mathematics",
     title: "BSc in Mathematics",
     level: "Undergraduate",
     faculty: "Faculty of Science",
@@ -93,6 +107,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-blue-600",
   },
   {
+    slug: "bsc-environmental-science",
     title: "BSc in Environmental Science",
     level: "Undergraduate",
     faculty: "Faculty of Science",
@@ -104,6 +119,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-cyan-600",
   },
   {
+    slug: "ba-english",
     title: "BA in English",
     level: "Undergraduate",
     faculty: "Faculty of Humanities",
@@ -115,6 +131,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-amber-600",
   },
   {
+    slug: "bsc-physics",
     title: "BSc in Physics",
     level: "Undergraduate",
     faculty: "Faculty of Science",
@@ -126,6 +143,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-indigo-600",
   },
   {
+    slug: "bsc-statistics",
     title: "BSc in Statistics",
     level: "Undergraduate",
     faculty: "Faculty of Science",
@@ -137,6 +155,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-teal-600",
   },
   {
+    slug: "bsc-information-communication-technology",
     title: "BSc in Information & Communication Technology",
     level: "Undergraduate",
     faculty: "Faculty of Technology",
@@ -148,6 +167,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-violet-600",
   },
   {
+    slug: "msc-environmental-science",
     title: "MSc in Environmental Science",
     level: "Postgraduate",
     faculty: "Faculty of Science",
@@ -159,6 +179,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-green-600",
   },
   {
+    slug: "mba-business-administration",
     title: "MBA in Business Administration",
     level: "Postgraduate",
     faculty: "Faculty of Business",
@@ -170,6 +191,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-amber-600",
   },
   {
+    slug: "msc-computer-science",
     title: "MSc in Computer Science",
     level: "Postgraduate",
     faculty: "Faculty of Engineering",
@@ -181,6 +203,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-blue-600",
   },
   {
+    slug: "msc-chemistry",
     title: "MSc in Chemistry",
     level: "Postgraduate",
     faculty: "Faculty of Science",
@@ -192,6 +215,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-rose-500",
   },
   {
+    slug: "ma-english",
     title: "MA in English",
     level: "Postgraduate",
     faculty: "Faculty of Humanities",
@@ -203,6 +227,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-amber-600",
   },
   {
+    slug: "msc-mathematics",
     title: "MSc in Mathematics",
     level: "Postgraduate",
     faculty: "Faculty of Science",
@@ -214,6 +239,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-blue-600",
   },
   {
+    slug: "msc-physics",
     title: "MSc in Physics",
     level: "Postgraduate",
     faculty: "Faculty of Science",
@@ -225,6 +251,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-indigo-600",
   },
   {
+    slug: "phd-computer-science",
     title: "PhD in Computer Science",
     level: "PhD / Doctoral",
     faculty: "Faculty of Engineering",
@@ -236,6 +263,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-blue-600",
   },
   {
+    slug: "phd-engineering",
     title: "PhD in Engineering",
     level: "PhD / Doctoral",
     faculty: "Faculty of Engineering",
@@ -247,6 +275,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-sky-600",
   },
   {
+    slug: "diploma-ict",
     title: "Diploma in ICT",
     level: "Diploma",
     faculty: "Faculty of Technology",
@@ -258,6 +287,7 @@ export const PROGRAMS: Program[] = [
     iconColor: "text-violet-600",
   },
   {
+    slug: "diploma-business-studies",
     title: "Diploma in Business Studies",
     level: "Diploma",
     faculty: "Faculty of Business",
