@@ -356,7 +356,13 @@ export function PageMotion() {
       root.querySelectorAll<HTMLElement>("p, span, dd, h2, h3").forEach((el) => {
         if (el.childElementCount > 0 || el.closest("[data-motion-skip]")) return
 
-        const text = el.textContent?.trim() ?? ""
+        let text = el.getAttribute("data-original-text")
+        if (!text) {
+          text = el.textContent?.trim() ?? ""
+          el.setAttribute("data-original-text", text)
+        } else {
+          el.textContent = text
+        }
         const match = /^(\d[\d,]*)(\D*)$/.exec(text)
         if (!match) return
 
