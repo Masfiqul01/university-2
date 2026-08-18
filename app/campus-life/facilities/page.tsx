@@ -502,7 +502,7 @@ export default function FacilitiesPage() {
               </p>
 
               <a
-                href="#"
+                href="/contact"
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
               >
                 Contact Facilities Office
@@ -735,7 +735,7 @@ export default function FacilitiesPage() {
               </a>
 
               <a
-                href="#"
+                href="/library"
                 className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Check Library Hours
@@ -743,7 +743,7 @@ export default function FacilitiesPage() {
               </a>
 
               <a
-                href="#"
+                href="/contact"
                 className="group inline-flex min-w-[185px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Contact Facilities Office

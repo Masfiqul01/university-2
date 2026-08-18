@@ -599,7 +599,7 @@ export default function MissionVisionPage() {
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row lg:mt-0">
               <a
-                href="#"
+                href="/about/history"
                 className="group inline-flex min-w-[190px] items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
               >
                 Discover Our History

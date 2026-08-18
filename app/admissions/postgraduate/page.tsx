@@ -431,7 +431,7 @@ export default function PostgraduateAdmissionsPage() {
                   </div>
 
                   <a
-                    href="#"
+                    href="/academics/programs"
                     className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
                   >
                     Explore Program
@@ -528,7 +528,7 @@ export default function PostgraduateAdmissionsPage() {
               </p>
 
               <a
-                href="#"
+                href="/research"
                 className="mt-7 inline-flex items-center gap-2 bg-[#175783] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#0e466c]"
               >
                 Find a Supervisor
@@ -558,7 +558,7 @@ export default function PostgraduateAdmissionsPage() {
                     </p>
 
                     <a
-                      href="#"
+                      href="/research"
                       className="mt-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#175783]"
                     >
                       View Researchers
@@ -666,7 +666,7 @@ export default function PostgraduateAdmissionsPage() {
               </div>
 
               <a
-                href="#"
+                href="/admissions/requirements"
                 className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
               >
                 Check Requirements
@@ -708,7 +708,7 @@ export default function PostgraduateAdmissionsPage() {
               </div>
 
               <a
-                href="#"
+                href="/admissions/requirements"
                 className="mt-8 inline-flex items-center gap-2 bg-[#175783] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#0e466c]"
               >
                 Download Checklist
@@ -747,7 +747,7 @@ export default function PostgraduateAdmissionsPage() {
               </p>
 
               <a
-                href="#"
+                href="/notice-board"
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
               >
                 Explore Funding Opportunities
@@ -835,7 +835,7 @@ export default function PostgraduateAdmissionsPage() {
               </div>
 
               <a
-                href="#"
+                href="/notice-board"
                 className="inline-flex shrink-0 items-center justify-center gap-2 border border-[#175783] px-5 py-3 text-sm font-bold text-[#175783] transition hover:bg-[#175783] hover:text-white"
               >
                 View Admission Notices
@@ -951,7 +951,7 @@ export default function PostgraduateAdmissionsPage() {
               </a>
 
               <a
-                href="#"
+                href="/admissions/apply"
                 className="group inline-flex min-w-[145px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Apply Now

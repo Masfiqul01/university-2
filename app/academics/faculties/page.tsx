@@ -1341,7 +1341,7 @@ export default function AcademicFacilitiesPage() {
 
         {/* TERTIARY CTA */}
         <Link
-          href="/campus/facilities"
+          href="/campus-life/facilities"
           className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] px-7 text-sm font-semibold text-indigo-100/65 transition-all duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.035] hover:text-white active:translate-y-0"
         >
           <span>Book a Visit</span>

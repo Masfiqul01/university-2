@@ -655,7 +655,7 @@ export default function AdmissionRequirementsPage() {
             </div>
 
             <a
-              href="#"
+              href="/notice-board"
               className="inline-flex items-center justify-center gap-2 bg-[#092c4d] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#123d63]"
             >
               View Notices
@@ -783,7 +783,7 @@ export default function AdmissionRequirementsPage() {
 
               {/* CTA UNCHANGED */}
               <a
-                href="#"
+                href="/admissions/apply"
                 className="group inline-flex min-w-[195px] items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#150866] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(255,255,255,0.12)]"
               >
                 Start Your Application
@@ -825,7 +825,7 @@ export default function AdmissionRequirementsPage() {
       ========================================================= */}
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white p-3 shadow-[0_-5px_25px_rgba(8,39,70,0.12)] md:hidden">
         <a
-          href="#"
+          href="/admissions/apply"
           className="flex w-full items-center justify-center gap-2 bg-[#d9a82e] px-5 py-3.5 text-sm font-bold text-[#092c4d]"
         >
           Apply Now

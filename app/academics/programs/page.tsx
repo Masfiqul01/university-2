@@ -62,7 +62,7 @@ function ProgramCard({ program }: { program: Program }) {
         </div>
 
         <Link
-          href="#"
+          href={`/academics/programs/${program.slug}`}
           className="flex items-center gap-1 font-semibold text-[#17135f] transition-colors hover:text-indigo-600"
         >
           View Details
@@ -560,7 +560,7 @@ export default function AcademicPrograms() {
             </div>
 
             <Link
-              href="/admission"
+              href="/admissions/apply"
               className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-white px-5 py-3 text-xs font-bold text-[#17135f] transition hover:bg-slate-100 sm:text-sm"
             >
               Apply for Admission

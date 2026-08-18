@@ -74,7 +74,7 @@ export const IMPORTANT_LINKS = [
   { label: "Academic Calendar", href: "/academics/calendar" },
   { label: "Class Routine", href: "/notice-board" },
   { label: "Exam Routine", href: "/notice-board" },
-  { label: "Result Portal", href: "/result-portal" },
+  { label: "Result Portal", href: "/result" },
   { label: "Student Handbook", href: "/notice-board" },
 ]
 

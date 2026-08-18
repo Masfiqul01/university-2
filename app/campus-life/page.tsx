@@ -410,7 +410,7 @@ export default function CampusLifePage() {
               </p>
 
               <a
-                href="#"
+                href="/campus-life/student-life"
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
               >
                 Discover Student Support
@@ -605,7 +605,7 @@ export default function CampusLifePage() {
                 </p>
 
                 <a
-                  href="#"
+                  href="/campus-life"
                   className="mt-8 inline-flex items-center gap-2 bg-[#175783] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#0e466c]"
                 >
                   Take a Virtual Tour
@@ -698,7 +698,7 @@ export default function CampusLifePage() {
                 </a>
 
                 <a
-                  href="#"
+                  href="/campus-life/student-life"
                   className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.025] px-6 py-3.5 text-sm font-semibold text-white/80 transition duration-200 hover:border-white/40 hover:bg-white/[0.07] hover:text-white"
                 >
                   Discover Student Life
@@ -722,7 +722,7 @@ export default function CampusLifePage() {
 
               <div className="flex flex-col gap-3 sm:flex-row">
                 <a
-                  href="#"
+                  href="/campus-life/clubs"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-xs font-semibold text-white/75 transition hover:border-white/40 hover:bg-white/[0.06] hover:text-white"
                 >
                   Join a Club
@@ -730,7 +730,7 @@ export default function CampusLifePage() {
                 </a>
 
                 <a
-                  href="#"
+                  href="/campus-life"
                   className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-xs font-semibold text-white/75 transition hover:border-white/40 hover:bg-white/[0.06] hover:text-white"
                 >
                   Take a Virtual Tour

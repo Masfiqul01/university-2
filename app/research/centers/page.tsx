@@ -597,7 +597,7 @@ export default function ResearchCentersPage() {
                 </a>
 
                 <a
-                  href="#"
+                  href="/research/publications"
                   className="inline-flex items-center justify-center gap-2 border border-slate-300 px-5 py-3 text-sm font-semibold text-[#092c4d] transition hover:border-[#175783] hover:text-[#175783]"
                 >
                   View Publications
@@ -635,7 +635,7 @@ export default function ResearchCentersPage() {
             </div>
 
             <a
-              href="#"
+              href="/research"
               className="inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
             >
               Meet Researchers
@@ -748,7 +748,7 @@ export default function ResearchCentersPage() {
               </p>
 
               <a
-                href="#"
+                href="/research/publications"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
               >
                 Browse Publications
@@ -771,7 +771,7 @@ export default function ResearchCentersPage() {
               </p>
 
               <a
-                href="#"
+                href="/campus-life/facilities"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
               >
                 Explore Facilities
@@ -860,7 +860,7 @@ export default function ResearchCentersPage() {
               </a>
 
               <a
-                href="#"
+                href="/research"
                 className="group inline-flex min-w-[165px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Meet Researchers
@@ -868,7 +868,7 @@ export default function ResearchCentersPage() {
               </a>
 
               <a
-                href="#"
+                href="/contact"
                 className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Collaborate With Us

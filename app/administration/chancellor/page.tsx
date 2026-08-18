@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import { OfficePage } from "@/components/office-page"
 import { getOfficeProfile } from "@/lib/data/administration"
 
-const profile = getOfficeProfile("registrar")
+const profile = getOfficeProfile("chancellor")
 
 export const metadata: Metadata = {
   title: profile?.role,

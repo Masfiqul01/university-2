@@ -1,9 +1,17 @@
-import React from 'react'
+import type { Metadata } from "next"
+import { notFound } from "next/navigation"
+import { OfficePage } from "@/components/office-page"
+import { getOfficeProfile } from "@/lib/data/administration"
 
-function page() {
-  return (
-    <div>page</div>
-  )
+const profile = getOfficeProfile("pro-vice-chancellor")
+
+export const metadata: Metadata = {
+  title: profile?.role,
+  description: profile?.intro,
 }
 
-export default page
+export default function Page() {
+  if (!profile) notFound()
+
+  return <OfficePage profile={profile} />
+}

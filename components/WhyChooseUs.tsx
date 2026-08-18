@@ -1024,7 +1024,7 @@ export function WhyChooseUs() {
       </div>
 
       <Link
-        href="/programs"
+        href="/academics/programs"
         className="why-bottom-cta-button group inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-[#0D0357] px-5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#17096F] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0D0357]/40 focus-visible:ring-offset-2"
       >
         <span>

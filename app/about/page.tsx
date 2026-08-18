@@ -1,5 +1,6 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   Award,
@@ -11,9 +12,91 @@ import {
   HeartHandshake,
   Leaf,
   Lightbulb,
+  Rocket,
   ShieldCheck,
+  Sparkles,
   Users,
 } from "lucide-react";
+
+function JourneyBanner({
+  icon: BadgeIcon,
+  eyebrow,
+  title,
+  titleAs = "h2",
+  description,
+  primary,
+  secondary,
+}: {
+  icon: LucideIcon;
+  eyebrow: string;
+  title: string;
+  titleAs?: "h1" | "h2";
+  description: string;
+  primary: { label: string; href: string };
+  secondary: { label: string; href: string };
+}) {
+  const Title = titleAs;
+  return (
+    <section className="bg-white px-6 py-14 lg:px-8">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#2e3494] via-[#232771] to-[#171a52] shadow-[0_24px_70px_rgba(35,39,113,0.28)]">
+        {/* decorative glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-300/[0.08] blur-[90px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-white/[0.05] blur-[90px]"
+        />
+
+        {/* badge icon */}
+        <div
+          aria-hidden="true"
+          className="absolute right-6 top-6 hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06] text-amber-200 backdrop-blur-md sm:flex"
+        >
+          <BadgeIcon className="h-6 w-6" strokeWidth={1.7} />
+          <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.8)]" />
+        </div>
+
+        <div className="relative flex flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12 md:flex-row md:items-center md:justify-between lg:px-14">
+          <div className="min-w-0 flex-1">
+            <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-200/85">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-amber-200/25 bg-amber-200/[0.08]">
+                <Sparkles className="h-3 w-3" />
+              </span>
+              {eyebrow}
+            </div>
+
+            <Title className="max-w-xl font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
+              {title}
+            </Title>
+
+            <p className="mt-4 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
+              {description}
+            </p>
+          </div>
+
+          <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row md:items-center">
+            <a
+              href={primary.href}
+              className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-bold text-[#232771] transition hover:-translate-y-0.5 hover:bg-amber-50 hover:shadow-lg sm:px-7"
+            >
+              {primary.label}
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </a>
+
+            <a
+              href={secondary.href}
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.05] px-6 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/[0.1] sm:px-7"
+            >
+              {secondary.label}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const stats = [
   { value: "06", label: "Faculties", icon: Building2 },
@@ -87,50 +170,15 @@ export default function AboutPage() {
 
       <main className="bg-white text-[#10233f]">
         {/* HERO */}
-        <section className="relative min-h-[620px] overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2200&q=85"
-            alt="University campus"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-
-          <div className="absolute inset-0 bg-[#071b35]/80" />
-
-          <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-6 py-24 lg:px-8">
-            <div className="max-w-4xl text-white">
-              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-[#9cc9ff]">
-                About KKJSTU
-              </p>
-
-              <h1 className="max-w-4xl font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-                A Community Built on Knowledge and Purpose
-              </h1>
-
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80 md:text-xl">
-                We are building an academic community where knowledge,
-                innovation, research, and human values come together to prepare
-                students for a changing world.
-              </p>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#history"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#10233f] transition hover:bg-[#dceeff]"
-                >
-                  Explore Our History
-                  <ArrowRight size={18} />
-                </a>
-
-                <a
-                  href="#leadership"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
-                >
-                  Meet Our Leadership
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
+        <JourneyBanner
+          icon={GraduationCap}
+          eyebrow="About KKJSTU"
+          title="A Community Built on Knowledge and Purpose"
+          titleAs="h1"
+          description="We are building an academic community where knowledge, innovation, research, and human values come together to prepare students for a changing world."
+          primary={{ label: "Explore Our History", href: "#history" }}
+          secondary={{ label: "Meet Our Leadership", href: "#leadership" }}
+        />
 
         {/* BREADCRUMB */}
         <div className="border-b border-slate-200 bg-white">
@@ -185,7 +233,7 @@ export default function AboutPage() {
               </div>
 
               <a
-                href="#"
+                href="/about/history"
                 className="mt-8 inline-flex items-center gap-2 font-semibold text-[#1e5b91] transition-all hover:gap-3"
               >
                 Discover our story
@@ -439,7 +487,7 @@ export default function AboutPage() {
               </div>
 
               <a
-                href="#"
+                href="/about/leadership"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#10233f] px-6 py-3.5 font-semibold text-white transition hover:bg-[#1d3d61]"
               >
                 Meet Our Leadership
@@ -450,39 +498,16 @@ export default function AboutPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="bg-[#071b35] py-24">
-          <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#9cc9ff]">
-              Your Future Starts Here
-            </p>
-
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-white md:text-6xl">
-              Start Your Journey at KKJSTU
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">
-              Explore academic opportunities, discover your interests, and
-              take the next step toward building your future with us.
-            </p>
-
-            <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-semibold text-[#10233f] transition hover:bg-[#dceeff]"
-              >
-                Explore Programs
-                <ArrowRight size={18} />
-              </a>
-
-              <a
-                href="#"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white transition hover:bg-white/10"
-              >
-                Apply Now
-              </a>
-            </div>
-          </div>
-        </section>
+      
+         <JourneyBanner
+          icon={Rocket}
+          eyebrow="Your Future Starts Here"
+          title="Start Your Journey at KKJSTU"
+          description="Explore academic opportunities, discover your interests, and take the next step toward building your future with us."
+          primary={{ label: "Explore Programs", href: "/academics/programs" }}
+          secondary={{ label: "Apply Now", href: "/admissions/apply" }}
+        />
+     
       </main>
 
       <SiteFooter />

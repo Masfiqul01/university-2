@@ -383,7 +383,7 @@ export default function ResearchPage() {
             </div>
 
             <a
-              href="#"
+              href="/research/publications"
               className="inline-flex w-fit items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
             >
               Browse Research
@@ -726,7 +726,7 @@ export default function ResearchPage() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-wrap lg:justify-end">
               <a
-                href="#"
+                href="/research/centers"
                 className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#150866] transition hover:-translate-y-0.5 hover:bg-[#edc85b]"
               >
                 View Research Centers
@@ -734,7 +734,7 @@ export default function ResearchPage() {
               </a>
 
               <a
-                href="#"
+                href="/research/publications"
                 className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Browse Publications
@@ -742,7 +742,7 @@ export default function ResearchPage() {
               </a>
 
               <a
-                href="#"
+                href="/contact"
                 className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Collaborate With Us
@@ -750,7 +750,7 @@ export default function ResearchPage() {
               </a>
 
               <a
-                href="#"
+                href="/research"
                 className="group inline-flex min-w-[155px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 Meet Researchers

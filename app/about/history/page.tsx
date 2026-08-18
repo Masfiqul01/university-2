@@ -225,7 +225,7 @@ export default function HistoryPage() {
                   </Link>
 
                   <Link
-                    href="/programs"
+                    href="/academics/programs"
                     className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3.5 font-semibold text-white transition-all duration-200 hover:border-[#F6B900]/50 hover:bg-white/[0.08]"
                   >
                     Explore Programs
@@ -741,7 +741,7 @@ export default function HistoryPage() {
 
                 <div className="mt-10 flex flex-wrap justify-center gap-4">
                   <Link
-                    href="/programs"
+                    href="/academics/programs"
                     className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#F6B900] px-8 py-4 font-semibold text-[#0D0357] shadow-[0_12px_35px_rgba(246,185,0,0.18)] transition-all duration-200 hover:bg-[#FFC928] hover:-translate-y-0.5"
                   >
                     Explore Programs

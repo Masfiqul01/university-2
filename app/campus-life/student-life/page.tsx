@@ -351,7 +351,7 @@ export default function StudentLifePage() {
               </div>
 
               <a
-                href="#"
+                href="/campus-life/student-life"
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
               >
                 Explore Student Support
@@ -482,7 +482,7 @@ export default function StudentLifePage() {
                 </div>
 
                 <a
-                  href="#"
+                  href="/career"
                   className="mt-8 inline-flex items-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
                 >
                   Explore Career Development
@@ -520,7 +520,7 @@ export default function StudentLifePage() {
             </div>
 
             <a
-              href="#"
+              href="/events"
               className="inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
             >
               View Events
@@ -667,7 +667,7 @@ export default function StudentLifePage() {
               </a>
 
               <a
-                href="#"
+                href="/events"
                 className="group inline-flex min-w-[150px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
               >
                 View Events
