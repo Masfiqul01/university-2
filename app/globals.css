@@ -1,0 +1,589 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+@import 'lenis/dist/lenis.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-accent: var(--brand-accent);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+
+  --color-destructive: var(--destructive);
+
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+
+  /* =========================
+     BRAND COLORS
+  ========================== */
+
+  --background: #f8fafc;
+  --foreground: #111827;
+
+  --brand: #120a80;
+  --brand-dark: #0b0754;
+  --brand-accent: #fd9900;
+
+  --card: #ffffff;
+  --card-foreground: #111827;
+
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+
+  --primary: #120a80;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f8fafc;
+  --secondary-foreground: #111827;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --accent: #fd9900;
+  --accent-foreground: #0b0754;
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #fd9900;
+
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* =========================
+     CUSTOM UI TOKENS
+  ========================== */
+
+  --page-max-width: 1440px;
+  --section-space: clamp(5rem, 8vw, 9rem);
+
+  --shadow-soft:
+    0 10px 35px rgba(15, 23, 42, 0.06);
+
+  --shadow-premium:
+    0 25px 70px rgba(8, 17, 31, 0.14);
+}
+
+/* Latest News (news listing page) — white content area between the navy
+   hero and navy footer, distinct from the site-wide --background/--card
+   tokens above. */
+.news-content-section {
+  --news-section-bg: #FFFFFF;
+  --news-card-bg: #FFFFFF;
+  --news-panel-bg: #FFFFFF;
+  --news-border: oklch(90% 0.05 260);
+  --news-btn-bg: oklch(95% 0.02 260);
+  --news-btn-active-bg: oklch(36.9089% 0.350961 260.2);
+  --news-heading: oklch(25% 0.20 260);
+  --news-text-secondary: oklch(45% 0.08 260);
+  --news-text-meta: oklch(55% 0.08 260);
+}
+
+/* Events page (/events) — same white-content pattern as .news-content-section. */
+.events-content-section {
+  --events-section-bg: #FFFFFF;
+  --events-card-bg: #FFFFFF;
+  --events-panel-bg: #FFFFFF;
+  --events-border: oklch(90% 0.05 260);
+  --events-btn-bg: oklch(95% 0.02 260);
+  --events-btn-active-bg: oklch(36.9089% 0.350961 -85.6872);
+  --events-heading: oklch(25% 0.20 260);
+  --events-text-secondary: oklch(45% 0.08 260);
+  --events-text-meta: oklch(55% 0.08 260);
+}
+
+/* Notice Board page (/notice-board) — same white-content pattern. */
+.notice-content-section {
+  --notice-section-bg: #FFFFFF;
+  --notice-card-bg: #FFFFFF;
+  --notice-panel-bg: #FFFFFF;
+  --notice-border: oklch(90% 0.05 260);
+  --notice-btn-bg: oklch(95% 0.02 260);
+  --notice-btn-active-bg: oklch(36.9089% 0.350961 260.2);
+  --notice-heading: oklch(25% 0.20 260);
+  --notice-text-secondary: oklch(45% 0.08 260);
+  --notice-text-meta: oklch(55% 0.08 260);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --background: #0b0754;
+  --foreground: #ffffff;
+
+  --brand: #120a80;
+  --brand-dark: #0b0754;
+  --brand-accent: #fd9900;
+
+  --card: #120a80;
+  --card-foreground: #ffffff;
+
+  --popover: #120a80;
+  --popover-foreground: #ffffff;
+
+  --primary: #fd9900;
+  --primary-foreground: #0b0754;
+
+  --secondary: #120a80;
+  --secondary-foreground: #ffffff;
+
+  --muted: #120a80;
+  --muted-foreground: #cbd5e1;
+
+  --accent: #fd9900;
+  --accent-foreground: #0b0754;
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #fd9900;
+
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* =========================================================
+   SYSTEM DARK MODE
+========================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    color-scheme: dark;
+
+    --background: #0b0754;
+    --foreground: #ffffff;
+
+    --brand: #120a80;
+    --brand-dark: #0b0754;
+    --brand-accent: #fd9900;
+
+    --card: #120a80;
+    --card-foreground: #ffffff;
+
+    --popover: #120a80;
+    --popover-foreground: #ffffff;
+
+    --primary: #fd9900;
+    --primary-foreground: #0b0754;
+
+    --secondary: #120a80;
+    --secondary-foreground: #ffffff;
+
+    --muted: #120a80;
+    --muted-foreground: #cbd5e1;
+
+    --accent: #fd9900;
+    --accent-foreground: #0b0754;
+
+    --destructive: oklch(0.704 0.191 22.216);
+
+    --border: rgba(255, 255, 255, 0.12);
+    --input: rgba(255, 255, 255, 0.15);
+    --ring: #fd9900;
+
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: none;
+
+    overflow-x: hidden;
+
+    font-family:
+      var(--font-inter),
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      var(--font-inter),
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      sans-serif;
+
+    text-wrap: balance;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img,
+  video,
+  svg {
+    max-width: 100%;
+  }
+
+  img {
+    height: auto;
+  }
+
+  ::selection {
+    background: var(--brand-accent);
+    color: var(--brand-dark);
+  }
+}
+
+/*
+ * Entry-animation guard. An inline script adds `motion-armed` to <html> before
+ * the body is parsed, so animated elements never flash in at their final state
+ * during the gap between first paint and hydration. PageMotion takes over with
+ * inline GSAP styles and then removes the class; a timer in the same script
+ * removes it too, so content is never left hidden if the script never runs.
+ */
+html.motion-armed main img {
+  clip-path: inset(0% 100% 0% 0%);
+}
+
+html.motion-armed main > *:first-child :is(h1, h2, nav, p) {
+  opacity: 0;
+}
+
+/* =========================================================
+   LENIS / SMOOTH SCROLL
+========================================================= */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #120a80 #f1f5f9;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #120a80;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fd9900;
+}
+
+/* =========================================================
+   PREMIUM UTILITIES
+========================================================= */
+
+.page-container {
+  width: min(100% - 2rem, var(--page-max-width));
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: var(--section-space);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-premium {
+  box-shadow: var(--shadow-premium);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* =========================================================
+   IMAGE / MEDIA BEHAVIOR
+========================================================= */
+
+.image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-reveal {
+  overflow: hidden;
+  will-change: clip-path;
+}
+
+.parallax-image {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.hero-section {
+  isolation: isolate;
+}
+
+.hero-section img,
+[data-parallax] img {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* =========================================================
+   GSAP PERFORMANCE HELPERS
+========================================================= */
+
+.gsap-reveal,
+.facility-card,
+.hero-title-line,
+.hero-copy,
+.hero-actions,
+.hero-meta,
+.moving-line {
+  will-change: transform, opacity;
+}
+
+.moving-line {
+  transform-origin: left center;
+}
+
+/* =========================================================
+   TRANSITIONS
+========================================================= */
+
+a,
+button,
+.card-hover,
+.group {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+/* =========================================================
+   FOCUS / ACCESSIBILITY
+========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .parallax-image,
+  .gsap-reveal,
+  .facility-card,
+  .hero-title-line,
+  .hero-copy,
+  .hero-actions,
+  .hero-meta {
+    will-change: auto !important;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  :root {
+    --section-space: 5rem;
+  }
+
+  .page-container {
+    width: min(100% - 1.5rem, var(--page-max-width));
+  }
+
+  body {
+    overflow-x: clip;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-space: 4rem;
+  }
+}
