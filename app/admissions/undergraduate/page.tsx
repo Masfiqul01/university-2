@@ -198,7 +198,7 @@ export default function AdmissionRequirementsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#082746]">
+      <section className="relative overflow-hidden bg-[#232771]">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
 
@@ -232,7 +232,7 @@ export default function AdmissionRequirementsPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#requirements"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Check Requirements
                 <ArrowRight className="h-4 w-4" />
@@ -823,7 +823,7 @@ export default function AdmissionRequirementsPage() {
       {/* =========================================================
           MOBILE STICKY APPLY
       ========================================================= */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white p-3 shadow-[0_-5px_25px_rgba(8,39,70,0.12)] md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white p-3 shadow-[0_-5px_25px_rgba(35,39,113,0.12)] md:hidden">
         <a
           href="/admissions/apply"
           className="flex w-full items-center justify-center gap-2 bg-[#d9a82e] px-5 py-3.5 text-sm font-bold text-[#092c4d]"

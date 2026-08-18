@@ -27,7 +27,7 @@ export default function ApplyPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#082746]">
+      <section className="relative overflow-hidden bg-[#232771]">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
           <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
@@ -56,7 +56,7 @@ export default function ApplyPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="#application-form"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Start the Form
                 <ArrowRight className="h-4 w-4" />

@@ -123,7 +123,7 @@ export default function AdmissionsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#082746]">
+      <section className="relative overflow-hidden bg-[#232771]">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
           <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
@@ -155,7 +155,7 @@ export default function AdmissionsPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/admissions/apply"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Apply Now
                 <ArrowRight className="h-4 w-4" />
@@ -372,7 +372,7 @@ export default function AdmissionsPage() {
           HELP CTA
       ========================================================= */}
       <section className="bg-[#f5f8fc] px-5 py-14 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-[1500px] overflow-hidden bg-[#082746] shadow-[0_18px_55px_rgba(8,39,70,0.16)]">
+        <div className="relative mx-auto max-w-[1500px] overflow-hidden bg-[#232771] shadow-[0_18px_55px_rgba(35,39,113,0.16)]">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.055]"
             style={{
@@ -407,7 +407,7 @@ export default function AdmissionsPage() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row lg:mt-0">
               <Link
                 href="/contact"
-                className="inline-flex min-w-[180px] items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex min-w-[180px] items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Contact Admissions
                 <ArrowRight className="h-4 w-4" />

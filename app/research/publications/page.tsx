@@ -130,7 +130,7 @@ export default function PublicationsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#082746]">
+      <section className="relative overflow-hidden bg-[#232771]">
         <div className="absolute inset-0 opacity-10">
           <div
             className="h-full w-full"
@@ -170,7 +170,7 @@ export default function PublicationsPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#publications"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Search Publications
                 <Search className="h-4 w-4" />
@@ -668,7 +668,7 @@ export default function PublicationsPage() {
       ========================================================= */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="border border-slate-200 bg-[#082746]">
+          <div className="border border-slate-200 bg-[#232771]">
             <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-14">
               <div>
                 <div className="mb-4 flex items-center gap-3">
@@ -692,7 +692,7 @@ export default function PublicationsPage() {
 
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-7 py-4 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-7 py-4 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Submit a Publication
                 <Send className="h-4 w-4" />
@@ -706,7 +706,7 @@ export default function PublicationsPage() {
           FINAL CTA
       ========================================================= */}
       <section className="bg-[#f5f8fc] px-5 pb-12 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[28px] bg-[#082746] shadow-[0_18px_55px_rgba(8,39,70,0.18)]">
+        <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-[28px] bg-[#232771] shadow-[0_18px_55px_rgba(35,39,113,0.18)]">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.055]"
             style={{
@@ -745,7 +745,7 @@ export default function PublicationsPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-wrap lg:justify-end">
               <a
                 href="#publications"
-                className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:-translate-y-0.5 hover:bg-[#edc85b]"
+                className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:-translate-y-0.5 hover:bg-[#edc85b]"
               >
                 Search Publications
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

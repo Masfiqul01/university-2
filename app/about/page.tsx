@@ -170,15 +170,50 @@ export default function AboutPage() {
 
       <main className="bg-white text-[#10233f]">
         {/* HERO */}
-        <JourneyBanner
-          icon={GraduationCap}
-          eyebrow="About KKJSTU"
-          title="A Community Built on Knowledge and Purpose"
-          titleAs="h1"
-          description="We are building an academic community where knowledge, innovation, research, and human values come together to prepare students for a changing world."
-          primary={{ label: "Explore Our History", href: "#history" }}
-          secondary={{ label: "Meet Our Leadership", href: "#leadership" }}
-        />
+        <section className="relative min-h-[620px] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2200&q=85"
+            alt="University campus"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+
+          <div className="absolute inset-0 bg-[#071b35]/80" />
+
+          <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-6 py-24 lg:px-8">
+            <div className="max-w-4xl text-white">
+              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-[#9cc9ff]">
+                About KKJSTU
+              </p>
+
+              <h1 className="max-w-4xl font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+                A Community Built on Knowledge and Purpose
+              </h1>
+
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80 md:text-xl">
+                We are building an academic community where knowledge,
+                innovation, research, and human values come together to prepare
+                students for a changing world.
+              </p>
+
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#history"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#10233f] transition hover:bg-[#dceeff]"
+                >
+                  Explore Our History
+                  <ArrowRight size={18} />
+                </a>
+
+                <a
+                  href="#leadership"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                >
+                  Meet Our Leadership
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* BREADCRUMB */}
         <div className="border-b border-slate-200 bg-white">

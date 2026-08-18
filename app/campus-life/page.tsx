@@ -164,16 +164,16 @@ export default function CampusLifePage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[560px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[560px] overflow-hidden bg-[#232771]">
         <img
           src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=2200&q=90"
           alt="University campus"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/75" />
+        <div className="absolute inset-0 bg-[#232771]/75" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/75 to-transparent" />
 
         <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -201,7 +201,7 @@ export default function CampusLifePage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#facilities"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Explore Facilities
                 <ArrowRight className="h-4 w-4" />
@@ -318,7 +318,7 @@ export default function CampusLifePage() {
       ========================================================= */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="grid gap-0 overflow-hidden border border-slate-200 bg-[#082746] lg:grid-cols-2">
+          <div className="grid gap-0 overflow-hidden border border-slate-200 bg-[#232771] lg:grid-cols-2">
             <div className="relative min-h-[420px]">
               <img
                 src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=85"
@@ -326,9 +326,9 @@ export default function CampusLifePage() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-[#082746]/20" />
+              <div className="absolute inset-0 bg-[#232771]/20" />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#082746]/90 to-transparent p-8 pt-28">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-8 pt-28">
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
                   Campus Experience
                 </span>
@@ -512,7 +512,7 @@ export default function CampusLifePage() {
       ========================================================= */}
       <section
         id="gallery"
-        className="overflow-hidden bg-[#082746] px-5 py-20 sm:px-6 lg:px-8"
+        className="overflow-hidden bg-[#232771] px-5 py-20 sm:px-6 lg:px-8"
       >
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
@@ -563,7 +563,7 @@ export default function CampusLifePage() {
                     className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
 
-                  <div className="absolute inset-0 bg-[#082746]/10 transition group-hover:bg-[#082746]/30" />
+                  <div className="absolute inset-0 bg-[#232771]/10 transition group-hover:bg-[#232771]/30" />
 
                   <div className="absolute bottom-4 left-4 opacity-0 transition group-hover:opacity-100">
                     <div className="flex h-9 w-9 items-center justify-center bg-white/90 text-[#175783]">
@@ -613,7 +613,7 @@ export default function CampusLifePage() {
                 </a>
               </div>
 
-              <div className="relative min-h-[260px] overflow-hidden bg-[#082746]">
+              <div className="relative min-h-[260px] overflow-hidden bg-[#232771]">
                 <img
                   src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=85"
                   alt="University building"
@@ -621,7 +621,7 @@ export default function CampusLifePage() {
                   className="absolute inset-0 h-full w-full object-cover opacity-80"
                 />
 
-                <div className="absolute inset-0 bg-[#082746]/35" />
+                <div className="absolute inset-0 bg-[#232771]/35" />
 
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-white/15 text-white backdrop-blur-sm">

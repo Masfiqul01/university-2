@@ -123,7 +123,7 @@ export default function StudentLifePage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[520px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[520px] overflow-hidden bg-[#232771]">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2200&q=85"
@@ -131,9 +131,9 @@ export default function StudentLifePage() {
             className="h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#082746]/80" />
+          <div className="absolute inset-0 bg-[#232771]/80" />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/75 to-[#082746]/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/75 to-[#232771]/35" />
         </div>
 
         <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-20 lg:px-8">
@@ -161,7 +161,7 @@ export default function StudentLifePage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#activities"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Explore Clubs
                 <ArrowRight className="h-4 w-4" />
@@ -292,7 +292,7 @@ export default function StudentLifePage() {
                 className="h-[420px] w-full object-cover"
               />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#082746]/90 to-transparent p-7 pt-20">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-7 pt-20">
                 <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
                   Student Support
                 </p>
@@ -428,7 +428,7 @@ export default function StudentLifePage() {
       ========================================================= */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="overflow-hidden bg-[#082746]">
+          <div className="overflow-hidden bg-[#232771]">
             <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
               <div className="relative min-h-[420px]">
                 <img
@@ -437,9 +437,9 @@ export default function StudentLifePage() {
                   className="absolute inset-0 h-full w-full object-cover"
                 />
 
-                <div className="absolute inset-0 bg-[#082746]/40" />
+                <div className="absolute inset-0 bg-[#232771]/40" />
 
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#082746]/90 to-transparent p-8 pt-28">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-8 pt-28">
                   <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
                     Career Development
                   </span>
@@ -483,7 +483,7 @@ export default function StudentLifePage() {
 
                 <a
                   href="/career"
-                  className="mt-8 inline-flex items-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                  className="mt-8 inline-flex items-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
                 >
                   Explore Career Development
                   <ArrowRight className="h-4 w-4" />

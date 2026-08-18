@@ -157,7 +157,7 @@ export default function AcademicCalendarPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#082746]">
+      <section className="relative overflow-hidden bg-[#232771]">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full border-[60px] border-[#d9a82e]" />
           <div className="absolute -bottom-32 left-20 h-96 w-96 rounded-full border border-white" />
@@ -188,7 +188,7 @@ export default function AcademicCalendarPage() {
       {/* SELECTOR */}
       <section className="relative z-10 -mt-8 px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="border border-slate-200 bg-white p-5 shadow-[0_15px_45px_rgba(8,39,70,0.10)]">
+          <div className="border border-slate-200 bg-white p-5 shadow-[0_15px_45px_rgba(35,39,113,0.10)]">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               <div>
                 <label className="mb-2 block text-sm font-semibold text-[#183957]">

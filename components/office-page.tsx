@@ -20,15 +20,15 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[460px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[460px] overflow-hidden bg-[#232771]">
         <img
           src={HERO_IMAGE}
           alt="KACST campus"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/78" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/78 to-[#082746]/25" />
+        <div className="absolute inset-0 bg-[#232771]/78" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
 
         <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -51,7 +51,7 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/administration"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 All Administration
                 <ArrowRight className="h-4 w-4" />
@@ -196,7 +196,7 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
           </h2>
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <div className="border border-slate-200 bg-white p-8 shadow-[0_12px_35px_rgba(8,39,70,0.05)]">
+            <div className="border border-slate-200 bg-white p-8 shadow-[0_12px_35px_rgba(35,39,113,0.05)]">
               <h3 className="font-serif text-xl font-semibold text-[#092c4d]">
                 Responsibilities
               </h3>
@@ -218,7 +218,7 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
             </div>
 
             {profile.services ? (
-              <div className="border border-slate-200 bg-white p-8 shadow-[0_12px_35px_rgba(8,39,70,0.05)]">
+              <div className="border border-slate-200 bg-white p-8 shadow-[0_12px_35px_rgba(35,39,113,0.05)]">
                 <h3 className="font-serif text-xl font-semibold text-[#092c4d]">
                   Services offered
                 </h3>

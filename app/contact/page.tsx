@@ -67,15 +67,15 @@ export default function ContactPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[460px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[460px] overflow-hidden bg-[#232771]">
         <img
           src={HERO_IMAGE}
           alt="KACST campus"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/78" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/78 to-[#082746]/25" />
+        <div className="absolute inset-0 bg-[#232771]/78" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
 
         <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -100,7 +100,7 @@ export default function ContactPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="#message"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Send a Message
                 <ArrowRight className="h-4 w-4" />

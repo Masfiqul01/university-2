@@ -204,16 +204,16 @@ export default function FacilitiesPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[540px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[540px] overflow-hidden bg-[#232771]">
         <img
           src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2200&q=90"
           alt="University campus facilities"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/72" />
+        <div className="absolute inset-0 bg-[#232771]/72" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/78 to-[#082746]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/20" />
 
         <div className="relative mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -242,7 +242,7 @@ export default function FacilitiesPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#facilities"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Explore Facilities
                 <ArrowRight className="h-4 w-4" />
@@ -378,13 +378,13 @@ export default function FacilitiesPage() {
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 bg-[#082746]/15 transition group-hover:bg-[#082746]/30" />
+                    <div className="absolute inset-0 bg-[#232771]/15 transition group-hover:bg-[#232771]/30" />
 
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#082746]/75 text-[#e1b63b] backdrop-blur-sm">
+                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#232771]/75 text-[#e1b63b] backdrop-blur-sm">
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
-                    <span className="absolute bottom-4 left-5 bg-[#d9a82e] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#082746]">
+                    <span className="absolute bottom-4 left-5 bg-[#d9a82e] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#232771]">
                       {facility.category}
                     </span>
                   </div>
@@ -543,7 +543,7 @@ export default function FacilitiesPage() {
       ========================================================= */}
       <section className="bg-[#eaf3fa]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="grid overflow-hidden border border-[#cbddea] bg-[#082746] lg:grid-cols-2">
+          <div className="grid overflow-hidden border border-[#cbddea] bg-[#232771] lg:grid-cols-2">
             <div className="relative min-h-[430px]">
               <img
                 src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=85"
@@ -551,9 +551,9 @@ export default function FacilitiesPage() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-[#082746]/20" />
+              <div className="absolute inset-0 bg-[#232771]/20" />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#082746]/90 to-transparent p-8 pt-32">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-8 pt-32">
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
                   Campus Experience
                 </span>
@@ -622,7 +622,7 @@ export default function FacilitiesPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <div className="relative min-h-[390px] overflow-hidden bg-[#082746]">
+            <div className="relative min-h-[390px] overflow-hidden bg-[#232771]">
               <img
                 src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1400&q=85"
                 alt="University campus walkway"
@@ -630,9 +630,9 @@ export default function FacilitiesPage() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-[#082746]/30" />
+              <div className="absolute inset-0 bg-[#232771]/30" />
 
-              <div className="absolute left-6 top-6 flex h-12 w-12 items-center justify-center bg-[#d9a82e] text-[#082746]">
+              <div className="absolute left-6 top-6 flex h-12 w-12 items-center justify-center bg-[#d9a82e] text-[#232771]">
                 <Accessibility className="h-6 w-6" />
               </div>
             </div>

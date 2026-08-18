@@ -111,15 +111,15 @@ export default function MissionVisionPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative min-h-[570px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[570px] overflow-hidden bg-[#232771]">
         <img
           src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=2200&q=90"
           alt="University campus"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/75 to-[#082746]/25" />
+        <div className="absolute inset-0 bg-[#232771]/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/75 to-[#232771]/25" />
 
         <div className="relative mx-auto flex min-h-[570px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -148,7 +148,7 @@ export default function MissionVisionPage() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#mission"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Discover Our History
                 <ArrowRight className="h-4 w-4" />
@@ -198,7 +198,7 @@ export default function MissionVisionPage() {
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Mission */}
-            <article className="group overflow-hidden border border-slate-200 bg-white shadow-[0_12px_35px_rgba(8,39,70,0.07)]">
+            <article className="group overflow-hidden border border-slate-200 bg-white shadow-[0_12px_35px_rgba(35,39,113,0.07)]">
               <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
                 <div className="relative min-h-[300px]">
                   <img
@@ -207,7 +207,7 @@ export default function MissionVisionPage() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
 
-                  <div className="absolute inset-0 bg-[#082746]/25" />
+                  <div className="absolute inset-0 bg-[#232771]/25" />
                 </div>
 
                 <div className="p-8 sm:p-10">
@@ -254,7 +254,7 @@ export default function MissionVisionPage() {
             </article>
 
             {/* Vision */}
-            <article className="overflow-hidden bg-[#082746] shadow-[0_12px_35px_rgba(8,39,70,0.12)]">
+            <article className="overflow-hidden bg-[#232771] shadow-[0_12px_35px_rgba(35,39,113,0.12)]">
               <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
                 <div className="flex flex-col justify-center p-8 sm:p-10">
                   <div className="flex h-12 w-12 items-center justify-center border border-[#d9a82e]/35 bg-white/[0.06] text-[#e1b63b]">
@@ -303,7 +303,7 @@ export default function MissionVisionPage() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
 
-                  <div className="absolute inset-0 bg-[#082746]/30" />
+                  <div className="absolute inset-0 bg-[#232771]/30" />
                 </div>
               </div>
             </article>
@@ -477,7 +477,7 @@ export default function MissionVisionPage() {
                 className="h-[520px] w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#082746]/75 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#232771]/75 via-transparent to-transparent" />
 
               <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-10">
                 <div className="flex items-center gap-3">
@@ -498,15 +498,15 @@ export default function MissionVisionPage() {
       </section>
 
       {/* COMMUNITY IMPACT */}
-      <section className="relative overflow-hidden bg-[#082746]">
+      <section className="relative overflow-hidden bg-[#232771]">
         <img
           src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=2200&q=90"
           alt="Students participating in community activities"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/80 to-[#082746]/45" />
+        <div className="absolute inset-0 bg-[#232771]/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/80 to-[#232771]/45" />
 
         <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="max-w-3xl">
@@ -560,7 +560,7 @@ export default function MissionVisionPage() {
 
       {/* FINAL CTA */}
       <section className="bg-[#f5f8fc] px-5 py-12 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-[1500px] overflow-hidden bg-[#082746] shadow-[0_18px_55px_rgba(8,39,70,0.16)]">
+        <div className="relative mx-auto max-w-[1500px] overflow-hidden bg-[#232771] shadow-[0_18px_55px_rgba(35,39,113,0.16)]">
           {/* subtle institutional line pattern */}
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.055]"
@@ -600,7 +600,7 @@ export default function MissionVisionPage() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row lg:mt-0">
               <a
                 href="/about/history"
-                className="group inline-flex min-w-[190px] items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="group inline-flex min-w-[190px] items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Discover Our History
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

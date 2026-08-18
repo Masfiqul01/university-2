@@ -115,7 +115,7 @@ export function ApplicationForm() {
 
   if (submitted) {
     return (
-      <div className="border border-slate-200 bg-white p-10 text-center shadow-[0_12px_35px_rgba(8,39,70,0.07)] sm:p-14">
+      <div className="border border-slate-200 bg-white p-10 text-center shadow-[0_12px_35px_rgba(35,39,113,0.07)] sm:p-14">
         <div className="mx-auto flex h-16 w-16 items-center justify-center bg-[#edf5fb] text-[#175783]">
           <CheckCircle2 className="h-8 w-8" strokeWidth={1.7} />
         </div>
@@ -165,7 +165,7 @@ export function ApplicationForm() {
   }
 
   return (
-    <div className="border border-slate-200 bg-white shadow-[0_12px_35px_rgba(8,39,70,0.07)]">
+    <div className="border border-slate-200 bg-white shadow-[0_12px_35px_rgba(35,39,113,0.07)]">
       {/* STEP INDICATOR */}
       <div className="border-b border-slate-200 bg-[#f8fbfe] px-6 py-6 sm:px-8">
         <div className="flex flex-wrap gap-4">
@@ -181,7 +181,7 @@ export function ApplicationForm() {
                     isDone
                       ? "bg-[#175783] text-white"
                       : isActive
-                        ? "bg-[#d9a82e] text-[#082746]"
+                        ? "bg-[#d9a82e] text-[#232771]"
                         : "bg-slate-100 text-slate-400",
                   ].join(" ")}
                 >
@@ -579,7 +579,7 @@ export function ApplicationForm() {
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center gap-2 bg-[#d9a82e] px-6 py-3 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b] disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex items-center gap-2 bg-[#d9a82e] px-6 py-3 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {submitting ? (
                 <>

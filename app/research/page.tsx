@@ -164,16 +164,16 @@ export default function ResearchPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[560px] overflow-hidden bg-[#082746]">
+      <section className="relative min-h-[560px] overflow-hidden bg-[#232771]">
         <img
           src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2200&q=90"
           alt="University laboratory research"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#082746]/76" />
+        <div className="absolute inset-0 bg-[#232771]/76" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#082746]/95 via-[#082746]/78 to-[#082746]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
 
         <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -201,7 +201,7 @@ export default function ResearchPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#research-areas"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#082746] transition hover:bg-[#edc85b]"
+                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
               >
                 Explore Research
                 <ArrowRight className="h-4 w-4" />
@@ -408,13 +408,13 @@ export default function ResearchPage() {
                       className="h-full w-full object-cover transition duration-700 hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 bg-[#082746]/25" />
+                    <div className="absolute inset-0 bg-[#232771]/25" />
 
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#082746]/75 text-[#e1b63b] backdrop-blur-sm">
+                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#232771]/75 text-[#e1b63b] backdrop-blur-sm">
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
-                    <span className="absolute bottom-4 left-5 bg-[#d9a82e] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.13em] text-[#082746]">
+                    <span className="absolute bottom-4 left-5 bg-[#d9a82e] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.13em] text-[#232771]">
                       {project.area}
                     </span>
                   </div>
@@ -478,7 +478,7 @@ export default function ResearchPage() {
       ========================================================= */}
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="grid overflow-hidden border border-slate-200 bg-[#082746] lg:grid-cols-2">
+          <div className="grid overflow-hidden border border-slate-200 bg-[#232771] lg:grid-cols-2">
             <div className="relative min-h-[440px]">
               <img
                 src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=85"
@@ -487,9 +487,9 @@ export default function ResearchPage() {
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-[#082746]/25" />
+              <div className="absolute inset-0 bg-[#232771]/25" />
 
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#082746]/90 to-transparent p-8 pt-32">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-8 pt-32">
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
                   Research Environment
                 </span>
@@ -663,7 +663,7 @@ export default function ResearchPage() {
                 </div>
               </div>
 
-              <div className="relative min-h-[270px] overflow-hidden bg-[#082746]">
+              <div className="relative min-h-[270px] overflow-hidden bg-[#232771]">
                 <img
                   src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=85"
                   alt="Researchers collaborating"
@@ -671,7 +671,7 @@ export default function ResearchPage() {
                   className="absolute inset-0 h-full w-full object-cover opacity-80"
                 />
 
-                <div className="absolute inset-0 bg-[#082746]/45" />
+                <div className="absolute inset-0 bg-[#232771]/45" />
 
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex h-16 w-16 items-center justify-center border border-white/35 bg-white/10 text-white backdrop-blur-sm">
