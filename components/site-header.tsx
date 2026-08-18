@@ -333,7 +333,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
           className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-400/[0.055] blur-3xl"
         />
 
-        <div className="relative max-h-[605px] overflow-y-auto">
+        <div className="relative max-h-[70vh] overflow-y-auto">
           <div className="relative p-5 xl:p-6">
 
             {/* =====================================================
@@ -345,7 +345,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
                 href="/administration/vice-chancellor"
                 className="group mb-4 flex flex-col items-center rounded-2xl border border-slate-100/80 bg-gradient-to-b from-slate-50 to-white p-4 text-center transition-all duration-200 hover:border-amber-300 hover:shadow-lg xl:p-5"
               >
-                <div className="h-32 w-32 overflow-hidden rounded-xl xl:h-40 xl:w-40">
+                <div className="h-20 w-20 overflow-hidden rounded-xl xl:h-24 xl:w-24">
                   <img
                     src="https://res.cloudinary.com/pnlsyo5i/image/upload/v1786707383/principal.webp"
                     alt="Chancellor"
@@ -393,7 +393,7 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
                     href={profile.href}
                     className="group flex flex-col items-center rounded-xl border border-slate-100/60 bg-white p-2.5 transition-all duration-200 hover:border-amber-300 hover:shadow-md xl:p-3"
                   >
-                    <div className="h-20 w-20 overflow-hidden rounded-lg xl:h-24 xl:w-24">
+                    <div className="h-14 w-14 overflow-hidden rounded-lg xl:h-16 xl:w-16">
                       <img
                         src={profile.image}
                         alt={profile.role}

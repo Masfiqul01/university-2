@@ -22,163 +22,25 @@ import {
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-type RequirementType = "undergraduate" | "postgraduate";
-
-const quickEligibility = [
-  {
-    title: "Academic Qualification",
-    description:
-      "Required academic qualification depends on the degree level and selected program.",
-    icon: GraduationCap,
-  },
-  {
-    title: "Supporting Documents",
-    description:
-      "Academic certificates, transcripts and identification documents may be required.",
-    icon: FileCheck2,
-  },
-  {
-    title: "Program Requirements",
-    description:
-      "Some programs may have additional subject, academic or prerequisite requirements.",
-    icon: ScrollText,
-  },
-  {
-    title: "Application Timeline",
-    description:
-      "Applicants should follow the official admission notice for current deadlines.",
-    icon: CalendarDays,
-  },
-];
-
-const undergraduateRequirements = [
-  {
-    criterion: "Academic Qualification",
-    minimum:
-      "SSC/HSC or equivalent qualification according to the official admission policy.",
-    document: "Academic Certificate & Transcript",
-    notes: "Requirements may vary by program.",
-  },
-  {
-    criterion: "Minimum Result",
-    minimum:
-      "Minimum GPA/grade as specified in the current official admission circular.",
-    document: "Academic Transcript",
-    notes: "Official policy should be followed for each intake.",
-  },
-  {
-    criterion: "Required Subjects",
-    minimum:
-      "Relevant subjects may be required depending on the selected discipline.",
-    document: "Academic Transcript",
-    notes: "Program-specific conditions may apply.",
-  },
-  {
-    criterion: "Identification",
-    minimum: "Valid applicant identification document.",
-    document: "NID / Birth Registration / Passport",
-    notes: "Accepted identification depends on applicant category.",
-  },
-];
-
-const postgraduateRequirements = [
-  {
-    criterion: "Previous Degree",
-    minimum:
-      "Recognized undergraduate degree or equivalent qualification relevant to the program.",
-    document: "Degree Certificate & Transcript",
-    notes: "Exact academic requirements are program-specific.",
-  },
-  {
-    criterion: "Academic Background",
-    minimum:
-      "Relevant academic background according to the selected postgraduate program.",
-    document: "Academic Transcript",
-    notes: "Additional prerequisites may apply.",
-  },
-  {
-    criterion: "Research / Thesis",
-    minimum:
-      "Additional research or thesis requirements may apply where relevant.",
-    document: "Research Proposal / Supporting Documents",
-    notes: "Applicable programs should define the requirement.",
-  },
-  {
-    criterion: "Language Requirement",
-    minimum:
-      "Language proficiency may be required where specified by the program.",
-    document: "Accepted Language Certificate",
-    notes: "Requirement should follow the official program policy.",
-  },
-];
-
-const documentChecklist = [
-  {
-    title: "Academic Certificates",
-    description:
-      "SSC/HSC, undergraduate or other relevant certificates according to degree level.",
-    icon: GraduationCap,
-  },
-  {
-    title: "Academic Transcripts",
-    description:
-      "Official marksheets/transcripts showing the applicant's academic record.",
-    icon: FileText,
-  },
-  {
-    title: "Identification",
-    description:
-      "Valid NID, birth registration, passport or other accepted identification.",
-    icon: IdCard,
-  },
-  {
-    title: "Photograph",
-    description:
-      "Recent passport-size photograph in the format specified by the application system.",
-    icon: UserCheck,
-  },
-  {
-    title: "Supporting Documents",
-    description:
-      "Additional documents for quota, transfer, equivalency or other applicable conditions.",
-    icon: FileCheck2,
-  },
-  {
-    title: "Program-Specific Documents",
-    description:
-      "Additional documents where required by the selected academic program.",
-    icon: ClipboardCheck,
-  },
-];
-
-const faqs = [
-  {
-    question: "Are the admission requirements the same for every program?",
-    answer:
-      "Not necessarily. General admission requirements may apply across a degree level, while individual programs can have additional academic, subject or prerequisite requirements.",
-  },
-  {
-    question: "Where can I find the latest admission requirements?",
-    answer:
-      "Applicants should always check the latest official admission circular and program-specific instructions before submitting an application.",
-  },
-  {
-    question: "Can transfer students apply?",
-    answer:
-      "Transfer admission depends on the university's approved policy and the availability of applicable transfer pathways. Any transfer-specific conditions should be published with the relevant admission notice.",
-  },
-  {
-    question: "Are international applicants eligible?",
-    answer:
-      "International admission depends on the university's applicable policy, qualification equivalency and any additional documentation or immigration requirements.",
-  },
-  {
-    question: "Can requirements change between admission cycles?",
-    answer:
-      "Yes. Applicants should rely on the latest officially published admission notice rather than an older circular or unofficial source.",
-  },
-];
+import { ICON_MAP } from "@/lib/icon-map";
+import { CtaButton } from "@/components/cta-button";
+import {
+  REQUIREMENTS_HERO,
+  QUICK_ELIGIBILITY_INTRO,
+  QUICK_ELIGIBILITY,
+  REQUIREMENTS_SECTION,
+  UNDERGRADUATE_REQUIREMENTS,
+  POSTGRADUATE_REQUIREMENTS,
+  INTERNATIONAL_APPLICANTS,
+  TRANSFER_APPLICANTS,
+  DOCUMENT_CHECKLIST_INTRO,
+  DOCUMENT_CHECKLIST,
+  DEADLINE_NOTE,
+  REQUIREMENTS_FAQ_INTRO,
+  REQUIREMENTS_FAQS,
+  REQUIREMENTS_CTA,
+  type RequirementType,
+} from "@/lib/data/admission-requirements";
 
 export default function AdmissionRequirementsPage() {
   const [activeTab, setActiveTab] =
@@ -188,8 +50,8 @@ export default function AdmissionRequirementsPage() {
 
   const requirements =
     activeTab === "undergraduate"
-      ? undergraduateRequirements
-      : postgraduateRequirements;
+      ? UNDERGRADUATE_REQUIREMENTS
+      : POSTGRADUATE_REQUIREMENTS;
 
   return (
     <div className="min-h-screen bg-[#f5f8fc] text-[#102c4c]">
@@ -211,38 +73,30 @@ export default function AdmissionRequirementsPage() {
               <span className="h-px w-10 bg-[#d9a82e]" />
 
               <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                Admission Requirements
+                {REQUIREMENTS_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              Know the Requirements.
+              {REQUIREMENTS_HERO.titleLines[0]}
               <br />
-              Prepare With Confidence.
+              {REQUIREMENTS_HERO.titleLines[1]}
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              Understand eligibility, required documents, program conditions
-              and important admission information before beginning your
-              application to KKJSTU.
+              {REQUIREMENTS_HERO.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#requirements"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Check Requirements
+              <CtaButton href={REQUIREMENTS_HERO.primary.href} variant="gold" radius={0}>
+                {REQUIREMENTS_HERO.primary.label}
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </CtaButton>
 
-              <a
-                href="#documents"
-                className="inline-flex items-center justify-center gap-2 border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white"
-              >
-                Download Checklist
+              <CtaButton href={REQUIREMENTS_HERO.secondary.href} variant="ghost" radius={0}>
+                {REQUIREMENTS_HERO.secondary.label}
                 <Download className="h-4 w-4" />
-              </a>
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -257,23 +111,22 @@ export default function AdmissionRequirementsPage() {
             <span className="h-px w-8 bg-[#d9a82e]" />
 
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-              At a Glance
+              {QUICK_ELIGIBILITY_INTRO.eyebrow}
             </span>
           </div>
 
           <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-            What You Need to Know
+            {QUICK_ELIGIBILITY_INTRO.title}
           </h2>
 
           <p className="mt-4 text-sm leading-7 text-slate-600">
-            Admission requirements depend on degree level, program and
-            applicant category. Review each section carefully before applying.
+            {QUICK_ELIGIBILITY_INTRO.description}
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {quickEligibility.map((item) => {
-            const Icon = item.icon;
+          {QUICK_ELIGIBILITY.map((item) => {
+            const Icon = ICON_MAP[item.icon];
 
             return (
               <div
@@ -310,17 +163,16 @@ export default function AdmissionRequirementsPage() {
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Eligibility Requirements
+                {REQUIREMENTS_SECTION.eyebrow}
               </span>
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Requirements by Degree Level
+              {REQUIREMENTS_SECTION.title}
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              Select your degree level to review the relevant eligibility
-              criteria and supporting documentation.
+              {REQUIREMENTS_SECTION.description}
             </p>
           </div>
 
@@ -336,8 +188,11 @@ export default function AdmissionRequirementsPage() {
                     : "border-transparent text-slate-500 hover:text-[#175783]"
                 }`}
               >
-                <GraduationCap className="h-4 w-4" />
-                Undergraduate
+                {(() => {
+                  const Icon = ICON_MAP[REQUIREMENTS_SECTION.tabs[0].icon];
+                  return <Icon className="h-4 w-4" />;
+                })()}
+                {REQUIREMENTS_SECTION.tabs[0].label}
               </button>
 
               <button
@@ -349,8 +204,11 @@ export default function AdmissionRequirementsPage() {
                     : "border-transparent text-slate-500 hover:text-[#175783]"
                 }`}
               >
-                <ScrollText className="h-4 w-4" />
-                Postgraduate
+                {(() => {
+                  const Icon = ICON_MAP[REQUIREMENTS_SECTION.tabs[1].icon];
+                  return <Icon className="h-4 w-4" />;
+                })()}
+                {REQUIREMENTS_SECTION.tabs[1].label}
               </button>
             </div>
           </div>
@@ -361,21 +219,14 @@ export default function AdmissionRequirementsPage() {
               <table className="w-full min-w-[900px] border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 bg-[#f7fafc] text-left">
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Criterion
-                    </th>
-
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Minimum Requirement
-                    </th>
-
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Accepted Document
-                    </th>
-
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Notes
-                    </th>
+                    {REQUIREMENTS_SECTION.tableHeaders.map((header) => (
+                      <th
+                        key={header}
+                        className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-slate-500"
+                      >
+                        {header}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
 
@@ -425,7 +276,7 @@ export default function AdmissionRequirementsPage() {
                     </p>
 
                     <p className="mt-4 text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Minimum Requirement
+                      {REQUIREMENTS_SECTION.mobileLabels.minimum}
                     </p>
 
                     <p className="mt-1 text-sm leading-6 text-slate-600">
@@ -433,7 +284,7 @@ export default function AdmissionRequirementsPage() {
                     </p>
 
                     <p className="mt-4 text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Accepted Document
+                      {REQUIREMENTS_SECTION.mobileLabels.document}
                     </p>
 
                     <p className="mt-1 text-sm text-slate-600">
@@ -441,7 +292,7 @@ export default function AdmissionRequirementsPage() {
                     </p>
 
                     <p className="mt-4 text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Notes
+                      {REQUIREMENTS_SECTION.mobileLabels.notes}
                     </p>
 
                     <p className="mt-1 text-sm leading-6 text-slate-500">
@@ -459,13 +310,11 @@ export default function AdmissionRequirementsPage() {
 
             <div>
               <p className="font-semibold text-[#6e5414]">
-                Important Admission Note
+                {REQUIREMENTS_SECTION.note.title}
               </p>
 
               <p className="mt-1 text-sm leading-6 text-[#75653b]">
-                All eligibility criteria, minimum qualifications and
-                program-specific requirements must be updated according to the
-                latest officially approved admission policy and circular.
+                {REQUIREMENTS_SECTION.note.text}
               </p>
             </div>
           </div>
@@ -480,26 +329,22 @@ export default function AdmissionRequirementsPage() {
           {/* INTERNATIONAL */}
           <div className="border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
             <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
-              <ShieldCheck className="h-5 w-5" />
+              {(() => {
+                const Icon = ICON_MAP[INTERNATIONAL_APPLICANTS.icon];
+                return <Icon className="h-5 w-5" />;
+              })()}
             </div>
 
             <h2 className="mt-5 font-serif text-2xl font-semibold text-[#092c4d]">
-              International Applicants
+              {INTERNATIONAL_APPLICANTS.title}
             </h2>
 
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              International applicants may need additional documentation,
-              qualification equivalency, language evidence and other
-              requirements according to the university&apos;s approved policy.
+              {INTERNATIONAL_APPLICANTS.description}
             </p>
 
             <div className="mt-6 space-y-3">
-              {[
-                "Qualification equivalency where applicable",
-                "Valid passport / identification",
-                "Academic certificates and transcripts",
-                "Additional documentation required by the university",
-              ].map((item) => (
+              {INTERNATIONAL_APPLICANTS.points.map((item) => (
                 <div
                   key={item}
                   className="flex items-start gap-3 text-sm text-slate-600"
@@ -514,26 +359,22 @@ export default function AdmissionRequirementsPage() {
           {/* TRANSFER */}
           <div className="border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
             <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
-              <ClipboardCheck className="h-5 w-5" />
+              {(() => {
+                const Icon = ICON_MAP[TRANSFER_APPLICANTS.icon];
+                return <Icon className="h-5 w-5" />;
+              })()}
             </div>
 
             <h2 className="mt-5 font-serif text-2xl font-semibold text-[#092c4d]">
-              Transfer Applicants
+              {TRANSFER_APPLICANTS.title}
             </h2>
 
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              Transfer admission, credit recognition and eligibility are
-              subject to the university&apos;s approved academic and admission
-              policies.
+              {TRANSFER_APPLICANTS.description}
             </p>
 
             <div className="mt-6 space-y-3">
-              {[
-                "Previous academic records",
-                "Course transcripts for credit evaluation",
-                "Transfer eligibility according to policy",
-                "Additional supporting documents where required",
-              ].map((item) => (
+              {TRANSFER_APPLICANTS.points.map((item) => (
                 <div
                   key={item}
                   className="flex items-start gap-3 text-sm text-slate-600"
@@ -561,17 +402,16 @@ export default function AdmissionRequirementsPage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Document Checklist
+                  {DOCUMENT_CHECKLIST_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                Prepare Your Documents
+                {DOCUMENT_CHECKLIST_INTRO.title}
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                Use this checklist to prepare your admission documents before
-                starting the application.
+                {DOCUMENT_CHECKLIST_INTRO.description}
               </p>
             </div>
 
@@ -581,7 +421,7 @@ export default function AdmissionRequirementsPage() {
                 className="inline-flex items-center justify-center gap-2 border border-[#175783] bg-white px-5 py-3 text-sm font-bold text-[#175783] transition hover:bg-[#175783] hover:text-white"
               >
                 <Download className="h-4 w-4" />
-                Download Checklist
+                {DOCUMENT_CHECKLIST_INTRO.downloadLabel}
               </button>
 
               <button
@@ -590,14 +430,14 @@ export default function AdmissionRequirementsPage() {
                 className="inline-flex items-center justify-center gap-2 border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-[#173752] transition hover:border-[#175783]"
               >
                 <Printer className="h-4 w-4" />
-                Print
+                {DOCUMENT_CHECKLIST_INTRO.printLabel}
               </button>
             </div>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {documentChecklist.map((item, index) => {
-              const Icon = item.icon;
+            {DOCUMENT_CHECKLIST.map((item, index) => {
+              const Icon = ICON_MAP[item.icon];
 
               return (
                 <div
@@ -640,17 +480,15 @@ export default function AdmissionRequirementsPage() {
 
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#a17a16]">
-                Application Deadline
+                {DEADLINE_NOTE.eyebrow}
               </p>
 
               <h2 className="mt-2 font-serif text-2xl font-semibold text-[#092c4d]">
-                Check the Latest Official Admission Notice
+                {DEADLINE_NOTE.title}
               </h2>
 
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Admission deadlines can vary by intake and degree level. The
-                current official circular should be treated as the final
-                source for all application dates.
+                {DEADLINE_NOTE.description}
               </p>
             </div>
 
@@ -668,31 +506,30 @@ export default function AdmissionRequirementsPage() {
       {/* =========================================================
           FAQ
       ========================================================= */}
-      <section className="border-y border-slate-200 bg-white">
+      <section className="border-y border-slate-200 bg-page-pattern">
         <div className="mx-auto max-w-4xl px-6 py-20 lg:px-8">
           <div className="text-center">
             <div className="mb-4 flex items-center justify-center gap-3">
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Frequently Asked Questions
+                {REQUIREMENTS_FAQ_INTRO.eyebrow}
               </span>
 
               <span className="h-px w-8 bg-[#d9a82e]" />
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Admission Questions
+              {REQUIREMENTS_FAQ_INTRO.title}
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-              Quick answers to common questions about eligibility and
-              admission requirements.
+              {REQUIREMENTS_FAQ_INTRO.description}
             </p>
           </div>
 
           <div className="mt-10 space-y-3">
-            {faqs.map((faq, index) => (
+            {REQUIREMENTS_FAQS.map((faq, index) => (
               <div
                 key={faq.question}
                 className="border border-slate-200 bg-[#f9fbfd]"
@@ -759,36 +596,30 @@ export default function AdmissionRequirementsPage() {
                 </span>
 
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#d9a82e]">
-                  START SOMETHING MEANINGFUL
+                  {REQUIREMENTS_CTA.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-sans text-[34px] font-bold leading-[0.95] tracking-[-0.03em] text-white sm:text-[42px] lg:text-[48px]">
-                Begin your journey.
+                {REQUIREMENTS_CTA.titleLines[0]}
                 <br />
-                <span className="text-white">Shape the future.</span>
+                <span className="text-white">
+                  {REQUIREMENTS_CTA.titleLines[1]}
+                </span>
               </h2>
             </div>
 
             {/* RIGHT BUTTONS */}
             <div className="flex flex-col gap-3 sm:flex-row lg:items-center">
-              <a
-                href="/admissions/apply"
-                className="group inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#150866] shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                Start Your Application
+              <CtaButton href={REQUIREMENTS_CTA.links[0].href} variant="gold">
+                {REQUIREMENTS_CTA.links[0].label}
+                <ArrowRight className="h-4 w-4" />
+              </CtaButton>
 
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
-
-              <a
-                href="/academics/programs"
-                className="group inline-flex min-w-[190px] items-center justify-center gap-3 rounded-full border border-white/20 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold text-white/80 transition-all duration-200 hover:border-white/40 hover:bg-white/[0.08] hover:text-white"
-              >
-                Explore Programs
-
-                <ArrowRight className="h-4 w-4 text-white/70 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
+              <CtaButton href={REQUIREMENTS_CTA.links[1].href} variant="ghost">
+                {REQUIREMENTS_CTA.links[1].label}
+                <ArrowRight className="h-4 w-4" />
+              </CtaButton>
             </div>
 
             {/* TOP RIGHT ICON */}
@@ -812,10 +643,10 @@ export default function AdmissionRequirementsPage() {
       {/* MOBILE STICKY APPLY */}
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white p-3 shadow-[0_-5px_25px_rgba(35,39,113,0.12)] md:hidden">
         <a
-          href="/admissions/apply"
+          href={REQUIREMENTS_CTA.stickyMobile.href}
           className="flex w-full items-center justify-center gap-2 bg-[#d9a82e] px-5 py-3.5 text-sm font-bold text-[#092c4d]"
         >
-          Apply Now
+          {REQUIREMENTS_CTA.stickyMobile.label}
           <ArrowRight className="h-4 w-4" />
         </a>
       </div>

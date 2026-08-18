@@ -11,6 +11,7 @@ import { TrustStats } from "@/components/TrustStats";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { ProgramsSection } from "@/components/ProgramsSection";
 import { BeginYourJourney } from "@/components/BeginYourJourney";
+import { HOME_BACKGROUND } from "@/lib/data/home";
 
 export default function HomePage() {
   return (
@@ -25,8 +26,8 @@ export default function HomePage() {
           className="pointer-events-none absolute inset-0 z-0 opacity-[0.08]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(11,7,84,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(11,7,84,0.06) 1px, transparent 1px), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80')",
-            backgroundSize: "140px 140px, 140px 140px, cover",
+              `linear-gradient(${HOME_BACKGROUND.gridColor} 1px, transparent 1px), linear-gradient(90deg, ${HOME_BACKGROUND.gridColor} 1px, transparent 1px), url('${HOME_BACKGROUND.image}')`,
+            backgroundSize: `${HOME_BACKGROUND.gridSize}, ${HOME_BACKGROUND.gridSize}, cover`,
             backgroundPosition: "center",
           }}
         />

@@ -20,135 +20,29 @@ import { ReactLenis } from "lenis/react";
 
 import { SiteHeader } from "../../../components/site-header";
 import { SiteFooter } from "../../../components/site-footer";
+import {
+  FACULTIES_PAGE_HERO,
+  FACULTIES_STAT_STRIP,
+  ACADEMIC_EXCELLENCE_INTRO,
+  ACADEMIC_FEATURES,
+  PROGRAMS_INTRO,
+  PROGRAMS,
+  SMART_CLASSROOM,
+  LABS_SECTION,
+  LIBRARY_SECTION,
+  CAMPUS_FACILITIES_INTRO,
+  CAMPUS_FACILITIES,
+  BEYOND_CLASSROOM,
+  ACTIVITIES,
+  SAFETY_SECTION,
+  FACULTIES_PAGE_CTA,
+} from "@/lib/data/faculties";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /* =========================================================
    DATA
 ========================================================= */
-
-const heroImages = {
-  main:
-    "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp",
-  classroom:
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-  library:
-    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80",
-};
-
-const academicFeatures = [
-  {
-    number: "01",
-    title: "Experienced Faculty",
-    text: "Qualified educators who combine subject expertise with mentorship and meaningful student support.",
-  },
-  {
-    number: "02",
-    title: "Modern Teaching",
-    text: "Engaging learning methods designed around today's students, technology and real-world application.",
-  },
-  {
-    number: "03",
-    title: "Student-Centered",
-    text: "A supportive academic culture where students are encouraged to participate, question and explore.",
-  },
-  {
-    number: "04",
-    title: "Continuous Assessment",
-    text: "Regular academic monitoring helps identify progress, strengths and opportunities for improvement.",
-  },
-  {
-    number: "05",
-    title: "Digital Learning",
-    text: "Technology-enabled resources that extend learning beyond traditional classroom boundaries.",
-  },
-  {
-    number: "06",
-    title: "Practical Education",
-    text: "Hands-on experiences that help students transform academic knowledge into practical understanding.",
-  },
-];
-
-const programs = [
-  {
-    number: "01",
-    level: "FOUNDATION",
-    title: "Early Years",
-    text: "A nurturing beginning that develops curiosity, confidence, communication and foundational learning habits.",
-  },
-  {
-    number: "02",
-    level: "FOUNDATION",
-    title: "Primary Education",
-    text: "Strong academic foundations delivered through structured, engaging and supportive learning experiences.",
-  },
-  {
-    number: "03",
-    level: "ADVANCED",
-    title: "Secondary Education",
-    text: "Developing independent thinking, subject knowledge, discipline and preparation for higher studies.",
-  },
-  {
-    number: "04",
-    level: "ADVANCED",
-    title: "Higher Secondary",
-    text: "Focused academic preparation designed to support students on their journey toward higher education.",
-  },
-];
-
-const facilities = [
-  {
-    icon: "01",
-    title: "Modern Campus",
-    text: "Thoughtfully designed spaces that create a welcoming environment for learning and student development.",
-  },
-  {
-    icon: "02",
-    title: "Computer & ICT",
-    text: "Technology-supported environments that encourage digital literacy and modern learning practices.",
-  },
-  {
-    icon: "03",
-    title: "Science Laboratories",
-    text: "Practical learning spaces for experimentation, discovery and deeper understanding of scientific concepts.",
-  },
-  {
-    icon: "04",
-    title: "Library",
-    text: "A resource-rich environment that supports reading, research, independent learning and discovery.",
-  },
-  {
-    icon: "05",
-    title: "Sports & Playground",
-    text: "Spaces that encourage health, teamwork, discipline, resilience and healthy competition.",
-  },
-  {
-    icon: "06",
-    title: "Health & First Aid",
-    text: "Basic health and first-aid support that contributes to a caring and responsible student environment.",
-  },
-  {
-    icon: "07",
-    title: "Transportation",
-    text: "Convenient transportation support designed to make daily student journeys easier and more reliable.",
-  },
-  {
-    icon: "08",
-    title: "Safe Campus",
-    text: "A secure, respectful environment where students can focus on learning with confidence and peace of mind.",
-  },
-];
-
-const activities = [
-  "Sports & Athletics",
-  "Debate & Public Speaking",
-  "Cultural Activities",
-  "Art & Creativity",
-  "Student Clubs",
-  "Leadership Development",
-  "Academic Competitions",
-  "Community Activities",
-];
 
 /* =========================================================
    SMALL COMPONENTS
@@ -528,8 +422,8 @@ export default function AcademicFacilitiesPage() {
             className="absolute inset-0"
           >
             <img
-              src={heroImages.main}
-              alt="Academic campus"
+              src={FACULTIES_PAGE_HERO.image}
+              alt={FACULTIES_PAGE_HERO.imageAlt}
               className="h-full w-full object-cover"
             />
 
@@ -549,23 +443,21 @@ export default function AcademicFacilitiesPage() {
                 <div className="hero-kicker mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-[#f8d87d]">
                   <span className="h-px w-10 bg-[#fd9900]" />
 
-                  Academic Excellence & Modern Facilities
+                  {FACULTIES_PAGE_HERO.badge}
                 </div>
 
                 <h1 className="max-w-5xl text-5xl font-black leading-[0.95] tracking-[-0.045em] text-white sm:text-6xl lg:text-8xl">
                   <span className="hero-title-line block">
-                    Inspiring Learners.
+                    {FACULTIES_PAGE_HERO.titleLines[0]}
                   </span>
 
                   <span className="hero-title-line block text-[#f8d87d]">
-                    Building Futures.
+                    {FACULTIES_PAGE_HERO.titleLines[1]}
                   </span>
                 </h1>
 
                 <p className="hero-copy mt-8 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                  Empowering students through quality education, modern
-                  learning environments, practical experiences and a
-                  supportive academic community.
+                  {FACULTIES_PAGE_HERO.description}
                 </p>
 
                 <div className="hero-actions mt-9 flex flex-col gap-3 sm:flex-row">
@@ -573,7 +465,7 @@ export default function AcademicFacilitiesPage() {
                     href="#academics"
                     className="group inline-flex h-14 items-center justify-center gap-3 rounded-xl bg-white px-6 font-bold text-[#0b0754] transition hover:bg-[#fff4d8]"
                   >
-                    Explore Academics
+                    {FACULTIES_PAGE_HERO.primary.label}
 
                     <ArrowUpRight
                       size={17}
@@ -585,7 +477,7 @@ export default function AcademicFacilitiesPage() {
                     href="#facilities"
                     className="group inline-flex h-14 items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/5 px-6 font-bold text-white backdrop-blur-md transition hover:bg-white/10"
                   >
-                    Explore Facilities
+                    {FACULTIES_PAGE_HERO.secondary.label}
 
                     <span className="transition-transform group-hover:translate-x-1">
                       →
@@ -596,10 +488,7 @@ export default function AcademicFacilitiesPage() {
 
               <div className="hero-meta mt-16 grid max-w-5xl border-t border-white/15 sm:grid-cols-4">
                 {[
-                  ["5+", "Academic Faculties"],
-                  ["20+", "Programs"],
-                  ["37+", "Faculty Members"],
-                  ["Modern", "Research Labs"],
+                  ...FACULTIES_PAGE_HERO.stats.map((stat) => [stat.value, stat.label] as const),
                 ].map(([number, label]) => (
                   <div
                     key={label}
@@ -625,29 +514,14 @@ export default function AcademicFacilitiesPage() {
 
         <section className="border-b border-slate-200 bg-[#ffffff]">
           <div className="mx-auto grid max-w-[1440px] md:grid-cols-4">
-            <StatCard
-              index={0}
-              number="01"
-              label="Quality Education"
-            />
-
-            <StatCard
-              index={1}
-              number="02"
-              label="Expert Faculty"
-            />
-
-            <StatCard
-              index={2}
-              number="03"
-              label="Modern Facilities"
-            />
-
-            <StatCard
-              index={3}
-              number="04"
-              label="Student Development"
-            />
+            {FACULTIES_STAT_STRIP.map((stat, index) => (
+              <StatCard
+                key={stat.label}
+                index={index}
+                number={stat.number}
+                label={stat.label}
+              />
+            ))}
           </div>
         </section>
 
@@ -663,32 +537,29 @@ export default function AcademicFacilitiesPage() {
             <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
               <div className="gsap-reveal lg:sticky lg:top-32">
                 <SectionLabel>
-                  Academic Excellence
+                  {ACADEMIC_EXCELLENCE_INTRO.label}
                 </SectionLabel>
 
                 <RevealText>
                   <h2 className="max-w-xl text-4xl font-black leading-[1.02] tracking-[-0.035em] text-[#0b0754] sm:text-5xl">
-                    Education designed to bring out the best in every learner.
+                    {ACADEMIC_EXCELLENCE_INTRO.title}
                   </h2>
                 </RevealText>
 
                 <p className="mt-7 max-w-lg text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                  Meaningful education goes beyond textbooks. Students need
-                  excellent teachers, engaging classrooms, practical
-                  experiences and an environment that encourages curiosity
-                  and confidence.
+                  {ACADEMIC_EXCELLENCE_INTRO.description}
                 </p>
 
                 <div className="moving-line mt-9 h-px w-full bg-[#0b0754]" />
 
                 <div className="mt-6 flex items-center justify-between text-[10px] font-bold uppercase tracking-[0.17em] text-slate-500">
-                  <span>Designed for progress</span>
-                  <span>01 / 06</span>
+                  <span>{ACADEMIC_EXCELLENCE_INTRO.note}</span>
+                  <span>{ACADEMIC_EXCELLENCE_INTRO.counter}</span>
                 </div>
               </div>
 
               <div className="grid gap-0 border-t border-slate-300">
-                {academicFeatures.map((feature) => (
+                {ACADEMIC_FEATURES.map((feature) => (
                   <motion.div
                     key={feature.number}
                     whileHover={{ x: 8 }}
@@ -717,30 +588,28 @@ export default function AcademicFacilitiesPage() {
             PROGRAMS
         ====================================================== */}
 
-        <section className="bg-white py-24 sm:py-32">
+        <section className="bg-page-pattern py-24 sm:py-32">
           <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-10">
             <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
               <div className="max-w-3xl">
                 <SectionLabel>
-                  Our Academic Programs
+                  {PROGRAMS_INTRO.label}
                 </SectionLabel>
 
                 <RevealText>
                   <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.035em] text-[#08111F] sm:text-5xl">
-                    A learning journey for every stage.
+                    {PROGRAMS_INTRO.title}
                   </h2>
                 </RevealText>
               </div>
 
               <p className="max-w-md text-sm leading-6 text-slate-500 lg:text-right">
-                Carefully structured academic pathways help students build
-                knowledge, confidence, skills and a strong foundation for
-                the future.
+                {PROGRAMS_INTRO.description}
               </p>
             </div>
 
             <div className="mt-14 grid border-t border-slate-300 md:grid-cols-2">
-              {programs.map((program) => (
+              {PROGRAMS.map((program) => (
                 <motion.article
                   key={program.number}
                   whileHover={{ y: -6 }}
@@ -800,8 +669,8 @@ export default function AcademicFacilitiesPage() {
               <div className="image-reveal overflow-hidden rounded-2xl">
                 <div className="relative h-[430px] sm:h-[570px]">
                   <img
-                    src={heroImages.classroom}
-                    alt="Modern smart classroom"
+                    src={SMART_CLASSROOM.image}
+                    alt={SMART_CLASSROOM.imageAlt}
                     className="parallax-image h-full w-full scale-[1.08] object-cover"
                   />
 
@@ -821,7 +690,7 @@ export default function AcademicFacilitiesPage() {
 
               <div className="gsap-reveal lg:pl-8">
                 <SectionLabel dark>
-                  Smart Classrooms
+                  {SMART_CLASSROOM.label}
                 </SectionLabel>
 
                 <RevealText>
@@ -835,18 +704,12 @@ export default function AcademicFacilitiesPage() {
                 </RevealText>
 
                 <p className="mt-7 max-w-xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                  Learning spaces are designed to make lessons more engaging,
-                  collaborative, comfortable and relevant to today's
-                  students.
+                  {SMART_CLASSROOM.description}
                 </p>
 
                 <div className="mt-9 space-y-4">
                   {[
-                    "Interactive learning environment",
-                    "Multimedia and presentation support",
-                    "Comfortable and organized classrooms",
-                    "Digital educational resources",
-                    "Technology-supported teaching",
+                    ...SMART_CLASSROOM.points,
                   ].map((item, index) => (
                     <motion.div
                       key={item}
@@ -884,24 +747,22 @@ export default function AcademicFacilitiesPage() {
             LABS
         ====================================================== */}
 
-        <section className="bg-white py-24 sm:py-32">
+        <section className="bg-page-pattern py-24 sm:py-32">
           <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-10">
             <div className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div className="gsap-reveal">
                 <SectionLabel>
-                  Practical Learning
+                  {LABS_SECTION.label}
                 </SectionLabel>
 
                 <RevealText>
                   <h2 className="max-w-xl text-4xl font-black leading-[1.02] tracking-[-0.035em] text-[#08111F] sm:text-5xl">
-                    Modern laboratories for practical learning.
+                    {LABS_SECTION.title}
                   </h2>
                 </RevealText>
 
                 <p className="mt-7 max-w-lg text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                  Practical education helps students understand concepts
-                  beyond the classroom through observation, investigation,
-                  experimentation and hands-on learning.
+                  {LABS_SECTION.description}
                 </p>
 
                 <Link
@@ -915,10 +776,7 @@ export default function AcademicFacilitiesPage() {
 
               <div className="grid grid-cols-2 border-l border-t border-slate-300">
                 {[
-                  ["01", "Physics Lab"],
-                  ["02", "Chemistry Lab"],
-                  ["03", "Biology Lab"],
-                  ["04", "Computer Lab"],
+                  ...LABS_SECTION.labs.map((lab) => [lab.number, lab.title] as const),
                 ].map(([number, title]) => (
                   <motion.div
                     key={title}
@@ -940,8 +798,7 @@ export default function AcademicFacilitiesPage() {
                     </h3>
 
                     <p className="mt-3 text-xs leading-6 text-slate-500">
-                      Practical learning environment for deeper understanding
-                      and exploration.
+                      {LABS_SECTION.cardText}
                     </p>
                   </motion.div>
                 ))}
@@ -959,7 +816,7 @@ export default function AcademicFacilitiesPage() {
             <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
               <div className="gsap-reveal">
                 <SectionLabel>
-                  Library & Resources
+                  {LIBRARY_SECTION.label}
                 </SectionLabel>
 
                 <RevealText>
@@ -973,18 +830,12 @@ export default function AcademicFacilitiesPage() {
                 </RevealText>
 
                 <p className="mt-7 max-w-lg text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                  A good library encourages curiosity, independent learning,
-                  research and discovery beyond the classroom.
+                  {LIBRARY_SECTION.description}
                 </p>
 
                 <div className="mt-9 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                   {[
-                    "Well-stocked library",
-                    "Digital resources",
-                    "Reference materials",
-                    "Quiet study environment",
-                    "Age-appropriate books",
-                    "Independent learning support",
+                    ...LIBRARY_SECTION.points,
                   ].map((item) => (
                     <div
                       key={item}
@@ -1003,8 +854,8 @@ export default function AcademicFacilitiesPage() {
              <div className="image-reveal overflow-hidden rounded-2xl">
   <div className="relative h-[480px] sm:h-[560px]">
     <img
-      src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786968335/Library-1024_vx5vaq.webp"
-      alt="University library"
+      src={LIBRARY_SECTION.image}
+      alt={LIBRARY_SECTION.imageAlt}
       className="parallax-image h-full w-full scale-[1.08] object-cover"
     />
   </div>
@@ -1019,29 +870,27 @@ export default function AcademicFacilitiesPage() {
 
         <section
           id="facilities"
-          className="bg-white py-24 sm:py-32"
+          className="bg-page-pattern py-24 sm:py-32"
         >
           <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-10">
             <div className="max-w-3xl gsap-reveal">
               <SectionLabel>
-                Campus & Student Facilities
+                {CAMPUS_FACILITIES_INTRO.label}
               </SectionLabel>
 
               <RevealText>
                 <h2 className="text-4xl font-black leading-[1.02] tracking-[-0.035em] text-[#08111F] sm:text-5xl">
-                  Everything students need to learn, grow and thrive.
+                  {CAMPUS_FACILITIES_INTRO.title}
                 </h2>
               </RevealText>
 
               <p className="mt-7 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                We are committed to creating a safe, supportive and inspiring
-                environment where students can make the most of every
-                academic day.
+                {CAMPUS_FACILITIES_INTRO.description}
               </p>
             </div>
 
             <div className="mt-14 grid border-l border-t border-slate-300 sm:grid-cols-2 lg:grid-cols-4">
-              {facilities.map((facility) => (
+              {CAMPUS_FACILITIES.map((facility) => (
                 <motion.div
                   key={facility.title}
                   whileHover={{
@@ -1086,7 +935,7 @@ export default function AcademicFacilitiesPage() {
             <div className="grid gap-14 lg:grid-cols-2 lg:items-start">
               <div className="gsap-reveal">
                 <SectionLabel>
-                  Beyond the Classroom
+                  {BEYOND_CLASSROOM.label}
                 </SectionLabel>
 
                 <RevealText>
@@ -1100,18 +949,16 @@ export default function AcademicFacilitiesPage() {
                 </RevealText>
 
                 <p className="mt-7 max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                  Sports, creativity, leadership, communication and teamwork
-                  help students develop the skills they need not only for
-                  academic success but for life.
+                  {BEYOND_CLASSROOM.description}
                 </p>
 
                 <div className="mt-9 max-w-lg border-t border-slate-300 pt-5 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
-                  Academic + Personal Growth
+                  {BEYOND_CLASSROOM.note}
                 </div>
               </div>
 
               <div className="grid border-l border-t border-slate-300 sm:grid-cols-2">
-                {activities.map((activity, index) => (
+                {ACTIVITIES.map((activity, index) => (
                   <motion.div
                     key={activity}
                     whileHover={{
@@ -1138,36 +985,29 @@ export default function AcademicFacilitiesPage() {
             SAFETY
         ====================================================== */}
 
-        <section className="bg-white py-24 sm:py-32">
+        <section className="bg-page-pattern py-24 sm:py-32">
           <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-10">
             <div className="overflow-hidden rounded-[28px] bg-[#08111F] px-7 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
               <div className="grid gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center">
                 <div className="gsap-reveal">
                   <SectionLabel dark>
-                    Student Safety & Well-being
+                    {SAFETY_SECTION.label}
                   </SectionLabel>
 
                   <RevealText>
                     <h2 className="max-w-2xl text-4xl font-black leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl">
-                      A safe environment for every learner.
+                      {SAFETY_SECTION.title}
                     </h2>
                   </RevealText>
 
                   <p className="mt-7 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-                    Students learn best when they feel safe, respected,
-                    valued and supported. Our environment is built around
-                    care, responsibility and student well-being.
+                    {SAFETY_SECTION.description}
                   </p>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-2">
                   {[
-                    "Safe Campus",
-                    "Student Supervision",
-                    "First-Aid Support",
-                    "Clean Environment",
-                    "Positive Student Culture",
-                    "Student Support",
+                    ...SAFETY_SECTION.points,
                   ].map((item, index) => (
                     <motion.div
                       key={item}
@@ -1269,7 +1109,7 @@ export default function AcademicFacilitiesPage() {
           </span>
 
           <span className="relative text-[10px] font-bold uppercase tracking-[0.22em] text-cyan-100/90 sm:text-[11px]">
-            Start the Journey
+            {FACULTIES_PAGE_CTA.eyebrow}
           </span>
 
           <ArrowUpRight
@@ -1285,10 +1125,10 @@ export default function AcademicFacilitiesPage() {
       ====================================================== */}
       <RevealText>
         <h2 className="mx-auto max-w-4xl text-[2.6rem] font-black leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[4.65rem]">
-          Discover a better
+          {FACULTIES_PAGE_CTA.titleLines[0]}
           <span className="relative block">
             <span className="bg-gradient-to-r from-white via-indigo-100 to-cyan-300 bg-clip-text text-transparent">
-              learning environment.
+              {FACULTIES_PAGE_CTA.titleLines[1]}
             </span>
 
             {/* Subtle underline accent */}
@@ -1301,9 +1141,7 @@ export default function AcademicFacilitiesPage() {
           DESCRIPTION
       ====================================================== */}
       <p className="mx-auto mt-8 max-w-2xl text-[15px] leading-7 text-indigo-100/65 sm:text-base sm:leading-8">
-        Explore our academic programs, modern facilities, and student-focused
-        environment designed to prepare you for a successful and meaningful
-        future.
+        {FACULTIES_PAGE_CTA.description}
       </p>
 
       {/* =====================================================
@@ -1319,7 +1157,7 @@ export default function AcademicFacilitiesPage() {
           {/* Hover gradient */}
           <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-cyan-100 via-white to-indigo-100 transition-transform duration-500 group-hover:translate-x-0" />
 
-          <span className="relative z-10">Explore Academics</span>
+          <span className="relative z-10">{FACULTIES_PAGE_CTA.links[0].label}</span>
 
           <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-[#08052f]/[0.08] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#08052f]/[0.12]">
             <ArrowUpRight
@@ -1336,7 +1174,7 @@ export default function AcademicFacilitiesPage() {
           className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] px-7 text-sm font-semibold text-white/90 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.07] hover:text-white active:translate-y-0"
         >
           <span className="absolute inset-0 -translate-y-full bg-gradient-to-b from-cyan-300/[0.06] to-transparent transition-transform duration-500 group-hover:translate-y-0" />
-          <span className="relative">Contact Us</span>
+          <span className="relative">{FACULTIES_PAGE_CTA.links[1].label}</span>
         </Link>
 
         {/* TERTIARY CTA */}
@@ -1344,7 +1182,7 @@ export default function AcademicFacilitiesPage() {
           href="/campus-life/facilities"
           className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] px-7 text-sm font-semibold text-indigo-100/65 transition-all duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.035] hover:text-white active:translate-y-0"
         >
-          <span>Book a Visit</span>
+          <span>{FACULTIES_PAGE_CTA.links[2].label}</span>
 
           <ArrowUpRight
             size={14}
@@ -1364,21 +1202,21 @@ export default function AcademicFacilitiesPage() {
           
           <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-300/60" />
-            Learn
+            {FACULTIES_PAGE_CTA.trustStrip[0]}
           </div>
 
           <span className="hidden h-3 w-px bg-white/10 sm:block" />
 
           <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
             <span className="h-1.5 w-1.5 rounded-full bg-indigo-300/60" />
-            Grow
+            {FACULTIES_PAGE_CTA.trustStrip[1]}
           </div>
 
           <span className="hidden h-3 w-px bg-white/10 sm:block" />
 
           <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
             <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
-            Succeed
+            {FACULTIES_PAGE_CTA.trustStrip[2]}
           </div>
         </div>
       </div>

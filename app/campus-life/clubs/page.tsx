@@ -24,206 +24,19 @@ import gsap from "gsap"
 
 import { SiteHeader } from "../../../components/site-header"
 import { SiteFooter } from "../../../components/site-footer"
-
-type ClubCategory =
-  | "Academic"
-  | "Cultural"
-  | "Technology"
-  | "Leadership"
-  | "Sports"
-  | "Social"
-
-type Club = {
-  id: number
-  name: string
-  shortName: string
-  category: ClubCategory
-  description: string
-  members: string
-  meeting: string
-  icon: React.ElementType
-  accent: string
-  featured?: boolean
-}
-
-const CLUBS: Club[] = [
-  {
-    id: 1,
-    name: "Science & Innovation Club",
-    shortName: "Science & Innovation",
-    category: "Academic",
-    description:
-      "A student-led platform for scientific thinking, innovation, project building, competitions and practical learning.",
-    members: "120+ Members",
-    meeting: "Every Wednesday",
-    icon: Microscope,
-    accent: "#F6B900",
-    featured: true,
-  },
-  {
-    id: 2,
-    name: "Computer & Technology Club",
-    shortName: "Computer & Technology",
-    category: "Technology",
-    description:
-      "Explore programming, software development, digital tools, emerging technologies and hands-on technical workshops.",
-    members: "95+ Members",
-    meeting: "Every Thursday",
-    icon: Laptop2,
-    accent: "#FCD34D",
-    featured: true,
-  },
-  {
-    id: 3,
-    name: "Cultural Club",
-    shortName: "Cultural Club",
-    category: "Cultural",
-    description:
-      "Celebrating creativity, literature, music, art, performance and the cultural diversity of our student community.",
-    members: "150+ Members",
-    meeting: "Every Tuesday",
-    icon: Music2,
-    accent: "#F8D87D",
-    featured: true,
-  },
-  {
-    id: 4,
-    name: "Debate & Public Speaking Club",
-    shortName: "Debate & Public Speaking",
-    category: "Leadership",
-    description:
-      "Develop confidence, communication, critical thinking and leadership through debate and public speaking activities.",
-    members: "80+ Members",
-    meeting: "Every Monday",
-    icon: Users,
-    accent: "#F59E0B",
-  },
-  {
-    id: 5,
-    name: "Business & Leadership Club",
-    shortName: "Business & Leadership",
-    category: "Leadership",
-    description:
-      "Build entrepreneurial thinking, teamwork, presentation skills and practical leadership capabilities.",
-    members: "70+ Members",
-    meeting: "Twice a Month",
-    icon: Trophy,
-    accent: "#FFC928",
-  },
-  {
-    id: 6,
-    name: "Photography & Media Club",
-    shortName: "Photography & Media",
-    category: "Cultural",
-    description:
-      "A creative community for photography, videography, storytelling, event coverage and visual communication.",
-    members: "60+ Members",
-    meeting: "Every Friday",
-    icon: Camera,
-    accent: "#FDBA74",
-  },
-  {
-    id: 7,
-    name: "Sports & Fitness Club",
-    shortName: "Sports & Fitness",
-    category: "Sports",
-    description:
-      "Promoting teamwork, fitness, healthy competition and an active campus lifestyle through sports activities.",
-    members: "130+ Members",
-    meeting: "Weekly Practice",
-    icon: Trophy,
-    accent: "#F6B900",
-  },
-  {
-    id: 8,
-    name: "Social Service Club",
-    shortName: "Social Service",
-    category: "Social",
-    description:
-      "Connecting students with community initiatives, volunteering, awareness programs and meaningful social impact.",
-    members: "90+ Members",
-    meeting: "Monthly Activities",
-    icon: HeartHandshake,
-    accent: "#FDE68A",
-  },
-  {
-    id: 9,
-    name: "Art & Creative Club",
-    shortName: "Art & Creative",
-    category: "Cultural",
-    description:
-      "A space for drawing, design, illustration, creative writing and other forms of artistic expression.",
-    members: "55+ Members",
-    meeting: "Every Saturday",
-    icon: Palette,
-    accent: "#FFC14D",
-  },
-  {
-    id: 10,
-    name: "Language & Literature Club",
-    shortName: "Language & Literature",
-    category: "Academic",
-    description:
-      "Encouraging reading, writing, language development, literature discussions and knowledge sharing.",
-    members: "65+ Members",
-    meeting: "Every Sunday",
-    icon: BookOpen,
-    accent: "#F8D87D",
-  },
-  {
-    id: 11,
-    name: "Global Relations Club",
-    shortName: "Global Relations",
-    category: "Social",
-    description:
-      "Developing cultural awareness, global communication skills and opportunities for broader student engagement.",
-    members: "45+ Members",
-    meeting: "Monthly Sessions",
-    icon: Globe2,
-    accent: "#FCD34D",
-  },
-  {
-    id: 12,
-    name: "Community Volunteers",
-    shortName: "Community Volunteers",
-    category: "Social",
-    description:
-      "Student volunteers working together on campus support, awareness drives, outreach and community initiatives.",
-    members: "100+ Members",
-    meeting: "Monthly Drives",
-    icon: HeartHandshake,
-    accent: "#F6B900",
-  },
-]
-
-const CATEGORIES = [
-  "All",
-  "Academic",
-  "Cultural",
-  "Technology",
-  "Leadership",
-  "Sports",
-  "Social",
-] as const
-
-const STATS = [
-  {
-    value: "12+",
-    label: "Active Clubs",
-  },
-  {
-    value: "1,000+",
-    label: "Student Members",
-  },
-  {
-    value: "6",
-    label: "Major Categories",
-  },
-  {
-    value: "50+",
-    label: "Activities / Year",
-  },
-]
+import { ICON_MAP } from "@/lib/icon-map"
+import { CtaButton } from "@/components/cta-button"
+import {
+  CLUBS_HERO,
+  CLUB_STATS,
+  CLUB_CATEGORIES,
+  CLUB_LIST_INTRO,
+  CLUBS,
+  WHY_JOIN_INTRO,
+  WHY_JOIN,
+  CLUBS_CTA,
+  type ClubCategory,
+} from "@/lib/data/clubs"
 
 function CategoryPill({
   category,
@@ -240,9 +53,9 @@ function CategoryPill({
 function ClubCard({
   club,
 }: {
-  club: Club
+  club: (typeof CLUBS)[number]
 }) {
-  const Icon = club.icon
+  const Icon = ICON_MAP[club.icon]
 
   return (
     <article
@@ -300,7 +113,7 @@ function ClubCard({
         {club.featured && (
           <span className="inline-flex items-center gap-1 rounded-full border border-[#F6B900]/25 bg-[#FFF5DB] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#D79B00]">
             <Sparkles className="h-3 w-3" />
-            Featured
+            {CLUB_LIST_INTRO.cardLabels.featured}
           </span>
         )}
       </div>
@@ -321,7 +134,7 @@ function ClubCard({
         <div className="grid grid-cols-2 gap-3 border-t border-[#DCE7F1] pt-4">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#94A3B8]">
-              Community
+              {CLUB_LIST_INTRO.cardLabels.members}
             </p>
 
             <p className="mt-1 text-xs font-semibold text-[#334155]">
@@ -331,7 +144,7 @@ function ClubCard({
 
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[#94A3B8]">
-              Schedule
+              {CLUB_LIST_INTRO.cardLabels.meeting}
             </p>
 
             <p className="mt-1 text-xs font-semibold text-[#334155]">
@@ -358,7 +171,7 @@ function ClubCard({
             hover:text-[#D79B00]
           "
         >
-          Explore Club
+          {CLUB_LIST_INTRO.cardLabels.link}
 
           <ArrowUpRight
             className="
@@ -380,7 +193,7 @@ export default function ClubsOrganizationsPage() {
   const pageRef = useRef<HTMLElement>(null)
 
   const [activeCategory, setActiveCategory] =
-    useState<(typeof CATEGORIES)[number]>("All")
+    useState<(typeof CLUB_CATEGORIES)[number]>("All")
 
   const [query, setQuery] = useState("")
 
@@ -584,7 +397,7 @@ export default function ClubsOrganizationsPage() {
                 "
               >
                 <Users className="h-3.5 w-3.5" />
-                Student Life
+                {CLUBS_HERO.badge}
               </div>
 
               <h1
@@ -599,10 +412,10 @@ export default function ClubsOrganizationsPage() {
                   lg:text-6xl
                 "
               >
-                Clubs &
+                {CLUBS_HERO.title}
                 <span className="text-[#F6B900]">
                   {" "}
-                  Organizations
+                  {CLUBS_HERO.titleHighlight}
                 </span>
               </h1>
 
@@ -618,64 +431,32 @@ export default function ClubsOrganizationsPage() {
                   sm:leading-8
                 "
               >
-                Discover student communities that help you learn beyond
-                the classroom, build meaningful connections, develop
-                leadership skills and turn ideas into action.
+                {CLUBS_HERO.description}
               </p>
 
               <div
                 data-hero-content
                 className="mt-7 flex flex-wrap gap-3"
               >
-                <a
-                  href="#clubs"
-                  className="
-                    inline-flex
-                    items-center
-                    gap-2
-                    rounded-xl
-                    bg-[#F6B900]
-                    px-5
-                    py-3
-                    text-sm
-                    font-bold
-                    text-[#0D0357]
-                    shadow-lg
-                    shadow-[#F6B900]/10
-                    transition-all
-                    duration-200
-                    hover:-translate-y-0.5
-                    hover:bg-[#FFC928]
-                  "
+                <CtaButton
+                  href={CLUBS_HERO.primary.href}
+                  variant="gold"
+                  size="sm"
+                  radius={12}
                 >
-                  Explore Clubs
+                  {CLUBS_HERO.primary.label}
                   <ArrowUpRight className="h-4 w-4" />
-                </a>
+                </CtaButton>
 
-                <Link
-                  href="/contact"
-                  className="
-                    inline-flex
-                    items-center
-                    gap-2
-                    rounded-xl
-                    border
-                    border-white/15
-                    bg-white/[0.04]
-                    px-5
-                    py-3
-                    text-sm
-                    font-semibold
-                    text-white
-                    transition-all
-                    duration-200
-                    hover:border-[#F6B900]/40
-                    hover:bg-white/[0.08]
-                  "
+                <CtaButton
+                  href={CLUBS_HERO.secondary.href}
+                  variant="ghost"
+                  size="sm"
+                  radius={12}
                 >
-                  Start a Club
+                  {CLUBS_HERO.secondary.label}
                   <ChevronRight className="h-4 w-4" />
-                </Link>
+                </CtaButton>
               </div>
             </div>
           </div>
@@ -701,7 +482,7 @@ export default function ClubsOrganizationsPage() {
               sm:grid-cols-4
             "
           >
-            {STATS.map((stat, index) => (
+            {CLUB_STATS.map((stat, index) => (
               <div
                 key={stat.label}
                 className={`
@@ -711,7 +492,7 @@ export default function ClubsOrganizationsPage() {
                   sm:px-6
                   sm:py-6
                   ${
-                    index < STATS.length - 1
+                    index < CLUB_STATS.length - 1
                       ? "border-b border-[#DCE7F1] sm:border-b-0 sm:border-r"
                       : ""
                   }
@@ -752,16 +533,15 @@ export default function ClubsOrganizationsPage() {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#D79B00]">
                 <span className="h-px w-7 bg-[#F6B900]" />
-                Student Communities
+                {CLUB_LIST_INTRO.eyebrow}
               </div>
 
               <h2 className="mt-3 text-3xl font-black tracking-tight text-[#0D0357] sm:text-4xl">
-                Find your community
+                {CLUB_LIST_INTRO.title}
               </h2>
 
               <p className="mt-3 text-sm leading-7 text-[#64748B] sm:text-base">
-                Choose a club based on your interests, skills and the
-                kind of student experience you want to build.
+                {CLUB_LIST_INTRO.description}
               </p>
             </div>
 
@@ -772,7 +552,7 @@ export default function ClubsOrganizationsPage() {
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search clubs or interests..."
+                placeholder={CLUB_LIST_INTRO.searchPlaceholder}
                 className="
                   h-12
                   w-full
@@ -825,10 +605,10 @@ export default function ClubsOrganizationsPage() {
           <div className="mt-7 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             <div className="mr-1 inline-flex shrink-0 items-center gap-1.5 text-xs font-semibold text-[#64748B]">
               <Filter className="h-3.5 w-3.5" />
-              Filter:
+              {CLUB_LIST_INTRO.filterLabel}
             </div>
 
-            {CATEGORIES.map((category) => {
+            {CLUB_CATEGORIES.map((category) => {
               const active = activeCategory === category
 
               return (
@@ -873,7 +653,7 @@ export default function ClubsOrganizationsPage() {
 
             <div className="hidden items-center gap-1.5 text-xs text-[#94A3B8] sm:flex">
               <span className="h-2 w-2 rounded-full bg-[#F6B900]" />
-              Explore • Connect • Grow
+              {CLUB_LIST_INTRO.tagline}
             </div>
           </div>
 
@@ -894,11 +674,11 @@ export default function ClubsOrganizationsPage() {
               </div>
 
               <h3 className="mt-4 text-lg font-bold text-[#0D0357]">
-                No clubs found
+                {CLUB_LIST_INTRO.emptyState.title}
               </h3>
 
               <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#64748B]">
-                Try another keyword or choose a different category.
+                {CLUB_LIST_INTRO.emptyState.description}
               </p>
 
               <button
@@ -920,7 +700,7 @@ export default function ClubsOrganizationsPage() {
                   hover:bg-[#FFC928]
                 "
               >
-                Reset Filters
+                {CLUB_LIST_INTRO.emptyState.resetLabel}
               </button>
             </div>
           )}
@@ -936,76 +716,30 @@ export default function ClubsOrganizationsPage() {
               <div>
                 <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#FCD34D]">
                   <span className="h-px w-7 bg-[#F6B900]" />
-                  Beyond the Classroom
+                  {WHY_JOIN_INTRO.eyebrow}
                 </div>
 
                 <h2 className="mt-4 max-w-lg text-3xl font-black tracking-tight text-white sm:text-4xl">
-                  More than a club.
+                  {WHY_JOIN_INTRO.title}
                   <span className="text-[#F6B900]">
                     {" "}
-                    It is your campus community.
+                    {WHY_JOIN_INTRO.titleHighlight}
                   </span>
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-white/60 sm:text-base">
-                  Student organizations create space to meet new people,
-                  discover hidden strengths, build leadership experience
-                  and contribute to campus life in meaningful ways.
+                  {WHY_JOIN_INTRO.description}
                 </p>
 
-                <Link
-                  href="/contact"
-                  className="
-                    mt-7
-                    inline-flex
-                    items-center
-                    gap-2
-                    rounded-xl
-                    bg-[#F6B900]
-                    px-5
-                    py-3
-                    text-sm
-                    font-bold
-                    text-[#0D0357]
-                    transition-all
-                    duration-200
-                    hover:-translate-y-0.5
-                    hover:bg-[#FFC928]
-                  "
-                >
-                  Connect With Student Affairs
+                <CtaButton href={WHY_JOIN_INTRO.link.href} variant="gold" size="sm" radius={12}>
+                  {WHY_JOIN_INTRO.link.label}
                   <ArrowUpRight className="h-4 w-4" />
-                </Link>
+                </CtaButton>
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {[
-                  {
-                    icon: Users,
-                    title: "Build Connections",
-                    description:
-                      "Meet students with similar interests and create lasting friendships.",
-                  },
-                  {
-                    icon: Trophy,
-                    title: "Grow Leadership",
-                    description:
-                      "Take responsibility, organize activities and practice leadership in real situations.",
-                  },
-                  {
-                    icon: BookOpen,
-                    title: "Learn by Doing",
-                    description:
-                      "Turn academic knowledge into practical projects, workshops and events.",
-                  },
-                  {
-                    icon: HeartHandshake,
-                    title: "Make an Impact",
-                    description:
-                      "Contribute to the campus and wider community through meaningful initiatives.",
-                  },
-                ].map((item) => {
-                  const Icon = item.icon
+                {WHY_JOIN.map((item) => {
+                  const Icon = ICON_MAP[item.icon]
 
                   return (
                     <div
@@ -1081,44 +815,22 @@ export default function ClubsOrganizationsPage() {
                 <div className="max-w-2xl">
                   <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#D79B00]">
                     <span className="h-px w-7 bg-[#F6B900]" />
-                    Start Something Meaningful
+                    {CLUBS_CTA.eyebrow}
                   </div>
 
                   <h2 className="mt-3 text-2xl font-black tracking-tight text-[#0D0357] sm:text-3xl">
-                    Have an idea for a new student organization?
+                    {CLUBS_CTA.title}
                   </h2>
 
                   <p className="mt-3 text-sm leading-7 text-[#64748B]">
-                    Bring your idea, gather interested students and connect
-                    with the appropriate campus office to explore the next
-                    steps.
+                    {CLUBS_CTA.description}
                   </p>
                 </div>
 
-                <Link
-                  href="/contact"
-                  className="
-                    inline-flex
-                    shrink-0
-                    items-center
-                    justify-center
-                    gap-2
-                    rounded-xl
-                    bg-[#0D0357]
-                    px-5
-                    py-3
-                    text-sm
-                    font-bold
-                    text-white
-                    transition-all
-                    duration-200
-                    hover:-translate-y-0.5
-                    hover:bg-[#120A80]
-                  "
-                >
-                  Contact Us
-                  <ArrowUpRight className="h-4 w-4 text-[#F6B900]" />
-                </Link>
+                <CtaButton href={CLUBS_CTA.link.href} variant="gold" size="sm" radius={12}>
+                  {CLUBS_CTA.link.label}
+                  <ArrowUpRight className="h-4 w-4" />
+                </CtaButton>
               </div>
             </div>
           </div>

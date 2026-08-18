@@ -16,111 +16,24 @@ import {
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { CtaButton } from "@/components/cta-button";
+import {
+  PUBLICATIONS_HERO,
+  PUBLICATIONS_INTRO,
+  FEATURED_PUBLICATIONS_INTRO,
+  PUBLICATIONS,
+  PUBLICATION_YEARS,
+  PUBLICATION_DEPARTMENTS,
+  PUBLICATION_TYPES,
+  PUBLICATION_AREAS,
+  PUBLICATION_DIRECTORY,
+  PUBLICATIONS_HELP,
+  RESEARCH_REPORT,
+  SUBMIT_PUBLICATION,
+  PUBLICATIONS_CTA,
+} from "@/lib/data/publications";
 
-const publications = [
-  {
-    title: "Data-Driven Approaches for Sustainable Development",
-    authors: "Dr. A. Rahman, M. Hasan, S. Ahmed",
-    year: "2025",
-    department: "Computer Science & Engineering",
-    type: "Journal Article",
-    area: "AI & Data Science",
-    journal: "International Journal of Applied Computing",
-    doi: "10.0000/kkjstu.2025.001",
-    abstract:
-      "This study explores data-driven methods for identifying practical approaches to sustainable development and evidence-based decision making.",
-  },
-  {
-    title: "Smart Engineering Solutions for Modern Infrastructure",
-    authors: "Dr. M. Karim, T. Islam",
-    year: "2025",
-    department: "Engineering",
-    type: "Conference Paper",
-    area: "Engineering",
-    journal: "International Engineering Conference",
-    doi: "10.0000/kkjstu.2025.002",
-    abstract:
-      "The research investigates innovative engineering approaches designed to improve infrastructure efficiency, resilience and sustainability.",
-  },
-  {
-    title: "Environmental Monitoring and Sustainable Resource Management",
-    authors: "N. Sultana, Dr. F. Hossain",
-    year: "2024",
-    department: "Environmental Science",
-    type: "Journal Article",
-    area: "Environment",
-    journal: "Journal of Environmental Research",
-    doi: "10.0000/kkjstu.2024.003",
-    abstract:
-      "A research framework for environmental monitoring and responsible resource management with a focus on sustainable development.",
-  },
-  {
-    title: "Mathematical Modelling for Complex Systems",
-    authors: "Dr. R. Ahmed, M. Chowdhury",
-    year: "2024",
-    department: "Mathematics",
-    type: "Research Article",
-    area: "Mathematics",
-    journal: "Applied Mathematical Studies",
-    doi: "10.0000/kkjstu.2024.004",
-    abstract:
-      "This publication presents mathematical modelling techniques for analysing complex systems and improving predictive understanding.",
-  },
-  {
-    title: "Innovation and Entrepreneurship in Emerging Economies",
-    authors: "Dr. S. Islam, F. Kabir",
-    year: "2023",
-    department: "Business Administration",
-    type: "Journal Article",
-    area: "Social & Business Innovation",
-    journal: "Business & Innovation Review",
-    doi: "10.0000/kkjstu.2023.005",
-    abstract:
-      "The paper examines innovation, entrepreneurship and institutional factors influencing emerging business ecosystems.",
-  },
-  {
-    title: "Biotechnology Applications in Sustainable Agriculture",
-    authors: "Dr. T. Akter, M. Rahman",
-    year: "2023",
-    department: "Biotechnology",
-    type: "Research Article",
-    area: "Biotechnology",
-    journal: "Asian Biotechnology Research",
-    doi: "10.0000/kkjstu.2023.006",
-    abstract:
-      "An overview of biotechnology-based approaches that can support sustainable agricultural practices and resource efficiency.",
-  },
-];
-
-const featuredPublications = publications.slice(0, 3);
-
-const years = ["All Years", "2025", "2024", "2023"];
-const departments = [
-  "All Departments",
-  "Computer Science & Engineering",
-  "Engineering",
-  "Environmental Science",
-  "Mathematics",
-  "Business Administration",
-  "Biotechnology",
-];
-
-const types = [
-  "All Types",
-  "Journal Article",
-  "Conference Paper",
-  "Research Article",
-];
-
-const areas = [
-  "All Research Areas",
-  "AI & Data Science",
-  "Engineering",
-  "Environment",
-  "Mathematics",
-  "Social & Business Innovation",
-  "Biotechnology",
-];
+const featuredPublications = PUBLICATIONS.slice(0, 3);
 
 export default function PublicationsPage() {
   return (
@@ -150,39 +63,32 @@ export default function PublicationsPage() {
               <span className="h-px w-10 bg-[#d9a82e]" />
 
               <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                Research / Publications
+                {PUBLICATIONS_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[58px]">
-              Discover Research,
+              {PUBLICATIONS_HERO.titleLines[0]}
               <br />
               <span className="text-[#e1b63b]">
-                Ideas & Knowledge
+                {PUBLICATIONS_HERO.titleLines[1]}
               </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              Explore research publications, scholarly work and academic
-              contributions from the KKJSTU research community.
+              {PUBLICATIONS_HERO.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#publications"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Search Publications
+              <CtaButton href={PUBLICATIONS_HERO.primary.href} variant="gold" radius={0}>
+                {PUBLICATIONS_HERO.primary.label}
                 <Search className="h-4 w-4" />
-              </a>
+              </CtaButton>
 
-              <a
-                href="#report"
-                className="inline-flex items-center justify-center gap-2 border border-white/30 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/[0.1]"
-              >
-                Download Research Report
+              <CtaButton href={PUBLICATIONS_HERO.secondary.href} variant="ghost" radius={0}>
+                {PUBLICATIONS_HERO.secondary.label}
                 <Download className="h-4 w-4" />
-              </a>
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -191,7 +97,7 @@ export default function PublicationsPage() {
       {/* =========================================================
           INTRO / STATS
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
@@ -199,48 +105,37 @@ export default function PublicationsPage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Research Knowledge
+                  {PUBLICATIONS_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                Publications at KKJSTU
+                {PUBLICATIONS_INTRO.title}
               </h2>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-                Browse scholarly publications by year, department, research
-                area and publication type. The directory is designed to make
-                research outputs easier to discover and explore.
+                {PUBLICATIONS_INTRO.description}
               </p>
             </div>
 
             <div className="grid grid-cols-3 border border-slate-200 bg-[#f5f8fc]">
-              <div className="border-r border-slate-200 px-5 py-5 text-center">
-                <p className="font-serif text-2xl font-semibold text-[#092c4d]">
-                  06
-                </p>
-                <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-500">
-                  Publications
-                </p>
-              </div>
-
-              <div className="border-r border-slate-200 px-5 py-5 text-center">
-                <p className="font-serif text-2xl font-semibold text-[#092c4d]">
-                  06
-                </p>
-                <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-500">
-                  Research Areas
-                </p>
-              </div>
-
-              <div className="px-5 py-5 text-center">
-                <p className="font-serif text-2xl font-semibold text-[#092c4d]">
-                  03
-                </p>
-                <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-500">
-                  Years
-                </p>
-              </div>
+              {PUBLICATIONS_INTRO.stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className={`px-5 py-5 text-center ${
+                    index < PUBLICATIONS_INTRO.stats.length - 1
+                      ? "border-r border-slate-200"
+                      : ""
+                  }`}
+                >
+                  <p className="font-serif text-2xl font-semibold text-[#092c4d]">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-500">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -256,17 +151,16 @@ export default function PublicationsPage() {
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Featured Publications
+                {FEATURED_PUBLICATIONS_INTRO.eyebrow}
               </span>
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Selected Research Contributions
+              {FEATURED_PUBLICATIONS_INTRO.title}
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              A selection of research publications representing different
-              academic disciplines and areas of inquiry.
+              {FEATURED_PUBLICATIONS_INTRO.description}
             </p>
           </div>
 
@@ -314,7 +208,7 @@ export default function PublicationsPage() {
                       href="#"
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#175783]"
                     >
-                      View
+                      {FEATURED_PUBLICATIONS_INTRO.cardLinkLabel}
                       <ExternalLink className="h-3.5 w-3.5" />
                     </a>
                   </div>
@@ -328,19 +222,19 @@ export default function PublicationsPage() {
       {/* =========================================================
           SEARCH & FILTER
       ========================================================= */}
-      <section id="publications" className="bg-white">
+      <section id="publications" className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="mb-10">
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Publication Directory
+                {PUBLICATION_DIRECTORY.eyebrow}
               </span>
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Search Research Publications
+              {PUBLICATION_DIRECTORY.title}
             </h2>
           </div>
 
@@ -352,11 +246,11 @@ export default function PublicationsPage() {
 
               <div>
                 <h3 className="font-serif text-lg font-semibold text-[#092c4d]">
-                  Filter Publications
+                  {PUBLICATION_DIRECTORY.filterTitle}
                 </h3>
 
                 <p className="text-xs text-slate-500">
-                  Refine results by academic criteria.
+                  {PUBLICATION_DIRECTORY.filterDescription}
                 </p>
               </div>
             </div>
@@ -367,16 +261,16 @@ export default function PublicationsPage() {
 
                 <input
                   type="text"
-                  placeholder="Search title or author"
+                  placeholder={PUBLICATION_DIRECTORY.searchPlaceholder}
                   className="h-11 w-full border border-slate-200 bg-white pl-10 pr-3 text-sm text-[#092c4d] outline-none transition focus:border-[#175783]"
                 />
               </div>
 
               {[
-                { label: "Year", options: years },
-                { label: "Department", options: departments },
-                { label: "Type", options: types },
-                { label: "Research Area", options: areas },
+                { label: PUBLICATION_DIRECTORY.filterLabels[0], options: PUBLICATION_YEARS },
+                { label: PUBLICATION_DIRECTORY.filterLabels[1], options: PUBLICATION_DEPARTMENTS },
+                { label: PUBLICATION_DIRECTORY.filterLabels[2], options: PUBLICATION_TYPES },
+                { label: PUBLICATION_DIRECTORY.filterLabels[3], options: PUBLICATION_AREAS },
               ].map((filter) => (
                 <div key={filter.label} className="relative">
                   <select className="h-11 w-full appearance-none border border-slate-200 bg-white px-3 pr-9 text-sm text-slate-600 outline-none transition focus:border-[#175783]">
@@ -398,7 +292,7 @@ export default function PublicationsPage() {
 
               <button className="inline-flex items-center justify-center gap-2 bg-[#175783] px-5 py-3 text-xs font-bold text-white transition hover:bg-[#0e466c]">
                 <Filter className="h-4 w-4" />
-                Apply Filters
+                {PUBLICATION_DIRECTORY.applyLabel}
               </button>
             </div>
           </div>
@@ -411,34 +305,23 @@ export default function PublicationsPage() {
               <table className="w-full min-w-[1100px] border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 bg-[#f5f8fc] text-left">
-                    <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-[#092c4d]">
-                      Publication
-                    </th>
-
-                    <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-[#092c4d]">
-                      Author / Department
-                    </th>
-
-                    <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-[#092c4d]">
-                      Type
-                    </th>
-
-                    <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-[#092c4d]">
-                      Year
-                    </th>
-
-                    <th className="px-6 py-4 text-[11px] font-bold uppercase tracking-wider text-[#092c4d]">
-                      DOI
-                    </th>
-
-                    <th className="px-6 py-4 text-right text-[11px] font-bold uppercase tracking-wider text-[#092c4d]">
-                      Link
-                    </th>
+                    {PUBLICATION_DIRECTORY.tableHeaders.map((header, index) => (
+                      <th
+                        key={header}
+                        className={`px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 ${
+                          index === PUBLICATION_DIRECTORY.tableHeaders.length - 1
+                            ? "text-right"
+                            : "text-left"
+                        }`}
+                      >
+                        {header}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
 
                 <tbody>
-                  {publications.map((publication) => (
+                  {PUBLICATIONS.map((publication) => (
                     <tr
                       key={publication.doi}
                       className="border-b border-slate-100 transition hover:bg-[#f8fbfd]"
@@ -513,7 +396,7 @@ export default function PublicationsPage() {
               MOBILE CARDS
           ===================================================== */}
           <div className="mt-8 grid gap-4 lg:hidden">
-            {publications.map((publication) => (
+            {PUBLICATIONS.map((publication) => (
               <article
                 key={publication.doi}
                 className="border border-slate-200 bg-white p-5 shadow-sm"
@@ -543,7 +426,7 @@ export default function PublicationsPage() {
                 <div className="mt-4 grid gap-3 border-t border-slate-100 pt-4">
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      Department
+                      {PUBLICATION_DIRECTORY.mobileLabels.department}
                     </p>
 
                     <p className="mt-1 text-xs text-slate-600">
@@ -553,7 +436,7 @@ export default function PublicationsPage() {
 
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      Journal / Conference
+                      {PUBLICATION_DIRECTORY.mobileLabels.journal}
                     </p>
 
                     <p className="mt-1 text-xs text-slate-600">
@@ -563,7 +446,7 @@ export default function PublicationsPage() {
 
                   <div>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                      DOI
+                      {PUBLICATION_DIRECTORY.mobileLabels.doi}
                     </p>
 
                     <p className="mt-1 break-all font-mono text-[10px] text-slate-500">
@@ -577,7 +460,7 @@ export default function PublicationsPage() {
                     href="#"
                     className="inline-flex flex-1 items-center justify-center gap-2 bg-[#175783] px-4 py-3 text-xs font-bold text-white"
                   >
-                    View Publication
+                    {PUBLICATION_DIRECTORY.mobileLabels.link}
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 </div>
@@ -599,23 +482,15 @@ export default function PublicationsPage() {
               </div>
 
               <h2 className="mt-6 font-serif text-2xl font-semibold text-[#092c4d] sm:text-3xl">
-                Explore Research in Detail
+                {PUBLICATIONS_HELP.title}
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                Each publication provides information about its authors,
-                department, research area, publication venue and DOI. Use the
-                directory to identify research relevant to your academic or
-                professional interests.
+                {PUBLICATIONS_HELP.description}
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                {[
-                  "Search by research area",
-                  "Browse by academic year",
-                  "Explore department outputs",
-                  "Find publication links",
-                ].map((item) => (
+                {PUBLICATIONS_HELP.points.map((item) => (
                   <div
                     key={item}
                     className="flex items-center gap-3 border border-slate-100 bg-[#f8fbfd] px-4 py-3"
@@ -638,17 +513,15 @@ export default function PublicationsPage() {
               </div>
 
               <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Annual Research Report
+                {RESEARCH_REPORT.eyebrow}
               </p>
 
               <h2 className="mt-3 font-serif text-2xl font-semibold text-[#092c4d]">
-                Research at a Glance
+                {RESEARCH_REPORT.title}
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-slate-600">
-                Download the annual research report to explore institutional
-                research activities, publications, projects and broader
-                research contributions.
+                {RESEARCH_REPORT.description}
               </p>
 
               <a
@@ -666,7 +539,7 @@ export default function PublicationsPage() {
       {/* =========================================================
           SUBMIT PUBLICATION
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="border border-slate-200 bg-[#232771]">
             <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-14">
@@ -675,18 +548,16 @@ export default function PublicationsPage() {
                   <span className="h-px w-8 bg-[#d9a82e]" />
 
                   <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#e1b63b]">
-                    Research Community
+                    {SUBMIT_PUBLICATION.eyebrow}
                   </span>
                 </div>
 
                 <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
-                  Have a Publication to Share?
+                  {SUBMIT_PUBLICATION.title}
                 </h2>
 
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/70">
-                  Help build the university's research knowledge base by
-                  submitting your latest scholarly publication for inclusion in
-                  the research directory.
+                  {SUBMIT_PUBLICATION.description}
                 </p>
               </div>
 
@@ -726,19 +597,18 @@ export default function PublicationsPage() {
                 </span>
 
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#d9a82e]">
-                  RESEARCH & PUBLICATIONS
+                  {PUBLICATIONS_CTA.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-                Discover Knowledge.
+                {PUBLICATIONS_CTA.titleLines[0]}
                 <br />
-                Shape the Future.
+                {PUBLICATIONS_CTA.titleLines[1]}
               </h2>
 
               <p className="mt-4 max-w-xl text-sm leading-7 text-blue-100/70">
-                Explore the research, publications and academic ideas shaping
-                the future of KKJSTU and its wider community.
+                {PUBLICATIONS_CTA.description}
               </p>
             </div>
 

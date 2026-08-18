@@ -13,6 +13,7 @@ import {
   PROGRAMS,
   RESEARCH_AREAS,
 } from "@/lib/data";
+import { TRUST_STATS_INTRO } from "@/lib/data/home";
 
 export const TrustStats: React.FC = () => {
   const stats = [
@@ -97,17 +98,16 @@ export const TrustStats: React.FC = () => {
           <span className="h-px w-8 bg-[#0D0357]" />
 
           <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#0D0357]/70">
-            At a Glance
+            {TRUST_STATS_INTRO.eyebrow}
           </span>
         </div>
 
         <h2 className="text-2xl font-extrabold leading-tight tracking-[-0.025em] text-slate-950 sm:text-3xl lg:text-[2.25rem]">
-          A growing academic community
+          {TRUST_STATS_INTRO.title}
         </h2>
 
         <p className="mt-3 max-w-xl text-sm leading-6 text-slate-500 sm:text-[15px] sm:leading-7">
-          Discover the academic strength, people, programs and research
-          focus that define Khanjahan Ali College of Science & Technology.
+          {TRUST_STATS_INTRO.description}
         </p>
 
       </div>
@@ -120,7 +120,7 @@ export const TrustStats: React.FC = () => {
         {/* Logo */}
         <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#0D0357] shadow-[0_8px_24px_rgba(13,3,87,0.12)] ring-1 ring-slate-200 sm:h-[68px] sm:w-[68px]">
           <img
-            src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606084/logokacst_loyhwz.webp"
+            src={TRUST_STATS_INTRO.logo}
             alt="KACST"
             className="h-full w-full object-cover"
           />

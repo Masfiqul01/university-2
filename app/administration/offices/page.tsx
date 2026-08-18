@@ -76,7 +76,7 @@ export default function AdministrativeOfficesPage() {
       {/* =========================================================
           BREADCRUMB
       ========================================================= */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-slate-200 bg-page-pattern">
         <div className="mx-auto flex max-w-7xl items-center px-6 py-4 lg:px-8">
           <Link
             href="/"
@@ -103,7 +103,7 @@ export default function AdministrativeOfficesPage() {
       {/* =========================================================
           DIRECTORY
       ========================================================= */}
-      <section id="directory" className="bg-white">
+      <section id="directory" className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
           <div className="mb-4 flex items-center gap-3">
             <span className="h-px w-8 bg-[#d9a82e]" />

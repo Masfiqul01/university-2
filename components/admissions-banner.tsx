@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Check, GraduationCap } from "lucide-react";
 
+import { ADMISSIONS_BANNER } from "@/lib/data/home";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export function AdmissionsBanner() {
@@ -354,8 +356,8 @@ export function AdmissionsBanner() {
 
         <img
           data-banner-image
-          src="https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
-          alt="Khanjahan Ali College of Science and Technology campus"
+          src={ADMISSIONS_BANNER.image}
+          alt={ADMISSIONS_BANNER.imageAlt}
           className="absolute inset-0 h-full w-full object-cover object-center sm:object-[center_45%] md:left-auto md:w-[68%] md:object-[center_50%]"
         />
 
@@ -477,7 +479,7 @@ export function AdmissionsBanner() {
               </span>
 
               <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/80 sm:text-[10px]">
-                Admissions Now Open
+                {ADMISSIONS_BANNER.status}
               </span>
 
               <span className="relative ml-0.5 flex h-2 w-2">
@@ -494,9 +496,9 @@ export function AdmissionsBanner() {
               data-banner-heading
               className="max-w-[620px] font-serif text-[2.25rem] font-bold leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl md:text-[3.25rem] lg:text-[3.65rem]"
             >
-              Your journey to
+              {ADMISSIONS_BANNER.titleLines[0]}
               <span className="mt-1 block text-white/70">
-                a brighter future begins here.
+                {ADMISSIONS_BANNER.titleLines[1]}
               </span>
             </h2>
 
@@ -508,9 +510,7 @@ export function AdmissionsBanner() {
               data-banner-description
               className="mt-5 max-w-[540px] text-sm leading-6 text-white/68 sm:mt-6 sm:text-[15px] sm:leading-7"
             >
-              Applications are now open for the upcoming academic session.
-              Discover a learning environment where knowledge, innovation,
-              research, and opportunity come together.
+              {ADMISSIONS_BANNER.description}
             </p>
 
             {/* =====================================================
@@ -522,7 +522,7 @@ export function AdmissionsBanner() {
 
               <Link
                 data-banner-cta
-                href="/admissions/apply"
+                href={ADMISSIONS_BANNER.primary.href}
                 className="group relative inline-flex w-full overflow-hidden rounded-full p-[1.5px] sm:w-auto"
               >
                 <span
@@ -535,7 +535,7 @@ export function AdmissionsBanner() {
                 />
 
                 <span className="relative flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0D0357] shadow-lg transition-all duration-300 group-hover:bg-orange-50 group-hover:shadow-xl sm:w-auto">
-                  Apply Now
+                  {ADMISSIONS_BANNER.primary.label}
 
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
@@ -545,10 +545,10 @@ export function AdmissionsBanner() {
 
               <Link
                 data-banner-cta
-                href="/admissions"
+                href={ADMISSIONS_BANNER.secondary.href}
                 className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.06] px-6 py-3.5 text-sm font-semibold text-white/90 backdrop-blur-md transition-all duration-300 hover:border-white/35 hover:bg-white/[0.12] sm:w-auto"
               >
-                Explore Admissions
+                {ADMISSIONS_BANNER.secondary.label}
 
                 <span className="text-white/50 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white">
                   →
@@ -568,7 +568,7 @@ export function AdmissionsBanner() {
                   </span>
 
                   <span className="text-[10px] font-semibold leading-4 text-white/55 sm:text-[11px]">
-                    Quality Education
+                    {ADMISSIONS_BANNER.trustPoints[0]}
                   </span>
                 </div>
 
@@ -578,7 +578,7 @@ export function AdmissionsBanner() {
                   </span>
 
                   <span className="text-[10px] font-semibold leading-4 text-white/55 sm:text-[11px]">
-                    Research Opportunities
+                    {ADMISSIONS_BANNER.trustPoints[1]}
                   </span>
                 </div>
 
@@ -588,7 +588,7 @@ export function AdmissionsBanner() {
                   </span>
 
                   <span className="text-[10px] font-semibold leading-4 text-white/55 sm:text-[11px]">
-                    Vibrant Campus Life
+                    {ADMISSIONS_BANNER.trustPoints[2]}
                   </span>
                 </div>
               </div>
@@ -623,7 +623,7 @@ export function AdmissionsBanner() {
                 letterSpacing="2.4"
               >
                 <textPath href="#admissionCircle">
-                  • ADMISSIONS OPEN • APPLY NOW •
+                  {ADMISSIONS_BANNER.sealText}
                 </textPath>
               </text>
             </svg>

@@ -137,7 +137,10 @@
    hero and navy footer, distinct from the site-wide --background/--card
    tokens above. */
 .news-content-section {
-  --news-section-bg: #FFFFFF;
+  position: relative;
+  z-index: 0;
+  background-color: #ffffff;
+  --news-section-bg: transparent;
   --news-card-bg: #FFFFFF;
   --news-panel-bg: #FFFFFF;
   --news-border: oklch(90% 0.05 260);
@@ -150,7 +153,10 @@
 
 /* Events page (/events) — same white-content pattern as .news-content-section. */
 .events-content-section {
-  --events-section-bg: #FFFFFF;
+  position: relative;
+  z-index: 0;
+  background-color: #ffffff;
+  --events-section-bg: transparent;
   --events-card-bg: #FFFFFF;
   --events-panel-bg: #FFFFFF;
   --events-border: oklch(90% 0.05 260);
@@ -163,7 +169,10 @@
 
 /* Notice Board page (/notice-board) — same white-content pattern. */
 .notice-content-section {
-  --notice-section-bg: #FFFFFF;
+  position: relative;
+  z-index: 0;
+  background-color: #ffffff;
+  --notice-section-bg: transparent;
   --notice-card-bg: #FFFFFF;
   --notice-panel-bg: #FFFFFF;
   --notice-border: oklch(90% 0.05 260);
@@ -172,6 +181,21 @@
   --notice-heading: oklch(25% 0.20 260);
   --notice-text-secondary: oklch(45% 0.08 260);
   --notice-text-meta: oklch(55% 0.08 260);
+}
+
+.news-content-section::before,
+.events-content-section::before,
+.notice-content-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url('https://res.cloudinary.com/dhtavcr26/image/upload/v1786909050/backpattern-SdO-ezZO_sgpgru.png');
+  background-repeat: repeat;
+  background-position: top left;
+  background-size: 1150px;
 }
 
 .dark {
@@ -433,6 +457,27 @@ html {
 .page-container {
   width: min(100% - 2rem, var(--page-max-width));
   margin-inline: auto;
+}
+
+/* Replaces plain white page-section backgrounds site-wide (excluding home).
+   Cards, buttons and hero sections keep their own backgrounds. */
+.bg-page-pattern {
+  position: relative;
+  z-index: 0;
+  background-color: #ffffff;
+}
+
+.bg-page-pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url('https://res.cloudinary.com/dhtavcr26/image/upload/v1786909050/backpattern-SdO-ezZO_sgpgru.png');
+  background-repeat: repeat;
+  background-position: top left;
+  background-size: 1150px;
 }
 
 .section-space {

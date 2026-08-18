@@ -3,140 +3,34 @@
 import { useState } from "react";
 import {
   CalendarDays,
-  Clock3,
-  GraduationCap,
   BookOpen,
-  FileText,
-  Bell,
   Download,
   ChevronDown,
   ArrowRight,
-  ClipboardCheck,
-  CalendarCheck2,
-  Plane,
-  Trophy,
   AlertCircle,
-  Mail,
-  Phone,
+  CalendarCheck2,
 } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-const calendarEvents = [
-  {
-    event: "Spring Semester Registration",
-    start: "05 January 2026",
-    end: "15 January 2026",
-    audience: "All Students",
-    type: "registration",
-  },
-  {
-    event: "Spring Semester Classes Begin",
-    start: "18 January 2026",
-    end: "18 January 2026",
-    audience: "Students & Faculty",
-    type: "class",
-  },
-  {
-    event: "Mid-Term Examination",
-    start: "15 March 2026",
-    end: "21 March 2026",
-    audience: "Students",
-    type: "exam",
-  },
-  {
-    event: "Final Examination",
-    start: "10 May 2026",
-    end: "23 May 2026",
-    audience: "Students",
-    type: "exam",
-  },
-  {
-    event: "Result Publication",
-    start: "15 June 2026",
-    end: "15 June 2026",
-    audience: "Students",
-    type: "result",
-  },
-  {
-    event: "Summer Vacation",
-    start: "20 June 2026",
-    end: "15 July 2026",
-    audience: "Students & Faculty",
-    type: "vacation",
-  },
-];
-
-const summaryCards = [
-  {
-    title: "Registration Opens",
-    date: "05 January",
-    description: "Spring Semester 2026",
-    icon: ClipboardCheck,
-  },
-  {
-    title: "Classes Begin",
-    date: "18 January",
-    description: "Spring Semester 2026",
-    icon: BookOpen,
-  },
-  {
-    title: "Mid-Term",
-    date: "15 March",
-    description: "Examination Week",
-    icon: Clock3,
-  },
-  {
-    title: "Final Examination",
-    date: "10 May",
-    description: "End Semester Examination",
-    icon: GraduationCap,
-  },
-  {
-    title: "Result Publication",
-    date: "15 June",
-    description: "Semester Results",
-    icon: Trophy,
-  },
-  {
-    title: "Vacation",
-    date: "20 June",
-    description: "Summer Vacation",
-    icon: Plane,
-  },
-];
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+import { ICON_MAP } from "@/lib/icon-map";
+import {
+  CALENDAR_HERO,
+  CALENDAR_SELECTOR,
+  KEY_DATES_INTRO,
+  SUMMARY_CARDS,
+  SCHEDULE_INTRO,
+  CALENDAR_EVENTS,
+  EVENT_TYPE_ICONS,
+  MONTHS,
+  CALENDAR_DOWNLOAD,
+  CALENDAR_STAY_UPDATED,
+  CALENDAR_HELP_CTA,
+} from "@/lib/data/academic-calendar";
 
 function getEventIcon(type: string) {
-  switch (type) {
-    case "registration":
-      return <ClipboardCheck className="h-4 w-4" />;
-    case "class":
-      return <BookOpen className="h-4 w-4" />;
-    case "exam":
-      return <FileText className="h-4 w-4" />;
-    case "result":
-      return <Trophy className="h-4 w-4" />;
-    case "vacation":
-      return <Plane className="h-4 w-4" />;
-    default:
-      return <CalendarDays className="h-4 w-4" />;
-  }
+  const Icon = ICON_MAP[EVENT_TYPE_ICONS[type] ?? EVENT_TYPE_ICONS.default];
+  return <Icon className="h-4 w-4" />;
 }
 
 export default function AcademicCalendarPage() {
@@ -147,8 +41,8 @@ export default function AcademicCalendarPage() {
 
   const filteredEvents =
     month === "All Months"
-      ? calendarEvents
-      : calendarEvents.filter((item) =>
+      ? CALENDAR_EVENTS
+      : CALENDAR_EVENTS.filter((item) =>
           item.start.toLowerCase().includes(month.toLowerCase())
         );
 
@@ -168,18 +62,16 @@ export default function AcademicCalendarPage() {
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#d9a82e]" />
               <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                Academic Calendar
+                {CALENDAR_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              Plan Your Academic Journey With Confidence
+              {CALENDAR_HERO.title}
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              Stay informed about semester schedules, registration,
-              examinations, results, vacations and important academic
-              deadlines at KKJSTU.
+              {CALENDAR_HERO.description}
             </p>
           </div>
         </div>
@@ -192,7 +84,7 @@ export default function AcademicCalendarPage() {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               <div>
                 <label className="mb-2 block text-sm font-semibold text-[#183957]">
-                  Academic Year
+                  {CALENDAR_SELECTOR.yearLabel}
                 </label>
 
                 <div className="relative">
@@ -203,9 +95,9 @@ export default function AcademicCalendarPage() {
                     onChange={(e) => setAcademicYear(e.target.value)}
                     className="w-full appearance-none border border-slate-200 bg-[#f8fbfe] py-3.5 pl-12 pr-10 text-sm font-medium outline-none transition focus:border-[#1c5d8f]"
                   >
-                    <option>2026</option>
-                    <option>2025</option>
-                    <option>2024</option>
+                    {CALENDAR_SELECTOR.years.map((year) => (
+                      <option key={year}>{year}</option>
+                    ))}
                   </select>
 
                   <ChevronDown className="absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -214,7 +106,7 @@ export default function AcademicCalendarPage() {
 
               <div>
                 <label className="mb-2 block text-sm font-semibold text-[#183957]">
-                  Semester
+                  {CALENDAR_SELECTOR.semesterLabel}
                 </label>
 
                 <div className="relative">
@@ -225,9 +117,9 @@ export default function AcademicCalendarPage() {
                     onChange={(e) => setSemester(e.target.value)}
                     className="w-full appearance-none border border-slate-200 bg-[#f8fbfe] py-3.5 pl-12 pr-10 text-sm font-medium outline-none transition focus:border-[#1c5d8f]"
                   >
-                    <option>Spring Semester</option>
-                    <option>Summer Semester</option>
-                    <option>Fall Semester</option>
+                    {CALENDAR_SELECTOR.semesters.map((item) => (
+                      <option key={item}>{item}</option>
+                    ))}
                   </select>
 
                   <ChevronDown className="absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -239,7 +131,7 @@ export default function AcademicCalendarPage() {
                   <AlertCircle className="h-5 w-5 text-[#c89516]" />
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-[#9b7313]">
-                      Current Academic Year
+                      {CALENDAR_SELECTOR.noticeLabel}
                     </p>
                     <p className="mt-0.5 text-sm font-semibold text-[#173752]">
                       {academicYear} · {semester}
@@ -258,23 +150,22 @@ export default function AcademicCalendarPage() {
           <div className="mb-4 flex items-center gap-3">
             <span className="h-px w-8 bg-[#d9a82e]" />
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-              Key Academic Dates
+              {KEY_DATES_INTRO.eyebrow}
             </span>
           </div>
 
           <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-            Important Dates at a Glance
+            {KEY_DATES_INTRO.title}
           </h2>
 
           <p className="mt-4 text-sm leading-7 text-slate-600">
-            Keep track of the major academic milestones throughout the
-            semester.
+            {KEY_DATES_INTRO.description}
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {summaryCards.map((item) => {
-            const Icon = item.icon;
+          {SUMMARY_CARDS.map((item) => {
+            const Icon = ICON_MAP[item.icon];
 
             return (
               <div
@@ -314,12 +205,12 @@ export default function AcademicCalendarPage() {
               <div className="mb-4 flex items-center gap-3">
                 <span className="h-px w-8 bg-[#d9a82e]" />
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Semester Calendar
+                  {SCHEDULE_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                Academic Schedule
+                {SCHEDULE_INTRO.title}
               </h2>
             </div>
 
@@ -329,8 +220,8 @@ export default function AcademicCalendarPage() {
                 onChange={(e) => setMonth(e.target.value)}
                 className="w-full appearance-none border border-slate-200 bg-white px-4 py-3 pr-10 text-sm font-medium text-[#173752] outline-none"
               >
-                <option>All Months</option>
-                {months.map((item) => (
+                <option>{SCHEDULE_INTRO.monthFilterAll}</option>
+                {MONTHS.map((item) => (
                   <option key={item}>{item}</option>
                 ))}
               </select>
@@ -345,21 +236,18 @@ export default function AcademicCalendarPage() {
               <table className="w-full min-w-[850px] border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 bg-[#f7fafc] text-left">
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Event
-                    </th>
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Start Date
-                    </th>
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      End Date
-                    </th>
-                    <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Audience
-                    </th>
-                    <th className="px-6 py-4 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
-                      Notice
-                    </th>
+                    {SCHEDULE_INTRO.tableHeaders.map((header, index) => (
+                      <th
+                        key={header}
+                        className={`px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 ${
+                          index === SCHEDULE_INTRO.tableHeaders.length - 1
+                            ? "text-right"
+                            : ""
+                        }`}
+                      >
+                        {header}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
 
@@ -407,7 +295,7 @@ export default function AcademicCalendarPage() {
                           className="inline-flex items-center gap-2 text-sm font-semibold text-[#175783] transition hover:text-[#b28718]"
                         >
                           <Download className="h-4 w-4" />
-                          Download
+                          {SCHEDULE_INTRO.downloadLabel}
                         </button>
                       </td>
                     </tr>
@@ -459,7 +347,7 @@ export default function AcademicCalendarPage() {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <p className="text-xs uppercase tracking-wide text-slate-400">
-                          Start
+                          {SCHEDULE_INTRO.detailLabels.start}
                         </p>
                         <p className="mt-1 font-medium text-[#173752]">
                           {item.start}
@@ -468,7 +356,7 @@ export default function AcademicCalendarPage() {
 
                       <div>
                         <p className="text-xs uppercase tracking-wide text-slate-400">
-                          End
+                          {SCHEDULE_INTRO.detailLabels.end}
                         </p>
                         <p className="mt-1 font-medium text-[#173752]">
                           {item.end}
@@ -477,7 +365,7 @@ export default function AcademicCalendarPage() {
 
                       <div className="col-span-2">
                         <p className="text-xs uppercase tracking-wide text-slate-400">
-                          Audience
+                          {SCHEDULE_INTRO.detailLabels.audience}
                         </p>
                         <p className="mt-1 font-medium text-[#173752]">
                           {item.audience}
@@ -490,7 +378,7 @@ export default function AcademicCalendarPage() {
                       className="mt-5 inline-flex w-full items-center justify-center gap-2 border border-[#175783] px-4 py-3 text-sm font-semibold text-[#175783]"
                     >
                       <Download className="h-4 w-4" />
-                      Download Notice
+                      {SCHEDULE_INTRO.downloadNoticeLabel}
                     </button>
                   </div>
                 )}
@@ -507,16 +395,18 @@ export default function AcademicCalendarPage() {
             <div className="flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <div className="mb-3 flex h-11 w-11 items-center justify-center bg-white text-[#175783]">
-                  <Download className="h-5 w-5" />
+                  {(() => {
+                    const Icon = ICON_MAP[CALENDAR_DOWNLOAD.icon];
+                    return <Icon className="h-5 w-5" />;
+                  })()}
                 </div>
 
                 <h3 className="font-serif text-2xl font-semibold text-[#092c4d]">
-                  Download Academic Calendar
+                  {CALENDAR_DOWNLOAD.title}
                 </h3>
 
                 <p className="mt-2 max-w-xl text-sm leading-6 text-slate-600">
-                  Download the complete academic calendar for the current
-                  academic year and keep a copy for your reference.
+                  {CALENDAR_DOWNLOAD.description}
                 </p>
               </div>
 
@@ -525,30 +415,32 @@ export default function AcademicCalendarPage() {
                 className="inline-flex shrink-0 items-center justify-center gap-2 bg-[#092c4d] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#12476d]"
               >
                 <Download className="h-4 w-4" />
-                Download PDF
+                {CALENDAR_DOWNLOAD.buttonLabel}
               </button>
             </div>
           </div>
 
           <div className="border border-slate-200 bg-white p-8">
             <div className="flex h-11 w-11 items-center justify-center bg-[#fff7df] text-[#b28718]">
-              <Bell className="h-5 w-5" />
+              {(() => {
+                const Icon = ICON_MAP[CALENDAR_STAY_UPDATED.icon];
+                return <Icon className="h-5 w-5" />;
+              })()}
             </div>
 
             <h3 className="mt-5 font-serif text-2xl font-semibold text-[#092c4d]">
-              Stay Updated
+              {CALENDAR_STAY_UPDATED.title}
             </h3>
 
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Check the university notice board regularly for schedule changes
-              and important academic announcements.
+              {CALENDAR_STAY_UPDATED.description}
             </p>
 
             <button
               type="button"
               className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#175783]"
             >
-              View Notices
+              {CALENDAR_STAY_UPDATED.linkLabel}
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
@@ -563,18 +455,16 @@ export default function AcademicCalendarPage() {
               <div className="mb-4 flex items-center gap-3">
                 <span className="h-px w-8 bg-[#d9a82e]" />
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#e0b637]">
-                  Academic Support
+                  {CALENDAR_HELP_CTA.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
-                Need Help With the Academic Schedule?
+                {CALENDAR_HELP_CTA.title}
               </h2>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/75">
-                Our Academic Office is available to help students, faculty and
-                guardians with questions about registration, examinations,
-                results and important academic deadlines.
+                {CALENDAR_HELP_CTA.description}
               </p>
             </div>
 
@@ -583,16 +473,22 @@ export default function AcademicCalendarPage() {
                 type="button"
                 className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#092c4d] transition hover:bg-[#edc85b]"
               >
-                <Mail className="h-4 w-4" />
-                Contact Academic Office
+                {(() => {
+                  const Icon = ICON_MAP[CALENDAR_HELP_CTA.primary.icon];
+                  return <Icon className="h-4 w-4" />;
+                })()}
+                {CALENDAR_HELP_CTA.primary.label}
               </button>
 
               <button
                 type="button"
                 className="inline-flex items-center justify-center gap-2 border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white"
               >
-                <Phone className="h-4 w-4" />
-                Get Assistance
+                {(() => {
+                  const Icon = ICON_MAP[CALENDAR_HELP_CTA.secondary.icon];
+                  return <Icon className="h-4 w-4" />;
+                })()}
+                {CALENDAR_HELP_CTA.secondary.label}
               </button>
             </div>
           </div>

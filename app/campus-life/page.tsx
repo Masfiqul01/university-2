@@ -1,160 +1,26 @@
 "use client";
 
-import {
-  Accessibility,
-  ArrowRight,
-  BookOpen,
-  Bus,
-  Camera,
-  Coffee,
-  Dumbbell,
-  FlaskConical,
-  Heart,
-  HeartHandshake,
-  HeartPulse,
-  Library,
-  MapPin,
-  Play,
-  Sparkles,
-  Trophy,
-  Users,
-  Utensils,
-} from "lucide-react";
+import { ArrowRight, Camera, MapPin, Play } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-const campusHighlights = [
-  {
-    title: "Green Spaces",
-    description:
-      "Quiet open spaces and welcoming campus surroundings provide places to relax, meet friends and recharge.",
-    icon: Sparkles,
-  },
-  {
-    title: "Library",
-    description:
-      "A focused academic environment where students can study, explore resources and work independently.",
-    icon: Library,
-  },
-  {
-    title: "Laboratories",
-    description:
-      "Practical learning spaces that support experimentation, research and hands-on academic development.",
-    icon: FlaskConical,
-  },
-  {
-    title: "Cafeteria",
-    description:
-      "Convenient spaces where students can take a break, share meals and connect with the campus community.",
-    icon: Coffee,
-  },
-  {
-    title: "Sports & Recreation",
-    description:
-      "Opportunities to stay active, develop teamwork and participate in sports and recreational activities.",
-    icon: Dumbbell,
-  },
-  {
-    title: "Transport",
-    description:
-      "Accessible transportation support designed to make everyday movement to and around campus easier.",
-    icon: Bus,
-  },
-];
-
-const supportServices = [
-  {
-    title: "Counselling & Wellbeing",
-    description:
-      "Supportive services that help students manage challenges and maintain a healthy university experience.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Career Support",
-    description:
-      "Guidance and development opportunities that help students prepare for professional life after graduation.",
-    icon: Trophy,
-  },
-  {
-    title: "Health Services",
-    description:
-      "Access to health-related support and information throughout your student journey.",
-    icon: Heart,
-  },
-  {
-    title: "Accessibility",
-    description:
-      "A commitment to making the university environment welcoming and accessible to every student.",
-    icon: Accessibility,
-  },
-  {
-    title: "Student Services",
-    description:
-      "Practical administrative and student-focused services to help you navigate university life.",
-    icon: Users,
-  },
-];
-
-const activities = [
-  {
-    title: "Student Clubs",
-    description:
-      "Meet people with shared interests and participate in student-led communities.",
-    icon: Users,
-  },
-  {
-    title: "Cultural Activities",
-    description:
-      "Experience creativity, culture, celebration and the traditions of university life.",
-    icon: Camera,
-  },
-  {
-    title: "Sports",
-    description:
-      "Take part in sporting activities, develop teamwork and stay active on campus.",
-    icon: Dumbbell,
-  },
-  {
-    title: "Community Engagement",
-    description:
-      "Contribute to meaningful initiatives and build connections beyond the classroom.",
-    icon: HeartHandshake,
-  },
-];
-
-const galleryImages = [
-  {
-    src: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1200&q=85",
-    alt: "University campus building",
-    size: "large",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=85",
-    alt: "University campus walkway",
-    size: "small",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85",
-    alt: "University architecture",
-    size: "small",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=85",
-    alt: "Students walking across campus",
-    size: "wide",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=85",
-    alt: "Students collaborating",
-    size: "small",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=85",
-    alt: "Students enjoying university life",
-    size: "large",
-  },
-];
+import { ICON_MAP } from "@/lib/icon-map";
+import { CtaButton } from "@/components/cta-button";
+import {
+  CAMPUS_LIFE_HERO,
+  CAMPUS_LIFE_INTRO,
+  CAMPUS_HIGHLIGHTS_INTRO,
+  CAMPUS_HIGHLIGHTS,
+  CAMPUS_FEATURE,
+  SUPPORT_INTRO,
+  SUPPORT_SERVICES,
+  ACTIVITIES_INTRO,
+  ACTIVITIES,
+  GALLERY_INTRO,
+  GALLERY_IMAGES,
+  VIRTUAL_TOUR,
+  CAMPUS_LIFE_CTA,
+} from "@/lib/data/campus-life";
 
 export default function CampusLifePage() {
   return (
@@ -166,8 +32,8 @@ export default function CampusLifePage() {
       ========================================================= */}
       <section className="relative min-h-[560px] overflow-hidden bg-[#232771]">
         <img
-          src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=2200&q=90"
-          alt="University campus"
+          src={CAMPUS_LIFE_HERO.image}
+          alt={CAMPUS_LIFE_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
@@ -181,38 +47,33 @@ export default function CampusLifePage() {
               <span className="h-px w-10 bg-[#d9a82e]" />
 
               <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                Campus Life
+                {CAMPUS_LIFE_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[60px]">
-              Learn.
+              {CAMPUS_LIFE_HERO.titleLines[0]}
               <br />
-              Connect.
+              {CAMPUS_LIFE_HERO.titleLines[1]}
               <br />
-              <span className="text-[#f2f5f8]">Belong.</span>
+              <span className="text-[#f2f5f8]">
+                {CAMPUS_LIFE_HERO.titleLines[2]}
+              </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/85 sm:text-lg">
-              Discover a campus experience where academic life meets
-              community, wellbeing, friendship and opportunities to grow.
+              {CAMPUS_LIFE_HERO.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#facilities"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Explore Facilities
+              <CtaButton href={CAMPUS_LIFE_HERO.primary.href} variant="gold" radius={0}>
+                {CAMPUS_LIFE_HERO.primary.label}
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </CtaButton>
 
-              <a
-                href="#gallery"
-                className="inline-flex items-center justify-center gap-2 border border-white/35 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/[0.1]"
-              >
-                Discover Student Life
-              </a>
+              <CtaButton href={CAMPUS_LIFE_HERO.secondary.href} variant="ghost" radius={0}>
+                {CAMPUS_LIFE_HERO.secondary.label}
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -221,7 +82,7 @@ export default function CampusLifePage() {
       {/* =========================================================
           INTRO
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
@@ -229,29 +90,28 @@ export default function CampusLifePage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Life at KKJSTU
+                  {CAMPUS_LIFE_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold leading-tight text-[#092c4d] sm:text-4xl">
-                More Than a Place
+                {CAMPUS_LIFE_INTRO.titleLines[0]}
                 <br />
-                to Study
+                {CAMPUS_LIFE_INTRO.titleLines[1]}
               </h2>
             </div>
 
             <div>
-              <p className="text-base leading-8 text-slate-600">
-                Campus life is an important part of the university experience.
-                It is where students build friendships, discover new interests,
-                participate in activities and develop a sense of belonging.
-              </p>
-
-              <p className="mt-5 text-base leading-8 text-slate-600">
-                At KKJSTU, students can experience a campus environment that
-                brings together learning spaces, recreation, support services,
-                community activities and opportunities for personal growth.
-              </p>
+              {CAMPUS_LIFE_INTRO.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={`text-base leading-8 text-slate-600 ${
+                    index > 0 ? "mt-5" : ""
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         </div>
@@ -270,23 +130,22 @@ export default function CampusLifePage() {
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Campus Highlights
+                {CAMPUS_HIGHLIGHTS_INTRO.eyebrow}
               </span>
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Spaces Designed for University Life
+              {CAMPUS_HIGHLIGHTS_INTRO.title}
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              Explore the places and facilities that shape everyday life at
-              KKJSTU.
+              {CAMPUS_HIGHLIGHTS_INTRO.description}
             </p>
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {campusHighlights.map((item) => {
-              const Icon = item.icon;
+            {CAMPUS_HIGHLIGHTS.map((item) => {
+              const Icon = ICON_MAP[item.icon];
 
               return (
                 <div
@@ -316,13 +175,13 @@ export default function CampusLifePage() {
       {/* =========================================================
           FACILITY IMAGE FEATURE
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-0 overflow-hidden border border-slate-200 bg-[#232771] lg:grid-cols-2">
             <div className="relative min-h-[420px]">
               <img
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=85"
-                alt="University campus and students"
+                src={CAMPUS_FEATURE.image}
+                alt={CAMPUS_FEATURE.imageAlt}
                 className="absolute inset-0 h-full w-full object-cover"
               />
 
@@ -330,48 +189,44 @@ export default function CampusLifePage() {
 
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-8 pt-28">
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
-                  Campus Experience
+                  {CAMPUS_FEATURE.overlayEyebrow}
                 </span>
 
                 <p className="mt-2 font-serif text-2xl font-semibold text-white">
-                  A welcoming environment for every stage of student life.
+                  {CAMPUS_FEATURE.overlayTitle}
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
               <div className="flex h-12 w-12 items-center justify-center border border-white/15 bg-white/[0.06] text-[#d9a82e]">
-                <MapPin className="h-6 w-6" />
+                {(() => {
+                  const Icon = ICON_MAP[CAMPUS_FEATURE.icon];
+                  return <Icon className="h-6 w-6" />;
+                })()}
               </div>
 
               <h2 className="mt-6 font-serif text-3xl font-semibold text-white sm:text-4xl">
-                Discover Your Campus
+                {CAMPUS_FEATURE.title}
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-blue-100/70">
-                From quiet study areas and practical laboratories to social
-                spaces and recreational facilities, campus provides places to
-                focus, connect and enjoy university life.
+                {CAMPUS_FEATURE.description}
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {[
-                  ["Library", BookOpen],
-                  ["Labs", FlaskConical],
-                  ["Sports", Dumbbell],
-                  ["Cafeteria", Utensils],
-                ].map(([title, Icon]) => {
-                  const ItemIcon = Icon as typeof BookOpen;
+                {CAMPUS_FEATURE.items.map((item) => {
+                  const ItemIcon = ICON_MAP[item.icon];
 
                   return (
                     <div
-                      key={title as string}
+                      key={item.title}
                       className="border border-white/10 bg-white/[0.045] p-4"
                     >
                       <ItemIcon className="h-5 w-5 text-[#d9a82e]" />
 
                       <p className="mt-3 text-sm font-semibold text-white">
-                        {title as string}
+                        {item.title}
                       </p>
                     </div>
                   );
@@ -393,34 +248,32 @@ export default function CampusLifePage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Student Support
+                  {SUPPORT_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold leading-tight text-[#092c4d] sm:text-4xl">
-                Support for Your
+                {SUPPORT_INTRO.titleLines[0]}
                 <br />
-                Wellbeing & Success
+                {SUPPORT_INTRO.titleLines[1]}
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-slate-600">
-                A strong campus experience is supported by services that help
-                students feel safe, connected, healthy and prepared for the
-                future.
+                {SUPPORT_INTRO.description}
               </p>
 
               <a
-                href="/campus-life/student-life"
+                href={SUPPORT_INTRO.link.href}
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
               >
-                Discover Student Support
+                {SUPPORT_INTRO.link.label}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {supportServices.map((item) => {
-                const Icon = item.icon;
+              {SUPPORT_SERVICES.map((item) => {
+                const Icon = ICON_MAP[item.icon];
 
                 return (
                   <div
@@ -449,32 +302,31 @@ export default function CampusLifePage() {
       {/* =========================================================
           ACTIVITIES
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="text-center">
             <div className="mb-4 flex items-center justify-center gap-3">
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Community & Activities
+                {ACTIVITIES_INTRO.eyebrow}
               </span>
 
               <span className="h-px w-8 bg-[#d9a82e]" />
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Find Your Place on Campus
+              {ACTIVITIES_INTRO.title}
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-              Join communities, explore interests and make university life
-              your own.
+              {ACTIVITIES_INTRO.description}
             </p>
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {activities.map((item) => {
-              const Icon = item.icon;
+            {ACTIVITIES.map((item) => {
+              const Icon = ICON_MAP[item.icon];
 
               return (
                 <div
@@ -497,7 +349,7 @@ export default function CampusLifePage() {
                     href="#"
                     className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#175783]"
                   >
-                    Explore
+                    {ACTIVITIES_INTRO.linkLabel}
                     <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
                   </a>
                 </div>
@@ -521,28 +373,27 @@ export default function CampusLifePage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#e1b63b]">
-                  Campus Gallery
+                  {GALLERY_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
-                A Glimpse of Campus Life
+                {GALLERY_INTRO.title}
               </h2>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/65">
-                Capture the places, people and moments that make the KKJSTU
-                experience unique.
+                {GALLERY_INTRO.description}
               </p>
             </div>
 
             <div className="flex items-center gap-2 text-sm text-blue-100/60">
               <Camera className="h-4 w-4 text-[#d9a82e]" />
-              Campus Moments
+              {GALLERY_INTRO.note}
             </div>
           </div>
 
           <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2">
-            {galleryImages.map((image, index) => {
+            {GALLERY_IMAGES.map((image, index) => {
               const isLarge = image.size === "large";
               const isWide = image.size === "wide";
 
@@ -580,7 +431,7 @@ export default function CampusLifePage() {
       {/* =========================================================
           VIRTUAL TOUR
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="relative overflow-hidden bg-[#edf5fb]">
             <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#d9a82e]/10 blur-3xl" />
@@ -591,32 +442,31 @@ export default function CampusLifePage() {
                   <span className="h-px w-8 bg-[#d9a82e]" />
 
                   <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                    Explore From Anywhere
+                    {VIRTUAL_TOUR.eyebrow}
                   </span>
                 </div>
 
                 <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                  Take a Virtual Tour of KKJSTU
+                  {VIRTUAL_TOUR.title}
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600">
-                  Get a closer look at the campus environment, facilities and
-                  spaces where students learn, connect and build their future.
+                  {VIRTUAL_TOUR.description}
                 </p>
 
                 <a
-                  href="/campus-life"
+                  href={VIRTUAL_TOUR.link.href}
                   className="mt-8 inline-flex items-center gap-2 bg-[#175783] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#0e466c]"
                 >
-                  Take a Virtual Tour
+                  {VIRTUAL_TOUR.link.label}
                   <Play className="h-4 w-4 fill-current" />
                 </a>
               </div>
 
               <div className="relative min-h-[260px] overflow-hidden bg-[#232771]">
                 <img
-                  src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=85"
-                  alt="University building"
+                  src={VIRTUAL_TOUR.image}
+                  alt={VIRTUAL_TOUR.imageAlt}
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover opacity-80"
                 />
@@ -665,45 +515,41 @@ export default function CampusLifePage() {
               <div className="max-w-[650px]">
                 <div className="mb-4 flex items-center gap-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full border border-[#d9a82e]/50 text-[#d9a82e]">
-                    <MapPin className="h-3 w-3" />
+                    {(() => {
+                      const Icon = ICON_MAP[CAMPUS_LIFE_CTA.icon];
+                      return <Icon className="h-3 w-3" />;
+                    })()}
                   </span>
 
                   <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#d9a82e]">
-                    CAMPUS LIFE
+                    {CAMPUS_LIFE_CTA.eyebrow}
                   </span>
                 </div>
 
                 <h2 className="font-serif text-[34px] font-semibold leading-[1.02] tracking-[-0.025em] text-white sm:text-[42px] lg:text-[52px]">
-                  Find Your Place.
+                  {CAMPUS_LIFE_CTA.titleLines[0]}
                   <br />
                   <span className="text-[#8377c3]">
-                    Make It Your Own.
+                    {CAMPUS_LIFE_CTA.titleLines[1]}
                   </span>
                 </h2>
 
                 <p className="mt-4 max-w-xl text-sm leading-7 text-blue-100/70">
-                  Explore the facilities, communities and experiences that
-                  make life at KKJSTU more than just a university education.
+                  {CAMPUS_LIFE_CTA.description}
                 </p>
               </div>
 
               {/* RIGHT — FIRST TWO CTA BUTTONS */}
               <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:items-center">
-                <a
-                  href="#facilities"
-                  className="group inline-flex min-w-[170px] items-center justify-center gap-2 rounded-full bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#150866] shadow-[0_8px_25px_rgba(217,168,46,0.16)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#edc85b]"
-                >
-                  Explore Facilities
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                <CtaButton href={CAMPUS_LIFE_CTA.primary.href} variant="gold">
+                  {CAMPUS_LIFE_CTA.primary.label}
+                  <ArrowRight className="h-4 w-4" />
+                </CtaButton>
 
-                <a
-                  href="/campus-life/student-life"
-                  className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.025] px-6 py-3.5 text-sm font-semibold text-white/80 transition duration-200 hover:border-white/40 hover:bg-white/[0.07] hover:text-white"
-                >
-                  Discover Student Life
-                  <ArrowRight className="h-4 w-4 text-white/60 transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                <CtaButton href={CAMPUS_LIFE_CTA.secondary.href} variant="ghost">
+                  {CAMPUS_LIFE_CTA.secondary.label}
+                  <ArrowRight className="h-4 w-4" />
+                </CtaButton>
               </div>
             </div>
 
@@ -716,26 +562,22 @@ export default function CampusLifePage() {
                 </div>
 
                 <span className="text-xs text-blue-100/45">
-                  Explore, connect and experience campus life at KKJSTU.
+                  {CAMPUS_LIFE_CTA.footerNote}
                 </span>
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="/campus-life/clubs"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-xs font-semibold text-white/75 transition hover:border-white/40 hover:bg-white/[0.06] hover:text-white"
-                >
-                  Join a Club
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
-
-                <a
-                  href="/campus-life"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-xs font-semibold text-white/75 transition hover:border-white/40 hover:bg-white/[0.06] hover:text-white"
-                >
-                  Take a Virtual Tour
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </a>
+                {CAMPUS_LIFE_CTA.footerLinks.map((link) => (
+                  <CtaButton
+                    key={link.label}
+                    href={link.href}
+                    variant="ghost"
+                    size="sm"
+                  >
+                    {link.label}
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </CtaButton>
+                ))}
               </div>
             </div>
           </div>

@@ -1,23 +1,21 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, ClipboardCheck, FileText, Phone } from "lucide-react"
+import { ArrowRight, ClipboardCheck } from "lucide-react"
 
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ApplicationForm } from "./application-form"
+import { ICON_MAP } from "@/lib/icon-map"
+import { CtaButton } from "@/components/cta-button";
+import {
+  APPLY_METADATA,
+  APPLY_HERO,
+  APPLY_BREADCRUMB,
+  BEFORE_YOU_START,
+  APPLY_HELP,
+} from "@/lib/data/apply"
 
-export const metadata: Metadata = {
-  title: "Apply Online",
-  description:
-    "Complete the online application form for admission to Khanjahan Ali College of Science & Technology.",
-}
-
-const beforeYouStart = [
-  "Academic certificates and transcripts from your last examination",
-  "National ID or birth certificate for identification",
-  "Recent passport-size photograph",
-  "A valid email address and mobile number",
-]
+export const metadata: Metadata = APPLY_METADATA
 
 export default function ApplyPage() {
   return (
@@ -40,35 +38,28 @@ export default function ApplyPage() {
               <span className="h-px w-10 bg-[#d9a82e]" />
 
               <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                Online Application
+                {APPLY_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              Apply to KACST
+              {APPLY_HERO.title}
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              Complete the application form below. You can review all of your
-              details before submitting.
+              {APPLY_HERO.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="#application-form"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Start the Form
+              <CtaButton href={APPLY_HERO.primary.href} variant="gold" radius={0}>
+                {APPLY_HERO.primary.label}
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </CtaButton>
 
-              <Link
-                href="/admissions/requirements"
-                className="inline-flex items-center justify-center gap-2 border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white"
-              >
-                Check Requirements
+              <CtaButton href={APPLY_HERO.secondary.href} variant="ghost" radius={0}>
+                {APPLY_HERO.secondary.label}
                 <ClipboardCheck className="h-4 w-4" />
-              </Link>
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -77,27 +68,26 @@ export default function ApplyPage() {
       {/* =========================================================
           BREADCRUMB
       ========================================================= */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-slate-200 bg-page-pattern">
         <div className="mx-auto flex max-w-7xl items-center px-6 py-4 lg:px-8">
-          <Link
-            href="/"
-            className="text-xs font-medium text-slate-500 transition hover:text-[#175783]"
-          >
-            Home
-          </Link>
+          {APPLY_BREADCRUMB.map((crumb, index) => (
+            <span key={crumb.label} className="flex items-center">
+              {index > 0 && <span className="mx-3 text-slate-300">/</span>}
 
-          <span className="mx-3 text-slate-300">/</span>
-
-          <Link
-            href="/admissions"
-            className="text-xs font-medium text-slate-500 transition hover:text-[#175783]"
-          >
-            Admissions
-          </Link>
-
-          <span className="mx-3 text-slate-300">/</span>
-
-          <span className="text-xs font-semibold text-[#102c4c]">Apply</span>
+              {crumb.href ? (
+                <Link
+                  href={crumb.href}
+                  className="text-xs font-medium text-slate-500 transition hover:text-[#175783]"
+                >
+                  {crumb.label}
+                </Link>
+              ) : (
+                <span className="text-xs font-semibold text-[#102c4c]">
+                  {crumb.label}
+                </span>
+              )}
+            </span>
+          ))}
         </div>
       </div>
 
@@ -111,15 +101,18 @@ export default function ApplyPage() {
           <aside className="space-y-4">
             <div className="border border-slate-200 bg-white p-6">
               <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
-                <FileText className="h-5 w-5" strokeWidth={1.7} />
+                {(() => {
+                  const Icon = ICON_MAP[BEFORE_YOU_START.icon]
+                  return <Icon className="h-5 w-5" strokeWidth={1.7} />
+                })()}
               </div>
 
               <h3 className="mt-5 font-serif text-lg font-semibold text-[#092c4d]">
-                Before you start
+                {BEFORE_YOU_START.title}
               </h3>
 
               <div className="mt-4 space-y-3">
-                {beforeYouStart.map((item) => (
+                {BEFORE_YOU_START.items.map((item) => (
                   <div
                     key={item}
                     className="flex items-start gap-2.5 text-xs leading-6 text-slate-600"
@@ -133,23 +126,25 @@ export default function ApplyPage() {
 
             <div className="border border-[#cfe1ee] bg-[#eaf4fb] p-6">
               <div className="flex h-11 w-11 items-center justify-center bg-white text-[#175783]">
-                <Phone className="h-5 w-5" strokeWidth={1.7} />
+                {(() => {
+                  const Icon = ICON_MAP[APPLY_HELP.icon]
+                  return <Icon className="h-5 w-5" strokeWidth={1.7} />
+                })()}
               </div>
 
               <h3 className="mt-5 font-serif text-lg font-semibold text-[#092c4d]">
-                Need help?
+                {APPLY_HELP.title}
               </h3>
 
               <p className="mt-2 text-xs leading-6 text-slate-600">
-                The admission office can guide you through eligibility and the
-                documents you need to prepare.
+                {APPLY_HELP.description}
               </p>
 
               <Link
-                href="/contact"
+                href={APPLY_HELP.link.href}
                 className="mt-5 inline-flex w-full items-center justify-center gap-2 bg-[#092c4d] px-4 py-3 text-xs font-semibold text-white transition hover:bg-[#12476d]"
               >
-                Contact Admissions
+                {APPLY_HELP.link.label}
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>

@@ -1,160 +1,25 @@
 "use client";
 
-import {
-  ArrowRight,
-  BarChart3,
-  Beaker,
-  BookOpen,
-  BrainCircuit,
-  Building2,
-  ChartNoAxesCombined,
-  FlaskConical,
-  Globe2,
-  Leaf,
-  Microscope,
-  Network,
-  Search,
-  Sparkles,
-  Users,
-  Waypoints,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-const researchAreas = [
-  {
-    title: "AI & Data Science",
-    description:
-      "Exploring intelligent systems, data-driven methods and emerging technologies that can address complex real-world challenges.",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Engineering",
-    description:
-      "Applied engineering research focused on practical innovation, technology development and solutions for industry and society.",
-    icon: Network,
-  },
-  {
-    title: "Biotechnology",
-    description:
-      "Research into biological systems, laboratory methods and emerging applications with potential academic and societal value.",
-    icon: Microscope,
-  },
-  {
-    title: "Environment",
-    description:
-      "Investigating environmental challenges, sustainability and responsible approaches to natural-resource management.",
-    icon: Leaf,
-  },
-  {
-    title: "Mathematics",
-    description:
-      "Advancing mathematical thinking, modelling and analytical approaches that support science, engineering and technology.",
-    icon: ChartNoAxesCombined,
-  },
-  {
-    title: "Social & Business Innovation",
-    description:
-      "Research connecting business, society and innovation to understand challenges and create meaningful opportunities.",
-    icon: Users,
-  },
-];
-
-const researchStats = [
-  {
-    value: "06+",
-    label: "Research Focus Areas",
-    icon: Beaker,
-  },
-  {
-    value: "20+",
-    label: "Active Research Themes",
-    icon: Waypoints,
-  },
-  {
-    value: "50+",
-    label: "Research & Academic Projects",
-    icon: FlaskConical,
-  },
-  {
-    value: "10+",
-    label: "Collaboration Opportunities",
-    icon: Globe2,
-  },
-];
-
-const featuredProjects = [
-  {
-    title: "Intelligent Data & Decision Systems",
-    area: "AI & Data Science",
-    problem:
-      "How can data and intelligent technologies support better decisions in complex environments?",
-    method:
-      "Applied data analysis, computational modelling and intelligent system development.",
-    impact:
-      "Building practical knowledge that can support technology-led solutions and future innovation.",
-    researcher: "Research Group — AI & Data Science",
-    icon: BrainCircuit,
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Sustainable Environmental Solutions",
-    area: "Environment",
-    problem:
-      "How can research contribute to more sustainable communities and responsible environmental practices?",
-    method:
-      "Field observation, environmental analysis and interdisciplinary research approaches.",
-    impact:
-      "Supporting evidence-based approaches to sustainability and environmental awareness.",
-    researcher: "Research Group — Environmental Studies",
-    icon: Leaf,
-    image:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=85",
-  },
-  {
-    title: "Applied Engineering Innovation",
-    area: "Engineering",
-    problem:
-      "How can engineering research translate academic knowledge into useful practical solutions?",
-    method:
-      "Laboratory experimentation, prototyping and applied engineering analysis.",
-    impact:
-      "Creating opportunities for practical innovation, student research and industry engagement.",
-    researcher: "Research Group — Engineering",
-    icon: Network,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=85",
-  },
-];
-
-const researchOpportunities = [
-  {
-    title: "Research Centers",
-    description:
-      "Explore interdisciplinary research environments, laboratories and academic groups working across different areas.",
-    icon: Building2,
-  },
-  {
-    title: "Publications",
-    description:
-      "Browse research outputs, academic publications and scholarly work from the university community.",
-    icon: BookOpen,
-  },
-  {
-    title: "Researchers",
-    description:
-      "Connect with academics and research groups whose expertise aligns with your interests and collaboration goals.",
-    icon: Users,
-  },
-  {
-    title: "Research Funding",
-    description:
-      "Discover opportunities for research support, project development and collaborative funding initiatives.",
-    icon: BarChart3,
-  },
-];
+import { ICON_MAP } from "@/lib/icon-map";
+import { CtaButton } from "@/components/cta-button";
+import {
+  RESEARCH_HERO,
+  RESEARCH_INTRO,
+  RESEARCH_STATS,
+  RESEARCH_AREAS_INTRO,
+  RESEARCH_AREAS,
+  FEATURED_RESEARCH_INTRO,
+  FEATURED_PROJECTS,
+  RESEARCH_LAB_FEATURE,
+  RESEARCH_OPPORTUNITIES_INTRO,
+  RESEARCH_OPPORTUNITIES,
+  COLLABORATION,
+  RESEARCH_CTA,
+} from "@/lib/data/research";
 
 export default function ResearchPage() {
   return (
@@ -166,8 +31,8 @@ export default function ResearchPage() {
       ========================================================= */}
       <section className="relative min-h-[560px] overflow-hidden bg-[#232771]">
         <img
-          src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=2200&q=90"
-          alt="University laboratory research"
+          src={RESEARCH_HERO.image}
+          alt={RESEARCH_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
@@ -181,39 +46,32 @@ export default function ResearchPage() {
               <span className="h-px w-10 bg-[#d9a82e]" />
 
               <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                Research at KKJSTU
+                {RESEARCH_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[58px]">
-              Research That
+              {RESEARCH_HERO.titleLines[0]}
               <br />
               <span className="text-[#f1f4f8]">
-                Creates Possibilities.
+                {RESEARCH_HERO.titleLines[1]}
               </span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/85 sm:text-lg">
-              Advancing knowledge, encouraging innovation and connecting
-              research with the challenges and opportunities of society.
+              {RESEARCH_HERO.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#research-areas"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Explore Research
+              <CtaButton href={RESEARCH_HERO.primary.href} variant="gold" radius={0}>
+                {RESEARCH_HERO.primary.label}
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </CtaButton>
 
-              <a
-                href="#collaborate"
-                className="inline-flex items-center justify-center gap-2 border border-white/35 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/[0.1]"
-              >
-                Collaborate With Us
+              <CtaButton href={RESEARCH_HERO.secondary.href} variant="ghost" radius={0}>
+                {RESEARCH_HERO.secondary.label}
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -222,7 +80,7 @@ export default function ResearchPage() {
       {/* =========================================================
           INTRO / RESEARCH AT A GLANCE
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
@@ -230,43 +88,38 @@ export default function ResearchPage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Research at a Glance
+                  {RESEARCH_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold leading-tight text-[#092c4d] sm:text-4xl">
-                Knowledge With
+                {RESEARCH_INTRO.titleLines[0]}
                 <br />
-                Purpose
+                {RESEARCH_INTRO.titleLines[1]}
               </h2>
             </div>
 
             <div>
-              <p className="text-base leading-8 text-slate-600">
-                Research at KKJSTU brings together academic curiosity,
-                practical problem-solving and a commitment to creating
-                meaningful knowledge.
-              </p>
-
-              <p className="mt-5 text-base leading-8 text-slate-600">
-                Researchers, faculty members and students can contribute to
-                interdisciplinary work across science, engineering,
-                technology, environment, mathematics and social and business
-                innovation.
-              </p>
+              {RESEARCH_INTRO.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={`text-base leading-8 text-slate-600 ${
+                    index > 0 ? "mt-5" : ""
+                  }`}
+                >
+                  {paragraph}
+                </p>
+              ))}
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <span className="border border-[#d8e5ee] bg-[#f5f9fc] px-4 py-2 text-xs font-semibold text-[#175783]">
-                  Interdisciplinary Research
-                </span>
-
-                <span className="border border-[#d8e5ee] bg-[#f5f9fc] px-4 py-2 text-xs font-semibold text-[#175783]">
-                  Applied Innovation
-                </span>
-
-                <span className="border border-[#d8e5ee] bg-[#f5f9fc] px-4 py-2 text-xs font-semibold text-[#175783]">
-                  Global Collaboration
-                </span>
+                {RESEARCH_INTRO.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-[#d8e5ee] bg-[#f5f9fc] px-4 py-2 text-xs font-semibold text-[#175783]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -279,8 +132,8 @@ export default function ResearchPage() {
       <section className="border-y border-[#d9e5ef] bg-[#eaf3fa]">
         <div className="mx-auto max-w-7xl px-6 py-7 lg:px-8">
           <div className="grid divide-y divide-[#cdddea] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
-            {researchStats.map((item) => {
-              const Icon = item.icon;
+            {RESEARCH_STATS.map((item) => {
+              const Icon = ICON_MAP[item.icon];
 
               return (
                 <div
@@ -317,23 +170,22 @@ export default function ResearchPage() {
               <span className="h-px w-8 bg-[#d9a82e]" />
 
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                Research Focus Areas
+                {RESEARCH_AREAS_INTRO.eyebrow}
               </span>
             </div>
 
             <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-              Exploring Questions That Matter
+              {RESEARCH_AREAS_INTRO.title}
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              Research themes can evolve as new academic strengths,
-              collaborations and societal challenges emerge.
+              {RESEARCH_AREAS_INTRO.description}
             </p>
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {researchAreas.map((area) => {
-              const Icon = area.icon;
+            {RESEARCH_AREAS.map((area) => {
+              const Icon = ICON_MAP[area.icon];
 
               return (
                 <div
@@ -371,29 +223,29 @@ export default function ResearchPage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Featured Research
+                  {FEATURED_RESEARCH_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                From Research Questions
+                {FEATURED_RESEARCH_INTRO.titleLines[0]}
                 <br />
-                to Real-World Impact
+                {FEATURED_RESEARCH_INTRO.titleLines[1]}
               </h2>
             </div>
 
             <a
-              href="/research/publications"
+              href={FEATURED_RESEARCH_INTRO.link.href}
               className="inline-flex w-fit items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
             >
-              Browse Research
+              {FEATURED_RESEARCH_INTRO.link.label}
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {featuredProjects.map((project) => {
-              const Icon = project.icon;
+            {FEATURED_PROJECTS.map((project) => {
+              const Icon = ICON_MAP[project.icon];
 
               return (
                 <article
@@ -427,7 +279,7 @@ export default function ResearchPage() {
                     <div className="mt-5 space-y-4">
                       <div>
                         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28718]">
-                          The Challenge
+                          {FEATURED_RESEARCH_INTRO.cardLabels.problem}
                         </p>
 
                         <p className="mt-1.5 text-sm leading-6 text-slate-500">
@@ -437,7 +289,7 @@ export default function ResearchPage() {
 
                       <div>
                         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28718]">
-                          Research Method
+                          {FEATURED_RESEARCH_INTRO.cardLabels.method}
                         </p>
 
                         <p className="mt-1.5 text-sm leading-6 text-slate-500">
@@ -447,7 +299,7 @@ export default function ResearchPage() {
 
                       <div>
                         <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#b28718]">
-                          Potential Impact
+                          {FEATURED_RESEARCH_INTRO.cardLabels.impact}
                         </p>
 
                         <p className="mt-1.5 text-sm leading-6 text-slate-500">
@@ -458,7 +310,7 @@ export default function ResearchPage() {
 
                     <div className="mt-6 border-t border-slate-100 pt-5">
                       <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                        Responsible Researcher
+                        {FEATURED_RESEARCH_INTRO.cardLabels.researcher}
                       </p>
 
                       <p className="mt-1 text-xs font-semibold text-[#175783]">
@@ -476,13 +328,13 @@ export default function ResearchPage() {
       {/* =========================================================
           RESEARCH LAB FEATURE
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid overflow-hidden border border-slate-200 bg-[#232771] lg:grid-cols-2">
             <div className="relative min-h-[440px]">
               <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=85"
-                alt="University research laboratory"
+                src={RESEARCH_LAB_FEATURE.image}
+                alt={RESEARCH_LAB_FEATURE.imageAlt}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -491,49 +343,44 @@ export default function ResearchPage() {
 
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#232771]/90 to-transparent p-8 pt-32">
                 <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#e1b63b]">
-                  Research Environment
+                  {RESEARCH_LAB_FEATURE.overlayEyebrow}
                 </span>
 
                 <p className="mt-2 font-serif text-2xl font-semibold text-white">
-                  Connecting curiosity with experimentation and discovery.
+                  {RESEARCH_LAB_FEATURE.overlayTitle}
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
               <div className="flex h-12 w-12 items-center justify-center border border-white/15 bg-white/[0.06] text-[#d9a82e]">
-                <Microscope className="h-6 w-6" />
+                {(() => {
+                  const Icon = ICON_MAP[RESEARCH_LAB_FEATURE.icon];
+                  return <Icon className="h-6 w-6" />;
+                })()}
               </div>
 
               <h2 className="mt-6 font-serif text-3xl font-semibold text-white sm:text-4xl">
-                Build, Test & Discover
+                {RESEARCH_LAB_FEATURE.title}
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-blue-100/70">
-                Research grows when people have access to the right questions,
-                expertise, tools and collaborative environment. KKJSTU aims to
-                create opportunities for students and researchers to engage
-                with meaningful academic work.
+                {RESEARCH_LAB_FEATURE.description}
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {[
-                  ["Laboratories", FlaskConical],
-                  ["Researchers", Users],
-                  ["Publications", BookOpen],
-                  ["Collaboration", Network],
-                ].map(([title, Icon]) => {
-                  const ItemIcon = Icon as typeof FlaskConical;
+                {RESEARCH_LAB_FEATURE.items.map((item) => {
+                  const ItemIcon = ICON_MAP[item.icon];
 
                   return (
                     <div
-                      key={title as string}
+                      key={item.title}
                       className="border border-white/10 bg-white/[0.045] p-4"
                     >
                       <ItemIcon className="h-5 w-5 text-[#d9a82e]" />
 
                       <p className="mt-3 text-sm font-semibold text-white">
-                        {title as string}
+                        {item.title}
                       </p>
                     </div>
                   );
@@ -555,34 +402,32 @@ export default function ResearchPage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Research Opportunities
+                  {RESEARCH_OPPORTUNITIES_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold leading-tight text-[#092c4d] sm:text-4xl">
-                Connect With
+                {RESEARCH_OPPORTUNITIES_INTRO.titleLines[0]}
                 <br />
-                Research
+                {RESEARCH_OPPORTUNITIES_INTRO.titleLines[1]}
               </h2>
 
               <p className="mt-5 text-sm leading-7 text-slate-600">
-                Whether you are a student, academic, industry partner or
-                research organization, discover ways to connect with the
-                university's research ecosystem.
+                {RESEARCH_OPPORTUNITIES_INTRO.description}
               </p>
 
               <a
-                href="#collaborate"
+                href={RESEARCH_OPPORTUNITIES_INTRO.link.href}
                 className="mt-7 inline-flex items-center gap-2 text-sm font-bold text-[#175783] transition hover:text-[#b28718]"
               >
-                Meet Researchers
+                {RESEARCH_OPPORTUNITIES_INTRO.link.label}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {researchOpportunities.map((item) => {
-                const Icon = item.icon;
+              {RESEARCH_OPPORTUNITIES.map((item) => {
+                const Icon = ICON_MAP[item.icon];
 
                 return (
                   <div
@@ -605,7 +450,7 @@ export default function ResearchPage() {
                       href="#"
                       className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#175783]"
                     >
-                      Explore
+                      {RESEARCH_OPPORTUNITIES_INTRO.cardLinkLabel}
                       <ArrowRight className="h-3.5 w-3.5 transition group-hover:translate-x-1" />
                     </a>
                   </div>
@@ -619,7 +464,7 @@ export default function ResearchPage() {
       {/* =========================================================
           COLLABORATION
       ========================================================= */}
-      <section id="collaborate" className="bg-white">
+      <section id="collaborate" className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="relative overflow-hidden border border-[#d9e5ef] bg-[#f5f9fc]">
             <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[#d9a82e]/10 blur-3xl" />
@@ -630,29 +475,22 @@ export default function ResearchPage() {
                   <span className="h-px w-8 bg-[#d9a82e]" />
 
                   <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                    Collaboration
+                    {COLLABORATION.eyebrow}
                   </span>
                 </div>
 
                 <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                  Turn Ideas Into
+                  {COLLABORATION.titleLines[0]}
                   <br />
-                  Shared Impact
+                  {COLLABORATION.titleLines[1]}
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600">
-                  Research partnerships can connect academic expertise with
-                  industry, communities and institutions to address complex
-                  challenges and create new opportunities.
+                  {COLLABORATION.description}
                 </p>
 
                 <div className="mt-7 flex flex-wrap gap-3">
-                  {[
-                    "Academic Partnerships",
-                    "Industry Collaboration",
-                    "Student Research",
-                    "Joint Projects",
-                  ].map((item) => (
+                  {COLLABORATION.tags.map((item) => (
                     <span
                       key={item}
                       className="border border-[#d5e2eb] bg-white px-3 py-2 text-xs font-semibold text-[#175783]"
@@ -665,8 +503,8 @@ export default function ResearchPage() {
 
               <div className="relative min-h-[270px] overflow-hidden bg-[#232771]">
                 <img
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=85"
-                  alt="Researchers collaborating"
+                  src={COLLABORATION.image}
+                  alt={COLLABORATION.imageAlt}
                   loading="lazy"
                   className="absolute inset-0 h-full w-full object-cover opacity-80"
                 />
@@ -675,7 +513,10 @@ export default function ResearchPage() {
 
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex h-16 w-16 items-center justify-center border border-white/35 bg-white/10 text-white backdrop-blur-sm">
-                    <Network className="h-7 w-7 text-[#d9a82e]" />
+                    {(() => {
+                      const Icon = ICON_MAP[COLLABORATION.icon];
+                      return <Icon className="h-7 w-7 text-[#d9a82e]" />;
+                    })()}
                   </div>
                 </div>
               </div>
@@ -704,58 +545,39 @@ export default function ResearchPage() {
             <div className="max-w-[650px]">
               <div className="mb-3 flex items-center gap-2">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full border border-[#d9a82e]/50 text-[#d9a82e]">
-                  <Sparkles className="h-3 w-3" />
+                  {(() => {
+                    const Icon = ICON_MAP[RESEARCH_CTA.icon];
+                    return <Icon className="h-3 w-3" />;
+                  })()}
                 </span>
 
                 <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#d9a82e]">
-                  RESEARCH & INNOVATION
+                  {RESEARCH_CTA.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
-                Discover What&apos;s
+                {RESEARCH_CTA.titleLines[0]}
                 <br />
-                Possible Through Research.
+                {RESEARCH_CTA.titleLines[1]}
               </h2>
 
               <p className="mt-4 max-w-xl text-sm leading-7 text-blue-100/70">
-                Explore research centers, publications, researchers and
-                opportunities to collaborate with KKJSTU.
+                {RESEARCH_CTA.description}
               </p>
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0 lg:flex-wrap lg:justify-end">
-              <a
-                href="/research/centers"
-                className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#150866] transition hover:-translate-y-0.5 hover:bg-[#edc85b]"
-              >
-                View Research Centers
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-
-              <a
-                href="/research/publications"
-                className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
-              >
-                Browse Publications
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-
-              <a
-                href="/contact"
-                className="group inline-flex min-w-[175px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
-              >
-                Collaborate With Us
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-
-              <a
-                href="/research"
-                className="group inline-flex min-w-[155px] items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/50 hover:bg-white/[0.08]"
-              >
-                Meet Researchers
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+              {RESEARCH_CTA.links.map((link, index) => (
+                <CtaButton
+                  key={link.label}
+                  href={link.href}
+                  variant={index === 0 ? "gold" : "ghost"}
+                >
+                  {link.label}
+                  <ArrowRight className="h-4 w-4" />
+                </CtaButton>
+              ))}
             </div>
           </div>
         </div>

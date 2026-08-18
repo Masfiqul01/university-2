@@ -1,22 +1,23 @@
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { LucideIcon } from "lucide-react";
+import { ICON_MAP } from "@/lib/icon-map";
+import { CtaButton } from "@/components/cta-button";
 import {
-  ArrowRight,
-  Award,
-  BookOpen,
-  Building2,
-  FlaskConical,
-  Globe2,
-  GraduationCap,
-  HeartHandshake,
-  Leaf,
-  Lightbulb,
-  Rocket,
-  ShieldCheck,
-  Sparkles,
-  Users,
-} from "lucide-react";
+  ABOUT_HERO,
+  ABOUT_BREADCRUMB,
+  ABOUT_INTRO,
+  ABOUT_GLANCE_INTRO,
+  ABOUT_STATS,
+  ABOUT_DISTINCTIVE_INTRO,
+  ABOUT_DISTINCTIVE,
+  ABOUT_VALUES_INTRO,
+  ABOUT_VALUES,
+  ABOUT_LEARNING_ENVIRONMENT,
+  ABOUT_LEADERSHIP,
+  ABOUT_CTA,
+} from "@/lib/data/about";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 function JourneyBanner({
   icon: BadgeIcon,
@@ -37,7 +38,7 @@ function JourneyBanner({
 }) {
   const Title = titleAs;
   return (
-    <section className="bg-white px-6 py-14 lg:px-8">
+    <section className="bg-page-pattern px-6 py-14 lg:px-8">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl bg-gradient-to-br from-[#2e3494] via-[#232771] to-[#171a52] shadow-[0_24px_70px_rgba(35,39,113,0.28)]">
         {/* decorative glow */}
         <div
@@ -77,20 +78,14 @@ function JourneyBanner({
           </div>
 
           <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row md:items-center">
-            <a
-              href={primary.href}
-              className="group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-bold text-[#232771] transition hover:-translate-y-0.5 hover:bg-amber-50 hover:shadow-lg sm:px-7"
-            >
+            <CtaButton href={primary.href} variant="light" size="sm">
               {primary.label}
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </a>
+              <ArrowRight size={16} />
+            </CtaButton>
 
-            <a
-              href={secondary.href}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.05] px-6 text-sm font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/[0.1] sm:px-7"
-            >
+            <CtaButton href={secondary.href} variant="ghost" size="sm">
               {secondary.label}
-            </a>
+            </CtaButton>
           </div>
         </div>
       </div>
@@ -98,129 +93,66 @@ function JourneyBanner({
   );
 }
 
-const stats = [
-  { value: "06", label: "Faculties", icon: Building2 },
-  { value: "30+", label: "Academic Programs", icon: GraduationCap },
-  { value: "150+", label: "Faculty Members", icon: Users },
-  { value: "20+", label: "Research Areas", icon: FlaskConical },
-  { value: "15+", label: "Modern Labs", icon: FlaskConical },
-  { value: "25+", label: "Campus Facilities", icon: Building2 },
-];
-
-const distinctive = [
-  {
-    title: "Quality Education",
-    text: "A strong academic foundation designed to develop knowledge, confidence, and professional competence.",
-    icon: Award,
-  },
-  {
-    title: "Applied Learning",
-    text: "Hands-on learning opportunities that connect classroom knowledge with real-world challenges.",
-    icon: BookOpen,
-  },
-  {
-    title: "Research & Innovation",
-    text: "A growing culture of inquiry, experimentation, discovery, and meaningful innovation.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Student-Centered Support",
-    text: "An inclusive environment where students receive guidance, support, and opportunities to grow.",
-    icon: HeartHandshake,
-  },
-];
-
-const values = [
-  {
-    title: "Innovation",
-    text: "We encourage curiosity, creativity, and new ideas.",
-    icon: Lightbulb,
-  },
-  {
-    title: "Integrity",
-    text: "We value honesty, responsibility, and ethical conduct.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Inclusiveness",
-    text: "We create a respectful community where everyone belongs.",
-    icon: Users,
-  },
-  {
-    title: "Excellence",
-    text: "We pursue high standards in learning, teaching, and research.",
-    icon: Award,
-  },
-  {
-    title: "Service",
-    text: "We use knowledge and education to contribute to society.",
-    icon: HeartHandshake,
-  },
-  {
-    title: "Sustainability",
-    text: "We promote responsible thinking for a better future.",
-    icon: Leaf,
-  },
-];
-
 export default function AboutPage() {
   return (
     <>
       <SiteHeader />
 
-      <main className="bg-white text-[#10233f]">
+      <main className="bg-page-pattern text-[#10233f]">
         {/* HERO */}
         <section className="relative min-h-[620px] overflow-hidden">
           <img
-            src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=2200&q=85"
-            alt="University campus"
+            src={ABOUT_HERO.image}
+            alt={ABOUT_HERO.imageAlt}
             className="absolute inset-0 h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#071b35]/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
           <div className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-6 py-24 lg:px-8">
             <div className="max-w-4xl text-white">
               <p className="mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-[#9cc9ff]">
-                About KKJSTU
+                {ABOUT_HERO.eyebrow}
               </p>
 
               <h1 className="max-w-4xl font-serif text-5xl leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-                A Community Built on Knowledge and Purpose
+                {ABOUT_HERO.title}
               </h1>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80 md:text-xl">
-                We are building an academic community where knowledge,
-                innovation, research, and human values come together to prepare
-                students for a changing world.
+                {ABOUT_HERO.description}
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#history"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 font-semibold text-[#10233f] transition hover:bg-[#dceeff]"
-                >
-                  Explore Our History
+                <CtaButton href={ABOUT_HERO.primary.href} variant="light">
+                  {ABOUT_HERO.primary.label}
                   <ArrowRight size={18} />
-                </a>
+                </CtaButton>
 
-                <a
-                  href="#leadership"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3.5 font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
-                >
-                  Meet Our Leadership
-                </a>
+                <CtaButton href={ABOUT_HERO.secondary.href} variant="ghost">
+                  {ABOUT_HERO.secondary.label}
+                </CtaButton>
               </div>
             </div>
           </div>
         </section>
 
         {/* BREADCRUMB */}
-        <div className="border-b border-slate-200 bg-white">
+        <div className="border-b border-slate-200 bg-page-pattern">
           <div className="mx-auto max-w-7xl px-6 py-4 text-sm text-slate-500 lg:px-8">
-            <span>Home</span>
-            <span className="mx-2">/</span>
-            <span className="font-medium text-[#10233f]">About KKJSTU</span>
+            {ABOUT_BREADCRUMB.map((crumb, index) => (
+              <span key={crumb.label}>
+                {index > 0 && <span className="mx-2">/</span>}
+
+                {crumb.href ? (
+                  <span>{crumb.label}</span>
+                ) : (
+                  <span className="font-medium text-[#10233f]">
+                    {crumb.label}
+                  </span>
+                )}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -232,46 +164,32 @@ export default function AboutPage() {
           <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <div className="overflow-hidden rounded-[2rem]">
               <img
-                src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1400&q=85"
-                alt="University academic building"
+                src={ABOUT_INTRO.image}
+                alt={ABOUT_INTRO.imageAlt}
                 className="h-[520px] w-full object-cover transition duration-700 hover:scale-105"
               />
             </div>
 
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#527da8]">
-                Who We Are
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#3f4a88]">
+                {ABOUT_INTRO.eyebrow}
               </p>
 
               <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
-                An institution shaped by learning, discovery, and purpose.
+                {ABOUT_INTRO.title}
               </h2>
 
               <div className="mt-7 space-y-5 text-[17px] leading-8 text-slate-600">
-                <p>
-                  KKJSTU is committed to creating an academic environment
-                  where students can develop strong foundations in knowledge
-                  while discovering their own potential.
-                </p>
-
-                <p>
-                  Our academic community brings together students, faculty,
-                  researchers, and professionals across science, engineering,
-                  business, humanities, and related disciplines.
-                </p>
-
-                <p>
-                  Through quality teaching, practical learning, research, and
-                  collaboration, we aim to prepare graduates who can
-                  contribute meaningfully to their professions and to society.
-                </p>
+                {ABOUT_INTRO.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
               </div>
 
               <a
-                href="/about/history"
+                href={ABOUT_INTRO.link.href}
                 className="mt-8 inline-flex items-center gap-2 font-semibold text-[#1e5b91] transition-all hover:gap-3"
               >
-                Discover our story
+                {ABOUT_INTRO.link.label}
                 <ArrowRight size={18} />
               </a>
             </div>
@@ -283,22 +201,21 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#527da8]">
-                At a Glance
+                {ABOUT_GLANCE_INTRO.eyebrow}
               </p>
 
               <h2 className="mt-3 font-serif text-4xl md:text-5xl">
-                A growing academic community
+                {ABOUT_GLANCE_INTRO.title}
               </h2>
 
               <p className="mt-5 leading-7 text-slate-600">
-                A snapshot of our academic community, facilities, and
-                research-driven environment.
+                {ABOUT_GLANCE_INTRO.description}
               </p>
             </div>
 
             <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {stats.map((item) => {
-                const Icon = item.icon;
+              {ABOUT_STATS.map((item) => {
+                const Icon = ICON_MAP[item.icon];
 
                 return (
                   <div
@@ -316,7 +233,7 @@ export default function AboutPage() {
                         </p>
                       </div>
 
-                      <div className="rounded-xl bg-[#edf5ff] p-3 text-[#316c9e]">
+                      <div className={`rounded-xl p-3 ${item.iconClass}`}>
                         <Icon size={22} strokeWidth={1.7} />
                       </div>
                     </div>
@@ -332,30 +249,28 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#527da8]">
-                What Makes Us Distinctive
+                {ABOUT_DISTINCTIVE_INTRO.eyebrow}
               </p>
 
               <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
-                More than an institution. A community with purpose.
+                {ABOUT_DISTINCTIVE_INTRO.title}
               </h2>
 
               <p className="mt-6 max-w-lg leading-8 text-slate-600">
-                Our educational approach combines academic rigor with
-                practical experience, research, innovation, and genuine
-                support for students.
+                {ABOUT_DISTINCTIVE_INTRO.description}
               </p>
             </div>
 
             <div className="space-y-4">
-              {distinctive.map((item, index) => {
-                const Icon = item.icon;
+              {ABOUT_DISTINCTIVE.map((item, index) => {
+                const Icon = ICON_MAP[item.icon];
 
                 return (
                   <div
                     key={item.title}
                     className="group flex gap-6 rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-[#b7d4ef] hover:shadow-md"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#edf5ff] text-[#316c9e]">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${item.iconClass}`}>
                       <Icon size={22} strokeWidth={1.7} />
                     </div>
 
@@ -386,29 +301,28 @@ export default function AboutPage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#527da8]">
-                Core Values
+                {ABOUT_VALUES_INTRO.eyebrow}
               </p>
 
               <h2 className="mt-4 font-serif text-4xl md:text-5xl">
-                Principles that guide us
+                {ABOUT_VALUES_INTRO.title}
               </h2>
 
               <p className="mt-5 leading-8 text-slate-600">
-                Our values shape the way we teach, learn, collaborate, conduct
-                research, and serve our wider community.
+                {ABOUT_VALUES_INTRO.description}
               </p>
             </div>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {values.map((item) => {
-                const Icon = item.icon;
+              {ABOUT_VALUES.map((item) => {
+                const Icon = ICON_MAP[item.icon];
 
                 return (
                   <div
                     key={item.title}
                     className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#edf5ff] text-[#316c9e]">
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${item.iconClass}`}>
                       <Icon size={22} strokeWidth={1.7} />
                     </div>
 
@@ -432,47 +346,38 @@ export default function AboutPage() {
             <div className="grid items-center gap-14 lg:grid-cols-2">
               <div className="order-2 lg:order-1">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#527da8]">
-                  Learning Environment
+                  {ABOUT_LEARNING_ENVIRONMENT.eyebrow}
                 </p>
 
                 <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
-                  Learning happens beyond the classroom.
+                  {ABOUT_LEARNING_ENVIRONMENT.title}
                 </h2>
 
                 <p className="mt-6 leading-8 text-slate-600">
-                  Our learning environment is designed to encourage curiosity,
-                  collaboration, experimentation, and independent thinking.
-                  Students can engage with modern laboratories, library
-                  resources, green spaces, and collaborative academic settings.
+                  {ABOUT_LEARNING_ENVIRONMENT.description}
                 </p>
 
                 <div className="mt-8 grid grid-cols-2 gap-4">
-                  <div className="rounded-xl bg-white p-4">
-                    <FlaskConical className="text-[#316c9e]" size={22} />
-                    <p className="mt-3 font-semibold">Modern Laboratories</p>
-                  </div>
+                  {ABOUT_LEARNING_ENVIRONMENT.highlights.map((highlight) => {
+                    const Icon = ICON_MAP[highlight.icon];
 
-                  <div className="rounded-xl bg-white p-4">
-                    <BookOpen className="text-[#316c9e]" size={22} />
-                    <p className="mt-3 font-semibold">Learning Resources</p>
-                  </div>
-
-                  <div className="rounded-xl bg-white p-4">
-                    <Users className="text-[#316c9e]" size={22} />
-                    <p className="mt-3 font-semibold">Collaboration</p>
-                  </div>
-
-                  <div className="rounded-xl bg-white p-4">
-                    <Globe2 className="text-[#316c9e]" size={22} />
-                    <p className="mt-3 font-semibold">Global Outlook</p>
-                  </div>
+                    return (
+                      <div
+                        key={highlight.label}
+                        className="rounded-xl bg-white p-4"
+                      >
+                        <Icon className={highlight.iconClass} size={22} />
+                        <p className="mt-3 font-semibold">{highlight.label}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 
               <div className="order-1 overflow-hidden rounded-[2rem] lg:order-2">
                 <img
-                  src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1600&q=85"
-                  alt="Modern university laboratory"
+                  src={ABOUT_LEARNING_ENVIRONMENT.image}
+                  alt={ABOUT_LEARNING_ENVIRONMENT.imageAlt}
                   className="h-[520px] w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
@@ -488,46 +393,42 @@ export default function AboutPage() {
           <div className="grid items-center gap-14 rounded-[2rem] bg-[#f5f8fb] p-8 md:p-12 lg:grid-cols-[0.7fr_1.3fr] lg:p-16">
             <div className="overflow-hidden rounded-2xl">
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85"
-                alt="University leadership"
+                src={ABOUT_LEADERSHIP.image}
+                alt={ABOUT_LEADERSHIP.imageAlt}
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
 
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#527da8]">
-                Leadership
+                {ABOUT_LEADERSHIP.eyebrow}
               </p>
 
               <h2 className="mt-4 font-serif text-4xl leading-tight md:text-5xl">
-                Guided by vision. Driven by purpose.
+                {ABOUT_LEADERSHIP.title}
               </h2>
 
               <p className="mt-6 leading-8 text-slate-600">
-                Our leadership works to create an institution where academic
-                excellence, innovation, integrity, and service remain at the
-                heart of university life.
+                {ABOUT_LEADERSHIP.description}
               </p>
 
               <blockquote className="mt-7 border-l-2 border-[#6c9bc5] pl-5 text-lg italic leading-8 text-slate-700">
-                “Our purpose is to create opportunities for every student to
-                learn, discover, and build a meaningful future.”
+                “{ABOUT_LEADERSHIP.quote}”
               </blockquote>
 
               <div className="mt-7">
-                <p className="font-semibold">Professor Name</p>
+                <p className="font-semibold">{ABOUT_LEADERSHIP.personName}</p>
                 <p className="mt-1 text-sm text-slate-500">
-                  Vice Chancellor / Principal
+                  {ABOUT_LEADERSHIP.personRole}
                 </p>
               </div>
 
-              <a
-                href="/about/leadership"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#10233f] px-6 py-3.5 font-semibold text-white transition hover:bg-[#1d3d61]"
-              >
-                Meet Our Leadership
-                <ArrowRight size={18} />
-              </a>
+              <div className="mt-8">
+                <CtaButton href={ABOUT_LEADERSHIP.link.href} variant="dark">
+                  {ABOUT_LEADERSHIP.link.label}
+                  <ArrowRight size={18} />
+                </CtaButton>
+              </div>
             </div>
           </div>
         </section>
@@ -535,12 +436,12 @@ export default function AboutPage() {
         {/* FINAL CTA */}
       
          <JourneyBanner
-          icon={Rocket}
-          eyebrow="Your Future Starts Here"
-          title="Start Your Journey at KKJSTU"
-          description="Explore academic opportunities, discover your interests, and take the next step toward building your future with us."
-          primary={{ label: "Explore Programs", href: "/academics/programs" }}
-          secondary={{ label: "Apply Now", href: "/admissions/apply" }}
+          icon={ICON_MAP[ABOUT_CTA.icon]}
+          eyebrow={ABOUT_CTA.eyebrow}
+          title={ABOUT_CTA.title}
+          description={ABOUT_CTA.description}
+          primary={ABOUT_CTA.primary}
+          secondary={ABOUT_CTA.secondary}
         />
      
       </main>

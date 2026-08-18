@@ -9,6 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
    GSAP PLUGIN
 ========================================================= */
 
+import { WHY_CHOOSE_US_INTRO, WHY_CHOOSE_US } from "@/lib/data/home";
+
 gsap.registerPlugin(ScrollTrigger);
 
 /* =========================================================
@@ -253,48 +255,18 @@ function ExternalArrowIcon() {
    DATA
 ========================================================= */
 
-const reasons = [
-  {
-    number: "01",
-    title: "Academic Excellence",
-    label: "EXCELLENCE",
-    description:
-      "A rigorous academic environment built around meaningful learning, relevant programs, and high standards.",
-    icon: AcademicIcon,
-  },
-  {
-    number: "02",
-    title: "Experienced Faculty",
-    label: "FACULTY",
-    description:
-      "Learn from accomplished educators and professionals who bring knowledge, mentorship, and real-world insight.",
-    icon: FacultyIcon,
-  },
-  {
-    number: "03",
-    title: "Modern Learning",
-    label: "LEARNING",
-    description:
-      "Technology-enabled classrooms, digital resources, and practical learning designed for today's students.",
-    icon: LearningIcon,
-  },
-  {
-    number: "04",
-    title: "Career Opportunities",
-    label: "CAREERS",
-    description:
-      "Develop career-ready skills through practical experience, industry connections, internships, and guidance.",
-    icon: CareerIcon,
-  },
-  {
-    number: "05",
-    title: "Global Exposure",
-    label: "GLOBAL",
-    description:
-      "Expand your perspective through international connections, diverse communities, and global opportunities.",
-    icon: GlobalIcon,
-  },
-];
+const ICONS: Record<string, () => React.JSX.Element> = {
+  AcademicIcon,
+  FacultyIcon,
+  LearningIcon,
+  CareerIcon,
+  GlobalIcon,
+};
+
+const reasons = WHY_CHOOSE_US.map((item) => ({
+  ...item,
+  icon: ICONS[item.icon],
+}));
 
 /* =========================================================
    COMPONENT
@@ -765,17 +737,17 @@ export function WhyChooseUs() {
       <div>
         <div className="inline-flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#0D0357]/65 sm:text-[11px]">
           <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
-          Why choose us
+          {WHY_CHOOSE_US_INTRO.eyebrow}
         </div>
 
         <h2
           id="why-choose-us-title"
           className="why-heading mt-5 max-w-[650px] text-[2.7rem] font-extrabold leading-[0.95] tracking-[-0.055em] text-[#0D0357] sm:text-5xl md:text-6xl lg:text-[4.5rem]"
         >
-          An education
+          {WHY_CHOOSE_US_INTRO.titleLines[0]}
 
           <span className="block text-[#0D0357]/35">
-            built for more.
+            {WHY_CHOOSE_US_INTRO.titleLines[1]}
           </span>
         </h2>
       </div>
@@ -784,9 +756,7 @@ export function WhyChooseUs() {
       <div className="max-w-[590px] lg:justify-self-end">
 
         <p className="why-description text-base leading-7 text-slate-500 sm:text-lg sm:leading-8">
-          More than a place to earn a degree. We provide the knowledge,
-          people, opportunities, and perspective you need to turn your
-          ambitions into a meaningful future.
+          {WHY_CHOOSE_US_INTRO.description}
         </p>
 
         <div className="why-meta mt-6 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
@@ -857,21 +827,19 @@ export function WhyChooseUs() {
           <div className="why-left-content relative z-10">
 
             <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-amber-200/80">
-              The difference
+              {WHY_CHOOSE_US_INTRO.featureEyebrow}
             </span>
 
             <h3 className="mt-6 max-w-[420px] text-3xl font-bold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl">
-              Where ambition meets
+              {WHY_CHOOSE_US_INTRO.featureTitleLines[0]}
 
               <span className="text-amber-200">
-                {" "}opportunity.
+                {" "}{WHY_CHOOSE_US_INTRO.featureTitleLines[1]}
               </span>
             </h3>
 
             <p className="mt-5 max-w-[430px] text-sm leading-6 text-white/55 sm:text-[15px] sm:leading-7">
-              Every part of the university experience is designed to help
-              you learn with purpose, discover your strengths, and move
-              confidently toward what&apos;s next.
+              {WHY_CHOOSE_US_INTRO.featureDescription}
             </p>
 
             {/* Mini Metric */}
@@ -906,22 +874,22 @@ export function WhyChooseUs() {
 
               <div>
                 <p className="text-sm font-semibold text-white">
-                  Designed for progress
+                  {WHY_CHOOSE_US_INTRO.metricTitle}
                 </p>
 
                 <p className="mt-0.5 text-xs text-white/35">
-                  From classroom to career
+                  {WHY_CHOOSE_US_INTRO.metricSubtitle}
                 </p>
               </div>
             </div>
 
             {/* Discover Link */}
             <Link
-              href="/about"
+              href={WHY_CHOOSE_US_INTRO.link.href}
               className="why-discover-link group mt-9 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-amber-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-200/50 focus-visible:ring-offset-4 focus-visible:ring-offset-[#0D0357]"
             >
               <span>
-                Discover our university
+                {WHY_CHOOSE_US_INTRO.link.label}
               </span>
 
               <span className="transition-transform duration-300 group-hover:translate-x-1">
@@ -989,7 +957,7 @@ export function WhyChooseUs() {
                     <div className="mt-4 flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.16em] text-white/20 transition-colors group-hover:text-amber-200/70">
 
                       <span>
-                        Explore
+                        {WHY_CHOOSE_US_INTRO.cardLinkLabel}
                       </span>
 
                       <span className="transition-transform duration-300 group-hover:translate-x-1">

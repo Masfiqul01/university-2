@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { BEGIN_YOUR_JOURNEY } from "@/lib/data/home";
+
 gsap.registerPlugin(ScrollTrigger);
 
 interface BeginYourJourneyProps {
@@ -618,7 +620,7 @@ export function BeginYourJourney({
                                         xl:text-[2.3rem]
                                     "
                                 >
-                                    Begin your journey.
+                                    {BEGIN_YOUR_JOURNEY.titleLines[0]}
                                 </span>
 
                                 <span
@@ -639,7 +641,7 @@ export function BeginYourJourney({
                                         xl:text-[4rem]
                                     "
                                 >
-                                    Shape the future.
+                                    {BEGIN_YOUR_JOURNEY.titleLines[1]}
                                 </span>
                             </h2>
                         </div>
@@ -719,7 +721,7 @@ export function BeginYourJourney({
                                     ORIGINAL BUTTON — UNCHANGED
                                 ================================================= */}
                                 <Link
-                                    href="/admissions/apply"
+                                    href={BEGIN_YOUR_JOURNEY.primary.href}
                                     aria-label="Start your application"
                                     className="
                                         group/button
@@ -838,7 +840,7 @@ export function BeginYourJourney({
                                         "
                                     >
                                         <span>
-                                            Start Your Application
+                                            {BEGIN_YOUR_JOURNEY.primary.label}
                                         </span>
 
                                         <span
@@ -858,7 +860,7 @@ export function BeginYourJourney({
                                 SECONDARY BUTTON
                             ================================================= */}
                             <Link
-                                href="/academics/programs"
+                                href={BEGIN_YOUR_JOURNEY.secondary.href}
                                 aria-label="Explore academic programs"
                                 className="
                                     group/button
@@ -893,7 +895,7 @@ export function BeginYourJourney({
                                 "
                             >
                                 <span>
-                                    Explore Programs
+                                    {BEGIN_YOUR_JOURNEY.secondary.label}
                                 </span>
 
                                 <span

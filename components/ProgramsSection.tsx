@@ -23,28 +23,17 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { PROGRAMS } from "@/lib/data";
+import {
+  PROGRAMS_SECTION_INTRO,
+  PROGRAM_APPLICATION_STEPS,
+  PROGRAM_APPLICATION_MODAL,
+} from "@/lib/data/home";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type Program = (typeof PROGRAMS)[number];
 
-const APPLICATION_STEPS = [
-  {
-    number: 1,
-    title: "Personal Info",
-    description: "Tell us about yourself",
-  },
-  {
-    number: 2,
-    title: "Academic Grades",
-    description: "Share your results",
-  },
-  {
-    number: 3,
-    title: "Program & Submission",
-    description: "Choose a program and submit",
-  },
-] as const;
+const APPLICATION_STEPS = PROGRAM_APPLICATION_STEPS;
 
 interface ProgramsSectionProps {
   onSelectProgram?: (program: Program) => void;
@@ -285,16 +274,15 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
           <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-[#0D0357]">
             <GraduationCap className="h-4 w-4 text-amber-600" />
 
-            <span>Academic Offerings</span>
+            <span>{PROGRAMS_SECTION_INTRO.eyebrow}</span>
           </div>
 
           <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-            Academic Programs
+            {PROGRAMS_SECTION_INTRO.title}
           </h2>
 
           <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
-            Explore undergraduate and postgraduate programs available
-            across the university&apos;s academic faculties.
+            {PROGRAMS_SECTION_INTRO.description}
           </p>
 
           {/* =================================================
@@ -429,7 +417,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                 {/* Faculty */}
                 <div className="rounded-xl border border-slate-100 bg-white p-3">
                   <span className="mb-1 block text-[11px] font-bold uppercase tracking-wider text-slate-900">
-                    Faculty
+                    {PROGRAMS_SECTION_INTRO.cardLabels.faculty}
                   </span>
 
                   <span className="text-xs font-medium text-slate-600">
@@ -448,7 +436,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                   onClick={() => onSelectProgram?.(program)}
                   className="flex items-center gap-1 text-xs font-bold text-[#0D0357] transition-colors hover:text-amber-600"
                 >
-                  <span>View Details</span>
+                  <span>{PROGRAMS_SECTION_INTRO.cardLabels.details}</span>
 
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </button>
@@ -462,7 +450,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                   }}
                   className="flex items-center gap-1 rounded-lg bg-[#0D0357] px-3.5 py-2 text-xs font-bold text-amber-300 shadow-sm transition-all hover:bg-brand-dark hover:shadow-md"
                 >
-                  <span>Apply Now</span>
+                  <span>{PROGRAMS_SECTION_INTRO.cardLabels.apply}</span>
 
                   <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </button>
@@ -479,11 +467,11 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
             <GraduationCap className="mx-auto mb-4 h-10 w-10 text-slate-400" />
 
             <h3 className="text-lg font-bold text-slate-900">
-              No Programs Found
+              {PROGRAMS_SECTION_INTRO.emptyState.title}
             </h3>
 
             <p className="mt-1 text-sm text-slate-500">
-              No academic programs are available for this category.
+              {PROGRAMS_SECTION_INTRO.emptyState.description}
             </p>
           </div>
         )}
@@ -631,7 +619,7 @@ function ApplicationModal({
           </button>
 
           <p className="pr-12 text-xs font-extrabold uppercase tracking-[0.18em] text-amber-600">
-            Admissions application
+            {PROGRAM_APPLICATION_MODAL.title}
           </p>
 
           <h2
@@ -656,7 +644,7 @@ function ApplicationModal({
             </div>
 
             <h3 className="mt-5 text-2xl font-extrabold text-[#0D0357]">
-              Application submitted
+              {PROGRAM_APPLICATION_MODAL.successTitle}
             </h3>
 
             <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-slate-600">
@@ -669,7 +657,7 @@ function ApplicationModal({
               onClick={onClose}
               className="mt-7 rounded-xl bg-[#0D0357] px-6 py-3 text-sm font-bold text-amber-300 transition hover:bg-brand-dark"
             >
-              Close
+              {PROGRAM_APPLICATION_MODAL.closeLabel}
             </button>
           </div>
         ) : (
@@ -969,7 +957,7 @@ function ApplicationModal({
                       className={fieldClassName}
                     >
                       <option value="" disabled>
-                        Select a program
+                        {PROGRAM_APPLICATION_MODAL.programPlaceholder}
                       </option>
 
                       {PROGRAMS.map((program) => (
@@ -993,12 +981,15 @@ function ApplicationModal({
                       className={fieldClassName}
                     >
                       <option value="" disabled>
-                        Select an intake
+                        {PROGRAM_APPLICATION_MODAL.intakePlaceholder}
                       </option>
 
-                      <option value="spring-2026">Spring 2026</option>
+                      {PROGRAM_APPLICATION_MODAL.intakes.map((intake) => (
+                        <option key={intake.value} value={intake.value}>
+                          {intake.label}
+                        </option>
+                      ))}
 
-                      <option value="fall-2026">Fall 2026</option>
                     </select>
                   </label>
 
@@ -1047,7 +1038,7 @@ function ApplicationModal({
                   className="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-bold text-[#0D0357] transition hover:bg-brand/10"
                 >
                   <ChevronLeft className="h-4 w-4" />
-                  Back
+                  {PROGRAM_APPLICATION_MODAL.backLabel}
                 </button>
               ) : (
                 <span />
@@ -1060,7 +1051,7 @@ function ApplicationModal({
                   onClick={nextStep}
                   className="inline-flex items-center gap-1.5 rounded-xl bg-[#0D0357] px-5 py-2.5 text-sm font-bold text-amber-300 shadow-sm transition hover:bg-brand-dark"
                 >
-                  Next step
+                  {PROGRAM_APPLICATION_MODAL.nextLabel}
                   <ChevronRight className="h-4 w-4" />
                 </button>
               ) : (
@@ -1068,7 +1059,7 @@ function ApplicationModal({
                   type="submit"
                   className="inline-flex items-center gap-1.5 rounded-xl bg-[#0D0357] px-5 py-2.5 text-sm font-bold text-amber-300 shadow-sm transition hover:bg-brand-dark"
                 >
-                  Submit application
+                  {PROGRAM_APPLICATION_MODAL.submitLabel}
                   <Check className="h-4 w-4" />
                 </button>
               )}

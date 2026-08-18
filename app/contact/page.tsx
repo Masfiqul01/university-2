@@ -1,63 +1,25 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowRight, Clock3, Globe, Mail, MapPin, Phone } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ContactForm } from "@/components/contact-form"
+import { ICON_MAP } from "@/lib/icon-map"
+import { CtaButton } from "@/components/cta-button";
+import {
+  CONTACT_METADATA,
+  CONTACT_HERO,
+  CONTACT_BREADCRUMB,
+  CONTACT_DETAILS_INTRO,
+  CONTACT_DETAILS,
+  CONTACT_FORM_INTRO,
+  OFFICE_HOURS_CARD,
+  OFFICE_HOURS,
+  ENQUIRY_ROUTES_CARD,
+  ENQUIRY_ROUTES,
+} from "@/lib/data/contact"
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description:
-    "Contact Khanjahan Ali College of Science & Technology for admissions, academic, research and general enquiries.",
-}
-
-const HERO_IMAGE =
-  "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"
-
-// Sourced from the institution details already published in the site footer.
-const CONTACT_DETAILS = [
-  {
-    label: "Email",
-    value: "khanjahanali.kln@gmail.com",
-    href: "mailto:khanjahanali.kln@gmail.com",
-    icon: Mail,
-  },
-  {
-    label: "Website",
-    value: "www.khanjahanalicst.edu.bd",
-    href: "https://www.khanjahanalicst.edu.bd",
-    icon: Globe,
-  },
-  {
-    label: "Location",
-    value: "Khulna, Bangladesh",
-    icon: MapPin,
-  },
-]
-
-const ENQUIRY_ROUTES = [
-  {
-    title: "Admissions",
-    description: "Programme eligibility, application process and requirements.",
-    href: "/admissions",
-  },
-  {
-    title: "Academic Offices",
-    description: "Faculties, departments, results and the academic calendar.",
-    href: "/academics",
-  },
-  {
-    title: "Administration",
-    description: "Registrar, examinations, finance and institutional offices.",
-    href: "/administration",
-  },
-]
-
-const OFFICE_HOURS = [
-  { day: "Saturday – Wednesday", hours: "09:00 AM – 05:00 PM" },
-  { day: "Thursday", hours: "09:00 AM – 01:00 PM" },
-  { day: "Friday & Public Holidays", hours: "Closed" },
-]
+export const metadata: Metadata = CONTACT_METADATA
 
 export default function ContactPage() {
   return (
@@ -69,8 +31,8 @@ export default function ContactPage() {
       ========================================================= */}
       <section className="relative min-h-[460px] overflow-hidden bg-[#232771]">
         <img
-          src={HERO_IMAGE}
-          alt="KACST campus"
+          src={CONTACT_HERO.image}
+          alt={CONTACT_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
@@ -83,35 +45,27 @@ export default function ContactPage() {
               <span className="h-px w-10 bg-[#d9a82e]" />
 
               <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                Get in Touch
+                {CONTACT_HERO.eyebrow}
               </span>
             </div>
 
             <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[52px]">
-              Contact KACST
+              {CONTACT_HERO.title}
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/85 sm:text-lg">
-              Connect with the university for admissions, academics, research
-              and general enquiries. Our offices are here to help students,
-              guardians and visitors.
+              {CONTACT_HERO.description}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="#message"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Send a Message
+              <CtaButton href={CONTACT_HERO.primary.href} variant="gold" radius={0}>
+                {CONTACT_HERO.primary.label}
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </CtaButton>
 
-              <a
-                href="mailto:khanjahanali.kln@gmail.com"
-                className="inline-flex items-center justify-center gap-2 border border-white/30 bg-white/[0.04] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/[0.1]"
-              >
-                Email the University
-              </a>
+              <CtaButton href={CONTACT_HERO.secondary.href} variant="ghost" radius={0}>
+                {CONTACT_HERO.secondary.label}
+              </CtaButton>
             </div>
           </div>
         </div>
@@ -120,41 +74,49 @@ export default function ContactPage() {
       {/* =========================================================
           BREADCRUMB
       ========================================================= */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-slate-200 bg-page-pattern">
         <div className="mx-auto flex max-w-7xl items-center px-6 py-4 lg:px-8">
-          <Link
-            href="/"
-            className="text-xs font-medium text-slate-500 transition hover:text-[#175783]"
-          >
-            Home
-          </Link>
+          {CONTACT_BREADCRUMB.map((crumb, index) => (
+            <span key={crumb.label} className="flex items-center">
+              {index > 0 && <span className="mx-3 text-slate-300">/</span>}
 
-          <span className="mx-3 text-slate-300">/</span>
-
-          <span className="text-xs font-semibold text-[#102c4c]">Contact</span>
+              {crumb.href ? (
+                <Link
+                  href={crumb.href}
+                  className="text-xs font-medium text-slate-500 transition hover:text-[#175783]"
+                >
+                  {crumb.label}
+                </Link>
+              ) : (
+                <span className="text-xs font-semibold text-[#102c4c]">
+                  {crumb.label}
+                </span>
+              )}
+            </span>
+          ))}
         </div>
       </div>
 
       {/* =========================================================
           CONTACT DETAILS
       ========================================================= */}
-      <section className="bg-white">
+      <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="mb-4 flex items-center gap-3">
             <span className="h-px w-8 bg-[#d9a82e]" />
 
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-              University Contact
+              {CONTACT_DETAILS_INTRO.eyebrow}
             </span>
           </div>
 
           <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-            How to reach us
+            {CONTACT_DETAILS_INTRO.title}
           </h2>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {CONTACT_DETAILS.map((item) => {
-              const Icon = item.icon
+              const Icon = ICON_MAP[item.icon]
 
               const inner = (
                 <>
@@ -207,18 +169,16 @@ export default function ContactPage() {
                 <span className="h-px w-8 bg-[#d9a82e]" />
 
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#b28718]">
-                  Send a Message
+                  {CONTACT_FORM_INTRO.eyebrow}
                 </span>
               </div>
 
               <h2 className="font-serif text-3xl font-semibold text-[#092c4d] sm:text-4xl">
-                We would like to hear from you
+                {CONTACT_FORM_INTRO.title}
               </h2>
 
               <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-                Complete the form below and our office will respond to your
-                enquiry. Fields marked as required must be filled in before the
-                message can be submitted.
+                {CONTACT_FORM_INTRO.description}
               </p>
 
               <div className="mt-8">
@@ -229,11 +189,14 @@ export default function ContactPage() {
             <div className="space-y-4">
               <div className="border border-slate-200 bg-white p-7">
                 <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
-                  <Clock3 className="h-5 w-5" strokeWidth={1.7} />
+                  {(() => {
+                    const Icon = ICON_MAP[OFFICE_HOURS_CARD.icon]
+                    return <Icon className="h-5 w-5" strokeWidth={1.7} />
+                  })()}
                 </div>
 
                 <h3 className="mt-5 font-serif text-xl font-semibold text-[#092c4d]">
-                  Office Hours
+                  {OFFICE_HOURS_CARD.title}
                 </h3>
 
                 <div className="mt-5 space-y-3">
@@ -254,16 +217,18 @@ export default function ContactPage() {
 
               <div className="border border-slate-200 bg-white p-7">
                 <div className="flex h-11 w-11 items-center justify-center bg-[#fff7df] text-[#b28718]">
-                  <Phone className="h-5 w-5" strokeWidth={1.7} />
+                  {(() => {
+                    const Icon = ICON_MAP[ENQUIRY_ROUTES_CARD.icon]
+                    return <Icon className="h-5 w-5" strokeWidth={1.7} />
+                  })()}
                 </div>
 
                 <h3 className="mt-5 font-serif text-xl font-semibold text-[#092c4d]">
-                  Enquiry Routing
+                  {ENQUIRY_ROUTES_CARD.title}
                 </h3>
 
                 <p className="mt-3 text-sm leading-6 text-slate-600">
-                  Looking for a specific department? These pages may answer your
-                  question faster.
+                  {ENQUIRY_ROUTES_CARD.description}
                 </p>
 
                 <div className="mt-5 space-y-3">
