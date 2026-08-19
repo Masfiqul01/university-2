@@ -20,7 +20,7 @@ export function PageHero({
   return (
     <section className="relative isolate overflow-hidden">
       <img src={imageUrl(image)} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/80 to-brand-dark/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
       <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-16 lg:px-8">
         <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-1 text-xs text-white/70">

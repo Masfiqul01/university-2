@@ -2,6 +2,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import type { LucideIcon } from "lucide-react";
 import { ICON_MAP } from "@/lib/icon-map";
+import { ICON_MOTION } from "@/lib/icon-colors";
+import { CountUp } from "@/components/count-up";
 import { CtaButton } from "@/components/cta-button";
 import {
   ABOUT_HERO,
@@ -225,7 +227,7 @@ export default function AboutPage() {
                     <div className="flex items-start justify-between">
                       <div>
                         <p className="font-serif text-4xl font-semibold text-[#10233f]">
-                          {item.value}
+                          <CountUp value={item.value} />
                         </p>
 
                         <p className="mt-2 text-sm font-medium text-slate-500">
@@ -233,7 +235,7 @@ export default function AboutPage() {
                         </p>
                       </div>
 
-                      <div className={`rounded-xl p-3 ${item.iconClass}`}>
+                      <div className={`rounded-xl p-3 ${item.iconClass} ${ICON_MOTION}`}>
                         <Icon size={22} strokeWidth={1.7} />
                       </div>
                     </div>
@@ -270,7 +272,7 @@ export default function AboutPage() {
                     key={item.title}
                     className="group flex gap-6 rounded-2xl border border-slate-200 bg-white p-6 transition hover:border-[#b7d4ef] hover:shadow-md"
                   >
-                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${item.iconClass}`}>
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${item.iconClass} ${ICON_MOTION}`}>
                       <Icon size={22} strokeWidth={1.7} />
                     </div>
 
@@ -320,9 +322,9 @@ export default function AboutPage() {
                 return (
                   <div
                     key={item.title}
-                    className="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                    className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
                   >
-                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${item.iconClass}`}>
+                    <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${item.iconClass} ${ICON_MOTION}`}>
                       <Icon size={22} strokeWidth={1.7} />
                     </div>
 
@@ -364,9 +366,12 @@ export default function AboutPage() {
                     return (
                       <div
                         key={highlight.label}
-                        className="rounded-xl bg-white p-4"
+                        className="group rounded-xl bg-white p-4"
                       >
-                        <Icon className={highlight.iconClass} size={22} />
+                        <Icon
+                          className={`${highlight.iconClass} ${ICON_MOTION}`}
+                          size={22}
+                        />
                         <p className="mt-3 font-semibold">{highlight.label}</p>
                       </div>
                     );

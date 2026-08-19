@@ -25,6 +25,8 @@ import gsap from "gsap"
 import { SiteHeader } from "../../../components/site-header"
 import { SiteFooter } from "../../../components/site-footer"
 import { ICON_MAP } from "@/lib/icon-map"
+import { CountUp } from "@/components/count-up"
+import { ICON_MOTION, darkTileIcon, lightTileIcon } from "@/lib/icon-colors"
 import { CtaButton } from "@/components/cta-button"
 import {
   CLUBS_HERO,
@@ -52,10 +54,13 @@ function CategoryPill({
 
 function ClubCard({
   club,
+  index,
 }: {
   club: (typeof CLUBS)[number]
+  index: number
 }) {
   const Icon = ICON_MAP[club.icon]
+  const color = lightTileIcon(index)
 
   return (
     <article
@@ -89,20 +94,7 @@ function ClubCard({
 
       <div className="flex items-start justify-between gap-4">
         <div
-          className="
-            flex
-            h-12
-            w-12
-            shrink-0
-            items-center
-            justify-center
-            rounded-xl
-            bg-[#0D0357]
-            text-[#F6B900]
-            transition-transform
-            duration-300
-            group-hover:scale-105
-          "
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${color.bg} ${color.text} ${color.hoverBg} transition-all duration-300 group-hover:scale-110 group-hover:text-white`}
         >
           <Icon
             className="h-5 w-5"
@@ -336,7 +328,7 @@ export default function ClubsOrganizationsPage() {
             HERO
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-[#0D0357]">
+        <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
           <div
             className="
               absolute
@@ -500,7 +492,7 @@ export default function ClubsOrganizationsPage() {
                 `}
               >
                 <p className="text-2xl font-black tracking-tight text-[#0D0357] sm:text-3xl">
-                  {stat.value}
+                  <CountUp value={stat.value} />
                 </p>
 
                 <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#64748B] sm:text-xs">
@@ -660,10 +652,11 @@ export default function ClubsOrganizationsPage() {
           {/* Cards */}
           {filteredClubs.length > 0 ? (
             <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredClubs.map((club) => (
+              {filteredClubs.map((club, index) => (
                 <ClubCard
                   key={club.id}
                   club={club}
+                  index={index}
                 />
               ))}
             </div>
@@ -738,13 +731,14 @@ export default function ClubsOrganizationsPage() {
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {WHY_JOIN.map((item) => {
+                {WHY_JOIN.map((item, index) => {
                   const Icon = ICON_MAP[item.icon]
 
                   return (
                     <div
                       key={item.title}
                       className="
+                        group
                         rounded-2xl
                         border
                         border-white/10
@@ -757,7 +751,9 @@ export default function ClubsOrganizationsPage() {
                         hover:bg-white/[0.07]
                       "
                     >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F6B900]/10 text-[#F6B900]">
+                      <div
+                        className={`flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 ${darkTileIcon(index)} ${ICON_MOTION}`}
+                      >
                         <Icon className="h-5 w-5" />
                       </div>
 

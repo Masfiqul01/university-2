@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2, ChevronRight, ShieldCheck } from "lucide-reac
 import { SiteHeader } from "../../../components/site-header"
 import { SiteFooter } from "../../../components/site-footer"
 import { ICON_MAP } from "@/lib/icon-map"
+import { CountUp } from "@/components/count-up"
 import { CtaButton } from "@/components/cta-button";
 import {
   HISTORY_HERO,
@@ -23,6 +24,28 @@ import {
   HISTORY_CTA,
 } from "@/lib/data/history"
 
+const STAT_ICON_STYLES = [
+  { bg: "bg-blue-100", text: "text-blue-600", hover: "group-hover:bg-blue-600" },
+  { bg: "bg-emerald-100", text: "text-emerald-600", hover: "group-hover:bg-emerald-600" },
+  { bg: "bg-violet-100", text: "text-violet-600", hover: "group-hover:bg-violet-600" },
+  { bg: "bg-orange-100", text: "text-orange-600", hover: "group-hover:bg-orange-600" },
+]
+
+const FACT_ICON_COLORS = ["text-[#F6B900]", "text-sky-300", "text-emerald-300", "text-rose-300"]
+
+const ACHIEVEMENT_ICON_COLORS = ["text-violet-300", "text-orange-300", "text-teal-300", "text-fuchsia-300"]
+
+const FACILITY_ICON_STYLES = [
+  { bg: "bg-blue-100", text: "text-blue-600", hover: "group-hover:bg-blue-600" },
+  { bg: "bg-emerald-100", text: "text-emerald-600", hover: "group-hover:bg-emerald-600" },
+  { bg: "bg-violet-100", text: "text-violet-600", hover: "group-hover:bg-violet-600" },
+  { bg: "bg-rose-100", text: "text-rose-600", hover: "group-hover:bg-rose-600" },
+  { bg: "bg-orange-100", text: "text-orange-600", hover: "group-hover:bg-orange-600" },
+  { bg: "bg-cyan-100", text: "text-cyan-700", hover: "group-hover:bg-cyan-600" },
+  { bg: "bg-fuchsia-100", text: "text-fuchsia-600", hover: "group-hover:bg-fuchsia-600" },
+  { bg: "bg-teal-100", text: "text-teal-600", hover: "group-hover:bg-teal-600" },
+]
+
 export default function HistoryPage() {
   return (
     <div className="min-h-screen bg-[#F7F8FA] text-[#0D0357]">
@@ -32,7 +55,7 @@ export default function HistoryPage() {
         {/* =========================================================
             HERO
         ========================================================== */}
-        <section className="relative isolate overflow-hidden bg-[#0D0357]">
+        <section className="relative isolate min-h-[70vh] overflow-hidden bg-brand-dark">
           {/* Background image overlay */}
           <div className="absolute inset-0 -z-10 select-none">
             <img
@@ -41,8 +64,7 @@ export default function HistoryPage() {
               className="h-full w-full object-cover"
             />
             {/* dark overlay to keep text readable */}
-            <div className="absolute inset-0 bg-[#0D0357]/80 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0D0357] via-transparent to-[#0D0357]/70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
           </div>
 
           {/* Decorative layers */}
@@ -60,9 +82,9 @@ export default function HistoryPage() {
             />
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-20 sm:px-8 lg:px-10 lg:pb-28 lg:pt-24">
+          <div className="relative mx-auto flex min-h-[70vh] max-w-7xl flex-col justify-center px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
             {/* Breadcrumb */}
-            <div className="mb-10 flex items-center gap-2 text-sm text-white/55">
+            <div className="mb-6 flex items-center gap-2 text-sm text-white/55">
               {HISTORY_BREADCRUMB.map((crumb, index) => (
                 <span key={crumb.label} className="flex items-center gap-2">
                   {index > 0 && (
@@ -83,26 +105,26 @@ export default function HistoryPage() {
               ))}
             </div>
 
-            <div className="grid items-end gap-14 lg:grid-cols-[1.05fr_.95fr]">
+            <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-10">
               {/* Hero copy */}
               <div className="max-w-3xl">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-4 py-2 text-sm font-medium text-white/85 backdrop-blur">
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-xs font-medium text-white/85 backdrop-blur">
                   <span className="h-2 w-2 rounded-full bg-[#F6B900]" />
                   {HISTORY_HERO.badge}
                 </div>
 
-                <h1 className="text-5xl font-semibold leading-[0.98] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
+                <h1 className="text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
                   {HISTORY_HERO.title}{" "}
                   <span className="text-[#F6B900]">
                     {HISTORY_HERO.titleHighlight}
                   </span>
                 </h1>
 
-                <p className="mt-7 max-w-2xl text-base leading-8 text-white/70 sm:text-lg">
+                <p className="mt-4 max-w-xl text-sm leading-7 text-white/70 sm:text-base">
                   {HISTORY_HERO.description}
                 </p>
 
-                <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <CtaButton href={HISTORY_HERO.primary.href} variant="gold" radius={12}>
                     {HISTORY_HERO.primary.label}
                     <ArrowRight className="h-4 w-4" />
@@ -115,47 +137,47 @@ export default function HistoryPage() {
               </div>
 
               {/* Hero visual */}
-              <div className="relative mx-auto w-full max-w-xl lg:ml-auto">
-                <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.06] p-3 shadow-[0_30px_100px_rgba(0,0,0,.24)] backdrop-blur">
-                  <div className="relative overflow-hidden rounded-[1.5rem] bg-[#0B0754] px-7 py-8 sm:px-10 sm:py-10">
-                    <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-[#F6B900]/10 blur-3xl" />
+              <div className="relative mx-auto w-full max-w-sm lg:ml-auto">
+                <div className="relative rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-2 shadow-[0_20px_60px_rgba(0,0,0,.24)] backdrop-blur">
+                  <div className="relative overflow-hidden rounded-[1.15rem] bg-[#0B0754] px-5 py-5 sm:px-6 sm:py-6">
+                    <div className="absolute right-0 top-0 h-28 w-28 rounded-full bg-[#F6B900]/10 blur-3xl" />
 
                     <div className="relative">
-                      <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#F8D87D]">
+                      <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-[#F8D87D]">
                         {HISTORY_HERO_CARD.eyebrow}
                       </p>
 
-                      <div className="mt-5 flex items-end gap-4">
-                        <span className="text-8xl font-semibold leading-none tracking-[-0.08em] text-white sm:text-9xl">
+                      <div className="mt-3 flex items-end gap-3">
+                        <span className="text-5xl font-semibold leading-none tracking-[-0.06em] text-white sm:text-6xl">
                           {HISTORY_HERO_CARD.bigNumber}
                         </span>
 
-                        <div className="pb-3">
-                          <div className="text-sm uppercase tracking-[0.2em] text-white/45">
+                        <div className="pb-1">
+                          <div className="text-[10px] uppercase tracking-[0.2em] text-white/45">
                             {HISTORY_HERO_CARD.bigNumberCaption}
                           </div>
-                          <div className="text-lg font-semibold text-white">
+                          <div className="text-sm font-semibold text-white">
                             {HISTORY_HERO_CARD.bigNumberTitle}
                           </div>
                         </div>
                       </div>
 
-                      <div className="my-8 h-px bg-white/10" />
+                      <div className="my-4 h-px bg-white/10" />
 
-                      <p className="max-w-md text-sm leading-7 text-white/60">
+                      <p className="text-xs leading-6 text-white/60">
                         {HISTORY_HERO_CARD.description}
                       </p>
 
-                      <div className="mt-7 grid grid-cols-2 gap-3">
+                      <div className="mt-4 grid grid-cols-2 gap-2">
                         {HISTORY_HERO_CARD.miniStats.map((stat) => (
                           <div
                             key={stat.label}
-                            className="rounded-2xl border border-white/10 bg-white/[0.04] p-4"
+                            className="rounded-xl border border-white/10 bg-white/[0.04] p-3"
                           >
-                            <div className="text-2xl font-semibold text-[#F6B900]">
-                              {stat.value}
+                            <div className="text-lg font-semibold text-[#F6B900]">
+                              <CountUp value={stat.value} />
                             </div>
-                            <div className="mt-1 text-xs text-white/50">
+                            <div className="mt-0.5 text-[10px] text-white/50">
                               {stat.label}
                             </div>
                           </div>
@@ -166,20 +188,20 @@ export default function HistoryPage() {
                 </div>
 
                 {/* floating badge */}
-                <div className="absolute -bottom-5 -left-5 hidden rounded-2xl border border-[#F6B900]/25 bg-[#0D0357] px-5 py-4 shadow-[0_20px_50px_rgba(5,3,43,.35)] sm:block">
-                  <div className="flex items-center gap-3">
-                    <div className="grid h-10 w-10 place-items-center rounded-xl bg-[#F6B900] text-[#0D0357]">
+                <div className="group absolute -bottom-6 -left-10 hidden rounded-xl border border-[#F6B900]/25 bg-[#0D0357] px-3.5 py-2.5 shadow-[0_20px_50px_rgba(5,3,43,.35)] lg:block">
+                  <div className="flex items-center gap-2.5">
+                    <div className="grid h-8 w-8 place-items-center rounded-lg bg-[#F6B900] text-[#0D0357] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                       {(() => {
                         const Icon = ICON_MAP[HISTORY_HERO_CARD.badge.icon]
-                        return <Icon className="h-5 w-5" />
+                        return <Icon className="h-4 w-4" />
                       })()}
                     </div>
 
                     <div>
-                      <p className="text-sm font-semibold text-white">
+                      <p className="text-xs font-semibold text-white">
                         {HISTORY_HERO_CARD.badge.title}
                       </p>
-                      <p className="text-xs text-white/45">
+                      <p className="text-[10px] text-white/45">
                         {HISTORY_HERO_CARD.badge.subtitle}
                       </p>
                     </div>
@@ -197,6 +219,7 @@ export default function HistoryPage() {
           <div className="grid overflow-hidden rounded-[1.75rem] border border-[#DCE7F1] bg-white shadow-[0_20px_60px_rgba(13,3,87,.08)] sm:grid-cols-2 lg:grid-cols-4">
             {HISTORY_STATS.map((stat, index) => {
               const Icon = ICON_MAP[stat.icon]
+              const color = STAT_ICON_STYLES[index % STAT_ICON_STYLES.length]
 
               return (
                 <div
@@ -209,7 +232,7 @@ export default function HistoryPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="text-3xl font-semibold tracking-[-0.04em] text-[#0D0357]">
-                        {stat.value}
+                        <CountUp value={stat.value} />
                       </div>
 
                       <div className="mt-1 text-sm text-[#64748B]">
@@ -217,7 +240,9 @@ export default function HistoryPage() {
                       </div>
                     </div>
 
-                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-[#FFF4D8] text-[#D79B00] transition-transform duration-200 group-hover:-translate-y-0.5">
+                    <div
+                      className={`grid h-11 w-11 place-items-center rounded-xl ${color.bg} ${color.text} transition-all duration-300 group-hover:-translate-y-0.5 group-hover:scale-110 group-hover:text-white ${color.hover}`}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
                   </div>
@@ -248,8 +273,8 @@ export default function HistoryPage() {
                 {HISTORY_INTRO.description}
               </p>
 
-              <div className="mt-8 flex items-center gap-3 text-sm font-medium text-[#0D0357]">
-                <div className="grid h-9 w-9 place-items-center rounded-full bg-[#FFF4D8] text-[#D79B00]">
+              <div className="group mt-8 flex items-center gap-3 text-sm font-medium text-[#0D0357]">
+                <div className="grid h-9 w-9 place-items-center rounded-full bg-rose-100 text-rose-600 transition-all duration-300 group-hover:scale-110 group-hover:bg-rose-600 group-hover:text-white">
                   <CheckCircle2 className="h-4 w-4" />
                 </div>
                 {HISTORY_INTRO.note}
@@ -257,15 +282,18 @@ export default function HistoryPage() {
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
-              {INSTITUTIONAL_FACTS.map((item) => {
+              {INSTITUTIONAL_FACTS.map((item, index) => {
                 const Icon = ICON_MAP[item.icon]
+                const color = FACT_ICON_COLORS[index % FACT_ICON_COLORS.length]
 
                 return (
                   <article
                     key={item.title}
                     className="group rounded-[1.5rem] border border-[#DCE7F1] bg-white p-6 shadow-[0_12px_40px_rgba(7,27,73,.045)] transition-all duration-200 hover:-translate-y-1 hover:border-[#F6B900]/50 hover:shadow-[0_18px_50px_rgba(13,3,87,.08)]"
                   >
-                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#0D0357] text-[#F6B900] transition-colors duration-200 group-hover:bg-[#120A80]">
+                    <div
+                      className={`grid h-12 w-12 place-items-center rounded-xl bg-[#0D0357] ${color} transition-all duration-300 group-hover:bg-[#120A80] group-hover:scale-110`}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
 
@@ -452,17 +480,18 @@ export default function HistoryPage() {
               </p>
             </div>
 
-            <div className="hidden lg:block">
+            <div className="group hidden lg:block">
               <div className="flex items-center gap-2 text-sm font-medium text-[#64748B]">
-                <ShieldCheck className="h-4 w-4 text-[#F59E0B]" />
+                <ShieldCheck className="h-4 w-4 text-indigo-500 transition-transform duration-300 group-hover:scale-125" />
                 {ACHIEVEMENTS_INTRO.note}
               </div>
             </div>
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2">
-            {ACHIEVEMENTS.map((item) => {
+            {ACHIEVEMENTS.map((item, index) => {
               const Icon = ICON_MAP[item.icon]
+              const color = ACHIEVEMENT_ICON_COLORS[index % ACHIEVEMENT_ICON_COLORS.length]
 
               return (
                 <article
@@ -475,7 +504,7 @@ export default function HistoryPage() {
                     <div className="flex items-start justify-between gap-5">
                       <div>
                         <div className="text-3xl font-semibold tracking-[-0.045em] text-[#0D0357]">
-                          {item.number}
+                          <CountUp value={item.number} />
                         </div>
 
                         <h3 className="mt-2 text-lg font-semibold text-[#0D0357]">
@@ -483,7 +512,9 @@ export default function HistoryPage() {
                         </h3>
                       </div>
 
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#0D0357] text-[#F6B900]">
+                      <div
+                        className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#0D0357] ${color} transition-all duration-300 group-hover:bg-[#120A80] group-hover:scale-110`}
+                      >
                         <Icon className="h-5 w-5" />
                       </div>
                     </div>
@@ -505,8 +536,8 @@ export default function HistoryPage() {
           <div className="mx-auto max-w-7xl px-6 py-24 sm:px-8 lg:px-10 lg:py-32">
             <div className="grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:gap-24">
               <div>
-                <div className="rounded-[2rem] bg-[#0D0357] p-8 shadow-[0_25px_70px_rgba(13,3,87,.16)] sm:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F6B900] text-[#0D0357]">
+                <div className="group rounded-[2rem] bg-[#0D0357] p-8 shadow-[0_25px_70px_rgba(13,3,87,.16)] sm:p-10">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 text-white transition-all duration-300 group-hover:bg-white/25 group-hover:scale-110">
                     {(() => {
                       const Icon = ICON_MAP[EDUCATIONAL_PHILOSOPHY.icon]
                       return <Icon className="h-5 w-5" />
@@ -558,20 +589,26 @@ export default function HistoryPage() {
                 </p>
 
                 <div className="mt-9 grid gap-3 sm:grid-cols-2">
-                  {FACILITIES.map((facility) => (
-                    <div
-                      key={facility}
-                      className="flex items-start gap-3 rounded-xl border border-[#DCE7F1] bg-white p-4"
-                    >
-                      <div className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#FFF5DB] text-[#D79B00]">
-                        <CheckCircle2 className="h-3.5 w-3.5" />
-                      </div>
+                  {FACILITIES.map((facility, index) => {
+                    const color = FACILITY_ICON_STYLES[index % FACILITY_ICON_STYLES.length]
 
-                      <span className="text-sm leading-6 text-[#334155]">
-                        {facility}
-                      </span>
-                    </div>
-                  ))}
+                    return (
+                      <div
+                        key={facility}
+                        className="group flex items-start gap-3 rounded-xl border border-[#DCE7F1] bg-white p-4"
+                      >
+                        <div
+                          className={`mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full ${color.bg} ${color.text} transition-all duration-300 group-hover:scale-125 group-hover:text-white ${color.hover}`}
+                        >
+                          <CheckCircle2 className="h-3.5 w-3.5" />
+                        </div>
+
+                        <span className="text-sm leading-6 text-[#334155]">
+                          {facility}
+                        </span>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             </div>

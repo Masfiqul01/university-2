@@ -11,6 +11,13 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { CountUp } from "@/components/count-up";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  darkTileIcon,
+  lightTileIcon,
+} from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
 import {
   FACILITIES_HERO,
@@ -33,16 +40,16 @@ export default function FacilitiesPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[540px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[540px] overflow-hidden bg-brand-dark">
         <img
           src={FACILITIES_HERO.image}
           alt={FACILITIES_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/72" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -125,21 +132,24 @@ export default function FacilitiesPage() {
       <section className="border-y border-[#d9e5ef] bg-[#eaf3fa]">
         <div className="mx-auto max-w-7xl px-6 py-7 lg:px-8">
           <div className="grid divide-y divide-[#cdddea] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
-            {FACILITY_STATS.map((item) => {
+            {FACILITY_STATS.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.label}
-                  className="flex items-center gap-4 px-5 py-5 first:pl-0 last:pr-0"
+                  className="group flex items-center gap-4 px-5 py-5 first:pl-0 last:pr-0"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-[#c8dcea] bg-white text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center border border-[#c8dcea] ${color.bg} ${color.text} ${ICON_MOTION}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
                   <div>
                     <p className="font-serif text-2xl font-bold text-[#092c4d]">
-                      {item.number}
+                      <CountUp value={item.number} />
                     </p>
 
                     <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -180,7 +190,7 @@ export default function FacilitiesPage() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {FACILITIES.map((facility) => {
+            {FACILITIES.map((facility, index) => {
               const Icon = ICON_MAP[facility.icon];
 
               return (
@@ -198,7 +208,9 @@ export default function FacilitiesPage() {
 
                     <div className="absolute inset-0 bg-[#232771]/15 transition group-hover:bg-[#232771]/30" />
 
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#232771]/75 text-[#e1b63b] backdrop-blur-sm">
+                    <div
+                      className={`absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#232771]/75 ${darkTileIcon(index)} backdrop-blur-sm ${ICON_MOTION}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
@@ -327,15 +339,18 @@ export default function FacilitiesPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {QUICK_LINKS.map((item) => {
+              {QUICK_LINKS.map((item, index) => {
                 const Icon = ICON_MAP[item.icon];
+                const color = lightTileIcon(index);
 
                 return (
                   <div
                     key={item.title}
                     className="group border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
@@ -472,12 +487,14 @@ export default function FacilitiesPage() {
               </p>
 
               <div className="mt-7 space-y-4">
-                {ACCESSIBILITY_SECTION.points.map((item) => (
+                {ACCESSIBILITY_SECTION.points.map((item, index) => (
                   <div
                     key={item}
                     className="flex items-center gap-3 border-b border-slate-100 pb-4"
                   >
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                    <div
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                    >
                       <ShieldCheck className="h-4 w-4" />
                     </div>
 

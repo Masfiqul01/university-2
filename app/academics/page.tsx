@@ -5,6 +5,13 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
 import {
+  ICON_MOTION,
+  darkTileIcon,
+  lightTileIcon,
+  plainIcon,
+} from "@/lib/icon-colors";
+import { CountUp } from "@/components/count-up";
+import {
   ACADEMICS_HERO,
   FACULTIES_INTRO,
   FACULTIES,
@@ -125,14 +132,14 @@ export default function FacultiesDepartmentsPage() {
         {/* =====================================================
             HERO
         ====================================================== */}
-        <section className="relative min-h-[390px] overflow-hidden bg-[#061a46]">
+        <section className="relative min-h-[390px] overflow-hidden bg-brand-dark">
           <img
             src={ACADEMICS_HERO.image}
             alt={ACADEMICS_HERO.imageAlt}
             className="absolute inset-0 h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061a46]/95 via-[#061a46]/75 to-[#061a46]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
           <div className="relative mx-auto flex min-h-[390px] max-w-[1180px] items-center px-5 py-16 sm:px-8 lg:px-10">
             <div className="max-w-[650px]">
@@ -155,10 +162,11 @@ export default function FacultiesDepartmentsPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-7 sm:gap-9">
-                {ACADEMICS_HERO.stats.map((stat) => (
+                {ACADEMICS_HERO.stats.map((stat, index) => (
                   <HeroStat
                     key={stat.label}
                     icon={ICON_MAP[stat.icon]}
+                    iconColor={darkTileIcon(index)}
                     value={stat.value}
                     label={stat.label}
                   />
@@ -197,18 +205,21 @@ export default function FacultiesDepartmentsPage() {
             <div className="grid overflow-hidden rounded-xl border border-[#dbe8f5] bg-[#edf6ff] sm:grid-cols-2 lg:grid-cols-5">
               {ACADEMICS_STATS.map((stat, index) => {
                 const Icon = ICON_MAP[stat.icon];
+                const color = lightTileIcon(index);
 
                 return (
                   <div
                     key={stat.label}
                     className={[
-                      "flex items-center gap-4 px-5 py-5",
+                      "group flex items-center gap-4 px-5 py-5",
                       index !== ACADEMICS_STATS.length - 1
                         ? "border-b border-[#d7e5f2] lg:border-b-0 lg:border-r"
                         : "",
                     ].join(" ")}
                   >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white text-[#102b68] shadow-sm">
+                    <div
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${color.bg} ${color.text} shadow-sm ${ICON_MOTION}`}
+                    >
                       <Icon
                         size={21}
                         strokeWidth={1.6}
@@ -217,7 +228,7 @@ export default function FacultiesDepartmentsPage() {
 
                     <div>
                       <div className="font-serif text-[25px] font-bold leading-none text-[#071b49]">
-                        {stat.value}
+                        <CountUp value={stat.value} />
                       </div>
 
                       <div className="mt-1 text-[11px] font-medium text-[#61708a]">
@@ -470,10 +481,11 @@ export default function FacultiesDepartmentsPage() {
                 </p>
 
                 <div className="mt-7 grid gap-5 sm:grid-cols-3">
-                  {FACULTY_SPOTLIGHT.points.map((point) => (
+                  {FACULTY_SPOTLIGHT.points.map((point, index) => (
                     <SpotlightPoint
                       key={point.title}
                       icon={ICON_MAP[point.icon]}
+                      iconColor={plainIcon(index)}
                       title={point.title}
                       text={point.text}
                     />
@@ -556,24 +568,26 @@ export default function FacultiesDepartmentsPage() {
 
 function HeroStat({
   icon: Icon,
+  iconColor,
   value,
   label,
 }: {
   icon: React.ElementType;
+  iconColor: string;
   value: string;
   label: string;
 }) {
   return (
-    <div className="flex items-center gap-3">
+    <div className="group flex items-center gap-3">
       <Icon
         size={25}
         strokeWidth={1.5}
-        className="text-[#f6b900]"
+        className={`${iconColor} ${ICON_MOTION}`}
       />
 
       <div>
         <div className="font-serif text-[24px] font-bold leading-none text-white">
-          {value}
+          <CountUp value={value} />
         </div>
 
         <div className="mt-1 text-[10px] text-white/70">
@@ -938,16 +952,18 @@ function PaginationButton({
 
 function SpotlightPoint({
   icon: Icon,
+  iconColor,
   title,
   text,
 }: {
   icon: React.ElementType;
+  iconColor: string;
   title: string;
   text: string;
 }) {
   return (
-    <div className="flex gap-2.5">
-      <div className="mt-0.5 text-[#102b68]">
+    <div className="group flex gap-2.5">
+      <div className={`mt-0.5 ${iconColor} ${ICON_MOTION}`}>
         <Icon
           size={19}
           strokeWidth={1.5}

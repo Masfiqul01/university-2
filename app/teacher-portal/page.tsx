@@ -9,6 +9,8 @@ import {
   X, Clock3
 } from "lucide-react"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
+import { CountUp } from "@/components/count-up"
 import {
   TEACHER_PORTAL_BRAND,
   TEACHER_NAV,
@@ -96,13 +98,14 @@ export default function TeacherPortalPage() {
               </section>
 
               <section className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                {TEACHER_STATS.map((stat) => {
+                {TEACHER_STATS.map((stat, index) => {
                   const Icon = ICON_MAP[stat.icon]
+                  const color = lightTileIcon(index)
 
                   return (
-                    <article key={stat.title} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
-                      <div className="flex items-start justify-between"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand/10 text-brand"><Icon className="h-5 w-5" /></span><span className="text-xs text-muted-foreground">{stat.meta}</span></div>
-                      <p className="mt-5 text-sm text-muted-foreground">{stat.title}</p><p className="mt-1 font-serif text-3xl font-bold">{stat.value}</p>
+                    <article key={stat.title} className="group rounded-2xl border border-border bg-card p-5 shadow-sm">
+                      <div className="flex items-start justify-between"><span className={`flex h-10 w-10 items-center justify-center rounded-xl ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}><Icon className="h-5 w-5" /></span><span className="text-xs text-muted-foreground">{stat.meta}</span></div>
+                      <p className="mt-5 text-sm text-muted-foreground">{stat.title}</p><p className="mt-1 font-serif text-3xl font-bold"><CountUp value={String(stat.value)} /></p>
                     </article>
                   )
                 })}
@@ -130,16 +133,16 @@ export default function TeacherPortalPage() {
                 <section id="attendance" className="rounded-2xl border border-border bg-card p-5 sm:p-6">
                   <div className="flex items-center justify-between"><div><p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand">{TEACHER_ATTENDANCE.eyebrow}</p><h2 className="mt-1 font-serif text-2xl font-bold">{TEACHER_ATTENDANCE.title}</h2></div><span className="text-2xl font-bold text-brand">{TEACHER_ATTENDANCE.rate}</span></div>
                   <div className="mt-5 h-3 overflow-hidden rounded-full bg-secondary"><div className="h-full w-[92.4%] rounded-full bg-brand" /></div>
-                  <div className="mt-5 grid grid-cols-3 gap-3 text-center">{TEACHER_ATTENDANCE.breakdown.map((item) => (<div key={item.label}><p className="text-lg font-bold">{item.value}</p><p className="text-xs text-muted-foreground">{item.label}</p></div>))}</div>
+                  <div className="mt-5 grid grid-cols-3 gap-3 text-center">{TEACHER_ATTENDANCE.breakdown.map((item) => (<div key={item.label}><p className="text-lg font-bold"><CountUp value={String(item.value)} /></p><p className="text-xs text-muted-foreground">{item.label}</p></div>))}</div>
                 </section>
                 <section id="assignments" className="rounded-2xl border border-border bg-card p-5 sm:p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand">{TEACHER_ASSIGNMENTS.eyebrow}</p><h2 className="mt-1 font-serif text-2xl font-bold">{TEACHER_ASSIGNMENTS.title}</h2>
-                  <div className="mt-5 space-y-3">{TEACHER_ASSIGNMENTS.items.map((item) => <div key={item.title} className="flex items-center gap-3 rounded-xl border border-border p-4"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand/10 text-brand"><FileText className="h-4 w-4" /></span><div className="min-w-0 flex-1"><p className="truncate text-sm font-semibold">{item.title}</p><p className="mt-1 text-xs text-muted-foreground">{item.meta}</p></div><ChevronRight className="h-4 w-4 text-muted-foreground" /></div>)}</div>
+                  <div className="mt-5 space-y-3">{TEACHER_ASSIGNMENTS.items.map((item, index) => <div key={item.title} className="flex items-center gap-3 rounded-xl border border-border p-4"><span className={`flex h-9 w-9 items-center justify-center rounded-lg ${lightTileIcon(index + 4).bg} ${lightTileIcon(index + 4).text}`}><FileText className="h-4 w-4" /></span><div className="min-w-0 flex-1"><p className="truncate text-sm font-semibold">{item.title}</p><p className="mt-1 text-xs text-muted-foreground">{item.meta}</p></div><ChevronRight className="h-4 w-4 text-muted-foreground" /></div>)}</div>
                 </section>
               </div>
 
               <div className="mt-6 grid gap-6 lg:grid-cols-2">
-                <section id="students" className="rounded-2xl border border-border bg-card p-5 sm:p-6"><p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand">{TEACHER_STUDENTS.eyebrow}</p><h2 className="mt-1 font-serif text-2xl font-bold">{TEACHER_STUDENTS.title}</h2><div className="mt-5 grid grid-cols-2 gap-3">{TEACHER_STUDENTS.stats.map((stat) => (<div key={stat.label} className="rounded-xl bg-secondary p-4"><p className="text-2xl font-bold">{stat.value}</p><p className="mt-1 text-xs text-muted-foreground">{stat.label}</p></div>))}</div></section>
+                <section id="students" className="rounded-2xl border border-border bg-card p-5 sm:p-6"><p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand">{TEACHER_STUDENTS.eyebrow}</p><h2 className="mt-1 font-serif text-2xl font-bold">{TEACHER_STUDENTS.title}</h2><div className="mt-5 grid grid-cols-2 gap-3">{TEACHER_STUDENTS.stats.map((stat) => (<div key={stat.label} className="rounded-xl bg-secondary p-4"><p className="text-2xl font-bold"><CountUp value={String(stat.value)} /></p><p className="mt-1 text-xs text-muted-foreground">{stat.label}</p></div>))}</div></section>
                 <section id="notices" className="rounded-2xl border border-border bg-card p-5 sm:p-6"><p className="text-xs font-semibold uppercase tracking-[0.15em] text-brand">{TEACHER_NOTICES.eyebrow}</p><h2 className="mt-1 font-serif text-2xl font-bold">{TEACHER_NOTICES.title}</h2><div className="mt-5 space-y-3">{TEACHER_NOTICES.items.map((x) => <div key={x} className="flex gap-3 border-b border-border pb-3 last:border-0 last:pb-0"><CheckCircle2 className="h-4 w-4 shrink-0 text-brand" /><p className="text-sm">{x}</p></div>)}</div></section>
               </div>
 

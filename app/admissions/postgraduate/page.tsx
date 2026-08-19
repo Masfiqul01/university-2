@@ -23,6 +23,11 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  lightTileIcon,
+} from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
 import {
   POSTGRADUATE_HERO,
@@ -54,16 +59,16 @@ export default function PostgraduateAdmissionsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[540px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[540px] overflow-hidden bg-brand-dark">
         <img
           src={POSTGRADUATE_HERO.image}
           alt={POSTGRADUATE_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/80" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/80 to-[#232771]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -105,15 +110,18 @@ export default function PostgraduateAdmissionsPage() {
       <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {QUICK_FACTS.map((item) => {
+            {QUICK_FACTS.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.title}
-                  className="border border-slate-200 bg-white p-6 shadow-sm"
+                  className="group border border-slate-200 bg-white p-6 shadow-sm"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center border border-[#d5e5ef] bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-11 w-11 items-center justify-center border border-[#d5e5ef] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -201,8 +209,9 @@ export default function PostgraduateAdmissionsPage() {
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {DEGREE_TYPES.map((program) => {
+            {DEGREE_TYPES.map((program, index) => {
               const Icon = ICON_MAP[program.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
@@ -210,7 +219,9 @@ export default function PostgraduateAdmissionsPage() {
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex h-12 w-12 items-center justify-center border border-[#d5e5ef] bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                    <div
+                      className={`flex h-12 w-12 items-center justify-center border border-[#d5e5ef] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
@@ -297,15 +308,18 @@ export default function PostgraduateAdmissionsPage() {
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {RESEARCH_AREAS.map((area) => {
+            {RESEARCH_AREAS.map((area, index) => {
               const Icon = ICON_MAP[area.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={area.title}
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -360,15 +374,18 @@ export default function PostgraduateAdmissionsPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {SUPERVISOR_AREAS.map((area) => {
+              {SUPERVISOR_AREAS.map((area, index) => {
                 const Icon = ICON_MAP[area.icon];
+                const color = lightTileIcon(index);
 
                 return (
                   <div
                     key={area.name}
-                    className="border border-slate-200 bg-white p-6 shadow-sm"
+                    className="group border border-slate-200 bg-white p-6 shadow-sm"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center border border-[#d5e5ef] bg-[#edf5fb] text-[#175783]">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center border border-[#d5e5ef] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
@@ -451,8 +468,10 @@ export default function PostgraduateAdmissionsPage() {
       <section className="bg-page-pattern">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="border border-slate-200 bg-white p-8 shadow-sm">
-              <div className="flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783]">
+            <div className="group border border-slate-200 bg-white p-8 shadow-sm">
+              <div
+                className={`flex h-12 w-12 items-center justify-center bg-teal-100 text-teal-600 ${ICON_MOTION}`}
+              >
                 <ShieldCheck className="h-6 w-6" strokeWidth={1.7} />
               </div>
 
@@ -465,9 +484,11 @@ export default function PostgraduateAdmissionsPage() {
               </p>
 
               <div className="mt-7 space-y-4">
-                {ENTRY_REQUIREMENTS.points.map((item) => (
-                  <div key={item} className="flex gap-3">
-                    <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                {ENTRY_REQUIREMENTS.points.map((item, index) => (
+                  <div key={item} className="group/point flex gap-3">
+                    <div
+                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} transition-all duration-300 group-hover/point:scale-125`}
+                    >
                       <Check className="h-3.5 w-3.5" />
                     </div>
 

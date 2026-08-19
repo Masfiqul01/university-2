@@ -15,6 +15,8 @@ import {
 
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { CountUp } from "@/components/count-up"
+import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { PROGRAMS } from "@/lib/data/programs"
 
 export const metadata: Metadata = {
@@ -123,7 +125,7 @@ export default function AdmissionsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#232771]">
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
           <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
@@ -207,7 +209,7 @@ export default function AdmissionsPage() {
               ].join(" ")}
             >
               <div className="font-serif text-[30px] font-bold leading-none text-[#071b49]">
-                {item.value}
+                <CountUp value={String(item.value)} />
               </div>
 
               <div className="mt-2 text-[11px] font-medium uppercase tracking-wider text-[#61708a]">
@@ -236,15 +238,18 @@ export default function AdmissionsPage() {
           </h2>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {highlights.map((item) => {
+            {highlights.map((item, index) => {
               const Icon = item.icon
+              const color = lightTileIcon(index)
 
               return (
                 <div
                   key={item.title}
-                  className="border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  className="group border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center border border-[#cfe0eb] bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center border border-[#cfe0eb] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-6 w-6" strokeWidth={1.7} />
                   </div>
 
@@ -279,8 +284,9 @@ export default function AdmissionsPage() {
         </h2>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2">
-          {pathways.map((item) => {
+          {pathways.map((item, index) => {
             const Icon = item.icon
+            const color = lightTileIcon(index + 4)
 
             return (
               <Link
@@ -288,7 +294,9 @@ export default function AdmissionsPage() {
                 href={item.href}
                 className="group border border-slate-200 bg-white p-8 shadow-[0_5px_24px_rgba(15,45,90,0.05)] transition duration-300 hover:-translate-y-1 hover:border-[#cbd8e6] hover:shadow-[0_12px_30px_rgba(15,45,90,0.09)]"
               >
-                <div className="flex h-12 w-12 items-center justify-center border border-[#cfe0eb] bg-[#edf5fb] text-[#175783]">
+                <div
+                  className={`flex h-12 w-12 items-center justify-center border border-[#cfe0eb] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                >
                   <Icon className="h-6 w-6" strokeWidth={1.7} />
                 </div>
 

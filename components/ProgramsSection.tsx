@@ -174,7 +174,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
     const faculty = program.faculty.toLowerCase();
 
     if (title.includes("computer") || title.includes("software")) {
-      return <Laptop className="h-6 w-6 text-brand-accent" />;
+      return <Laptop className="h-6 w-6 text-blue-600" />;
     }
 
     if (
@@ -182,7 +182,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("electronic") ||
       title.includes("engineering")
     ) {
-      return <Cpu className="h-6 w-6 text-brand" />;
+      return <Cpu className="h-6 w-6 text-violet-600" />;
     }
 
     if (
@@ -190,7 +190,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("business administration") ||
       title.includes("mba")
     ) {
-      return <Briefcase className="h-6 w-6 text-brand-accent" />;
+      return <Briefcase className="h-6 w-6 text-orange-600" />;
     }
 
     if (
@@ -199,15 +199,15 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("mathematics") ||
       faculty.includes("science")
     ) {
-      return <Zap className="h-6 w-6 text-brand" />;
+      return <Zap className="h-6 w-6 text-emerald-600" />;
     }
 
     if (title.includes("civil") || title.includes("mechanical")) {
-      return <Building2 className="h-6 w-6 text-brand-accent" />;
+      return <Building2 className="h-6 w-6 text-rose-600" />;
     }
 
     if (title.includes("economics") || faculty.includes("social")) {
-      return <Compass className="h-6 w-6 text-brand" />;
+      return <Compass className="h-6 w-6 text-cyan-700" />;
     }
 
     if (
@@ -215,10 +215,10 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
       title.includes("microbiology") ||
       title.includes("biochemistry")
     ) {
-      return <Terminal className="h-6 w-6 text-brand-accent" />;
+      return <Terminal className="h-6 w-6 text-teal-600" />;
     }
 
-    return <GraduationCap className="h-6 w-6 text-brand-accent" />;
+    return <GraduationCap className="h-6 w-6 text-fuchsia-600" />;
   };
 
   /* ============================================================

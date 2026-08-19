@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 ========================================================= */
 
 import { WHY_CHOOSE_US_INTRO, WHY_CHOOSE_US } from "@/lib/data/home";
+import { darkTileIcon } from "@/lib/icon-colors";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -904,7 +905,7 @@ export function WhyChooseUs() {
         ================================================= */}
         <div className="border-t border-white/10 bg-white/[0.035] lg:border-l lg:border-t-0">
 
-          {reasons.map((item) => {
+          {reasons.map((item, index) => {
             const Icon = item.icon;
 
             return (
@@ -930,7 +931,9 @@ export function WhyChooseUs() {
                   </div>
 
                   {/* Icon */}
-                  <div className="why-item-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.055] text-amber-200 transition-all duration-300 group-hover:border-amber-200/20 group-hover:bg-amber-200/[0.08]">
+                  <div
+                    className={`why-item-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.055] ${darkTileIcon(index)} transition-all duration-300 group-hover:scale-110 group-hover:border-white/20 group-hover:bg-white/[0.1]`}
+                  >
                     <Icon />
                   </div>
 

@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react"
 import { imageUrl } from "@/lib/site-assets"
+import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { ArrowRight, BarChart3, BookOpen, CalendarDays, CheckCircle2, FileText, GraduationCap, Headphones, Megaphone, UserRound, UsersRound, X } from "lucide-react"
 
 const SERVICES = [
@@ -149,7 +150,7 @@ export function StudentPortal() {
     <>
       <section className="relative isolate overflow-hidden bg-brand-dark">
         <img src={imageUrl("/images/hero-campus.png")} alt="University campus" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/80 to-brand-dark/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
         <div className="relative mx-auto max-w-[1240px] px-5 pb-20 pt-10 lg:px-8 lg:pb-24 lg:pt-14">
           <div className="mb-7 flex items-center gap-2 text-sm text-white/80"><a href="/" className="hover:text-white">Home</a><span>›</span><span>Student Portal</span></div>
           <div className="max-w-2xl">
@@ -173,14 +174,18 @@ export function StudentPortal() {
           </div>
 
           <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES.map(({title, description, icon: Icon, panel}) => (
-              <article key={title} className="rounded-2xl border border-slate-200 bg-white/90 p-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-brand"><Icon className="h-8 w-8" /></div>
+            {SERVICES.map(({title, description, icon: Icon, panel}, index) => {
+              const color = lightTileIcon(index)
+
+              return (
+              <article key={title} className="group rounded-2xl border border-slate-200 bg-white/90 p-5 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+                <div className={`mx-auto flex h-16 w-16 items-center justify-center rounded-full ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}><Icon className="h-8 w-8" /></div>
                 <h3 className="mt-4 font-bold text-brand-dark">{title}</h3>
                 <p className="mt-2 min-h-10 text-xs leading-5 text-slate-500">{description}</p>
                 <button onClick={() => setActive(panel)} className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-xs font-bold text-white transition hover:bg-brand-dark">Access Now <ArrowRight className="h-3.5 w-3.5" /></button>
               </article>
-            ))}
+              )
+            })}
           </div>
 
           {active && (

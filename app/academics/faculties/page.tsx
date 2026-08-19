@@ -412,7 +412,7 @@ export default function AcademicFacilitiesPage() {
             HERO
         ====================================================== */}
 
-        <section className="hero-section relative min-h-[calc(100svh-78px)] overflow-hidden bg-[#0b0754]">
+        <section className="hero-section relative min-h-[calc(100svh-78px)] overflow-hidden bg-brand-dark">
           <motion.div
             ref={heroImage}
             style={{
@@ -427,9 +427,9 @@ export default function AcademicFacilitiesPage() {
               className="h-full w-full object-cover"
             />
 
-            <div className="absolute inset-0 bg-[#0b0754]/70" />
+            <div className="absolute inset-0 bg-brand-dark/70" />
 
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b0754] via-[#0b0754]/85 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
           </motion.div>
 
           <div

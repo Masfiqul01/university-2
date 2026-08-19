@@ -14,6 +14,7 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { ICON_MOTION, ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors";
 import {
   CALENDAR_HERO,
   CALENDAR_SELECTOR,
@@ -51,7 +52,7 @@ export default function AcademicCalendarPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#232771]">
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full border-[60px] border-[#d9a82e]" />
           <div className="absolute -bottom-32 left-20 h-96 w-96 rounded-full border border-white" />
@@ -164,8 +165,9 @@ export default function AcademicCalendarPage() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {SUMMARY_CARDS.map((item) => {
+          {SUMMARY_CARDS.map((item, index) => {
             const Icon = ICON_MAP[item.icon];
+            const color = lightTileIcon(index);
 
             return (
               <div
@@ -173,7 +175,9 @@ export default function AcademicCalendarPage() {
                 className="group border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex items-start justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.8} />
                   </div>
 
@@ -319,8 +323,10 @@ export default function AcademicCalendarPage() {
                   }
                   className="flex w-full items-center justify-between gap-4 p-5 text-left"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div className="group flex items-center gap-3">
+                    <div
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                    >
                       {getEventIcon(item.type)}
                     </div>
 
@@ -393,8 +399,10 @@ export default function AcademicCalendarPage() {
         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
           <div className="border border-[#cfe1ee] bg-[#eaf4fb] p-8 sm:p-10">
             <div className="flex flex-col gap-7 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <div className="mb-3 flex h-11 w-11 items-center justify-center bg-white text-[#175783]">
+              <div className="group">
+                <div
+                  className={`mb-3 flex h-11 w-11 items-center justify-center bg-white text-emerald-600 ${ICON_MOTION}`}
+                >
                   {(() => {
                     const Icon = ICON_MAP[CALENDAR_DOWNLOAD.icon];
                     return <Icon className="h-5 w-5" />;
@@ -420,8 +428,10 @@ export default function AcademicCalendarPage() {
             </div>
           </div>
 
-          <div className="border border-slate-200 bg-white p-8">
-            <div className="flex h-11 w-11 items-center justify-center bg-[#fff7df] text-[#b28718]">
+          <div className="group border border-slate-200 bg-white p-8">
+            <div
+              className={`flex h-11 w-11 items-center justify-center bg-fuchsia-100 text-fuchsia-600 ${ICON_MOTION}`}
+            >
               {(() => {
                 const Icon = ICON_MAP[CALENDAR_STAY_UPDATED.icon];
                 return <Icon className="h-5 w-5" />;
