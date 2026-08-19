@@ -11,7 +11,7 @@ import {
   useTransform,
 } from "motion/react";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, GraduationCap, Sparkles } from "lucide-react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -412,7 +412,7 @@ export default function AcademicFacilitiesPage() {
             HERO
         ====================================================== */}
 
-        <section className="hero-section relative min-h-[calc(100svh-78px)] overflow-hidden bg-brand-dark">
+        <section className="hero-section relative min-h-[70vh] overflow-hidden bg-brand-dark">
           <motion.div
             ref={heroImage}
             style={{
@@ -427,8 +427,6 @@ export default function AcademicFacilitiesPage() {
               className="h-full w-full object-cover"
             />
 
-            <div className="absolute inset-0 bg-brand-dark/70" />
-
             <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
           </motion.div>
 
@@ -437,16 +435,16 @@ export default function AcademicFacilitiesPage() {
             className="absolute right-[10%] top-[18%] h-56 w-56 rounded-full bg-[#fd9900]/20 blur-[90px]"
           />
 
-          <div className="relative mx-auto flex min-h-[calc(100svh-78px)] max-w-[1440px] items-end px-6 pb-14 pt-24 sm:px-8 lg:px-10 lg:pb-20">
+          <div className="relative mx-auto flex min-h-[70vh] max-w-[1440px] items-center px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
             <div className="w-full">
               <div className="max-w-5xl">
-                <div className="hero-kicker mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.25em] text-[#f8d87d]">
+                <div className="hero-kicker mb-4 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-[#f8d87d]">
                   <span className="h-px w-10 bg-[#fd9900]" />
 
                   {FACULTIES_PAGE_HERO.badge}
                 </div>
 
-                <h1 className="max-w-5xl text-5xl font-black leading-[0.95] tracking-[-0.045em] text-white sm:text-6xl lg:text-8xl">
+                <h1 className="max-w-4xl text-3xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
                   <span className="hero-title-line block">
                     {FACULTIES_PAGE_HERO.titleLines[0]}
                   </span>
@@ -456,14 +454,14 @@ export default function AcademicFacilitiesPage() {
                   </span>
                 </h1>
 
-                <p className="hero-copy mt-8 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                <p className="hero-copy mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
                   {FACULTIES_PAGE_HERO.description}
                 </p>
 
-                <div className="hero-actions mt-9 flex flex-col gap-3 sm:flex-row">
+                <div className="hero-actions mt-6 flex flex-col gap-3 sm:flex-row">
                   <Link
                     href="#academics"
-                    className="group inline-flex h-14 items-center justify-center gap-3 rounded-xl bg-white px-6 font-bold text-[#0b0754] transition hover:bg-[#fff4d8]"
+                    className="group inline-flex h-11 items-center justify-center gap-3 rounded-xl bg-white px-5 text-sm font-bold text-[#0b0754] transition hover:bg-[#fff4d8]"
                   >
                     {FACULTIES_PAGE_HERO.primary.label}
 
@@ -475,7 +473,7 @@ export default function AcademicFacilitiesPage() {
 
                   <Link
                     href="#facilities"
-                    className="group inline-flex h-14 items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/5 px-6 font-bold text-white backdrop-blur-md transition hover:bg-white/10"
+                    className="group inline-flex h-11 items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/5 px-5 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/10"
                   >
                     {FACULTIES_PAGE_HERO.secondary.label}
 
@@ -486,19 +484,19 @@ export default function AcademicFacilitiesPage() {
                 </div>
               </div>
 
-              <div className="hero-meta mt-16 grid max-w-5xl border-t border-white/15 sm:grid-cols-4">
+              <div className="hero-meta mt-8 grid max-w-4xl border-t border-white/15 sm:grid-cols-4">
                 {[
                   ...FACULTIES_PAGE_HERO.stats.map((stat) => [stat.value, stat.label] as const),
                 ].map(([number, label]) => (
                   <div
                     key={label}
-                    className="border-b border-white/10 px-0 py-6 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 sm:last:border-r-0"
+                    className="border-b border-white/10 px-0 py-4 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 sm:last:border-r-0"
                   >
-                    <div className="text-2xl font-black text-white">
+                    <div className="text-xl font-black text-white">
                       {number}
                     </div>
 
-                    <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                    <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
                       {label}
                     </div>
                   </div>
@@ -987,20 +985,42 @@ export default function AcademicFacilitiesPage() {
 
         <section className="bg-page-pattern py-24 sm:py-32">
           <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-10">
-            <div className="overflow-hidden rounded-[28px] bg-[#08111F] px-7 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20">
-              <div className="grid gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#2e3494] via-[#232771] to-[#171a52] px-7 py-12 shadow-[0_24px_70px_rgba(35,39,113,0.28)] sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+              {/* Decorative glows */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-300/[0.08] blur-[90px]"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-white/[0.05] blur-[90px]"
+              />
+
+              {/* Corner badge icon */}
+              <div
+                aria-hidden="true"
+                className="absolute right-6 top-6 hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06] text-amber-200 backdrop-blur-md sm:flex"
+              >
+                <GraduationCap className="h-6 w-6" strokeWidth={1.7} />
+                <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.8)]" />
+              </div>
+
+              <div className="relative grid gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center">
                 <div className="gsap-reveal">
-                  <SectionLabel dark>
+                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-200/85">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-amber-200/25 bg-amber-200/[0.08]">
+                      <Sparkles className="h-3 w-3" />
+                    </span>
                     {SAFETY_SECTION.label}
-                  </SectionLabel>
+                  </div>
 
                   <RevealText>
-                    <h2 className="max-w-2xl text-4xl font-black leading-[1.02] tracking-[-0.035em] text-white sm:text-5xl">
+                    <h2 className="max-w-xl font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
                       {SAFETY_SECTION.title}
                     </h2>
                   </RevealText>
 
-                  <p className="mt-7 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                  <p className="mt-4 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
                     {SAFETY_SECTION.description}
                   </p>
                 </div>
@@ -1049,199 +1069,104 @@ export default function AcademicFacilitiesPage() {
             FINAL CTA
         ====================================================== */}
 
-        <section className="relative isolate overflow-hidden bg-[#05032b] py-20 sm:py-24 lg:py-32">
-  {/* =========================================================
-      PREMIUM BACKGROUND SYSTEM
-  ========================================================== */}
-  <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-    {/* Ambient radial lighting */}
-    <div className="absolute left-1/2 top-[35%] h-[520px] w-[900px] -translate-x-1/2 rounded-full bg-indigo-500/10 blur-[150px]" />
-    <div className="absolute -left-32 bottom-0 h-[360px] w-[360px] rounded-full bg-cyan-500/10 blur-[130px]" />
-    <div className="absolute -right-40 top-0 h-[420px] w-[420px] rounded-full bg-violet-500/10 blur-[150px]" />
+        <section className="bg-page-pattern py-24 sm:py-32">
+          <div className="mx-auto max-w-[1440px] px-6 sm:px-8 lg:px-10">
+            <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#2e3494] via-[#232771] to-[#171a52] px-7 py-12 shadow-[0_24px_70px_rgba(35,39,113,0.28)] sm:px-12 sm:py-16 lg:px-16 lg:py-20">
+              {/* Decorative glows */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-300/[0.08] blur-[90px]"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-white/[0.05] blur-[90px]"
+              />
 
-    {/* Fine grid */}
-    <div
-      className="absolute inset-0 opacity-[0.035]"
-      style={{
-        backgroundImage: `
-          linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
-        `,
-        backgroundSize: "48px 48px",
-        maskImage:
-          "radial-gradient(ellipse 75% 65% at 50% 50%, black 30%, transparent 100%)",
-        WebkitMaskImage:
-          "radial-gradient(ellipse 75% 65% at 50% 50%, black 30%, transparent 100%)",
-      }}
-    />
+              {/* Corner badge icon */}
+              <div
+                aria-hidden="true"
+                className="absolute right-6 top-6 hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06] text-amber-200 backdrop-blur-md sm:flex"
+              >
+                <GraduationCap className="h-6 w-6" strokeWidth={1.7} />
+                <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.8)]" />
+              </div>
 
-    {/* Top cinematic glow */}
-    <div className="absolute left-1/2 top-0 h-px w-[70%] -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent blur-[1px]" />
+              <div className="relative grid gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+                <div className="gsap-reveal">
+                  <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-200/85">
+                    <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-amber-200/25 bg-amber-200/[0.08]">
+                      <Sparkles className="h-3 w-3" />
+                    </span>
+                    {FACULTIES_PAGE_CTA.eyebrow}
+                  </div>
 
-    {/* Decorative orbital rings */}
-    <div className="absolute left-1/2 top-1/2 h-[460px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-white/[0.035] rotate-[-8deg]" />
-    <div className="absolute left-1/2 top-1/2 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-cyan-300/[0.025] rotate-[8deg]" />
+                  <RevealText>
+                    <h2 className="max-w-xl font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
+                      {FACULTIES_PAGE_CTA.titleLines[0]}
+                      <br />
+                      {FACULTIES_PAGE_CTA.titleLines[1]}
+                    </h2>
+                  </RevealText>
 
-    {/* Floating particles */}
-    <span className="absolute left-[12%] top-[28%] h-1 w-1 rounded-full bg-cyan-300/70 shadow-[0_0_14px_rgba(103,232,249,0.8)]" />
-    <span className="absolute right-[17%] top-[22%] h-1.5 w-1.5 rounded-full bg-indigo-300/60 shadow-[0_0_18px_rgba(129,140,248,0.8)]" />
-    <span className="absolute bottom-[24%] left-[20%] h-1 w-1 rounded-full bg-white/50" />
-    <span className="absolute bottom-[20%] right-[14%] h-1 w-1 rounded-full bg-cyan-200/60" />
-  </div>
+                  <p className="mt-4 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
+                    {FACULTIES_PAGE_CTA.description}
+                  </p>
+                </div>
 
-  {/* =========================================================
-      MAIN CONTENT
-  ========================================================== */}
-  <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
-    <div className="mx-auto max-w-4xl text-center">
+                <div className="flex flex-col gap-3">
+                  <Link
+                    href={FACULTIES_PAGE_CTA.links[0].href}
+                    className="group inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-white px-6 text-sm font-bold text-[#0b0754] transition hover:bg-[#fff4d8]"
+                  >
+                    {FACULTIES_PAGE_CTA.links[0].label}
 
-      {/* =====================================================
-          PREMIUM EYEBROW
-      ====================================================== */}
-      <div className="mb-7 flex justify-center">
-        <div className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 shadow-[0_8px_40px_rgba(0,0,0,0.18)] backdrop-blur-xl">
-          {/* Moving highlight */}
-          <span className="absolute inset-y-0 -left-full w-1/2 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 group-hover:left-[130%]" />
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </Link>
 
-          <span className="relative flex h-2 w-2 items-center justify-center">
-            <span className="absolute h-full w-full animate-ping rounded-full bg-cyan-400/50" />
-            <span className="relative h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
-          </span>
+                  <Link
+                    href={FACULTIES_PAGE_CTA.links[1].href}
+                    className="group inline-flex h-12 items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/5 px-6 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/10"
+                  >
+                    {FACULTIES_PAGE_CTA.links[1].label}
 
-          <span className="relative text-[10px] font-bold uppercase tracking-[0.22em] text-cyan-100/90 sm:text-[11px]">
-            {FACULTIES_PAGE_CTA.eyebrow}
-          </span>
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </Link>
 
-          <ArrowUpRight
-            size={13}
-            strokeWidth={2}
-            className="relative text-cyan-300/70 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </div>
-      </div>
+                  <Link
+                    href={FACULTIES_PAGE_CTA.links[2].href}
+                    className="group inline-flex h-12 items-center justify-center gap-3 rounded-xl border border-white/10 px-6 text-sm font-semibold text-white/70 transition hover:border-white/25 hover:bg-white/5 hover:text-white"
+                  >
+                    {FACULTIES_PAGE_CTA.links[2].label}
 
-      {/* =====================================================
-          HEADLINE
-      ====================================================== */}
-      <RevealText>
-        <h2 className="mx-auto max-w-4xl text-[2.6rem] font-black leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-[4.65rem]">
-          {FACULTIES_PAGE_CTA.titleLines[0]}
-          <span className="relative block">
-            <span className="bg-gradient-to-r from-white via-indigo-100 to-cyan-300 bg-clip-text text-transparent">
-              {FACULTIES_PAGE_CTA.titleLines[1]}
-            </span>
+                    <ArrowUpRight
+                      size={15}
+                      className="opacity-60 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                    />
+                  </Link>
 
-            {/* Subtle underline accent */}
-            <span className="absolute -bottom-3 left-1/2 h-px w-24 -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent sm:-bottom-4 sm:w-32" />
-          </span>
-        </h2>
-      </RevealText>
-
-      {/* =====================================================
-          DESCRIPTION
-      ====================================================== */}
-      <p className="mx-auto mt-8 max-w-2xl text-[15px] leading-7 text-indigo-100/65 sm:text-base sm:leading-8">
-        {FACULTIES_PAGE_CTA.description}
-      </p>
-
-      {/* =====================================================
-          CTA SYSTEM
-      ====================================================== */}
-      <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-        
-        {/* PRIMARY CTA */}
-        <Link
-          href="/academics"
-          className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-2xl bg-white px-7 text-sm font-bold text-[#08052f] shadow-[0_12px_40px_rgba(255,255,255,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_55px_rgba(103,232,249,0.16)] active:translate-y-0"
-        >
-          {/* Hover gradient */}
-          <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-cyan-100 via-white to-indigo-100 transition-transform duration-500 group-hover:translate-x-0" />
-
-          <span className="relative z-10">{FACULTIES_PAGE_CTA.links[0].label}</span>
-
-          <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-[#08052f]/[0.08] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#08052f]/[0.12]">
-            <ArrowUpRight
-              size={15}
-              strokeWidth={2.5}
-              className="transition-transform duration-300 group-hover:rotate-[-8deg]"
-            />
-          </span>
-        </Link>
-
-        {/* SECONDARY CTA */}
-        <Link
-          href="/contact"
-          className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] px-7 text-sm font-semibold text-white/90 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan-300/30 hover:bg-white/[0.07] hover:text-white active:translate-y-0"
-        >
-          <span className="absolute inset-0 -translate-y-full bg-gradient-to-b from-cyan-300/[0.06] to-transparent transition-transform duration-500 group-hover:translate-y-0" />
-          <span className="relative">{FACULTIES_PAGE_CTA.links[1].label}</span>
-        </Link>
-
-        {/* TERTIARY CTA */}
-        <Link
-          href="/campus-life/facilities"
-          className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] px-7 text-sm font-semibold text-indigo-100/65 transition-all duration-500 hover:-translate-y-1 hover:border-white/15 hover:bg-white/[0.035] hover:text-white active:translate-y-0"
-        >
-          <span>{FACULTIES_PAGE_CTA.links[2].label}</span>
-
-          <ArrowUpRight
-            size={14}
-            strokeWidth={2}
-            className="opacity-50 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
-          />
-        </Link>
-      </div>
-
-      {/* =====================================================
-          TRUST / VALUE STRIP
-      ====================================================== */}
-      <div className="mx-auto mt-14 max-w-2xl">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-
-        <div className="flex flex-col items-center justify-center gap-5 pt-6 sm:flex-row sm:gap-7">
-          
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
-            <span className="h-1.5 w-1.5 rounded-full bg-cyan-300/60" />
-            {FACULTIES_PAGE_CTA.trustStrip[0]}
+                  {/* Trust strip */}
+                  <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/10 pt-4">
+                    {FACULTIES_PAGE_CTA.trustStrip.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/45"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-amber-300/70" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <span className="hidden h-3 w-px bg-white/10 sm:block" />
-
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
-            <span className="h-1.5 w-1.5 rounded-full bg-indigo-300/60" />
-            {FACULTIES_PAGE_CTA.trustStrip[1]}
-          </div>
-
-          <span className="hidden h-3 w-px bg-white/10 sm:block" />
-
-          <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white/35">
-            <span className="h-1.5 w-1.5 rounded-full bg-white/50" />
-            {FACULTIES_PAGE_CTA.trustStrip[2]}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  {/* =========================================================
-      EDGE ACCENTS
-  ========================================================== */}
-  <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-[80%] -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300/20 to-transparent" />
-
-  {/* Accessibility / reduced motion */}
-  <style jsx>{`
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-  `}</style>
-</section>
+        </section>
         {/* Footer */}
 
         <SiteFooter />

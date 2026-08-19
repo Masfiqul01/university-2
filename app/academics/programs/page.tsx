@@ -542,31 +542,47 @@ export default function AcademicPrograms() {
 
       {/* FOOTER CALL TO ACTION */}
       <section className="px-4 pb-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-2xl bg-[#0d094d] px-6 py-10 shadow-lg sm:px-10 lg:px-12">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div className="flex items-center gap-6">
-              <div className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 md:flex">
-                <GraduationCap className="h-7 w-7 text-amber-400" />
-              </div>
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[28px] bg-gradient-to-br from-[#2e3494] via-[#232771] to-[#171a52] px-7 py-12 shadow-[0_24px_70px_rgba(35,39,113,0.28)] sm:px-12 sm:py-16 lg:px-16">
+          {/* Decorative glows */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-300/[0.08] blur-[90px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-white/[0.05] blur-[90px]"
+          />
 
-              <div className="text-center md:text-left">
-                <h2 className="font-serif text-xl font-bold text-white sm:text-2xl lg:text-3xl">
-                  Ready to start your academic
-                  <br className="hidden sm:block" /> journey at KACST?
-                </h2>
-                <p className="mt-1 text-xs text-white/70 sm:text-sm">
-                  Join a community of innovative thinkers and future leaders.
-                </p>
-              </div>
+          {/* Corner badge icon */}
+          <div
+            aria-hidden="true"
+            className="absolute right-6 top-6 hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06] text-amber-200 backdrop-blur-md sm:flex"
+          >
+            <GraduationCap className="h-6 w-6" strokeWidth={1.7} />
+            <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.8)]" />
+          </div>
+
+          <div className="relative grid gap-14 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+            <div>
+              <h2 className="max-w-xl font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
+                Ready to start your academic
+                <br className="hidden sm:block" /> journey at KACST?
+              </h2>
+
+              <p className="mt-4 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
+                Join a community of innovative thinkers and future leaders.
+              </p>
             </div>
 
-            <Link
-              href="/admissions/apply"
-              className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-white px-5 py-3 text-xs font-bold text-[#17135f] transition hover:bg-slate-100 sm:text-sm"
-            >
-              Apply for Admission
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
+              <Link
+                href="/admissions/apply"
+                className="group inline-flex h-12 items-center justify-center gap-3 rounded-xl bg-white px-6 text-sm font-bold text-[#0b0754] transition hover:bg-[#fff4d8]"
+              >
+                Apply for Admission
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

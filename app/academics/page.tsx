@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
@@ -24,8 +25,10 @@ import {
   FACULTY_SPOTLIGHT,
   ACADEMICS_CTA,
 } from "@/lib/data/academics";
+import { PROGRAMS, type Program } from "@/lib/data/programs";
 
 import {
+  ArrowRight,
   Atom,
   Award,
   Building2,
@@ -60,6 +63,25 @@ export default function FacultiesDepartmentsPage() {
 
   const [mobileFilters, setMobileFilters] =
     useState(false);
+
+  /* Program cards shown in the faculties section, 9 per page. */
+  const [programPage, setProgramPage] = useState(1);
+
+  const programsPerPage = 9;
+
+  const totalProgramPages = Math.max(
+    1,
+    Math.ceil(PROGRAMS.length / programsPerPage),
+  );
+
+  const visiblePrograms = useMemo(
+    () =>
+      PROGRAMS.slice(
+        (programPage - 1) * programsPerPage,
+        programPage * programsPerPage,
+      ),
+    [programPage],
+  );
 
   const filteredDepartments = useMemo(() => {
     return DEPARTMENTS.filter((department) => {
@@ -186,14 +208,67 @@ export default function FacultiesDepartmentsPage() {
               title={FACULTIES_INTRO.title}
             />
 
-            <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {FACULTIES.map((faculty) => (
-                <FacultyCard
-                  key={faculty.name}
-                  faculty={faculty}
+            {/* Program cards, paginated 9 per page. */}
+            <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {visiblePrograms.map((program, index) => (
+                <ProgramCard
+                  key={`${program.title}-${index}`}
+                  program={program}
                 />
               ))}
             </div>
+
+            {totalProgramPages > 1 && (
+              <div className="mt-10 flex justify-center">
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    aria-label="Previous page"
+                    disabled={programPage === 1}
+                    onClick={() =>
+                      setProgramPage((p) => Math.max(1, p - 1))
+                    }
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+
+                  {Array.from(
+                    { length: totalProgramPages },
+                    (_, index) => index + 1,
+                  )
+                    .slice(0, 5)
+                    .map((number) => (
+                      <button
+                        key={number}
+                        type="button"
+                        onClick={() => setProgramPage(number)}
+                        className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold transition ${
+                          programPage === number
+                            ? "bg-[#110c59] text-white"
+                            : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+                        }`}
+                      >
+                        {number}
+                      </button>
+                    ))}
+
+                  <button
+                    type="button"
+                    aria-label="Next page"
+                    disabled={programPage === totalProgramPages}
+                    onClick={() =>
+                      setProgramPage((p) =>
+                        Math.min(totalProgramPages, p + 1),
+                      )
+                    }
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-500 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -639,84 +714,50 @@ function Eyebrow({
 }
 
 /* =============================================================
-   FACULTY CARD
+   PROGRAM CARD
+   Mirrors the card used on /academics/programs so both pages
+   present programs identically.
 ============================================================= */
 
-function FacultyCard({
-  faculty,
-}: {
-  faculty: (typeof FACULTIES)[number];
-}) {
-  const Icon = ICON_MAP[faculty.icon];
+function ProgramCard({ program }: { program: Program }) {
+  const IconComponent = ICON_MAP[program.icon] ?? ICON_MAP.Code2;
 
   return (
-    <article className="group flex min-h-[395px] flex-col rounded-lg border border-[#dfe7ef] bg-white p-5 shadow-[0_4px_18px_rgba(15,45,90,0.03)] transition duration-300 hover:-translate-y-1 hover:border-[#cbd8e6] hover:shadow-[0_12px_30px_rgba(15,45,90,0.08)]">
-      <div
-        className={`flex h-14 w-14 items-center justify-center rounded-full ${faculty.iconBg} ${faculty.iconColor}`}
-      >
-        <Icon
-          size={27}
-          strokeWidth={1.5}
-        />
-      </div>
-
-      <h3 className="mt-6 min-h-[54px] font-serif text-[18px] font-bold leading-[1.15] text-[#071b49]">
-        {faculty.name}
-      </h3>
-
-      <div className="mt-5">
-        <div className="text-[9px] font-bold uppercase tracking-wide text-[#071b49]">
-          {faculty.dean}
-        </div>
-
-        <div className="mt-2 space-y-1 text-[9px] leading-4 text-[#64748b]">
-          <div className="flex items-center gap-1.5">
-            <Phone size={10} />
-            {faculty.phone}
-          </div>
-
-          <div className="flex items-start gap-1.5 break-all">
-            <Mail
-              size={10}
-              className="mt-0.5 shrink-0"
-            />
-            {faculty.email}
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-5">
-        <div className="text-[9px] font-bold uppercase tracking-wide text-[#071b49]">
-          {FACULTIES_INTRO.cardLabels.departments}
-        </div>
-
-        <p className="mt-1 text-[12px] font-semibold text-[#102b68]">
-          {faculty.departments} Departments
-        </p>
-      </div>
-
-      <div className="mt-4">
-        <div className="text-[9px] font-bold uppercase tracking-wide text-[#071b49]">
-          {FACULTIES_INTRO.cardLabels.disciplines}
-        </div>
-
-        <p className="mt-1 line-clamp-3 text-[9px] leading-4 text-[#65748a]">
-          {faculty.disciplines}
-        </p>
-      </div>
-
-      <div className="mt-auto border-t border-[#edf1f5] pt-4">
-        <button
-          type="button"
-          className="group/btn flex items-center gap-1 text-[10px] font-bold text-[#071b49]"
+    <article className="group flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-200 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
+      <div>
+        <div
+          className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${program.iconBg} ${program.iconColor} ${ICON_MOTION}`}
         >
-          {FACULTIES_INTRO.cardLabels.link}
+          <IconComponent className="h-5 w-5" />
+        </div>
 
-          <ChevronRight
-            size={13}
-            className="transition-transform group-hover/btn:translate-x-1"
-          />
-        </button>
+        <span className="mb-3 inline-block rounded-full bg-blue-50/80 px-3 py-1 text-[11px] font-medium text-blue-600">
+          {program.level}
+        </span>
+
+        <h3 className="font-serif text-lg font-bold leading-snug text-[#17135f]">
+          {program.title}
+        </h3>
+
+        <p className="mt-2.5 text-xs leading-relaxed text-slate-500">
+          {program.description}
+        </p>
+      </div>
+
+      <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-xs">
+        <div className="text-slate-400">
+          <span>{program.duration}</span>
+          <span className="mx-1.5">•</span>
+          <span>Full Time</span>
+        </div>
+
+        <Link
+          href={`/academics/programs/${program.slug}`}
+          className="flex items-center gap-1 font-semibold text-[#17135f] transition-colors hover:text-indigo-600"
+        >
+          View Details
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+        </Link>
       </div>
     </article>
   );

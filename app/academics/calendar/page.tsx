@@ -9,6 +9,8 @@ import {
   ArrowRight,
   AlertCircle,
   CalendarCheck2,
+  GraduationCap,
+  Sparkles,
 } from "lucide-react";
 
 import { SiteHeader } from "@/components/site-header";
@@ -52,7 +54,15 @@ export default function AcademicCalendarPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
+      <section className="relative overflow-hidden bg-brand-dark">
+        <img
+          src={CALENDAR_HERO.image}
+          alt={CALENDAR_HERO.imageAlt}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        {/* Same overlay gradient as the About page hero. */}
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full border-[60px] border-[#d9a82e]" />
           <div className="absolute -bottom-32 left-20 h-96 w-96 rounded-full border border-white" />
@@ -458,22 +468,41 @@ export default function AcademicCalendarPage() {
       </section>
 
       {/* HELP CTA */}
-      <section className="bg-[#092c4d]">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+      <section className="bg-[#f5f8fc] px-5 py-14 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[28px] border border-white/[0.08] bg-gradient-to-br from-[#180a70] via-[#0D0357] to-[#080238] px-7 py-12 shadow-[0_24px_70px_rgba(13,3,87,0.14)] sm:px-12 sm:py-16 lg:px-16">
+          {/* Decorative glows */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-300/[0.08] blur-[90px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-white/[0.05] blur-[90px]"
+          />
+
+          {/* Corner badge icon */}
+          <div
+            aria-hidden="true"
+            className="absolute right-6 top-6 hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06] text-amber-200 backdrop-blur-md sm:flex"
+          >
+            <GraduationCap className="h-6 w-6" strokeWidth={1.7} />
+            <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.8)]" />
+          </div>
+
+          <div className="relative grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
-              <div className="mb-4 flex items-center gap-3">
-                <span className="h-px w-8 bg-[#d9a82e]" />
-                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#e0b637]">
-                  {CALENDAR_HELP_CTA.eyebrow}
+              <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-200/85">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-amber-200/25 bg-amber-200/[0.08]">
+                  <Sparkles className="h-3 w-3" />
                 </span>
+                {CALENDAR_HELP_CTA.eyebrow}
               </div>
 
-              <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
+              <h2 className="max-w-xl font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
                 {CALENDAR_HELP_CTA.title}
               </h2>
 
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/75">
+              <p className="mt-4 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
                 {CALENDAR_HELP_CTA.description}
               </p>
             </div>

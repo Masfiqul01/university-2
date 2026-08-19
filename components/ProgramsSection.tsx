@@ -604,7 +604,10 @@ function ApplicationModal({
         }
       }}
     >
-      <div className="max-h-[94dvh] w-full overflow-y-auto rounded-t-3xl bg-slate-50 shadow-2xl sm:max-w-3xl sm:rounded-3xl">
+      <div
+        data-lenis-prevent
+        className="max-h-[94dvh] w-full overflow-y-auto overscroll-contain rounded-t-3xl bg-slate-50 shadow-2xl sm:max-w-3xl sm:rounded-3xl"
+      >
         {/* =====================================================
             MODAL HEADER
         ====================================================== */}

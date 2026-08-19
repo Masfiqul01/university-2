@@ -1,5 +1,12 @@
 import Link from "next/link"
-import { ArrowRight, CheckCircle2, ChevronRight, ShieldCheck } from "lucide-react"
+import {
+  ArrowRight,
+  CheckCircle2,
+  ChevronRight,
+  GraduationCap,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react"
 
 import { SiteHeader } from "../../../components/site-header"
 import { SiteFooter } from "../../../components/site-footer"
@@ -31,9 +38,9 @@ const STAT_ICON_STYLES = [
   { bg: "bg-orange-100", text: "text-orange-600", hover: "group-hover:bg-orange-600" },
 ]
 
-const FACT_ICON_COLORS = ["text-[#F6B900]", "text-sky-300", "text-emerald-300", "text-rose-300"]
+const FACT_ICON_COLORS = ["text-amber-600", "text-sky-600", "text-emerald-600", "text-rose-600"]
 
-const ACHIEVEMENT_ICON_COLORS = ["text-violet-300", "text-orange-300", "text-teal-300", "text-fuchsia-300"]
+const ACHIEVEMENT_ICON_COLORS = ["text-violet-600", "text-orange-600", "text-teal-600", "text-fuchsia-600"]
 
 const FACILITY_ICON_STYLES = [
   { bg: "bg-blue-100", text: "text-blue-600", hover: "group-hover:bg-blue-600" },
@@ -292,7 +299,7 @@ export default function HistoryPage() {
                     className="group rounded-[1.5rem] border border-[#DCE7F1] bg-white p-6 shadow-[0_12px_40px_rgba(7,27,73,.045)] transition-all duration-200 hover:-translate-y-1 hover:border-[#F6B900]/50 hover:shadow-[0_18px_50px_rgba(13,3,87,.08)]"
                   >
                     <div
-                      className={`grid h-12 w-12 place-items-center rounded-xl bg-[#0D0357] ${color} transition-all duration-300 group-hover:bg-[#120A80] group-hover:scale-110`}
+                      className={`grid h-12 w-12 place-items-center rounded-xl border border-[#DCE7F1] bg-white ${color} shadow-sm transition-all duration-300 group-hover:scale-110`}
                     >
                       <Icon className="h-5 w-5" />
                     </div>
@@ -513,7 +520,7 @@ export default function HistoryPage() {
                       </div>
 
                       <div
-                        className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-[#0D0357] ${color} transition-all duration-300 group-hover:bg-[#120A80] group-hover:scale-110`}
+                        className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-[#DCE7F1] bg-white ${color} shadow-sm transition-all duration-300 group-hover:scale-110`}
                       >
                         <Icon className="h-5 w-5" />
                       </div>
@@ -618,36 +625,54 @@ export default function HistoryPage() {
         {/* =========================================================
             FINAL CTA
         ========================================================== */}
-        <section className="bg-[#F8FAFC] py-20 lg:py-28">
-          <div className="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#0D0357] to-[#1E1B4B] p-10 shadow-[0_30px_80px_rgba(13,3,87,0.18)] sm:p-14 text-center">
-              {/* Glow accents */}
-              <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-[#F6B900]/10 blur-3xl" />
-              <div className="absolute -right-20 -bottom-20 h-64 w-64 rounded-full bg-[#120A80]/50 blur-3xl" />
+        <section className="bg-[#F8FAFC] px-6 py-14 lg:px-8">
+          <div className="relative mx-auto max-w-7xl overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#180a70] via-[#0D0357] to-[#080238] shadow-[0_24px_70px_rgba(13,3,87,0.14)]">
+            {/* Glow accents */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-amber-300/[0.08] blur-[90px]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-28 left-10 h-64 w-64 rounded-full bg-white/[0.05] blur-[90px]"
+            />
 
-              <div className="relative flex flex-col items-center">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#FCD34D] backdrop-blur-sm">
+            {/* Corner badge icon */}
+            <div
+              aria-hidden="true"
+              className="absolute right-6 top-6 hidden h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-white/[0.06] text-amber-200 backdrop-blur-md sm:flex"
+            >
+              <GraduationCap className="h-6 w-6" strokeWidth={1.7} />
+              <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.8)]" />
+            </div>
+
+            <div className="relative flex flex-col gap-8 px-6 py-10 sm:px-10 sm:py-12 md:flex-row md:items-center md:justify-between lg:px-14">
+              <div className="min-w-0 flex-1">
+                <div className="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-amber-200/85">
+                  <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-amber-200/25 bg-amber-200/[0.08]">
+                    <Sparkles className="h-3 w-3" />
+                  </span>
                   {HISTORY_CTA.badge}
                 </div>
 
-                <h2 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                <h2 className="max-w-xl font-serif text-3xl font-bold leading-tight text-white sm:text-4xl">
                   {HISTORY_CTA.title}
                 </h2>
 
-                <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70">
+                <p className="mt-4 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
                   {HISTORY_CTA.description}
                 </p>
+              </div>
 
-                <div className="mt-10 flex flex-wrap justify-center gap-4">
-                  <CtaButton href={HISTORY_CTA.primary.href} variant="gold" size="lg" radius={12}>
-                    {HISTORY_CTA.primary.label}
-                    <ArrowRight className="h-4 w-4" />
-                  </CtaButton>
+              <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row md:items-center">
+                <CtaButton href={HISTORY_CTA.primary.href} variant="gold" size="lg" radius={12}>
+                  {HISTORY_CTA.primary.label}
+                  <ArrowRight className="h-4 w-4" />
+                </CtaButton>
 
-                  <CtaButton href={HISTORY_CTA.secondary.href} variant="ghost" size="lg" radius={12}>
-                    {HISTORY_CTA.secondary.label}
-                  </CtaButton>
-                </div>
+                <CtaButton href={HISTORY_CTA.secondary.href} variant="ghost" size="lg" radius={12}>
+                  {HISTORY_CTA.secondary.label}
+                </CtaButton>
               </div>
             </div>
           </div>

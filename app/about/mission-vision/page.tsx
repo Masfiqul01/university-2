@@ -8,7 +8,6 @@ import { ICON_MAP } from "@/lib/icon-map";
 import {
   ICON_MOTION,
   ICON_MOTION_FILL,
-  darkTileIcon,
   lightTileIcon,
 } from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
@@ -40,7 +39,6 @@ export default function MissionVisionPage() {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-brand-dark/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[570px] max-w-7xl items-center px-6 py-20 lg:px-8">
@@ -417,15 +415,7 @@ export default function MissionVisionPage() {
       </section>
 
       {/* COMMUNITY IMPACT */}
-      <section className="relative overflow-hidden bg-[#232771]">
-        <img
-          src={COMMUNITY_IMPACT.image}
-          alt={COMMUNITY_IMPACT.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-[#232771]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/80 to-[#232771]/45" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#180a70] via-[#0D0357] to-[#080238] shadow-[0_24px_70px_rgba(13,3,87,0.14)]">
 
         <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="max-w-3xl">
@@ -449,16 +439,18 @@ export default function MissionVisionPage() {
           <div className="mt-14 grid border-y border-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {COMMUNITY_IMPACT.items.map((item, index) => {
               const ImpactIcon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.title}
                   className="group border-b border-white/10 px-6 py-7 last:border-b-0 sm:border-r sm:last:border-r-0 lg:border-b-0"
                 >
-                  <ImpactIcon
-                    className={`h-5 w-5 ${darkTileIcon(index)} ${ICON_MOTION}`}
-                    strokeWidth={1.6}
-                  />
+                  <span
+                    className={`grid h-10 w-10 place-items-center rounded-xl bg-white ${color.text} shadow-sm ${ICON_MOTION}`}
+                  >
+                    <ImpactIcon className="h-5 w-5" strokeWidth={1.6} />
+                  </span>
 
                   <p className="mt-4 font-serif text-lg font-semibold text-white">
                     {item.title}
@@ -472,7 +464,7 @@ export default function MissionVisionPage() {
 
       {/* FINAL CTA */}
       <section className="bg-[#f5f8fc] px-5 py-12 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-[1500px] overflow-hidden bg-[#232771] shadow-[0_18px_55px_rgba(35,39,113,0.16)]">
+        <div className="relative mx-auto max-w-[1500px] overflow-hidden rounded-3xl border border-white/[0.08] bg-gradient-to-br from-[#180a70] via-[#0D0357] to-[#080238] shadow-[0_24px_70px_rgba(13,3,87,0.14)]">
           {/* subtle institutional line pattern */}
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.055]"

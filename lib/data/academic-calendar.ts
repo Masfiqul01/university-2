@@ -6,6 +6,9 @@ export const CALENDAR_HERO = {
   title: "Plan Your Academic Journey With Confidence",
   description:
     "Stay informed about semester schedules, registration, examinations, results, vacations and important academic deadlines at KKJSTU.",
+  image:
+    "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp",
+  imageAlt: "KACST campus",
 }
 
 export const CALENDAR_SELECTOR = {

@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, ArrowRight, ChevronDown, ExternalLink } from "lucide-react"
 import { NAV_ITEMS } from "@/lib/nav"
+import { AppLauncher } from "@/components/app-launcher"
 import { ICON_MAP } from "@/lib/icon-map"
 import { LOGO_URL } from "@/lib/site-assets"
 import { usePathname } from "next/navigation";
@@ -80,6 +81,7 @@ function Logo({ light = true }: { light?: boolean }) {
 export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false)
   const [expanded, setExpanded] = useState<string | null>(null)
+  const [launcherOpen, setLauncherOpen] = useState(false)
 
   /*
     ------------------------------------------------------------
@@ -333,7 +335,12 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
           className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-amber-400/[0.055] blur-3xl"
         />
 
-        <div className="relative max-h-[70vh] overflow-y-auto">
+        {/* data-lenis-prevent: let this panel scroll natively instead of
+            Lenis stealing the wheel for the page behind it. */}
+        <div
+          data-lenis-prevent
+          className="relative max-h-[70vh] overflow-y-auto overscroll-contain"
+        >
           <div className="relative p-5 xl:p-6">
 
             {/* =====================================================
@@ -602,6 +609,10 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
            <button
   type="button"
   aria-label="Applications menu"
+  aria-expanded={launcherOpen}
+  aria-haspopup="dialog"
+  data-app-launcher-trigger
+  onClick={() => setLauncherOpen((v) => !v)}
   className="hidden h-10 w-10 items-center justify-center rounded-full text-white transition-colors hover:bg-white/20 xl:flex"
 >
   <span className="grid grid-cols-3 gap-[4px]">
@@ -633,11 +644,23 @@ const wrapperClass = "fixed top-0 left-0 right-0 z-[100]";
       </div>
 
       {/* ======================================================
+          APP LAUNCHER (9-dot panel)
+          ====================================================== */}
+
+      <AppLauncher
+        open={launcherOpen}
+        onClose={() => setLauncherOpen(false)}
+      />
+
+      {/* ======================================================
           MOBILE MENU
           ====================================================== */}
 
       {open && (
-        <div className="mx-4 mb-4 max-h-[70vh] overflow-y-auto rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden">
+        <div
+          data-lenis-prevent
+          className="mx-4 mb-4 max-h-[70vh] overflow-y-auto overscroll-contain rounded-2xl bg-brand-dark/95 p-2 shadow-2xl backdrop-blur-xl xl:hidden"
+        >
           <nav className="flex flex-col">
             {NAV_ITEMS.map((item) => (
               <div
