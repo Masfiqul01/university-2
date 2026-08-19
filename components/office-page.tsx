@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ArrowRight, Check, Mail, MapPin, Phone } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { ICON_MOTION, lightTileIcon } from "@/lib/icon-colors"
 import type { OfficeProfile } from "@/lib/data/administration"
 
 const HERO_IMAGE =
@@ -20,15 +21,15 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[460px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[460px] overflow-hidden bg-brand-dark">
         <img
           src={HERO_IMAGE}
           alt="KACST campus"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/78" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -112,8 +113,10 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
                 />
               </div>
             ) : (
-              <div className="border border-slate-200 bg-[#edf5fb] p-10">
-                <div className="flex h-14 w-14 items-center justify-center border border-[#cfe0eb] bg-white text-[#175783]">
+              <div className="group border border-slate-200 bg-[#edf5fb] p-10">
+                <div
+                  className={`flex h-14 w-14 items-center justify-center border border-[#cfe0eb] bg-white text-violet-600 ${ICON_MOTION}`}
+                >
                   <MapPin className="h-6 w-6" strokeWidth={1.7} />
                 </div>
 
@@ -202,18 +205,24 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
               </h3>
 
               <div className="mt-6 space-y-3.5">
-                {profile.responsibilities.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-start gap-3 text-sm leading-6 text-slate-600"
-                  >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
-                      <Check className="h-3.5 w-3.5" strokeWidth={2.2} />
-                    </span>
+                {profile.responsibilities.map((item, index) => {
+                  const color = lightTileIcon(index)
 
-                    <span>{item}</span>
-                  </div>
-                ))}
+                  return (
+                    <div
+                      key={item}
+                      className="group/point flex items-start gap-3 text-sm leading-6 text-slate-600"
+                    >
+                      <span
+                        className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center ${color.bg} ${color.text} transition-all duration-300 group-hover/point:scale-125`}
+                      >
+                        <Check className="h-3.5 w-3.5" strokeWidth={2.2} />
+                      </span>
+
+                      <span>{item}</span>
+                    </div>
+                  )
+                })}
               </div>
             </div>
 
@@ -280,8 +289,10 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
         </h2>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          <div className="border border-slate-200 bg-white p-6">
-            <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+          <div className="group border border-slate-200 bg-white p-6">
+            <div
+              className={`flex h-11 w-11 items-center justify-center bg-blue-100 text-blue-600 ${ICON_MOTION}`}
+            >
               <Phone className="h-5 w-5" strokeWidth={1.7} />
             </div>
 
@@ -297,8 +308,10 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
             </a>
           </div>
 
-          <div className="border border-slate-200 bg-white p-6">
-            <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+          <div className="group border border-slate-200 bg-white p-6">
+            <div
+              className={`flex h-11 w-11 items-center justify-center bg-emerald-100 text-emerald-600 ${ICON_MOTION}`}
+            >
               <Mail className="h-5 w-5" strokeWidth={1.7} />
             </div>
 
@@ -314,8 +327,10 @@ export function OfficePage({ profile }: { profile: OfficeProfile }) {
             </a>
           </div>
 
-          <div className="border border-slate-200 bg-white p-6">
-            <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+          <div className="group border border-slate-200 bg-white p-6">
+            <div
+              className={`flex h-11 w-11 items-center justify-center bg-orange-100 text-orange-600 ${ICON_MOTION}`}
+            >
               <MapPin className="h-5 w-5" strokeWidth={1.7} />
             </div>
 

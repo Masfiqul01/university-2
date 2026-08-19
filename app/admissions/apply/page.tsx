@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ApplicationForm } from "./application-form"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION } from "@/lib/icon-colors"
 import { CtaButton } from "@/components/cta-button";
 import {
   APPLY_METADATA,
@@ -25,7 +26,7 @@ export default function ApplyPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#232771]">
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
           <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
@@ -99,8 +100,10 @@ export default function ApplyPage() {
           <ApplicationForm />
 
           <aside className="space-y-4">
-            <div className="border border-slate-200 bg-white p-6">
-              <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+            <div className="group border border-slate-200 bg-white p-6">
+              <div
+                className={`flex h-11 w-11 items-center justify-center bg-blue-100 text-blue-600 ${ICON_MOTION}`}
+              >
                 {(() => {
                   const Icon = ICON_MAP[BEFORE_YOU_START.icon]
                   return <Icon className="h-5 w-5" strokeWidth={1.7} />
@@ -124,8 +127,10 @@ export default function ApplyPage() {
               </div>
             </div>
 
-            <div className="border border-[#cfe1ee] bg-[#eaf4fb] p-6">
-              <div className="flex h-11 w-11 items-center justify-center bg-white text-[#175783]">
+            <div className="group border border-[#cfe1ee] bg-[#eaf4fb] p-6">
+              <div
+                className={`flex h-11 w-11 items-center justify-center bg-white text-emerald-600 ${ICON_MOTION}`}
+              >
                 {(() => {
                   const Icon = ICON_MAP[APPLY_HELP.icon]
                   return <Icon className="h-5 w-5" strokeWidth={1.7} />

@@ -23,6 +23,12 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  lightTileIcon,
+  plainIcon,
+} from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
 import {
   REQUIREMENTS_HERO,
@@ -60,7 +66,7 @@ export default function AdmissionRequirementsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#232771]">
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
         <div className="absolute inset-0 opacity-[0.07]">
           <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
 
@@ -127,15 +133,18 @@ export default function AdmissionRequirementsPage() {
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {QUICK_ELIGIBILITY.map((item) => {
+          {QUICK_ELIGIBILITY.map((item, index) => {
             const Icon = ICON_MAP[item.icon];
+            const color = lightTileIcon(index);
 
             return (
               <div
                 key={item.title}
-                className="border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
+                className="group border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                <div
+                  className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                >
                   <Icon className="h-5 w-5" strokeWidth={1.8} />
                 </div>
 
@@ -262,13 +271,15 @@ export default function AdmissionRequirementsPage() {
 
           {/* MOBILE REQUIREMENT CARDS */}
           <div className="mt-6 space-y-4 md:hidden">
-            {requirements.map((item) => (
+            {requirements.map((item, index) => (
               <div
                 key={item.criterion}
-                className="border border-slate-200 bg-white p-5"
+                className="group border border-slate-200 bg-white p-5"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                  >
                     <FileCheck2 className="h-4 w-4" />
                   </div>
 
@@ -329,7 +340,9 @@ export default function AdmissionRequirementsPage() {
       <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-            <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+            <div
+              className={`flex h-11 w-11 items-center justify-center bg-cyan-100 text-cyan-700 ${ICON_MOTION}`}
+            >
               {(() => {
                 const Icon = ICON_MAP[INTERNATIONAL_APPLICANTS.icon];
                 return <Icon className="h-5 w-5" />;
@@ -345,12 +358,14 @@ export default function AdmissionRequirementsPage() {
             </p>
 
             <div className="mt-6 space-y-3">
-              {INTERNATIONAL_APPLICANTS.points.map((item) => (
+              {INTERNATIONAL_APPLICANTS.points.map((item, index) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 text-sm text-slate-600"
+                  className="group/point flex items-start gap-3 text-sm text-slate-600"
                 >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#b28718]" />
+                  <Check
+                    className={`mt-0.5 h-4 w-4 shrink-0 ${plainIcon(index)} transition-transform duration-300 group-hover/point:scale-125`}
+                  />
                   <span>{item}</span>
                 </div>
               ))}
@@ -358,7 +373,9 @@ export default function AdmissionRequirementsPage() {
           </div>
 
           <div className="border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-            <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+            <div
+              className={`flex h-11 w-11 items-center justify-center bg-fuchsia-100 text-fuchsia-600 ${ICON_MOTION}`}
+            >
               {(() => {
                 const Icon = ICON_MAP[TRANSFER_APPLICANTS.icon];
                 return <Icon className="h-5 w-5" />;
@@ -374,12 +391,14 @@ export default function AdmissionRequirementsPage() {
             </p>
 
             <div className="mt-6 space-y-3">
-              {TRANSFER_APPLICANTS.points.map((item) => (
+              {TRANSFER_APPLICANTS.points.map((item, index) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 text-sm text-slate-600"
+                  className="group/point flex items-start gap-3 text-sm text-slate-600"
                 >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#b28718]" />
+                  <Check
+                    className={`mt-0.5 h-4 w-4 shrink-0 ${plainIcon(index + 4)} transition-transform duration-300 group-hover/point:scale-125`}
+                  />
                   <span>{item}</span>
                 </div>
               ))}
@@ -445,7 +464,9 @@ export default function AdmissionRequirementsPage() {
                   className="border border-[#cfe0ec] bg-white p-6 transition duration-200 hover:-translate-y-1 hover:shadow-md"
                 >
                   <div className="flex items-start justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${lightTileIcon(index).hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
 

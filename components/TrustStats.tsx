@@ -14,6 +14,7 @@ import {
   RESEARCH_AREAS,
 } from "@/lib/data";
 import { TRUST_STATS_INTRO } from "@/lib/data/home";
+import { CountUp } from "@/components/count-up";
 
 export const TrustStats: React.FC = () => {
   const stats = [
@@ -240,7 +241,7 @@ export const TrustStats: React.FC = () => {
               <span
                 className={`block text-[2.7rem] font-black leading-none tracking-[-0.05em] text-[#0D0357] transition-colors duration-300 sm:text-5xl ${stat.numberHover}`}
               >
-                {stat.value}
+                <CountUp value={String(stat.value)} />
               </span>
 
               {/* Label */}

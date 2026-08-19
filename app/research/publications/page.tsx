@@ -16,6 +16,8 @@ import {
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ICON_MOTION, lightTileIcon } from "@/lib/icon-colors";
+import { CountUp } from "@/components/count-up";
 import { CtaButton } from "@/components/cta-button";
 import {
   PUBLICATIONS_HERO,
@@ -43,7 +45,7 @@ export default function PublicationsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-[#232771]">
+      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
         <div className="absolute inset-0 opacity-10">
           <div
             className="h-full w-full"
@@ -129,7 +131,7 @@ export default function PublicationsPage() {
                   }`}
                 >
                   <p className="font-serif text-2xl font-semibold text-[#092c4d]">
-                    {stat.value}
+                    <CountUp value={stat.value} />
                   </p>
                   <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-500">
                     {stat.label}
@@ -165,13 +167,15 @@ export default function PublicationsPage() {
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {featuredPublications.map((publication) => (
+            {featuredPublications.map((publication, index) => (
               <article
                 key={publication.doi}
                 className="group border border-slate-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
                 <div className="flex items-center justify-between gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-11 w-11 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                  >
                     <FileText className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -321,14 +325,16 @@ export default function PublicationsPage() {
                 </thead>
 
                 <tbody>
-                  {PUBLICATIONS.map((publication) => (
+                  {PUBLICATIONS.map((publication, index) => (
                     <tr
                       key={publication.doi}
-                      className="border-b border-slate-100 transition hover:bg-[#f8fbfd]"
+                      className="group border-b border-slate-100 transition hover:bg-[#f8fbfd]"
                     >
                       <td className="max-w-[330px] px-6 py-6 align-top">
                         <div className="flex gap-4">
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                          <div
+                            className={`flex h-10 w-10 shrink-0 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                          >
                             <BookOpen className="h-4 w-4" />
                           </div>
 
@@ -396,13 +402,15 @@ export default function PublicationsPage() {
               MOBILE CARDS
           ===================================================== */}
           <div className="mt-8 grid gap-4 lg:hidden">
-            {PUBLICATIONS.map((publication) => (
+            {PUBLICATIONS.map((publication, index) => (
               <article
                 key={publication.doi}
-                className="border border-slate-200 bg-white p-5 shadow-sm"
+                className="group border border-slate-200 bg-white p-5 shadow-sm"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                  >
                     <BookOpen className="h-4 w-4" />
                   </div>
 
@@ -476,8 +484,10 @@ export default function PublicationsPage() {
       <section className="bg-[#f5f8fc]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-              <div className="flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783]">
+            <div className="group border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+              <div
+                className={`flex h-12 w-12 items-center justify-center bg-teal-100 text-teal-600 ${ICON_MOTION}`}
+              >
                 <FileText className="h-5 w-5" />
               </div>
 
@@ -508,7 +518,9 @@ export default function PublicationsPage() {
               id="report"
               className="border border-[#d5e5ef] bg-[#eaf3fa] p-8 sm:p-10"
             >
-              <div className="flex h-12 w-12 items-center justify-center bg-white text-[#175783]">
+              <div
+                className={`flex h-12 w-12 items-center justify-center bg-white text-rose-600 ${ICON_MOTION}`}
+              >
                 <CalendarDays className="h-5 w-5" />
               </div>
 

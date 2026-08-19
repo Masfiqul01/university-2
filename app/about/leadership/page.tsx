@@ -21,7 +21,7 @@ export default function LeadershipPage() {
       {/* =========================================================
           HERO SECTION
       ========================================================= */}
-      <section className="relative isolate overflow-hidden bg-[#0D0357] w-full">
+      <section className="relative isolate overflow-hidden bg-brand-dark w-full">
         {/* Background image */}
         <div className="absolute inset-0">
           <img
@@ -34,13 +34,13 @@ export default function LeadershipPage() {
         {/* Cinematic image tint */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[#0D0357]/20 mix-blend-multiply"
+          className="absolute inset-0 bg-brand-dark/20 mix-blend-multiply"
         />
 
         {/* Left dark gradient */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-[#0D0357] via-[#0D0357]/85 via-45% to-[#0D0357]/20"
+          className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30"
         />
 
         {/* Top darkness */}

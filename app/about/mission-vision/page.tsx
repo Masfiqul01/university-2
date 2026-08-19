@@ -5,6 +5,12 @@ import { ArrowRight, Check } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  darkTileIcon,
+  lightTileIcon,
+} from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
 import {
   MISSION_VISION_HERO,
@@ -27,15 +33,15 @@ export default function MissionVisionPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative min-h-[570px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[570px] overflow-hidden bg-brand-dark">
         <img
           src={MISSION_VISION_HERO.image}
           alt={MISSION_VISION_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/75 to-[#232771]/25" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[570px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -117,8 +123,10 @@ export default function MissionVisionPage() {
                   <div className="absolute inset-0 bg-[#232771]/25" />
                 </div>
 
-                <div className="p-8 sm:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center border border-[#cfe0eb] bg-[#edf5fb] text-[#175783]">
+                <div className="group p-8 sm:p-10">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center border border-[#cfe0eb] bg-sky-100 text-sky-600 ${ICON_MOTION}`}
+                  >
                     {(() => {
                       const Icon = ICON_MAP[MISSION.icon];
                       return <Icon className="h-6 w-6" strokeWidth={1.7} />;
@@ -138,18 +146,24 @@ export default function MissionVisionPage() {
                   </p>
 
                   <div className="mt-7 space-y-3">
-                    {MISSION.points.map((point) => (
-                      <div
-                        key={point}
-                        className="flex items-start gap-3 text-sm text-slate-600"
-                      >
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
-                          <Check className="h-3.5 w-3.5" strokeWidth={2.2} />
-                        </span>
+                    {MISSION.points.map((point, index) => {
+                      const color = lightTileIcon(index);
 
-                        <span>{point}</span>
-                      </div>
-                    ))}
+                      return (
+                        <div
+                          key={point}
+                          className="group/point flex items-start gap-3 text-sm text-slate-600"
+                        >
+                          <span
+                            className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center ${color.bg} ${color.text} transition-all duration-300 group-hover/point:scale-125`}
+                          >
+                            <Check className="h-3.5 w-3.5" strokeWidth={2.2} />
+                          </span>
+
+                          <span>{point}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -158,8 +172,10 @@ export default function MissionVisionPage() {
             {/* Vision */}
             <article className="overflow-hidden bg-[#232771] shadow-[0_12px_35px_rgba(35,39,113,0.12)]">
               <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-                <div className="flex flex-col justify-center p-8 sm:p-10">
-                  <div className="flex h-12 w-12 items-center justify-center border border-[#d9a82e]/35 bg-white/[0.06] text-[#e1b63b]">
+                <div className="group flex flex-col justify-center p-8 sm:p-10">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center border border-[#d9a82e]/35 bg-white/[0.06] text-amber-300 ${ICON_MOTION}`}
+                  >
                     {(() => {
                       const Icon = ICON_MAP[VISION.icon];
                       return <Icon className="h-6 w-6" strokeWidth={1.6} />;
@@ -231,15 +247,18 @@ export default function MissionVisionPage() {
           </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {PRIORITIES.map((item) => {
+            {PRIORITIES.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.title}
                   className="group border border-slate-200 bg-white p-6 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                  <div
+                    className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -283,8 +302,9 @@ export default function MissionVisionPage() {
           </div>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {CORE_VALUES.map((item) => {
+            {CORE_VALUES.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
@@ -292,7 +312,9 @@ export default function MissionVisionPage() {
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:border-[#cbdde9] hover:shadow-md"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
@@ -337,15 +359,18 @@ export default function MissionVisionPage() {
               </p>
 
               <div className="mt-8 space-y-3">
-                {STUDENT_PROMISE.map((item) => {
+                {STUDENT_PROMISE.map((item, index) => {
                   const Icon = ICON_MAP[item.icon];
+                  const color = lightTileIcon(index);
 
                   return (
                     <div
                       key={item.title}
-                      className="flex items-center gap-4 border border-slate-200 bg-white p-4"
+                      className="group flex items-center gap-4 border border-slate-200 bg-white p-4"
                     >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                      <div
+                        className={`flex h-10 w-10 shrink-0 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                      >
                         <Icon className="h-4.5 w-4.5" strokeWidth={1.7} />
                       </div>
 
@@ -422,16 +447,16 @@ export default function MissionVisionPage() {
           </div>
 
           <div className="mt-14 grid border-y border-white/10 sm:grid-cols-2 lg:grid-cols-4">
-            {COMMUNITY_IMPACT.items.map((item) => {
+            {COMMUNITY_IMPACT.items.map((item, index) => {
               const ImpactIcon = ICON_MAP[item.icon];
 
               return (
                 <div
                   key={item.title}
-                  className="border-b border-white/10 px-6 py-7 last:border-b-0 sm:border-r sm:last:border-r-0 lg:border-b-0"
+                  className="group border-b border-white/10 px-6 py-7 last:border-b-0 sm:border-r sm:last:border-r-0 lg:border-b-0"
                 >
                   <ImpactIcon
-                    className="h-5 w-5 text-[#e1b63b]"
+                    className={`h-5 w-5 ${darkTileIcon(index)} ${ICON_MOTION}`}
                     strokeWidth={1.6}
                   />
 

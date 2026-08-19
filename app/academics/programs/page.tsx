@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION } from "@/lib/icon-colors"
 import {
   PROGRAMS,
   PROGRAM_LEVELS as LEVELS,
@@ -36,7 +37,7 @@ function ProgramCard({ program }: { program: Program }) {
     <article className="group flex flex-col justify-between rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-slate-200 hover:shadow-[0_12px_30px_rgba(0,0,0,0.08)]">
       <div>
         <div
-          className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${program.iconBg} ${program.iconColor}`}
+          className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${program.iconBg} ${program.iconColor} ${ICON_MOTION}`}
         >
           <IconComponent className="h-5 w-5" />
         </div>
@@ -167,7 +168,7 @@ export default function AcademicPrograms() {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("${HERO_IMAGE}")` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b075b] via-[#111064]/95 to-[#111064]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[420px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-xl text-white">

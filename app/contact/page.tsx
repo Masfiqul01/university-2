@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ContactForm } from "@/components/contact-form"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION, ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { CtaButton } from "@/components/cta-button";
 import {
   CONTACT_METADATA,
@@ -29,15 +30,15 @@ export default function ContactPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[460px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[460px] overflow-hidden bg-brand-dark">
         <img
           src={CONTACT_HERO.image}
           alt={CONTACT_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/78" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -115,12 +116,15 @@ export default function ContactPage() {
           </h2>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {CONTACT_DETAILS.map((item) => {
+            {CONTACT_DETAILS.map((item, index) => {
               const Icon = ICON_MAP[item.icon]
+              const color = lightTileIcon(index)
 
               const inner = (
                 <>
-                  <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -187,8 +191,10 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="border border-slate-200 bg-white p-7">
-                <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+              <div className="group border border-slate-200 bg-white p-7">
+                <div
+                  className={`flex h-11 w-11 items-center justify-center bg-violet-100 text-violet-600 ${ICON_MOTION}`}
+                >
                   {(() => {
                     const Icon = ICON_MAP[OFFICE_HOURS_CARD.icon]
                     return <Icon className="h-5 w-5" strokeWidth={1.7} />

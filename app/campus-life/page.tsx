@@ -5,6 +5,11 @@ import { ArrowRight, Camera, MapPin, Play } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  lightTileIcon,
+} from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
 import {
   CAMPUS_LIFE_HERO,
@@ -30,16 +35,16 @@ export default function CampusLifePage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[560px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[560px] overflow-hidden bg-brand-dark">
         <img
           src={CAMPUS_LIFE_HERO.image}
           alt={CAMPUS_LIFE_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/75" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -144,15 +149,18 @@ export default function CampusLifePage() {
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {CAMPUS_HIGHLIGHTS.map((item) => {
+            {CAMPUS_HIGHLIGHTS.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.title}
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center border border-[#d5e5ef] bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center border border-[#d5e5ef] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -272,15 +280,18 @@ export default function CampusLifePage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {SUPPORT_SERVICES.map((item) => {
+              {SUPPORT_SERVICES.map((item, index) => {
                 const Icon = ICON_MAP[item.icon];
+                const color = lightTileIcon(index);
 
                 return (
                   <div
                     key={item.title}
                     className="border border-slate-200 bg-white p-6 shadow-sm"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 
@@ -325,15 +336,18 @@ export default function CampusLifePage() {
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {ACTIVITIES.map((item) => {
+            {ACTIVITIES.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.title}
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" />
                   </div>
 
@@ -417,7 +431,9 @@ export default function CampusLifePage() {
                   <div className="absolute inset-0 bg-[#232771]/10 transition group-hover:bg-[#232771]/30" />
 
                   <div className="absolute bottom-4 left-4 opacity-0 transition group-hover:opacity-100">
-                    <div className="flex h-9 w-9 items-center justify-center bg-white/90 text-[#175783]">
+                    <div
+                      className={`flex h-9 w-9 items-center justify-center bg-white/90 ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                    >
                       <Camera className="h-4 w-4" />
                     </div>
                   </div>

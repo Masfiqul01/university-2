@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/section-heading"
 import { AdministrationLeadership } from "@/components/administration-leadership"
 import { ArrowRight } from "lucide-react"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { OFFICES } from "@/lib/data/administration"
 
 export default function AdministrationPage() {
@@ -28,11 +29,12 @@ export default function AdministrationPage() {
           description="The Administration menu in the main navigation opens directly to this full page. Individual offices can be edited with official names, profiles and contact details."
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {OFFICES.map(({ title, href, icon }) => {
+          {OFFICES.map(({ title, href, icon }, index) => {
             const Icon = ICON_MAP[icon] ?? ICON_MAP.Users
+            const color = lightTileIcon(index)
             return (
               <Link key={href} href={href} className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:shadow-lg">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                <span className={`flex h-12 w-12 items-center justify-center rounded-xl ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}>
                   <Icon className="h-6 w-6" />
                 </span>
                 <h3 className="mt-5 font-serif text-xl font-bold">{title}</h3>

@@ -5,6 +5,11 @@ import { ArrowRight, Check, ChevronRight, UsersRound } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  lightTileIcon,
+} from "@/lib/icon-colors";
 import { CtaButton } from "@/components/cta-button";
 import {
   STUDENT_LIFE_HERO,
@@ -31,7 +36,7 @@ export default function StudentLifePage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[520px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[520px] overflow-hidden bg-brand-dark">
         <div className="absolute inset-0">
           <img
             src={STUDENT_LIFE_HERO.image}
@@ -39,9 +44,9 @@ export default function StudentLifePage() {
             className="h-full w-full object-cover"
           />
 
-          <div className="absolute inset-0 bg-[#232771]/80" />
+          <div className="absolute inset-0 bg-brand-dark/80" />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/75 to-[#232771]/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
         </div>
 
         <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-20 lg:px-8">
@@ -146,15 +151,18 @@ export default function StudentLifePage() {
             <div className="absolute left-[10%] right-[10%] top-7 hidden h-px bg-[#bfd1df] lg:block" />
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-              {JOURNEY_STAGES.map((stage) => {
+              {JOURNEY_STAGES.map((stage, index) => {
                 const Icon = ICON_MAP[stage.icon];
+                const color = lightTileIcon(index);
 
                 return (
                   <div
                     key={stage.title}
-                    className="relative border border-slate-200 bg-white p-6 shadow-sm"
+                    className="group relative border border-slate-200 bg-white p-6 shadow-sm"
                   >
-                    <div className="relative z-10 flex h-14 w-14 items-center justify-center border border-[#c7dce9] bg-white text-[#175783]">
+                    <div
+                      className={`relative z-10 flex h-14 w-14 items-center justify-center border border-[#c7dce9] ${color.bg} ${color.text} ${ICON_MOTION}`}
+                    >
                       <Icon className="h-6 w-6" strokeWidth={1.7} />
                     </div>
 
@@ -219,15 +227,18 @@ export default function StudentLifePage() {
               </p>
 
               <div className="mt-8 space-y-4">
-                {STUDENT_SUPPORT.map((item) => {
+                {STUDENT_SUPPORT.map((item, index) => {
                   const Icon = ICON_MAP[item.icon];
+                  const color = lightTileIcon(index);
 
                   return (
                     <div
                       key={item.title}
                       className="flex gap-4 border-b border-slate-200 pb-5 last:border-0"
                     >
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                      <div
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                      >
                         <Icon className="h-5 w-5" />
                       </div>
 
@@ -283,15 +294,18 @@ export default function StudentLifePage() {
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {ACTIVITIES.map((item) => {
+            {ACTIVITIES.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.title}
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -422,8 +436,9 @@ export default function StudentLifePage() {
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {EVENT_CARDS.map((item) => {
+            {EVENT_CARDS.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
@@ -431,7 +446,9 @@ export default function StudentLifePage() {
                   className="border border-slate-200 bg-white p-7"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" />
                     </div>
 
@@ -455,7 +472,9 @@ export default function StudentLifePage() {
       ========================================================= */}
       <section className="bg-page-pattern">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-8">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783]">
+          <div
+            className={`mx-auto flex h-12 w-12 items-center justify-center bg-fuchsia-100 text-fuchsia-600 ${ICON_MOTION}`}
+          >
             {(() => {
               const Icon = ICON_MAP[STUDENT_VOICES.icon];
               return <Icon className="h-5 w-5" />;

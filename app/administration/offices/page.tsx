@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { ADMIN_DIRECTORY } from "@/lib/data/administration"
 
 export const metadata: Metadata = {
@@ -23,15 +24,15 @@ export default function AdministrativeOfficesPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[460px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[460px] overflow-hidden bg-brand-dark">
         <img
           src={HERO_IMAGE}
           alt="KACST campus"
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/78" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -124,12 +125,15 @@ export default function AdministrativeOfficesPage() {
           </p>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {ADMIN_DIRECTORY.map((item) => {
+            {ADMIN_DIRECTORY.map((item, index) => {
               const Icon = ICON_MAP[item.icon] ?? ICON_MAP.Building2
+              const color = lightTileIcon(index)
 
               const card = (
                 <>
-                  <div className="flex h-12 w-12 items-center justify-center border border-[#cfe0eb] bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center border border-[#cfe0eb] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-6 w-6" strokeWidth={1.7} />
                   </div>
 

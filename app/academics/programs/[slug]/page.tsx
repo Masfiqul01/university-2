@@ -13,6 +13,7 @@ import {
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ICON_MAP } from "@/lib/icon-map"
+import { ICON_MOTION, lightTileIcon } from "@/lib/icon-colors"
 import { PROGRAMS } from "@/lib/data/programs"
 
 const HERO_IMAGE =
@@ -78,7 +79,7 @@ export default async function ProgramDetailPage({
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("${HERO_IMAGE}")` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0b075b] via-[#111064]/95 to-[#111064]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[420px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-2xl text-white">
@@ -168,9 +169,9 @@ export default async function ProgramDetailPage({
       {/* OVERVIEW */}
       <section className="px-4 pb-12 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.5fr_1fr]">
-          <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.08)] sm:p-10">
+          <div className="group rounded-3xl border border-slate-100 bg-white p-8 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.08)] sm:p-10">
             <div
-              className={`flex h-12 w-12 items-center justify-center rounded-xl ${program.iconBg} ${program.iconColor}`}
+              className={`flex h-12 w-12 items-center justify-center rounded-xl ${program.iconBg} ${program.iconColor} ${ICON_MOTION}`}
             >
               <Icon className="h-6 w-6" />
             </div>
@@ -195,18 +196,24 @@ export default async function ProgramDetailPage({
             </h3>
 
             <div className="mt-4 space-y-3">
-              {highlights.map((item) => (
-                <div
-                  key={item}
-                  className="flex items-start gap-3 text-sm leading-6 text-slate-600"
-                >
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-50/80 text-blue-600">
-                    <Check className="h-3.5 w-3.5" strokeWidth={2.4} />
-                  </span>
+              {highlights.map((item, index) => {
+                const color = lightTileIcon(index)
 
-                  <span>{item}</span>
-                </div>
-              ))}
+                return (
+                  <div
+                    key={item}
+                    className="group/point flex items-start gap-3 text-sm leading-6 text-slate-600"
+                  >
+                    <span
+                      className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full ${color.bg} ${color.text} transition-all duration-300 group-hover/point:scale-125`}
+                    >
+                      <Check className="h-3.5 w-3.5" strokeWidth={2.4} />
+                    </span>
+
+                    <span>{item}</span>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
@@ -277,7 +284,7 @@ export default async function ProgramDetailPage({
                   >
                     <div>
                       <div
-                        className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${item.iconBg} ${item.iconColor}`}
+                        className={`mb-5 flex h-11 w-11 items-center justify-center rounded-xl ${item.iconBg} ${item.iconColor} ${ICON_MOTION}`}
                       >
                         <RelatedIcon className="h-5 w-5" />
                       </div>

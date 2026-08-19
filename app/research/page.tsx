@@ -5,6 +5,12 @@ import { ArrowRight } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  lightTileIcon,
+} from "@/lib/icon-colors";
+import { CountUp } from "@/components/count-up";
 import { CtaButton } from "@/components/cta-button";
 import {
   RESEARCH_HERO,
@@ -29,16 +35,16 @@ export default function ResearchPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[560px] overflow-hidden bg-[#232771]">
+      <section className="relative min-h-[560px] overflow-hidden bg-brand-dark">
         <img
           src={RESEARCH_HERO.image}
           alt={RESEARCH_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#232771]/76" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#232771]/95 via-[#232771]/78 to-[#232771]/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -132,21 +138,24 @@ export default function ResearchPage() {
       <section className="border-y border-[#d9e5ef] bg-[#eaf3fa]">
         <div className="mx-auto max-w-7xl px-6 py-7 lg:px-8">
           <div className="grid divide-y divide-[#cdddea] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
-            {RESEARCH_STATS.map((item) => {
+            {RESEARCH_STATS.map((item, index) => {
               const Icon = ICON_MAP[item.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={item.label}
-                  className="flex items-center gap-4 px-5 py-5 first:pl-0 last:pr-0"
+                  className="group flex items-center gap-4 px-5 py-5 first:pl-0 last:pr-0"
                 >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-[#c8dcea] bg-white text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center border border-[#c8dcea] ${color.bg} ${color.text} ${ICON_MOTION}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
                   <div>
                     <p className="font-serif text-2xl font-bold text-[#092c4d]">
-                      {item.value}
+                      <CountUp value={item.value} />
                     </p>
 
                     <p className="mt-0.5 text-xs font-semibold uppercase tracking-wide text-slate-500">
@@ -184,15 +193,18 @@ export default function ResearchPage() {
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {RESEARCH_AREAS.map((area) => {
+            {RESEARCH_AREAS.map((area, index) => {
               const Icon = ICON_MAP[area.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={area.title}
                   className="group border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center border border-[#d5e5ef] bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center border border-[#d5e5ef] ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" strokeWidth={1.7} />
                   </div>
 
@@ -426,15 +438,18 @@ export default function ResearchPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {RESEARCH_OPPORTUNITIES.map((item) => {
+              {RESEARCH_OPPORTUNITIES.map((item, index) => {
                 const Icon = ICON_MAP[item.icon];
+                const color = lightTileIcon(index);
 
                 return (
                   <div
                     key={item.title}
                     className="group border border-[#d7e4ed] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
                   >
-                    <div className="flex h-11 w-11 items-center justify-center bg-[#edf5fb] text-[#175783] transition group-hover:bg-[#175783] group-hover:text-white">
+                    <div
+                      className={`flex h-11 w-11 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
 

@@ -13,6 +13,13 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import {
+  ICON_MOTION,
+  ICON_MOTION_FILL,
+  darkTileIcon,
+  lightTileIcon,
+} from "@/lib/icon-colors";
+import { CountUp } from "@/components/count-up";
 import { CtaButton } from "@/components/cta-button";
 import {
   CENTERS_HERO,
@@ -37,16 +44,16 @@ export default function ResearchCentersPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[520px] overflow-hidden bg-[#071f43]">
+      <section className="relative min-h-[520px] overflow-hidden bg-brand-dark">
         <img
           src={CENTERS_HERO.image}
           alt={CENTERS_HERO.imageAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-[#071f43]/80" />
+        <div className="absolute inset-0 bg-brand-dark/80" />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071f43]/98 via-[#071f43]/82 to-[#071f43]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
         <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
@@ -119,7 +126,7 @@ export default function ResearchCentersPage() {
                     className="border-l-2 border-[#d9a82e] pl-4"
                   >
                     <div className="font-serif text-2xl font-semibold text-[#092c4d]">
-                      {value}
+                      <CountUp value={value} />
                     </div>
 
                     <div className="mt-1 text-xs text-slate-500">
@@ -198,7 +205,7 @@ export default function ResearchCentersPage() {
 
           {/* Cards */}
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {RESEARCH_CENTERS.map((center) => {
+            {RESEARCH_CENTERS.map((center, index) => {
               const Icon = ICON_MAP[center.icon];
 
               return (
@@ -215,7 +222,9 @@ export default function ResearchCentersPage() {
 
                     <div className="absolute inset-0 bg-[#071f43]/30" />
 
-                    <div className="absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#071f43]/80 text-[#d9a82e] backdrop-blur-sm">
+                    <div
+                      className={`absolute left-5 top-5 flex h-11 w-11 items-center justify-center border border-white/30 bg-[#071f43]/80 ${darkTileIcon(index)} backdrop-blur-sm ${ICON_MOTION}`}
+                    >
                       <Icon className="h-5 w-5" strokeWidth={1.7} />
                     </div>
                   </div>
@@ -344,8 +353,10 @@ export default function ResearchCentersPage() {
 
               {/* Director */}
               <div className="mt-8 grid gap-5 border-y border-slate-100 py-6 sm:grid-cols-2">
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                <div className="group flex items-start gap-3">
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center bg-blue-100 text-blue-600 ${ICON_MOTION}`}
+                  >
                     <Users className="h-5 w-5" />
                   </div>
 
@@ -360,8 +371,10 @@ export default function ResearchCentersPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                <div className="group flex items-start gap-3">
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center bg-orange-100 text-orange-600 ${ICON_MOTION}`}
+                  >
                     <MapPin className="h-5 w-5" />
                   </div>
 
@@ -436,9 +449,11 @@ export default function ResearchCentersPage() {
             {FEATURED_PEOPLE.map((person, index) => (
               <div
                 key={`${person.name}-${index}`}
-                className="border border-slate-200 bg-white p-6 shadow-sm"
+                className="group border border-slate-200 bg-white p-6 shadow-sm"
               >
-                <div className="flex h-14 w-14 items-center justify-center border border-[#d7e5ef] bg-[#edf5fb] text-[#175783]">
+                <div
+                  className={`flex h-14 w-14 items-center justify-center border border-[#d7e5ef] ${lightTileIcon(index).bg} ${lightTileIcon(index).text} ${ICON_MOTION}`}
+                >
                   <Users className="h-6 w-6" strokeWidth={1.6} />
                 </div>
 
@@ -521,15 +536,18 @@ export default function ResearchCentersPage() {
       <section className="bg-[#f5f8fc]">
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-6 md:grid-cols-3">
-            {CENTER_RESOURCES.map((resource) => {
+            {CENTER_RESOURCES.map((resource, index) => {
               const Icon = ICON_MAP[resource.icon];
+              const color = lightTileIcon(index);
 
               return (
                 <div
                   key={resource.title}
                   className="border border-slate-200 bg-white p-7"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center bg-[#edf5fb] text-[#175783]">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center ${color.bg} ${color.text} ${color.hoverBg} ${ICON_MOTION_FILL}`}
+                  >
                     <Icon className="h-5 w-5" />
                   </div>
 
