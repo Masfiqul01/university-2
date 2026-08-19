@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import Script from 'next/script'
 import { PageMotion } from '@/components/page-motion'
+import { StudentChatWidget } from '@/components/student-chat-widget'
 import './globals.css'
 
 // Runs before the body is parsed so entry animations never flash their final
@@ -61,6 +62,7 @@ export default function RootLayout({
         </Script>
         <PageMotion />
         {children}
+        <StudentChatWidget />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
