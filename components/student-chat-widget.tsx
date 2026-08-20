@@ -18,7 +18,7 @@ import {
 
   Flow:
     1. closed   — just the floating button
-    2. form     — student fills name / age / roll / HSC + SSC reg
+    2. form     — student fills name + Bangladesh mobile number
     3. chat     — message thread opens
 
   The details and thread are kept in sessionStorage so moving between
@@ -27,10 +27,7 @@ import {
 
 type Student = {
   name: string
-  age: string
-  roll: string
-  hscRegistration: string
-  sscRegistration: string
+  phone: string
 }
 
 type ChatMessage = {
@@ -41,10 +38,7 @@ type ChatMessage = {
 
 const EMPTY_STUDENT: Student = {
   name: "",
-  age: "",
-  roll: "",
-  hscRegistration: "",
-  sscRegistration: "",
+  phone: "",
 }
 
 const STUDENT_KEY = "kacst.chat.student"
@@ -55,31 +49,31 @@ const FIELDS: {
   label: string
   placeholder: string
   inputMode?: "numeric"
+  autoComplete?: string
 }[] = [
-  { key: "name", label: "Student Name", placeholder: "Full name" },
-  { key: "age", label: "Age", placeholder: "e.g. 18", inputMode: "numeric" },
-  { key: "roll", label: "Roll", placeholder: "Class roll", inputMode: "numeric" },
   {
-    key: "hscRegistration",
-    label: "HSC Registration",
-    placeholder: "HSC registration no.",
-    inputMode: "numeric",
+    key: "name",
+    label: "Your Name",
+    placeholder: "Enter your full name",
+    autoComplete: "name",
   },
   {
-    key: "sscRegistration",
-    label: "SSC Registration",
-    placeholder: "SSC registration no.",
+    key: "phone",
+    label: "Mobile Number",
+    placeholder: "01XXXXXXXXX",
     inputMode: "numeric",
+    autoComplete: "tel",
   },
 ]
 
 /**
+
  * Sent once the form is submitted. It deliberately does not pretend an
  * adviser is already reading the thread — nothing is wired to a backend
  * yet, so promising a live reply would be a lie to the student.
  */
 const INTRO_MESSAGE =
-  "Thanks — your details are saved. Write your question below and the Academic Office will follow up using the contact details on record."
+  "Thanks! 😊 You’re all set. Just type your question below — we’re happy to help."
 
 export function StudentChatWidget() {
   const [open, setOpen] = useState(false)
@@ -89,7 +83,6 @@ export function StudentChatWidget() {
   const [thread, setThread] = useState<ChatMessage[]>([])
   const [draft, setDraft] = useState("")
 
-  const panelRef = useRef<HTMLDivElement>(null)
   const threadEndRef = useRef<HTMLDivElement>(null)
 
   /* Restore a previous session so the form is only asked once. */
@@ -137,6 +130,14 @@ export function StudentChatWidget() {
       if (!form[key].trim()) missing[key] = true
     })
 
+    const phone = form.phone.replace(/\s|-/g, "")
+    const validBdPhone = /^(?:01\d{9}|\+8801\d{9}|8801\d{9})$/.test(phone)
+
+    if (form.phone.trim() && !validBdPhone) {
+      setErrors({ ...missing, phone: true })
+      return
+    }
+
     if (Object.keys(missing).length > 0) {
       setErrors(missing)
       return
@@ -147,9 +148,9 @@ export function StudentChatWidget() {
     ]
 
     setErrors({})
-    setStudent(form)
+    setStudent({ name: form.name.trim(), phone })
     setThread(opening)
-    persist(form, opening)
+    persist({ name: form.name.trim(), phone }, opening)
   }
 
   const sendMessage = (event: React.FormEvent) => {
@@ -203,7 +204,6 @@ export function StudentChatWidget() {
 
       {/* ================= PANEL ================= */}
       <div
-        ref={panelRef}
         role="dialog"
         aria-label="Student chat"
         className={`fixed bottom-24 right-4 z-[200] flex w-[min(calc(100vw-2rem),380px)] flex-col overflow-hidden rounded-[20px] border border-slate-200 bg-white shadow-[0_24px_70px_rgba(13,3,87,0.22)] transition-all duration-200 sm:right-6 ${
@@ -221,11 +221,11 @@ export function StudentChatWidget() {
         {/* Header */}
         <div className="flex items-start justify-between gap-3 bg-brand-dark px-4 py-3.5 text-white">
           <div className="min-w-0">
-            <p className="text-sm font-bold">Student Help Desk</p>
+            <p className="text-sm font-bold">Student Help Desk 💬</p>
             <p className="mt-0.5 text-[11px] text-white/65">
               {student
                 ? `Signed in as ${student.name}`
-                : "Fill in your details to start"}
+                : "A quick way to get help"}
             </p>
           </div>
 
@@ -264,13 +264,12 @@ export function StudentChatWidget() {
                 <IdCard className="h-4 w-4" />
               </span>
               <p className="text-[11px] leading-5 text-slate-500">
-                Enter your student details so the Academic Office can identify
-                your record before replying.
+                Just your name and mobile number — then you can start chatting with us.
               </p>
             </div>
 
             <div className="space-y-3">
-              {FIELDS.map(({ key, label, placeholder, inputMode }) => (
+              {FIELDS.map(({ key, label, placeholder, inputMode, autoComplete }) => (
                 <div key={key}>
                   <label
                     htmlFor={`chat-${key}`}
@@ -284,6 +283,8 @@ export function StudentChatWidget() {
                     value={form[key]}
                     inputMode={inputMode}
                     placeholder={placeholder}
+                    autoComplete={autoComplete}
+                    maxLength={key === "phone" ? 14 : 80}
                     onChange={(event) => {
                       setForm((current) => ({
                         ...current,
@@ -300,7 +301,11 @@ export function StudentChatWidget() {
 
                   {errors[key] && (
                     <p className="mt-1 text-[10px] font-medium text-rose-500">
-                      {label} is required.
+                      {key === "phone"
+                        ? form.phone.trim()
+                          ? "Please enter a valid Bangladesh mobile number."
+                          : "Mobile number is required."
+                        : `${label} is required.`}
                     </p>
                   )}
                 </div>
@@ -311,7 +316,7 @@ export function StudentChatWidget() {
               type="submit"
               className="mt-4 flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-brand-dark text-sm font-bold text-white transition-colors hover:bg-[#120A80]"
             >
-              Start Chat
+              Continue to Chat
               <MessageSquare className="h-4 w-4" />
             </button>
           </form>
@@ -322,33 +327,21 @@ export function StudentChatWidget() {
               className="flex max-h-[46vh] min-h-[220px] flex-1 flex-col gap-2.5 overflow-y-auto overscroll-contain p-4"
               data-lenis-prevent
             >
-              {/* Student record chip */}
+              {/* Friendly student chip */}
               <div className="mb-1 rounded-xl border border-slate-200 bg-slate-50 p-3">
-                <div className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
-                    <User className="h-3.5 w-3.5" />
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                    <User className="h-4 w-4" />
                   </span>
-                  <p className="text-[11px] font-bold text-[#0D0357]">
-                    {student.name} · Age {student.age}
-                  </p>
+                  <div className="min-w-0">
+                    <p className="text-[12px] font-bold text-[#0D0357]">
+                      Hi, {student.name}! 👋
+                    </p>
+                    <p className="mt-0.5 truncate text-[10px] text-slate-500">
+                      We’re ready to help. What would you like to know?
+                    </p>
+                  </div>
                 </div>
-
-                <dl className="mt-2 grid grid-cols-3 gap-2 text-[10px]">
-                  {[
-                    ["Roll", student.roll],
-                    ["HSC Reg", student.hscRegistration],
-                    ["SSC Reg", student.sscRegistration],
-                  ].map(([label, value]) => (
-                    <div key={label} className="min-w-0">
-                      <dt className="font-semibold uppercase tracking-wider text-slate-400">
-                        {label}
-                      </dt>
-                      <dd className="truncate font-medium text-slate-600">
-                        {value}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
               </div>
 
               {thread.map((message) => (
@@ -374,7 +367,7 @@ export function StudentChatWidget() {
               <input
                 value={draft}
                 onChange={(event) => setDraft(event.target.value)}
-                placeholder="Write your question..."
+                placeholder="Type your question here..."
                 aria-label="Message"
                 className="h-10 min-w-0 flex-1 rounded-xl border border-slate-200 bg-slate-50/60 px-3 text-[13px] text-[#0D0357] outline-none transition-colors placeholder:text-slate-400 focus:border-amber-400 focus:bg-white"
               />
