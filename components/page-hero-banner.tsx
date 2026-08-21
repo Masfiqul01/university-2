@@ -134,7 +134,7 @@ export function PageHeroBanner({
   return (
     <section
       ref={section}
-      className="relative min-h-[560px] overflow-hidden bg-brand-dark sm:min-h-[600px] lg:min-h-[620px]"
+      className="relative min-h-[65vh] overflow-hidden bg-brand-dark"
     >
       <img
         ref={imageRef}
@@ -152,7 +152,7 @@ export function PageHeroBanner({
 
       <div
         data-hero-content
-        className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-20 sm:min-h-[600px] sm:py-24 lg:min-h-[620px] lg:px-8"
+        className="relative mx-auto flex min-h-[65vh] max-w-7xl items-center px-6 py-20 sm:py-24 lg:px-8"
       >
         <div ref={copyRef} className="max-w-4xl text-white">
           {crumbs && crumbs.length > 0 && (

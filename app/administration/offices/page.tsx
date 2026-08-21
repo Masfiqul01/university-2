@@ -24,7 +24,7 @@ export default function AdministrativeOfficesPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[460px] overflow-hidden bg-brand-dark">
+      <section className="relative min-h-[65vh] overflow-hidden bg-brand-dark">
         <img
           src={HERO_IMAGE}
           alt="KACST campus"
@@ -34,7 +34,7 @@ export default function AdministrativeOfficesPage() {
         <div className="absolute inset-0 bg-brand-dark/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
-        <div className="relative mx-auto flex min-h-[460px] max-w-7xl items-center px-6 py-20 lg:px-8">
+        <div className="relative mx-auto flex min-h-[65vh] max-w-7xl items-center px-6 py-20 lg:px-8">
           <div className="max-w-3xl">
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#d9a82e]" />

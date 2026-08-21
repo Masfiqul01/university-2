@@ -10,19 +10,31 @@ export function PageHero({
   eyebrow,
   crumbs,
   image = "/images/campus-green.png",
+  tall = false,
 }: {
   title: string
   subtitle?: string
   eyebrow?: string
   crumbs: Crumb[]
   image?: string
+  /**
+   * Opt-in 65vh hero. Off by default so the catch-all pages that share this
+   * component keep their existing compact banner.
+   */
+  tall?: boolean
 }) {
   return (
-    <section className="relative isolate overflow-hidden">
+    <section
+      className={`relative isolate overflow-hidden ${tall ? "min-h-[65vh]" : ""}`}
+    >
       <img src={imageUrl(image)} alt="" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-14 pt-16 lg:px-8">
+      <div
+        className={`relative mx-auto max-w-7xl px-4 pb-14 pt-16 lg:px-8 ${
+          tall ? "flex min-h-[65vh] flex-col justify-center" : ""
+        }`}
+      >
         <nav aria-label="Breadcrumb" className="mb-5 flex flex-wrap items-center gap-1 text-xs text-white/70">
           {crumbs.map((c, i) => (
             <span key={i} className="flex items-center gap-1">

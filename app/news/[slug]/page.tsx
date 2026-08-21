@@ -55,6 +55,7 @@ export default async function NewsDetailPage({
           { label: article.category },
         ]}
         image="/images/hero-campus.png"
+        tall
       />
 
       <section className="news-content-section w-full bg-(--news-section-bg) py-14">

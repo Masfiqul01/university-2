@@ -73,6 +73,7 @@ export default async function EventDetailPage({
           { label: "Events", href: "/events" },
         ]}
         image="/images/hero-campus.png"
+        tall
       />
 
       <section className="events-content-section w-full bg-(--events-section-bg) py-14">

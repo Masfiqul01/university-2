@@ -54,7 +54,7 @@ export default function AcademicCalendarPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-brand-dark">
+      <section className="relative min-h-[65vh] overflow-hidden bg-brand-dark">
         <img
           src={CALENDAR_HERO.image}
           alt={CALENDAR_HERO.imageAlt}
@@ -68,7 +68,7 @@ export default function AcademicCalendarPage() {
           <div className="absolute -bottom-32 left-20 h-96 w-96 rounded-full border border-white" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div className="relative mx-auto flex min-h-[65vh] max-w-7xl items-center px-6 py-20 lg:px-8 lg:py-24">
           <div className="max-w-3xl">
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#d9a82e]" />

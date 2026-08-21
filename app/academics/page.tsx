@@ -154,7 +154,7 @@ export default function FacultiesDepartmentsPage() {
         {/* =====================================================
             HERO
         ====================================================== */}
-        <section className="relative min-h-[390px] overflow-hidden bg-brand-dark">
+        <section className="relative min-h-[65vh] overflow-hidden bg-brand-dark">
           <img
             src={ACADEMICS_HERO.image}
             alt={ACADEMICS_HERO.imageAlt}
@@ -163,7 +163,7 @@ export default function FacultiesDepartmentsPage() {
 
           <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
-          <div className="relative mx-auto flex min-h-[390px] max-w-[1180px] items-center px-5 py-16 sm:px-8 lg:px-10">
+          <div className="relative mx-auto flex min-h-[65vh] max-w-[1180px] items-center px-5 py-16 sm:px-8 lg:px-10">
             <div className="max-w-[650px]">
               <div className="mb-4 flex items-center gap-3">
                 <span className="h-px w-7 bg-[#f6b900]" />

@@ -116,6 +116,7 @@ export default function EventsPage() {
         subtitle="Join our exciting events, seminars, workshops and programs happening in and around our campus."
         crumbs={[{ label: "Home", href: "/" }, { label: "News & Events", href: "/news" }, { label: "Events" }]}
         image="/images/hero-campus.png"
+        tall
       />
 
       <section className="events-content-section w-full bg-(--events-section-bg) py-14">

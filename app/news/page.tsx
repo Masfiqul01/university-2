@@ -71,6 +71,7 @@ export default function NewsPage() {
         subtitle="Stay updated with the latest news, announcements and events happening in our college community."
         crumbs={[{ label: "Home", href: "/" }, { label: "News & Events" }]}
         image="/images/hero-campus.png"
+        tall
       />
 
       <section className="news-content-section w-full bg-(--news-section-bg) py-14">

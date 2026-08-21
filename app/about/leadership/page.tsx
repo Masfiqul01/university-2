@@ -126,11 +126,12 @@ export default function LeadershipPage() {
             >
               <div className="flex gap-5">
                 {/* Portrait */}
-                <div className="relative h-[190px] w-[135px] shrink-0 overflow-hidden rounded-[18px] bg-slate-100 sm:h-[210px] sm:w-[150px]">
+                <div className="relative h-[186px] w-[150px] shrink-0 overflow-hidden rounded-[20px] bg-slate-100 sm:h-[224px] sm:w-[180px]">
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                    style={{ objectPosition: leader.objectPosition }}
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                   />
 
                   <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/20 to-transparent" />

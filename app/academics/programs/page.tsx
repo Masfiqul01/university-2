@@ -163,14 +163,14 @@ export default function AcademicPrograms() {
       <SiteHeader />
       <main className="min-h-screen bg-[#fafafb] text-slate-800">
       {/* HERO SECTION */}
-      <section className="relative min-h-[420px] overflow-hidden">
+      <section className="relative min-h-[65vh] overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url("${HERO_IMAGE}")` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
 
-        <div className="relative mx-auto flex min-h-[420px] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto flex min-h-[65vh] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
           <div className="max-w-xl text-white">
             {/* Breadcrumb */}
             <div className="mb-6 flex items-center gap-2 text-xs font-medium text-white/80">

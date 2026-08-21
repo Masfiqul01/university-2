@@ -28,7 +28,7 @@ export const HOME_HERO = {
 }
 
 export const HERO_SIDE_LINKS = [
-  { label: "Virtual Tour", icon: "Compass", href: "/campus-life" },
+  { label: "Teacher Portal", icon: "Presentation", href: "/teacher-portal" },
   { label: "Apply Now", icon: "GraduationCap", href: "/admissions/apply" },
   { label: "Student Portal", icon: "UserRound", href: "/student-portal" },
   { label: "Research", icon: "FlaskConical", href: "/research" },
