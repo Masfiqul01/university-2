@@ -3,6 +3,7 @@
 import { SiteHeader } from "@/components/site-header";
 import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHeroBanner } from "@/components/page-hero-banner";
 import {
   ArrowRight,
   ChevronRight,
@@ -21,142 +22,19 @@ export default function LeadershipPage() {
       {/* =========================================================
           HERO SECTION
       ========================================================= */}
-      <section className="relative isolate overflow-hidden bg-brand-dark w-full">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img
-            src={COLLEGE_IMAGE}
-            alt="Khanjahan Ali College of Science & Technology"
-            className="h-full w-full object-cover object-center"
-          />
-        </div>
+      <PageHeroBanner
+        eyebrow="University Administration"
+        titleLines={["Leadership"]}
+        description="Meet the visionary leaders who guide Khanjahan Ali College of Science & Technology towards excellence in education, research and innovation."
+        image={COLLEGE_IMAGE}
+        imageAlt="Khanjahan Ali College of Science & Technology"
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Administration", href: "/administration" },
+          { label: "Leadership" },
+        ]}
+      />
 
-        {/* Cinematic image tint */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-brand-dark/20 mix-blend-multiply"
-        />
-
-        {/* Left dark gradient */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30"
-        />
-
-        {/* Top darkness */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#07002f]/55 to-transparent"
-        />
-
-        {/* Right soft blue glow */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-40 top-1/4 h-[420px] w-[420px] rounded-full bg-blue-300/10 blur-[120px]"
-        />
-
-        {/* Left ambient glow */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-40 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-indigo-400/10 blur-[120px]"
-        />
-
-        {/* Subtle pattern */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-[0.035]"
-          style={{
-            backgroundImage: `
-              linear-gradient(
-                135deg,
-                rgba(255,255,255,0.8) 25%,
-                transparent 25%
-              ),
-              linear-gradient(
-                225deg,
-                rgba(255,255,255,0.8) 25%,
-                transparent 25%
-              )
-            `,
-            backgroundPosition: "0 0, 18px 0",
-            backgroundSize: "36px 36px",
-          }}
-        />
-
-        {/* =======================================================
-            HERO CONTENT
-        ======================================================= */}
-        <div className="relative mx-auto max-w-[1540px] px-5 pb-24 pt-28 sm:px-8 sm:pb-28 sm:pt-32 lg:px-12 lg:pb-32 lg:pt-36">
-          {/* Breadcrumb */}
-          <div className="flex flex-wrap items-center gap-2 text-sm font-medium text-white/70">
-            <Link
-              href="/"
-              className="transition-colors duration-200 hover:text-white"
-            >
-              Home
-            </Link>
-
-            <ChevronRight className="h-4 w-4 shrink-0 text-white/40" />
-
-            <Link
-              href="/administration"
-              className="transition-colors duration-200 hover:text-white"
-            >
-              Administration
-            </Link>
-
-            <ChevronRight className="h-4 w-4 shrink-0 text-white/40" />
-
-            <span className="font-semibold text-white">
-              Leadership
-            </span>
-          </div>
-
-          {/* Hero content */}
-          <div className="mt-12 max-w-4xl lg:mt-14">
-            {/* Eyebrow */}
-            <div className="mb-2 flex items-center gap-3">
-              <span
-                aria-hidden="true"
-                className="relative flex h-2.5 w-2.5 items-center justify-center"
-              >
-                <span className="absolute h-full w-full animate-ping rounded-full bg-amber-400/40" />
-
-                <span className="relative h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_18px_rgba(251,191,36,0.9)]" />
-              </span>
-
-              <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-white/65 sm:text-xs">
-                University Administration
-              </span>
-            </div>
-
-            {/* Title */}
-            <h1 className="max-w-3xl font-serif text-5xl font-bold leading-[0.9] tracking-[-0.045em] text-white sm:text-6xl md:text-7xl lg:text-[82px] xl:text-[92px]">
-              Leadership
-            </h1>
-
-            {/* Description */}
-            <p className="mt-5 max-w-2xl text-[10px] leading-7 text-white/75 sm:text-lg sm:leading-8 lg:text-md">
-              Meet the visionary leaders who guide Khanjahan Ali
-              College of Science & Technology towards excellence in
-              education, research and innovation.
-            </p>
-
-            {/* Accent */}
-            <div className="mt-8 flex items-center gap-3">
-              <div className="h-1 w-16 rounded-full bg-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.35)]" />
-
-              <div className="h-px w-20 bg-white/20" />
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom transition */}
-        <div
-          aria-hidden="true"
-          className="absolute bottom-[-1px] left-0 right-0 h-8 rounded-t-[35px] bg-[#f7f8fc] sm:h-12 sm:rounded-t-[45px] lg:h-16 lg:rounded-t-[60px]"
-        />
-      </section>
 
       {/* =========================================================
           MAIN CONTENT

@@ -25,6 +25,8 @@ import gsap from "gsap"
 import { SiteHeader } from "../../../components/site-header"
 import { SiteFooter } from "../../../components/site-footer"
 import { ICON_MAP } from "@/lib/icon-map"
+import { PageHeroBanner } from "@/components/page-hero-banner"
+import { imageUrl } from "@/lib/site-assets"
 import { CountUp } from "@/components/count-up"
 import { ICON_MOTION, darkTileIcon, lightTileIcon } from "@/lib/icon-colors"
 import { CtaButton } from "@/components/cta-button"
@@ -328,131 +330,17 @@ export default function ClubsOrganizationsPage() {
             HERO
         ====================================================== */}
 
-        <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
-          <div
-            className="
-              absolute
-              -right-20
-              top-10
-              h-48
-              w-48
-              rounded-full
-              bg-[#F6B900]/10
-              blur-3xl
-            "
-            data-float
-            aria-hidden="true"
-          />
+        <PageHeroBanner
+          eyebrow={CLUBS_HERO.badge}
+          titleLines={[CLUBS_HERO.title]}
+          titleHighlight={CLUBS_HERO.titleHighlight}
+          description={CLUBS_HERO.description}
+          image={imageUrl("/images/campus-activities.png")}
+          imageAlt="KACST students taking part in campus activities"
+          primary={CLUBS_HERO.primary}
+          secondary={CLUBS_HERO.secondary}
+        />
 
-          <div
-            className="
-              absolute
-              -left-20
-              bottom-0
-              h-56
-              w-56
-              rounded-full
-              bg-[#120A80]
-              blur-3xl
-            "
-            data-float
-            aria-hidden="true"
-          />
-
-          <div
-            className="absolute inset-0 opacity-80"
-            aria-hidden="true"
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(246,185,0,0.10),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(18,10,128,0.55),transparent_35%)]" />
-          </div>
-
-          <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pb-24 lg:pt-28">
-            <div className="max-w-3xl">
-
-              <div
-                data-hero-content
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  border
-                  border-white/10
-                  bg-white/[0.06]
-                  px-3.5
-                  py-1.5
-                  text-[10px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.16em]
-                  text-[#FCD34D]
-                "
-              >
-                <Users className="h-3.5 w-3.5" />
-                {CLUBS_HERO.badge}
-              </div>
-
-              <h1
-                data-hero-content
-                className="
-                  mt-5
-                  text-4xl
-                  font-black
-                  tracking-tight
-                  text-white
-                  sm:text-5xl
-                  lg:text-6xl
-                "
-              >
-                {CLUBS_HERO.title}
-                <span className="text-[#F6B900]">
-                  {" "}
-                  {CLUBS_HERO.titleHighlight}
-                </span>
-              </h1>
-
-              <p
-                data-hero-content
-                className="
-                  mt-5
-                  max-w-2xl
-                  text-sm
-                  leading-7
-                  text-white/65
-                  sm:text-base
-                  sm:leading-8
-                "
-              >
-                {CLUBS_HERO.description}
-              </p>
-
-              <div
-                data-hero-content
-                className="mt-7 flex flex-wrap gap-3"
-              >
-                <CtaButton
-                  href={CLUBS_HERO.primary.href}
-                  variant="gold"
-                  size="sm"
-                  radius={12}
-                >
-                  {CLUBS_HERO.primary.label}
-                  <ArrowUpRight className="h-4 w-4" />
-                </CtaButton>
-
-                <CtaButton
-                  href={CLUBS_HERO.secondary.href}
-                  variant="ghost"
-                  size="sm"
-                  radius={12}
-                >
-                  {CLUBS_HERO.secondary.label}
-                  <ChevronRight className="h-4 w-4" />
-                </CtaButton>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* =====================================================
             STATS

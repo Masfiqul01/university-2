@@ -8,10 +8,10 @@ import {
   motion,
   useScroll,
   useSpring,
-  useTransform,
 } from "motion/react";
 
 import { ArrowUpRight, GraduationCap, Sparkles } from "lucide-react";
+import { PageHeroBanner } from "@/components/page-hero-banner";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -144,9 +144,6 @@ function StatCard({
 
 export default function AcademicFacilitiesPage() {
   const root = useRef<HTMLDivElement | null>(null);
-  const heroImage = useRef<HTMLDivElement | null>(null);
-  const heroGlow = useRef<HTMLDivElement | null>(null);
-
   const { scrollYProgress } = useScroll();
 
   const progress = useSpring(scrollYProgress, {
@@ -155,18 +152,6 @@ export default function AcademicFacilitiesPage() {
     restDelta: 0.001,
   });
 
-  const heroScale = useTransform(
-    scrollYProgress,
-    [0, 0.4],
-    [1, 1.12]
-  );
-
-  const heroY = useTransform(
-    scrollYProgress,
-    [0, 0.4],
-    [0, 90]
-  );
-
   /* =========================================================
      GSAP
   ========================================================= */
@@ -174,58 +159,6 @@ export default function AcademicFacilitiesPage() {
   useGSAP(
     () => {
       const ctx = gsap.context(() => {
-        /* Hero intro */
-
-        const intro = gsap.timeline({
-          defaults: {
-            ease: "power3.out",
-          },
-        });
-
-        intro
-          .from(".hero-kicker", {
-            opacity: 0,
-            y: 20,
-            duration: 0.7,
-          })
-          .from(
-            ".hero-title-line",
-            {
-              opacity: 0,
-              yPercent: 110,
-              stagger: 0.12,
-              duration: 1.1,
-            },
-            "-=0.35"
-          )
-          .from(
-            ".hero-copy",
-            {
-              opacity: 0,
-              y: 24,
-              duration: 0.8,
-            },
-            "-=0.45"
-          )
-          .from(
-            ".hero-actions",
-            {
-              opacity: 0,
-              y: 20,
-              duration: 0.75,
-            },
-            "-=0.4"
-          )
-          .from(
-            ".hero-meta",
-            {
-              opacity: 0,
-              y: 20,
-              duration: 0.7,
-            },
-            "-=0.35"
-          );
-
         /* Generic reveal */
 
         gsap.utils.toArray(".gsap-reveal").forEach((item) => {
@@ -302,33 +235,6 @@ export default function AcademicFacilitiesPage() {
             }
           );
         });
-
-        /* Hero glow */
-
-        if (heroGlow.current) {
-          gsap.to(heroGlow.current, {
-            y: 80,
-            x: 30,
-            duration: 5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-          });
-        }
-
-        /* Hero image */
-
-        if (heroImage.current) {
-          gsap.to(heroImage.current, {
-            scale: 1.08,
-            scrollTrigger: {
-              trigger: ".hero-section",
-              start: "top top",
-              end: "bottom top",
-              scrub: 1.2,
-            },
-          });
-        }
 
         /* Parallax images */
 
@@ -412,99 +318,17 @@ export default function AcademicFacilitiesPage() {
             HERO
         ====================================================== */}
 
-        <section className="hero-section relative min-h-[70vh] overflow-hidden bg-brand-dark">
-          <motion.div
-            ref={heroImage}
-            style={{
-              scale: heroScale,
-              y: heroY,
-            }}
-            className="absolute inset-0"
-          >
-            <img
-              src={FACULTIES_PAGE_HERO.image}
-              alt={FACULTIES_PAGE_HERO.imageAlt}
-              className="h-full w-full object-cover"
-            />
+        <PageHeroBanner
+          eyebrow={FACULTIES_PAGE_HERO.badge}
+          titleLines={FACULTIES_PAGE_HERO.titleLines}
+          description={FACULTIES_PAGE_HERO.description}
+          image={FACULTIES_PAGE_HERO.image}
+          imageAlt={FACULTIES_PAGE_HERO.imageAlt}
+          primary={FACULTIES_PAGE_HERO.primary}
+          secondary={FACULTIES_PAGE_HERO.secondary}
+          stats={FACULTIES_PAGE_HERO.stats}
+        />
 
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
-          </motion.div>
-
-          <div
-            ref={heroGlow}
-            className="absolute right-[10%] top-[18%] h-56 w-56 rounded-full bg-[#fd9900]/20 blur-[90px]"
-          />
-
-          <div className="relative mx-auto flex min-h-[70vh] max-w-[1440px] items-center px-6 py-10 sm:px-8 lg:px-10 lg:py-12">
-            <div className="w-full">
-              <div className="max-w-5xl">
-                <div className="hero-kicker mb-4 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.25em] text-[#f8d87d]">
-                  <span className="h-px w-10 bg-[#fd9900]" />
-
-                  {FACULTIES_PAGE_HERO.badge}
-                </div>
-
-                <h1 className="max-w-4xl text-3xl font-black leading-[1.02] tracking-[-0.04em] text-white sm:text-4xl lg:text-5xl">
-                  <span className="hero-title-line block">
-                    {FACULTIES_PAGE_HERO.titleLines[0]}
-                  </span>
-
-                  <span className="hero-title-line block text-[#f8d87d]">
-                    {FACULTIES_PAGE_HERO.titleLines[1]}
-                  </span>
-                </h1>
-
-                <p className="hero-copy mt-4 max-w-xl text-sm leading-7 text-slate-300 sm:text-base">
-                  {FACULTIES_PAGE_HERO.description}
-                </p>
-
-                <div className="hero-actions mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Link
-                    href="#academics"
-                    className="group inline-flex h-11 items-center justify-center gap-3 rounded-xl bg-white px-5 text-sm font-bold text-[#0b0754] transition hover:bg-[#fff4d8]"
-                  >
-                    {FACULTIES_PAGE_HERO.primary.label}
-
-                    <ArrowUpRight
-                      size={17}
-                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </Link>
-
-                  <Link
-                    href="#facilities"
-                    className="group inline-flex h-11 items-center justify-center gap-3 rounded-xl border border-white/25 bg-white/5 px-5 text-sm font-bold text-white backdrop-blur-md transition hover:bg-white/10"
-                  >
-                    {FACULTIES_PAGE_HERO.secondary.label}
-
-                    <span className="transition-transform group-hover:translate-x-1">
-                      →
-                    </span>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="hero-meta mt-8 grid max-w-4xl border-t border-white/15 sm:grid-cols-4">
-                {[
-                  ...FACULTIES_PAGE_HERO.stats.map((stat) => [stat.value, stat.label] as const),
-                ].map(([number, label]) => (
-                  <div
-                    key={label}
-                    className="border-b border-white/10 px-0 py-4 sm:border-b-0 sm:border-r sm:px-6 sm:first:pl-0 sm:last:border-r-0"
-                  >
-                    <div className="text-xl font-black text-white">
-                      {number}
-                    </div>
-
-                    <div className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                      {label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* =====================================================
             STAT STRIP

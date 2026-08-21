@@ -16,6 +16,8 @@ import {
 
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PageHeroBanner } from "@/components/page-hero-banner";
+import { imageUrl } from "@/lib/site-assets";
 import { ICON_MOTION, lightTileIcon } from "@/lib/icon-colors";
 import { CountUp } from "@/components/count-up";
 import { CtaButton } from "@/components/cta-button";
@@ -45,56 +47,15 @@ export default function PublicationsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="h-full w-full"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px)",
-              backgroundSize: "42px 42px",
-            }}
-          />
-        </div>
-
-        <div className="absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#d9a82e]/10 blur-3xl" />
-
-        <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-28">
-          <div className="max-w-4xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                {PUBLICATIONS_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[58px]">
-              {PUBLICATIONS_HERO.titleLines[0]}
-              <br />
-              <span className="text-[#e1b63b]">
-                {PUBLICATIONS_HERO.titleLines[1]}
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              {PUBLICATIONS_HERO.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={PUBLICATIONS_HERO.primary.href} variant="gold" radius={0}>
-                {PUBLICATIONS_HERO.primary.label}
-                <Search className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={PUBLICATIONS_HERO.secondary.href} variant="ghost" radius={0}>
-                {PUBLICATIONS_HERO.secondary.label}
-                <Download className="h-4 w-4" />
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow={PUBLICATIONS_HERO.eyebrow}
+        titleLines={PUBLICATIONS_HERO.titleLines}
+        description={PUBLICATIONS_HERO.description}
+        image={imageUrl("/images/campus-library.png")}
+        imageAlt="KACST library and study collection"
+        primary={PUBLICATIONS_HERO.primary}
+        secondary={PUBLICATIONS_HERO.secondary}
+      />
 
       {/* =========================================================
           INTRO / STATS

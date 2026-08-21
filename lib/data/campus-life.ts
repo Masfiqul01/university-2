@@ -162,43 +162,63 @@ export const ACTIVITIES = [
 
 export const GALLERY_INTRO = {
   eyebrow: "Campus Gallery",
-  title: "A Glimpse of Campus Life",
+  titleLead: "A Glimpse of",
+  titleAccent: "Campus Life",
   description:
     "Capture the places, people and moments that make the KKJSTU experience unique.",
   note: "Campus Moments",
+  cta: { label: "Explore More Moments", href: "#gallery" },
 }
 
+/**
+ * Five cards laid out as one tall card on the left and a 2x2 block on the
+ * right. `feature` marks the tall one; its badge is the gold accent while the
+ * rest use the navy badge.
+ */
 export const GALLERY_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1200&q=85",
-    alt: "University campus building",
-    size: "large",
+    src: "/images/campus-library.png",
+    alt: "Students studying in the KKJSTU library",
+    title: "Modern Library",
+    caption: "A space to learn, explore and grow.",
+    icon: "Building2",
+    feature: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=85",
-    alt: "University campus walkway",
-    size: "small",
+    src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=85",
+    alt: "Graduating students throwing their caps in the air",
+    title: "Celebrating Achievements",
+    caption: "Milestones today, leaders tomorrow.",
+    icon: "GraduationCap",
   },
   {
-    src: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=85",
-    alt: "University architecture",
-    size: "small",
+    src: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=85",
+    alt: "The KKJSTU campus building and grounds",
+    title: "Beautiful Campus",
+    caption: "Where inspiration meets opportunity.",
+    icon: "Building2",
   },
   {
-    src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=85",
-    alt: "Students walking across campus",
-    size: "wide",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=85",
-    alt: "Students collaborating",
-    size: "small",
+    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=85",
+    alt: "Students collaborating around a laptop",
+    title: "Learning Together",
+    caption: "Collaboration, ideas and friendships.",
+    icon: "Users",
   },
   {
     src: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=85",
-    alt: "Students enjoying university life",
-    size: "large",
+    alt: "Students researching together among library shelves",
+    title: "Research & Innovation",
+    caption: "Curiosity that drives meaningful change.",
+    icon: "BookOpen",
   },
+]
+
+export const GALLERY_STATS = [
+  { value: "500+", label: "Photos Captured", icon: "Camera" },
+  { value: "1000+", label: "Happy Students", icon: "Users" },
+  { value: "50+", label: "Campus Spots", icon: "Building2" },
+  { value: "Events", label: "All Year Round", icon: "CalendarDays" },
 ]
 
 export const VIRTUAL_TOUR = {

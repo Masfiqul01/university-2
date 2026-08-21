@@ -13,6 +13,7 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { PageHeroBanner } from "@/components/page-hero-banner";
 import {
   ICON_MOTION,
   ICON_MOTION_FILL,
@@ -44,53 +45,15 @@ export default function ResearchCentersPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[520px] overflow-hidden bg-brand-dark">
-        <img
-          src={CENTERS_HERO.image}
-          alt={CENTERS_HERO.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-brand-dark/80" />
-
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
-
-        <div className="relative mx-auto flex min-h-[520px] max-w-7xl items-center px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                {CENTERS_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[58px]">
-              {CENTERS_HERO.titleLines[0]}
-              <br />
-              <span className="text-[#e9edf5]">
-                {CENTERS_HERO.titleLines[1]}
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/85 sm:text-lg">
-              {CENTERS_HERO.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={CENTERS_HERO.primary.href} variant="gold" radius={0}>
-                {CENTERS_HERO.primary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={CENTERS_HERO.secondary.href} variant="ghost" radius={0}>
-                {CENTERS_HERO.secondary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow={CENTERS_HERO.eyebrow}
+        titleLines={CENTERS_HERO.titleLines}
+        description={CENTERS_HERO.description}
+        image={CENTERS_HERO.image}
+        imageAlt={CENTERS_HERO.imageAlt}
+        primary={CENTERS_HERO.primary}
+        secondary={CENTERS_HERO.secondary}
+      />
 
       {/* =========================================================
           INTRO / STATS

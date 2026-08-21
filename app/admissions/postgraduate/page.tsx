@@ -23,6 +23,7 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { PageHeroBanner } from "@/components/page-hero-banner";
 import {
   ICON_MOTION,
   ICON_MOTION_FILL,
@@ -59,50 +60,15 @@ export default function PostgraduateAdmissionsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[540px] overflow-hidden bg-brand-dark">
-        <img
-          src={POSTGRADUATE_HERO.image}
-          alt={POSTGRADUATE_HERO.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-brand-dark/80" />
-
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
-
-        <div className="relative mx-auto flex min-h-[540px] max-w-7xl items-center px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                {POSTGRADUATE_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[60px]">
-              {POSTGRADUATE_HERO.titleLines[0]}
-              <br />
-              {POSTGRADUATE_HERO.titleLines[1]}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/85 sm:text-lg">
-              {POSTGRADUATE_HERO.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={POSTGRADUATE_HERO.primary.href} variant="gold" radius={0}>
-                {POSTGRADUATE_HERO.primary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={POSTGRADUATE_HERO.secondary.href} variant="ghost" radius={0}>
-                {POSTGRADUATE_HERO.secondary.label}
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow={POSTGRADUATE_HERO.eyebrow}
+        titleLines={POSTGRADUATE_HERO.titleLines}
+        description={POSTGRADUATE_HERO.description}
+        image={POSTGRADUATE_HERO.image}
+        imageAlt={POSTGRADUATE_HERO.imageAlt}
+        primary={POSTGRADUATE_HERO.primary}
+        secondary={POSTGRADUATE_HERO.secondary}
+      />
 
       {/* =========================================================
           QUICK INTRO

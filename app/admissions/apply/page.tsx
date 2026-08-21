@@ -6,6 +6,8 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ApplicationForm } from "./application-form"
 import { ICON_MAP } from "@/lib/icon-map"
+import { PageHeroBanner } from "@/components/page-hero-banner"
+import { imageUrl } from "@/lib/site-assets"
 import { ICON_MOTION } from "@/lib/icon-colors"
 import { CtaButton } from "@/components/cta-button";
 import {
@@ -26,45 +28,15 @@ export default function ApplyPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
-          <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
-          <div className="absolute right-[25%] top-[40%] h-32 w-32 border border-[#d9a82e]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                {APPLY_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              {APPLY_HERO.title}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              {APPLY_HERO.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={APPLY_HERO.primary.href} variant="gold" radius={0}>
-                {APPLY_HERO.primary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={APPLY_HERO.secondary.href} variant="ghost" radius={0}>
-                {APPLY_HERO.secondary.label}
-                <ClipboardCheck className="h-4 w-4" />
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow={APPLY_HERO.eyebrow}
+        titleLines={[APPLY_HERO.title]}
+        description={APPLY_HERO.description}
+        image={imageUrl("/images/admissions-building.png")}
+        imageAlt="KACST admissions building"
+        primary={APPLY_HERO.primary}
+        secondary={APPLY_HERO.secondary}
+      />
 
       {/* =========================================================
           BREADCRUMB

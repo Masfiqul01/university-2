@@ -11,7 +11,8 @@ import {
 } from "lucide-react"
 
 import { PageShell } from "@/components/page-shell"
-import { PageHero } from "@/components/page-hero"
+import { PageHeroBanner } from "@/components/page-hero-banner"
+import { imageUrl } from "@/lib/site-assets"
 import { Section } from "@/components/blocks"
 import { SectionHeading } from "@/components/section-heading"
 import { AdministrationLeadership } from "@/components/administration-leadership"
@@ -149,16 +150,13 @@ export default function AdministrationPage() {
         {/* =====================================================
             HERO
         ====================================================== */}
-        <PageHero
+        <PageHeroBanner
           eyebrow="University Administration"
-          title="Administration & Leadership"
-          subtitle="Explore the university leadership, administrative offices and key services that support academic excellence and responsible governance."
-          crumbs={[
-            { label: "Home", href: "/" },
-            { label: "Administration" },
-          ]}
-          
-          image="/images/hero-campus.png"
+          titleLines={["Administration", "& Leadership"]}
+          description="Explore the university leadership, administrative offices and key services that support academic excellence and responsible governance."
+          image={imageUrl("/images/hero-campus.png")}
+          imageAlt="KACST campus"
+          crumbs={[{ label: "Home", href: "/" }, { label: "Administration" }]}
         />
 
         {/* =====================================================

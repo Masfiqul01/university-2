@@ -5,6 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { PageHeroBanner } from "@/components/page-hero-banner";
 import {
   ICON_MOTION,
   ICON_MOTION_FILL,
@@ -32,53 +33,16 @@ export default function MissionVisionPage() {
       <SiteHeader />
 
       {/* HERO */}
-      <section className="relative min-h-[570px] overflow-hidden bg-brand-dark">
-        <img
-          src={MISSION_VISION_HERO.image}
-          alt={MISSION_VISION_HERO.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
+      <PageHeroBanner
+        eyebrow={MISSION_VISION_HERO.eyebrow}
+        titleLines={MISSION_VISION_HERO.titleLines}
+        description={MISSION_VISION_HERO.description}
+        image={MISSION_VISION_HERO.image}
+        imageAlt={MISSION_VISION_HERO.imageAlt}
+        primary={MISSION_VISION_HERO.primary}
+        secondary={MISSION_VISION_HERO.secondary}
+      />
 
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
-
-        <div className="relative mx-auto flex min-h-[570px] max-w-7xl items-center px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#e1b63b]">
-                {MISSION_VISION_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-[1.08] text-white sm:text-5xl lg:text-[58px]">
-              {MISSION_VISION_HERO.titleLines[0]}
-              <br />
-              {MISSION_VISION_HERO.titleLines[1]}
-              <br />
-              <span className="text-[#f1f4f7]">
-                {MISSION_VISION_HERO.titleLines[2]}
-              </span>
-            </h1>
-
-            <p className="mt-7 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              {MISSION_VISION_HERO.description}
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={MISSION_VISION_HERO.primary.href} variant="gold" radius={0}>
-                {MISSION_VISION_HERO.primary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={MISSION_VISION_HERO.secondary.href} variant="ghost" radius={0}>
-                {MISSION_VISION_HERO.secondary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* BREADCRUMB */}
       <div className="border-b border-slate-200 bg-page-pattern">

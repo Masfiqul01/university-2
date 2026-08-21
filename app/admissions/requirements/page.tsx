@@ -23,6 +23,8 @@ import {
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { PageHeroBanner } from "@/components/page-hero-banner";
+import { imageUrl } from "@/lib/site-assets";
 import {
   ICON_MOTION,
   ICON_MOTION_FILL,
@@ -66,47 +68,15 @@ export default function AdmissionRequirementsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
-          <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
-          <div className="absolute right-[25%] top-[40%] h-32 w-32 border border-[#d9a82e]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                {REQUIREMENTS_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              {REQUIREMENTS_HERO.titleLines[0]}
-              <br />
-              {REQUIREMENTS_HERO.titleLines[1]}
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              {REQUIREMENTS_HERO.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={REQUIREMENTS_HERO.primary.href} variant="gold" radius={0}>
-                {REQUIREMENTS_HERO.primary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={REQUIREMENTS_HERO.secondary.href} variant="ghost" radius={0}>
-                {REQUIREMENTS_HERO.secondary.label}
-                <Download className="h-4 w-4" />
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow={REQUIREMENTS_HERO.eyebrow}
+        titleLines={REQUIREMENTS_HERO.titleLines}
+        description={REQUIREMENTS_HERO.description}
+        image={imageUrl("/images/admissions-building.png")}
+        imageAlt="KACST admissions building"
+        primary={REQUIREMENTS_HERO.primary}
+        secondary={REQUIREMENTS_HERO.secondary}
+      />
 
       {/* =========================================================
           QUICK ELIGIBILITY

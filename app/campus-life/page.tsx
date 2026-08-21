@@ -2,9 +2,13 @@
 
 import { ArrowRight, Camera, MapPin, Play } from "lucide-react";
 
+import Link from "next/link";
+
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { ICON_MAP } from "@/lib/icon-map";
+import { imageUrl } from "@/lib/site-assets";
+import { PageHeroBanner } from "@/components/page-hero-banner";
 import {
   ICON_MOTION,
   ICON_MOTION_FILL,
@@ -23,6 +27,7 @@ import {
   ACTIVITIES,
   GALLERY_INTRO,
   GALLERY_IMAGES,
+  GALLERY_STATS,
   VIRTUAL_TOUR,
   CAMPUS_LIFE_CTA,
 } from "@/lib/data/campus-life";
@@ -35,54 +40,15 @@ export default function CampusLifePage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative min-h-[560px] overflow-hidden bg-brand-dark">
-        <img
-          src={CAMPUS_LIFE_HERO.image}
-          alt={CAMPUS_LIFE_HERO.imageAlt}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-brand-dark/80" />
-
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
-
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#e1b63b]">
-                {CAMPUS_LIFE_HERO.eyebrow}
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[60px]">
-              {CAMPUS_LIFE_HERO.titleLines[0]}
-              <br />
-              {CAMPUS_LIFE_HERO.titleLines[1]}
-              <br />
-              <span className="text-[#f2f5f8]">
-                {CAMPUS_LIFE_HERO.titleLines[2]}
-              </span>
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/85 sm:text-lg">
-              {CAMPUS_LIFE_HERO.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={CAMPUS_LIFE_HERO.primary.href} variant="gold" radius={0}>
-                {CAMPUS_LIFE_HERO.primary.label}
-                <ArrowRight className="h-4 w-4" />
-              </CtaButton>
-
-              <CtaButton href={CAMPUS_LIFE_HERO.secondary.href} variant="ghost" radius={0}>
-                {CAMPUS_LIFE_HERO.secondary.label}
-              </CtaButton>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow={CAMPUS_LIFE_HERO.eyebrow}
+        titleLines={CAMPUS_LIFE_HERO.titleLines}
+        description={CAMPUS_LIFE_HERO.description}
+        image={CAMPUS_LIFE_HERO.image}
+        imageAlt={CAMPUS_LIFE_HERO.imageAlt}
+        primary={CAMPUS_LIFE_HERO.primary}
+        secondary={CAMPUS_LIFE_HERO.secondary}
+      />
 
       {/* =========================================================
           INTRO
@@ -378,68 +344,165 @@ export default function CampusLifePage() {
       ========================================================= */}
       <section
         id="gallery"
-        className="overflow-hidden bg-[#232771] px-5 py-20 sm:px-6 lg:px-8"
+        className="campus-gallery overflow-hidden bg-white px-5 py-20 sm:px-6 lg:px-8"
       >
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col justify-between gap-7 md:flex-row md:items-end">
-            <div>
-              <div className="mb-4 flex items-center gap-3">
-                <span className="h-px w-8 bg-[#d9a82e]" />
+        <div className="relative mx-auto max-w-7xl">
+          {/* Decorative: halftone dot circle + dashed curve, kept faint. */}
+          <div
+            aria-hidden="true"
+            className="campus-gallery__decor pointer-events-none absolute inset-0 hidden lg:block"
+          >
+            <svg
+              className="absolute -top-6 right-0 h-24 w-24 text-slate-200"
+              viewBox="0 0 100 100"
+              fill="none"
+            >
+              <defs>
+                <pattern
+                  id="cg-dots"
+                  width="7"
+                  height="7"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <circle cx="1.5" cy="1.5" r="1.5" fill="currentColor" />
+                </pattern>
+              </defs>
+              <circle cx="50" cy="50" r="50" fill="url(#cg-dots)" />
+            </svg>
 
-                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#e1b63b]">
+            <svg
+              className="absolute right-24 top-24 h-32 w-72 text-slate-300"
+              viewBox="0 0 300 130"
+              fill="none"
+            >
+              <path
+                d="M298 4C250 4 250 74 202 74S154 24 106 24 58 104 10 104"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeDasharray="6 8"
+                strokeLinecap="round"
+              />
+              <circle cx="10" cy="104" r="4" fill="currentColor" />
+            </svg>
+          </div>
+
+          {/* ================= HEADER ================= */}
+          <div className="campus-gallery__header relative flex flex-col justify-between gap-7 md:flex-row md:items-start">
+            <div className="max-w-xl">
+              <div className="mb-4 flex items-center gap-3">
+                <span className="h-px w-8 bg-[#f0a92a]" />
+
+                <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#f0a92a]">
                   {GALLERY_INTRO.eyebrow}
                 </span>
               </div>
 
-              <h2 className="font-serif text-3xl font-semibold text-white sm:text-4xl">
-                {GALLERY_INTRO.title}
+              <h2 className="campus-gallery__title font-serif text-4xl font-bold leading-[1.08] tracking-tight text-[#101a4b] sm:text-5xl">
+                <span className="block">{GALLERY_INTRO.titleLead}</span>
+                <span className="block text-[#f0a92a]">
+                  {GALLERY_INTRO.titleAccent}
+                </span>
               </h2>
 
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100/65">
+              <p className="mt-5 max-w-md text-[15px] leading-7 text-[#334876]">
                 {GALLERY_INTRO.description}
               </p>
+
+              <Link
+                href={GALLERY_INTRO.cta.href}
+                className="campus-gallery__cta mt-7 inline-flex items-center gap-3 rounded-xl bg-[#101a4b] px-6 py-3.5 text-sm font-bold text-white shadow-[0_10px_30px_rgba(16,26,75,0.18)] transition-colors duration-200 hover:bg-[#1a2668]"
+              >
+                {GALLERY_INTRO.cta.label}
+                <ArrowRight className="h-4 w-4 text-[#f0a92a] transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Link>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-blue-100/60">
-              <Camera className="h-4 w-4 text-[#d9a82e]" />
+            <div className="flex shrink-0 items-center gap-2.5 text-sm font-medium text-[#334876] md:pt-2">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-[#f0a92a] shadow-sm">
+                <Camera className="h-4 w-4" />
+              </span>
               {GALLERY_INTRO.note}
             </div>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:grid-rows-2">
+          {/* ================= GRID ================= */}
+          <div className="campus-gallery__grid relative mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {GALLERY_IMAGES.map((image, index) => {
-              const isLarge = image.size === "large";
-              const isWide = image.size === "wide";
+              const Icon = ICON_MAP[image.icon] ?? ICON_MAP.Camera;
+              const feature = "feature" in image && image.feature;
 
               return (
-                <div
-                  key={`${image.src}-${index}`}
-                  className={[
-                    "group relative min-h-[170px] overflow-hidden",
-                    isLarge ? "md:row-span-2" : "",
-                    isWide ? "md:col-span-2" : "",
-                    index === 0 ? "col-span-2 md:col-span-1" : "",
-                  ].join(" ")}
+                <article
+                  key={image.src}
+                  className={`campus-gallery__card group flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-[0_10px_30px_rgba(16,26,75,0.07)] transition-shadow duration-300 hover:shadow-[0_18px_45px_rgba(16,26,75,0.13)] ${
+                    feature ? "sm:col-span-2 lg:col-span-1 lg:row-span-2" : ""
+                  }`}
                 >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    loading={index > 1 ? "lazy" : "eager"}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                  />
-
-                  <div className="absolute inset-0 bg-[#232771]/10 transition group-hover:bg-[#232771]/30" />
-
-                  <div className="absolute bottom-4 left-4 opacity-0 transition group-hover:opacity-100">
-                    <div
-                      className={`flex h-9 w-9 items-center justify-center bg-white/90 ${lightTileIcon(index).text} ${ICON_MOTION}`}
-                    >
-                      <Camera className="h-4 w-4" />
-                    </div>
+                  <div
+                    className={`relative overflow-hidden ${
+                      feature ? "h-64 lg:h-auto lg:flex-1" : "h-44"
+                    }`}
+                  >
+                    <img
+                      src={imageUrl(image.src)}
+                      alt={image.alt}
+                      loading={index > 1 ? "lazy" : "eager"}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
-                </div>
+
+                  {/* Content, with the badge overlapping the image edge. */}
+                  <div className="relative flex shrink-0 flex-col border-b-2 border-[#f0a92a] px-5 pb-5 pt-8">
+                    <span
+                      className={`absolute -top-5 left-5 flex h-10 w-10 items-center justify-center rounded-full shadow-md ${
+                        feature
+                          ? "bg-[#f0a92a] text-white"
+                          : "bg-[#101a4b] text-white"
+                      }`}
+                    >
+                      <Icon className="h-4.5 w-4.5" />
+                    </span>
+
+                    <h3 className="text-[15px] font-bold text-[#101a4b]">
+                      {image.title}
+                    </h3>
+
+                    <p className="mt-1.5 text-[13px] leading-6 text-[#5b6b93]">
+                      {image.caption}
+                    </p>
+                  </div>
+                </article>
               );
             })}
+          </div>
+
+          {/* ================= STATS ================= */}
+          <div className="campus-gallery__stats mx-auto mt-12 max-w-4xl rounded-2xl border border-slate-100 bg-white px-4 py-6 shadow-[0_10px_30px_rgba(16,26,75,0.07)] sm:px-8">
+            <dl className="grid grid-cols-2 gap-y-6 sm:grid-cols-4">
+              {GALLERY_STATS.map((stat, index) => {
+                const Icon = ICON_MAP[stat.icon] ?? ICON_MAP.Camera;
+
+                return (
+                  <div
+                    key={stat.label}
+                    className={`flex items-center justify-center gap-3 px-2 ${
+                      index > 0 ? "sm:border-l sm:border-slate-200" : ""
+                    }`}
+                  >
+                    <Icon className="h-7 w-7 shrink-0 text-[#f0a92a]" />
+
+                    <div className="min-w-0">
+                      <dt className="font-serif text-xl font-bold leading-none text-[#101a4b]">
+                        {stat.value}
+                      </dt>
+                      <dd className="mt-1 text-[11px] text-[#5b6b93]">
+                        {stat.label}
+                      </dd>
+                    </div>
+                  </div>
+                );
+              })}
+            </dl>
           </div>
         </div>
       </section>

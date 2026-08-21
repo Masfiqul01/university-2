@@ -18,6 +18,8 @@ import { SiteFooter } from "@/components/site-footer"
 import { CountUp } from "@/components/count-up"
 import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { PROGRAMS } from "@/lib/data/programs"
+import { PageHeroBanner } from "@/components/page-hero-banner"
+import { imageUrl } from "@/lib/site-assets"
 
 export const metadata: Metadata = {
   title: "Admissions",
@@ -125,55 +127,15 @@ export default function AdmissionsPage() {
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30">
-        <div className="absolute inset-0 opacity-[0.07]">
-          <div className="absolute -right-36 -top-36 h-[520px] w-[520px] rounded-full border-[70px] border-[#d9a82e]" />
-          <div className="absolute -bottom-56 left-[5%] h-[500px] w-[500px] rounded-full border border-white" />
-          <div className="absolute right-[25%] top-[40%] h-32 w-32 border border-[#d9a82e]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <div className="max-w-3xl">
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-10 bg-[#d9a82e]" />
-
-              <span className="text-sm font-semibold uppercase tracking-[0.2em] text-[#e2b83b]">
-                Admissions
-              </span>
-            </div>
-
-            <h1 className="font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-[56px]">
-              Begin Your Application.
-              <br />
-              Build Your Future.
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-base leading-8 text-blue-100/80 sm:text-lg">
-              Discover the programs, requirements and application steps that
-              lead to a place at Khanjahan Ali College of Science &amp;
-              Technology.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/admissions/apply"
-                className="inline-flex items-center justify-center gap-2 bg-[#d9a82e] px-6 py-3.5 text-sm font-bold text-[#232771] transition hover:bg-[#edc85b]"
-              >
-                Apply Now
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <Link
-                href="/admissions/requirements"
-                className="inline-flex items-center justify-center gap-2 border border-white/30 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white"
-              >
-                View Requirements
-                <ClipboardCheck className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroBanner
+        eyebrow="Admissions"
+        titleLines={["Begin Your Application.", "Build Your Future."]}
+        description="Discover the programs, requirements and application steps that lead to a place at Khanjahan Ali College of Science & Technology."
+        image={imageUrl("/images/admissions-building.png")}
+        imageAlt="KACST admissions building"
+        primary={{ label: "Apply Now", href: "/admissions/apply" }}
+        secondary={{ label: "View Requirements", href: "/admissions/requirements" }}
+      />
 
       {/* =========================================================
           BREADCRUMB
