@@ -332,7 +332,7 @@ export default function TeacherPortalPage() {
               </div>
 
               {/* -------------------------------------- ATTENDANCE + ASSIGNMENTS */}
-              <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div className="mt-6 grid gap-6 lg:grid-cols-2 [&>*]:min-w-0">
                 <section id="attendance" className={`${CARD} p-5 sm:p-6`}>
                   <div className="flex items-center justify-between">
                     <SectionHead
@@ -394,7 +394,7 @@ export default function TeacherPortalPage() {
               </div>
 
               {/* -------------------------------------- STUDENTS + NOTICES */}
-              <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <div className="mt-6 grid gap-6 lg:grid-cols-2 [&>*]:min-w-0">
                 <section id="students" className={`${CARD} p-5 sm:p-6`}>
                   <SectionHead eyebrow={TEACHER_STUDENTS.eyebrow} title={TEACHER_STUDENTS.title} />
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { absoluteUrl, buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowRight, Calendar, Tag } from "lucide-react"
@@ -28,7 +29,13 @@ export async function generateMetadata({
 
   if (!article) return { title: "Article Not Found" }
 
-  return { title: article.title, description: article.excerpt }
+  return buildMetadata({
+    title: article.title,
+    description: article.excerpt,
+    path: `/news/${article.slug}`,
+    image: article.image ? imageUrl(article.image) : undefined,
+    type: "article",
+  })
 }
 
 export default async function NewsDetailPage({
@@ -43,8 +50,41 @@ export default async function NewsDetailPage({
 
   const related = NEWS_ARTICLES.filter((item) => item.slug !== article.slug).slice(0, 4)
 
+  /*
+    NewsArticle + breadcrumbs. Every field comes from the article record —
+    headline, description, image and publish date — so nothing is invented.
+  */
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "NewsArticle",
+        headline: article.title,
+        description: article.excerpt,
+        datePublished: new Date(article.date).toISOString(),
+        articleSection: article.category,
+        image: [imageUrl(article.image)],
+        mainEntityOfPage: absoluteUrl(`/news/${article.slug}`),
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        author: { "@type": "Organization", name: SITE_NAME },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "News & Events", item: absoluteUrl("/news") },
+          { "@type": "ListItem", position: 3, name: article.title },
+        ],
+      },
+    ],
+  }
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
       <PageHero
         eyebrow={article.category}
         title={article.title}

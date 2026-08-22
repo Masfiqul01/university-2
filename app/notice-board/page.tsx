@@ -74,6 +74,7 @@ export default function NoticeBoardPage() {
         subtitle="Stay informed with the latest notices, announcements and important updates from the college."
         crumbs={[{ label: "Home", href: "/" }, { label: "News & Events", href: "/news" }, { label: "Notice Board" }]}
         image="/images/hero-campus.png"
+        tall
       />
 
       <section className="notice-content-section w-full bg-(--notice-section-bg) py-14">

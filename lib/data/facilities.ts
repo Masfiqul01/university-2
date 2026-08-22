@@ -198,7 +198,7 @@ export const QUICK_LINKS = [
 ]
 
 export const CAMPUS_EXPERIENCE_FEATURE = {
-  image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=85",
+  image: "/images/campus-green.png",
   imageAlt: "Students walking across a university campus",
   overlayEyebrow: "Campus Experience",
   overlayTitle: "Places where academic life and community come together.",

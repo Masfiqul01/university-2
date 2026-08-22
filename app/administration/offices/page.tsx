@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
@@ -7,11 +8,12 @@ import { ICON_MAP } from "@/lib/icon-map"
 import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
 import { ADMIN_DIRECTORY } from "@/lib/data/administration"
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Administrative Offices",
   description:
     "Directory of administrative offices and support units at Khanjahan Ali College of Science & Technology.",
-}
+  path: "/administration/offices",
+})
 
 const HERO_IMAGE =
   "https://res.cloudinary.com/dhtavcr26/image/upload/v1786606085/banner1_cy6kuf.webp"

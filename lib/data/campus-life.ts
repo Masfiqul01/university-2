@@ -68,7 +68,7 @@ export const CAMPUS_HIGHLIGHTS = [
 ]
 
 export const CAMPUS_FEATURE = {
-  image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=85",
+  image: "/images/campus-green.png",
   imageAlt: "University campus and students",
   overlayEyebrow: "Campus Experience",
   overlayTitle: "A welcoming environment for every stage of student life.",

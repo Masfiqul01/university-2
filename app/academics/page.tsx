@@ -906,7 +906,7 @@ function DepartmentRow({
               {department.name}
             </h3>
 
-            <p className="mt-1 text-[9px] text-[#64748b]">
+            <p className="mt-1 text-[11px] text-[#64748b]">
               {department.faculty}
             </p>
           </div>
@@ -951,11 +951,11 @@ function InfoItem({
 }) {
   return (
     <div>
-      <div className="text-[8px] font-bold uppercase tracking-wide text-[#8b98a9]">
+      <div className="text-[10px] font-bold uppercase tracking-wide text-[#8b98a9]">
         {label}
       </div>
 
-      <div className="mt-1 text-[9px] leading-4 text-[#334155]">
+      <div className="mt-1 text-[12px] leading-4 text-[#334155]">
         {value}
       </div>
     </div>
@@ -1012,11 +1012,11 @@ function SpotlightPoint({
       </div>
 
       <div>
-        <h4 className="text-[9px] font-bold leading-4 text-[#102b68]">
+        <h4 className="text-[11px] font-bold leading-4 text-[#102b68] sm:text-[9px]">
           {title}
         </h4>
 
-        <p className="mt-0.5 text-[8px] leading-4 text-[#718096]">
+        <p className="mt-0.5 text-[10px] leading-4 text-[#718096] sm:text-[8px]">
           {text}
         </p>
       </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { absoluteUrl, buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ArrowRight, CalendarDays, Clock, MapPin } from "lucide-react"
@@ -40,7 +41,13 @@ export async function generateMetadata({
 
   if (!event) return { title: "Event Not Found" }
 
-  return { title: event.title, description: event.description }
+  return buildMetadata({
+    title: event.title,
+    description: event.description,
+    path: `/events/${event.slug}`,
+    image: event.image ? imageUrl(event.image) : undefined,
+    type: "article",
+  })
 }
 
 export default async function EventDetailPage({
@@ -61,8 +68,50 @@ export default async function EventDetailPage({
     { label: "Venue", value: event.venue, icon: MapPin },
   ]
 
+  /*
+    Event schema built only from fields the page already shows: name,
+    description, date, venue and image. No prices or ticketing are claimed.
+  */
+  const eventLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Event",
+        name: event.title,
+        description: event.description,
+        startDate: event.date,
+        eventStatus: "https://schema.org/EventScheduled",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        image: [imageUrl(event.image)],
+        url: absoluteUrl(`/events/${event.slug}`),
+        location: {
+          "@type": "Place",
+          name: event.venue,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Khulna",
+            addressCountry: "BD",
+          },
+        },
+        organizer: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+          { "@type": "ListItem", position: 2, name: "Events", item: absoluteUrl("/events") },
+          { "@type": "ListItem", position: 3, name: event.title },
+        ],
+      },
+    ],
+  }
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventLd) }}
+      />
       <PageHero
         eyebrow={event.category}
         title={event.title}

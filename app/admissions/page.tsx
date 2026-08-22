@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
 import Link from "next/link"
 import {
   ArrowRight,
@@ -21,11 +22,12 @@ import { PROGRAMS } from "@/lib/data/programs"
 import { PageHeroBanner } from "@/components/page-hero-banner"
 import { imageUrl } from "@/lib/site-assets"
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Admissions",
   description:
     "Explore admission pathways, eligibility, key dates and the application process at Khanjahan Ali College of Science & Technology.",
-}
+  path: "/admissions",
+})
 
 const highlights = [
   {

@@ -4,7 +4,8 @@ import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { imageUrl } from "@/lib/site-assets"
 import { ArrowRight, Calendar } from "lucide-react"
-import { NEWS } from "@/lib/data"
+// The real article records; /news/[slug] resolves against these slugs.
+import { NEWS_ARTICLES } from "@/lib/data/news"
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +57,7 @@ export function NewsEvents() {
     return () => ctx.revert();
   }, []);
 
-  const items = NEWS.slice(0, 4)
+  const items = NEWS_ARTICLES.slice(0, 4)
   return (
 <section
   ref={sectionRef}

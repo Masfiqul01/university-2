@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
@@ -21,7 +22,10 @@ import {
   ENQUIRY_ROUTES,
 } from "@/lib/data/contact"
 
-export const metadata: Metadata = CONTACT_METADATA
+export const metadata: Metadata = buildMetadata({
+  ...CONTACT_METADATA,
+  path: "/contact",
+})
 
 export default function ContactPage() {
   return (
@@ -133,7 +137,10 @@ export default function ContactPage() {
       ========================================================= */}
       <section
         id="message"
-        className="border-y border-slate-200 bg-[#eaf3fa]"
+        /* overflow-x-clip: the form's ambient glow blobs sit ~112px outside
+           its box, which pushed the page wide on phones and tablets. `clip`
+           (not `hidden`) contains them without creating a scroll container. */
+        className="overflow-x-clip border-y border-slate-200 bg-[#eaf3fa]"
       >
         <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[1.35fr_0.65fr]">

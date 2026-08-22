@@ -20,6 +20,16 @@ import {
   ABOUT_CTA,
 } from "@/lib/data/about";
 import { ArrowRight, Sparkles } from "lucide-react";
+import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
+
+export const metadata: Metadata = buildMetadata({
+  title: "About KACST",
+  description:
+    "Learn about Khanjahan Ali College of Science & Technology: our academic community, campus, values and the standards that guide teaching and learning.",
+  path: "/about",
+})
+
 
 function JourneyBanner({
   icon: BadgeIcon,

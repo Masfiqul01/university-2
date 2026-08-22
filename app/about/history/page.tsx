@@ -30,6 +30,16 @@ import {
   FACILITIES,
   HISTORY_CTA,
 } from "@/lib/data/history"
+import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
+
+export const metadata: Metadata = buildMetadata({
+  title: "History & Background",
+  description:
+    "The story of KACST since 2003 — how the college grew into a centre for honours and diploma education in science, technology and applied learning.",
+  path: "/about/history",
+})
+
 
 const STAT_ICON_STYLES = [
   { bg: "bg-blue-100", text: "text-blue-600", hover: "group-hover:bg-blue-600" },

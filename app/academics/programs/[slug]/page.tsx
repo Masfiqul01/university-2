@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import {
@@ -33,7 +34,11 @@ export async function generateMetadata({
 
   if (!program) return { title: "Program Not Found" }
 
-  return { title: program.title, description: program.description }
+  return buildMetadata({
+    title: program.title,
+    description: program.description,
+    path: `/academics/programs/${program.slug}`,
+  })
 }
 
 export default async function ProgramDetailPage({

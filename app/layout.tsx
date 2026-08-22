@@ -4,6 +4,8 @@ import { Playfair_Display, Inter } from 'next/font/google'
 import Script from 'next/script'
 import { PageMotion } from '@/components/page-motion'
 import { StudentChatWidget } from '@/components/student-chat-widget'
+import { SiteJsonLd } from '@/components/site-json-ld'
+import { DEFAULT_OG_IMAGE, SITE_LOCALE, SITE_NAME, SITE_URL } from '@/lib/seo'
 import './globals.css'
 
 // Runs before the body is parsed so entry animations never flash their final
@@ -24,12 +26,48 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  // Lets every page express its canonical and OG urls as plain paths.
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Khanjahan Ali College of Science & Technology(KACST)',
+    default:
+      'Khanjahan Ali College of Science & Technology (KACST) | Khulna, Bangladesh',
     template: '%s | KACST',
   },
   description:
-    'Khulna Khan Jahan Science and Technology University (KACST) is committed to developing competent professionals and ethical leaders through quality education, research and innovation.',
+    'Khanjahan Ali College of Science & Technology (KACST) in Khulna, Bangladesh offers honours and diploma programmes, modern laboratories and a student-focused campus.',
+  applicationName: SITE_NAME,
+  alternates: { canonical: '/' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: SITE_LOCALE,
+    url: SITE_URL,
+    title:
+      'Khanjahan Ali College of Science & Technology (KACST) | Khulna, Bangladesh',
+    description:
+      'Honours and diploma programmes, research, modern facilities and campus life at KACST, Khulna.',
+    images: [
+      { url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: `${SITE_NAME} campus` },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Khanjahan Ali College of Science & Technology (KACST)',
+    description:
+      'Honours and diploma programmes, research, modern facilities and campus life at KACST, Khulna.',
+    images: [DEFAULT_OG_IMAGE],
+  },
   generator: 'v0.app',
   icons: {
     icon: [
@@ -60,6 +98,7 @@ export default function RootLayout({
         <Script id="motion-guard" strategy="beforeInteractive">
           {MOTION_GUARD}
         </Script>
+        <SiteJsonLd />
         <PageMotion />
         {children}
         <StudentChatWidget />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { ArrowRight, ClipboardCheck } from "lucide-react"
 
@@ -18,7 +19,10 @@ import {
   APPLY_HELP,
 } from "@/lib/data/apply"
 
-export const metadata: Metadata = APPLY_METADATA
+export const metadata: Metadata = buildMetadata({
+  ...APPLY_METADATA,
+  path: "/admissions/apply",
+})
 
 export default function ApplyPage() {
   return (
