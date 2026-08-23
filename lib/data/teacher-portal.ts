@@ -1,5 +1,76 @@
-// Teacher Portal page (/teacher-portal) data — edit or add items here.
-// `icon` values are keys into lib/icon-map.tsx's ICON_MAP.
+// Teacher Login (/teacher-login) and Teacher Portal (/teacher-portal) data —
+// edit or add items here. `icon` values are keys into lib/icon-map.tsx's
+// ICON_MAP.
+
+/**
+ * Demo credentials only — there is no authentication backend yet. Swap this
+ * for a real API call once the university issues teacher accounts.
+ */
+export const TEACHER_DEMO_ACCOUNTS = [
+  {
+    id: "TCH-CSE-01",
+    password: "kacst2026",
+    name: "Dr. Rahman",
+    department: "Computer Science & Engineering",
+    designation: "Faculty Member",
+  },
+  {
+    id: "TCH-SCI-01",
+    password: "kacst2026",
+    name: "Dr. F. Sultana",
+    department: "Physics",
+    designation: "Professor",
+  },
+  {
+    id: "TCH-BBA-01",
+    password: "kacst2026",
+    name: "Dr. K. Ahmed",
+    department: "Business Administration",
+    designation: "Lecturer",
+  },
+]
+
+export const TEACHER_LOGIN_METADATA = {
+  title: "Teacher Login",
+  description: "Secure sign-in for KACST faculty members to access the teacher portal.",
+}
+
+export const TEACHER_LOGIN_CONTENT = {
+  eyebrow: "Faculty Access",
+  title: "Teacher Login",
+  description: "Sign in to manage your classes, attendance, assignments and students.",
+  idLabel: "Teacher ID",
+  idPlaceholder: "e.g. TCH-CSE-01",
+  passwordLabel: "Password",
+  passwordPlaceholder: "Enter your password",
+  submitLabel: "Sign In",
+  submitLoadingLabel: "Signing in...",
+  missingMessage: "Enter your Teacher ID and password.",
+  errorMessage: "Invalid Teacher ID or password. Please try again.",
+  demoNote: "Demo access — no backend connected yet",
+  demoAccounts: [
+    { id: "TCH-CSE-01", password: "kacst2026", label: "Computer Science & Engineering" },
+    { id: "TCH-SCI-01", password: "kacst2026", label: "Physics" },
+    { id: "TCH-BBA-01", password: "kacst2026", label: "Business Administration" },
+  ],
+  highlights: [
+    {
+      icon: "BookOpen",
+      title: "My Classes",
+      text: "View your assigned courses, sections and class routine in one place.",
+    },
+    {
+      icon: "ClipboardCheck",
+      title: "Attendance & Assignments",
+      text: "Record attendance and manage the assignment queue for every class.",
+    },
+    {
+      icon: "Users",
+      title: "Student Support",
+      text: "Track advising requests and messages from your students.",
+    },
+  ],
+}
 
 export const TEACHER_PORTAL_BRAND = {
   eyebrow: "KACST",
@@ -28,18 +99,14 @@ export const TEACHER_QUICK_ACCESS = {
 
 export const TEACHER_TOPBAR = {
   searchPlaceholder: "Search classes, students, notices...",
-  userInitials: "DR",
-  userName: "Dr. Rahman",
-  userRole: "Faculty Member",
 }
 
 export const TEACHER_DASHBOARD = {
   eyebrow: "Teacher Dashboard",
-  title: "Good morning, Dr. Rahman",
   description:
     "Manage your classes, attendance, assignments and student communication from one place.",
   dateLabel: "Today",
-  dateValue: "Sunday · 11 August 2026",
+  dateValue: "Sunday · 23 August 2026",
 }
 
 export const TEACHER_STATS = [

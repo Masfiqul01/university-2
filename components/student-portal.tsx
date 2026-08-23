@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, type ReactNode } from "react"
+import { useLayoutEffect, useState, type ReactNode } from "react"
 import { imageUrl } from "@/lib/site-assets"
 import { ICON_MOTION_FILL, lightTileIcon } from "@/lib/icon-colors"
-import { ArrowRight, BarChart3, BookOpen, CalendarDays, CheckCircle2, FileText, GraduationCap, Headphones, Megaphone, UserRound, UsersRound, X } from "lucide-react"
+import { ArrowRight, BarChart3, BookOpen, CalendarDays, CheckCircle2, FileText, GraduationCap, Headphones, LogOut, Megaphone, UsersRound, X } from "lucide-react"
+import type { StudentSession } from "@/lib/student-session"
 
 const SERVICES = [
-  { title: "Student Login", description: "Login to your student account and access your dashboard.", icon: UserRound, panel: "login" },
   { title: "Course Registration", description: "Register for courses and manage your enrollment.", icon: FileText, panel: "registration" },
   { title: "Results", description: "View your examination results and academic performance.", icon: BarChart3, panel: "results" },
   { title: "Exam Routine", description: "Check exam schedules and important dates.", icon: CalendarDays, panel: "routine" },
@@ -23,12 +23,36 @@ const COURSES = [
   ["CSE 3205", "Software Engineering", "3 credits"],
 ] as const
 
-export function StudentPortal() {
+export function StudentPortal({
+  session,
+  onSignOut,
+}: {
+  session: StudentSession
+  onSignOut: () => void
+}) {
   const [active, setActive] = useState<string | null>(null)
-  const [loggedIn, setLoggedIn] = useState(false)
   const [selectedCourses, setSelectedCourses] = useState<string[]>([])
   const [registered, setRegistered] = useState(false)
   const [supportSubmitted, setSupportSubmitted] = useState(false)
+
+  /*
+    The site header is `position: fixed` and overlays whatever is at the top
+    of the page instead of pushing it down. This hero starts at the very top
+    of the flow, so without this offset the breadcrumb/Sign Out row sits
+    behind the site header and swallows clicks. Measured rather than
+    hard-coded because the site header's height varies by breakpoint.
+  */
+  const [headerOffset, setHeaderOffset] = useState(80)
+
+  useLayoutEffect(() => {
+    const headerEl = document.querySelector("header")
+    if (!headerEl) return
+    const update = () => setHeaderOffset(headerEl.getBoundingClientRect().height)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(headerEl)
+    return () => ro.disconnect()
+  }, [])
 
   function toggleCourse(code: string) {
     setSelectedCourses((current) => current.includes(code) ? current.filter((item) => item !== code) : [...current, code])
@@ -37,17 +61,6 @@ export function StudentPortal() {
 
   function renderPanel() {
     if (!active) return null
-
-    if (active === "login") return (
-      <InfoPanel title="Student Login">
-        <form onSubmit={(e) => { e.preventDefault(); setLoggedIn(true) }} className="mx-auto max-w-xl space-y-4">
-          <input required className="w-full rounded-xl border border-input px-4 py-3 outline-none focus:ring-2 focus:ring-brand/20" placeholder="Student ID" />
-          <input required type="password" className="w-full rounded-xl border border-input px-4 py-3 outline-none focus:ring-2 focus:ring-brand/20" placeholder="Password" />
-          <button className="w-full rounded-xl bg-brand px-5 py-3 font-semibold text-white hover:bg-brand-dark">{loggedIn ? "Logged In" : "Sign In"}</button>
-          {loggedIn && <p className="rounded-xl bg-green-50 p-3 text-sm font-medium text-green-700">Login demo successful. Connect this form to your real authentication API.</p>}
-        </form>
-      </InfoPanel>
-    )
 
     if (active === "registration") return (
       <InfoPanel title="Course Registration">
@@ -151,11 +164,24 @@ export function StudentPortal() {
       <section className="relative isolate overflow-hidden bg-brand-dark">
         <img src={imageUrl("/images/hero-campus.png")} alt="University campus" className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-brand-dark/60 to-brand-dark/30" />
-        <div className="relative mx-auto max-w-[1240px] px-5 pb-20 pt-10 lg:px-8 lg:pb-24 lg:pt-14">
-          <div className="mb-7 flex items-center gap-2 text-sm text-white/80"><a href="/" className="hover:text-white">Home</a><span>›</span><span>Student Portal</span></div>
+        <div
+          style={{ paddingTop: headerOffset + 40 }}
+          className="relative mx-auto max-w-[1240px] px-5 pb-20 lg:px-8 lg:pb-24"
+        >
+          <div className="mb-7 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-sm text-white/80"><a href="/" className="hover:text-white">Home</a><span>›</span><span>Student Portal</span></div>
+            <button
+              onClick={onSignOut}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/10 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/15"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+              Sign Out
+            </button>
+          </div>
           <div className="max-w-2xl">
             <div className="mb-4 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-white"><GraduationCap className="h-5 w-5" /> Student Services</div>
-            <h1 className="font-serif text-5xl font-bold leading-[1.05] text-white md:text-6xl">Student Portal</h1>
+            <h1 className="font-serif text-5xl font-bold leading-[1.05] text-white md:text-6xl">Welcome, {session.name}</h1>
+            <p className="mt-4 text-sm font-semibold text-brand-accent">{session.program} · {session.year}</p>
             <p className="mt-5 max-w-xl text-base leading-7 text-white/90 md:text-lg">Quick access to academic information, registration, results, notices and student services.</p>
           </div>
         </div>

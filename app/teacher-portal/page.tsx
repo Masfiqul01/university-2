@@ -1,15 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
 import { PageShell } from "@/components/page-shell"
 import {
   ArrowUpRight, Bell, CheckCircle2, ChevronRight,
-  FileText, Menu, MessageSquare, Search,
+  FileText, Loader2, LogOut, Menu, MessageSquare, Search,
   X, Clock3
 } from "lucide-react"
 import { ICON_MAP } from "@/lib/icon-map"
 import { CountUp } from "@/components/count-up"
+import { TEACHER_SESSION_KEY, type TeacherSession } from "@/lib/teacher-session"
 import {
   TEACHER_PORTAL_BRAND,
   TEACHER_NAV,
@@ -50,16 +52,80 @@ const CHIP =
   "flex items-center justify-center rounded-xl bg-brand/8 text-brand ring-1 ring-inset ring-brand/10"
 
 export default function TeacherPortalPage() {
+  const router = useRouter()
+  const [session, setSession] = useState<TeacherSession | null>(null)
+  const [checked, setChecked] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [activeNav, setActiveNav] = useState(TEACHER_NAV[0].label)
 
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem(TEACHER_SESSION_KEY)
+      if (saved) setSession(JSON.parse(saved))
+      else router.replace("/teacher-login")
+    } catch {
+      router.replace("/teacher-login")
+    }
+    setChecked(true)
+  }, [router])
+
+  const initials = useMemo(() => {
+    if (!session) return ""
+    return session.name
+      .replace(/^Dr\.\s*/i, "")
+      .split(" ")
+      .map((part) => part[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase()
+  }, [session])
+
+  function handleSignOut() {
+    try {
+      sessionStorage.removeItem(TEACHER_SESSION_KEY)
+    } catch {
+      /* ignore */
+    }
+    router.push("/teacher-login")
+  }
+
+  /*
+    The site header is `position: fixed` and overlays whatever is at the top
+    of the page instead of pushing it down. This portal's own topbar starts
+    at the very top of the flow, so without this offset the site header
+    covers it and swallows clicks. Measured rather than hard-coded because
+    the site header's height varies by breakpoint.
+  */
+  const [headerOffset, setHeaderOffset] = useState(80)
+
+  useLayoutEffect(() => {
+    const headerEl = document.querySelector("header")
+    if (!headerEl) return
+    const update = () => setHeaderOffset(headerEl.getBoundingClientRect().height)
+    update()
+    const ro = new ResizeObserver(update)
+    ro.observe(headerEl)
+    return () => ro.disconnect()
+  }, [])
+
+  if (!checked || !session) {
+    return (
+      <PageShell>
+        <div className="flex min-h-[calc(100vh-80px)] items-center justify-center bg-[#f7f8fc]">
+          <Loader2 className="h-6 w-6 animate-spin text-brand" />
+        </div>
+      </PageShell>
+    )
+  }
+
   return (
     <PageShell>
-      <div className="min-h-[calc(100vh-80px)] bg-[#f7f8fc]">
+      <div className="bg-[#f7f8fc]" style={{ paddingTop: headerOffset, minHeight: `calc(100vh - ${headerOffset}px)` }}>
         <div className="mx-auto flex max-w-[1500px]">
           {/* ---------------------------------------------- SIDEBAR */}
           <aside
-            className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-brand/10 bg-white p-5 transition-transform duration-300 lg:sticky lg:top-0 lg:h-screen lg:translate-x-0`}
+            style={{ top: headerOffset, height: `calc(100vh - ${headerOffset}px)` }}
+            className={`${mobileOpen ? "translate-x-0" : "-translate-x-full"} fixed left-0 z-50 flex w-72 flex-col border-r border-brand/10 bg-white p-5 transition-transform duration-300 lg:sticky lg:translate-x-0`}
           >
             <div className="flex items-center justify-between border-b border-brand/10 pb-5">
               <div className="flex items-center gap-3">
@@ -117,21 +183,31 @@ export default function TeacherPortalPage() {
               })}
             </nav>
 
-            <div className="mt-auto rounded-2xl border border-brand/10 bg-brand/[0.04] p-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand/60">
-                {TEACHER_QUICK_ACCESS.label}
-              </p>
+            <div className="mt-auto space-y-4">
+              <div className="rounded-2xl border border-brand/10 bg-brand/[0.04] p-4">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand/60">
+                  {TEACHER_QUICK_ACCESS.label}
+                </p>
 
-              {TEACHER_QUICK_ACCESS.links.map((link, index) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`${index === 0 ? "mt-3" : "mt-2"} group flex items-center justify-between rounded-lg border border-brand/10 bg-white px-3 py-2 text-sm font-medium text-brand-dark transition-colors hover:border-brand/25 hover:bg-brand/5`}
-                >
-                  {link.label}
-                  <ChevronRight className="h-4 w-4 text-brand/50 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-brand" />
-                </Link>
-              ))}
+                {TEACHER_QUICK_ACCESS.links.map((link, index) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`${index === 0 ? "mt-3" : "mt-2"} group flex items-center justify-between rounded-lg border border-brand/10 bg-white px-3 py-2 text-sm font-medium text-brand-dark transition-colors hover:border-brand/25 hover:bg-brand/5`}
+                  >
+                    {link.label}
+                    <ChevronRight className="h-4 w-4 text-brand/50 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-brand" />
+                  </Link>
+                ))}
+              </div>
+
+              <button
+                onClick={handleSignOut}
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-red-100 bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-600 transition-colors hover:bg-red-100"
+              >
+                <LogOut className="h-4 w-4" />
+                Sign Out
+              </button>
             </div>
           </aside>
 
@@ -145,7 +221,10 @@ export default function TeacherPortalPage() {
 
           {/* ---------------------------------------------- MAIN */}
           <main className="min-w-0 flex-1">
-            <header className="sticky top-0 z-30 border-b border-brand/10 bg-white/85 px-4 py-4 backdrop-blur-md sm:px-6 lg:px-8">
+            <header
+              style={{ top: headerOffset }}
+              className="sticky z-30 border-b border-brand/10 bg-white/85 px-4 py-4 backdrop-blur-md sm:px-6 lg:px-8"
+            >
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setMobileOpen(true)}
@@ -172,13 +251,21 @@ export default function TeacherPortalPage() {
                     <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-brand-accent" />
                   </button>
 
+                  <button
+                    onClick={handleSignOut}
+                    aria-label="Sign out"
+                    className="hidden rounded-xl border border-brand/12 p-2.5 text-brand transition-colors hover:bg-brand/5 sm:block"
+                  >
+                    <LogOut className="h-4 w-4" />
+                  </button>
+
                   <div className="hidden items-center gap-3 rounded-xl border border-brand/12 bg-white px-3 py-2 sm:flex">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-xs font-bold text-white">
-                      {TEACHER_TOPBAR.userInitials}
+                      {initials}
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold text-brand-dark">{TEACHER_TOPBAR.userName}</p>
-                      <p className="text-[11px] text-slate-500">{TEACHER_TOPBAR.userRole}</p>
+                    <div className="min-w-0">
+                      <p className="truncate text-xs font-semibold text-brand-dark">{session.name}</p>
+                      <p className="truncate text-[11px] text-slate-500">{session.designation}</p>
                     </div>
                   </div>
                 </div>
@@ -211,8 +298,12 @@ export default function TeacherPortalPage() {
                     </div>
 
                     <h1 className="mt-3 font-serif text-3xl font-bold text-brand-dark sm:text-4xl">
-                      {TEACHER_DASHBOARD.title}
+                      Good morning, {session.name}
                     </h1>
+
+                    <p className="mt-2 text-sm font-semibold text-brand">
+                      {session.department} · {session.designation}
+                    </p>
 
                     <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600">
                       {TEACHER_DASHBOARD.description}

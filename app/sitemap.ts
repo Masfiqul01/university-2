@@ -8,10 +8,11 @@ import { PROGRAMS } from "@/lib/data/programs"
 /*
   Only real, public, indexable pages belong here.
 
-  Deliberately excluded: /login, /hod-login, /dashboard, /result,
-  /track-status, /pay-fees, /student-portal and /teacher-portal. Those are
-  authentication, payment or personal dashboard areas — they carry no public
-  content and are marked noindex on the pages themselves.
+  Deliberately excluded: /login, /hod-login, /hod-portal, /dashboard,
+  /result, /track-status, /pay-fees, /student-login, /student-portal,
+  /teacher-login and /teacher-portal. Those are authentication, payment or
+  personal dashboard areas — they carry no public content and are marked
+  noindex on the pages themselves.
 */
 
 type Entry = {
